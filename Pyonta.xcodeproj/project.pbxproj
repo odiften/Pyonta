@@ -13,6 +13,7 @@
 		693D8DC92E41325300E8E7F4 /* sharing_enums.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693D8DC82E41325300E8E7F4 /* sharing_enums.pb.swift */; };
 		693D8DCC2E43771D00E8E7F4 /* QRCode in Frameworks */ = {isa = PBXBuildFile; productRef = 693D8DCB2E43771D00E8E7F4 /* QRCode */; };
 		697DDEEC2E43986400B4749C /* SymmetricKey+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697DDEEB2E43986400B4749C /* SymmetricKey+Extensions.swift */; };
+		69F1A11C2E43986400B4749C /* FileNameSanitizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F1A11B2E43986400B4749C /* FileNameSanitizer.swift */; };
 		697DDF0F2E4422B300B4749C /* QrCodeBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697DDF0E2E4422B300B4749C /* QrCodeBackgroundView.swift */; };
 		697DDF132E44AAFB00B4749C /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 697DDF122E44AAFB00B4749C /* Localizable.xcstrings */; };
 		697DDF152E44AAFB00B4749C /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 697DDF142E44AAFB00B4749C /* Localizable.xcstrings */; };
@@ -119,6 +120,7 @@
 		691F53BD2ABF03820089FD92 /* OutboundNearbyConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutboundNearbyConnection.swift; sourceTree = "<group>"; };
 		693D8DC82E41325300E8E7F4 /* sharing_enums.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sharing_enums.pb.swift; sourceTree = "<group>"; };
 		697DDEEB2E43986400B4749C /* SymmetricKey+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SymmetricKey+Extensions.swift"; sourceTree = "<group>"; };
+		69F1A11B2E43986400B4749C /* FileNameSanitizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNameSanitizer.swift; sourceTree = "<group>"; };
 		697DDF0E2E4422B300B4749C /* QrCodeBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrCodeBackgroundView.swift; sourceTree = "<group>"; };
 		697DDF122E44AAFB00B4749C /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		697DDF142E44AAFB00B4749C /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 				698DFAE529E2F91A0064F247 /* NearbyConnection.swift */,
 				69DA9A2029E0CC4E00A442DA /* Data+Extensions.swift */,
 				697DDEEB2E43986400B4749C /* SymmetricKey+Extensions.swift */,
+				69F1A11B2E43986400B4749C /* FileNameSanitizer.swift */,
 			);
 			path = NearbyShare;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				69DCF48A2AB70E8C00CBE2CC /* wire_format.pb.swift in Sources */,
 				697DDEEC2E43986400B4749C /* SymmetricKey+Extensions.swift in Sources */,
 				69DCF4932AB70E9700CBE2CC /* Data+Extensions.swift in Sources */,
+				69F1A11C2E43986400B4749C /* FileNameSanitizer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
