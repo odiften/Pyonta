@@ -1,6 +1,6 @@
 //
 //  NearbyConnectionManager.swift
-//  NearDrop
+//  Pyonta
 //
 //  Created by Grishka on 08.04.2023.
 //

@@ -1,6 +1,6 @@
 //
 //  NDNotificationCenterHackery.h
-//  NearDrop
+//  Pyonta
 //
 //  Created by Grishka on 10.04.2023.
 //

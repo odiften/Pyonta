@@ -1,6 +1,6 @@
 //
 //  NearbyConnection.swift
-//  NearDrop
+//  Pyonta
 //
 //  Created by Grishka on 09.04.2023.
 //
@@ -16,7 +16,7 @@ import BigInt
 
 class NearbyConnection{
 	internal static let SANE_FRAME_LENGTH=5*1024*1024
-	private static let dispatchQueue=DispatchQueue(label: "me.grishka.NearDrop.queue", qos: .utility) // FIFO (non-concurrent) queue to avoid those exciting concurrency bugs
+	private static let dispatchQueue=DispatchQueue(label: "com.odiften.pyonta.queue", qos: .utility) // FIFO (non-concurrent) queue to avoid those exciting concurrency bugs
 	
 	internal let connection:NWConnection
 	internal var remoteDeviceInfo:RemoteDeviceInfo?
