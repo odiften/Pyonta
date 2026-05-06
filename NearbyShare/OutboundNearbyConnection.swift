@@ -17,7 +17,7 @@ import BigInt
 
 class OutboundNearbyConnection:NearbyConnection{
 	private var currentState:State = .initial
-	private let urlsToSend:[URL]
+	private let payload:Payload
 	private var ukeyClientFinishMsgData:Data?
 	private var queue:[OutgoingFileTransfer]=[]
 	private var currentTransfer:OutgoingFileTransfer?
@@ -26,19 +26,39 @@ class OutboundNearbyConnection:NearbyConnection{
 	private var totalBytesSent:Int64=0
 	private var cancelled:Bool=false
 	private var textPayloadID:Int64=0
-	
+
 	public var qrCodePrivateKey:ECPrivateKey?
-	
+
 	enum State{
 		case initial, sentUkeyClientInit, sentUkeyClientFinish, sentPairedKeyEncryption, sentPairedKeyResult, sentIntroduction, sendingFiles
 	}
-	
+
+	private enum Payload{
+		case files([URL])
+		case url(URL)
+		case text(String)
+	}
+
 	init(connection: NWConnection, id: String, urlsToSend:[URL]){
-		self.urlsToSend=urlsToSend
-		super.init(connection: connection, id: id)
 		if urlsToSend.count==1 && !urlsToSend[0].isFileURL{
+			self.payload = .url(urlsToSend[0])
+		}else{
+			self.payload = .files(urlsToSend)
+		}
+		super.init(connection: connection, id: id)
+		if case .url = payload {
 			textPayloadID=Int64.random(in: Int64.min...Int64.max)
 		}
+	}
+
+	init(connection: NWConnection, id: String, textToSend:String, isURL:Bool){
+		if isURL, let url=URL(string: textToSend){
+			self.payload = .url(url)
+		}else{
+			self.payload = .text(textToSend)
+		}
+		super.init(connection: connection, id: id)
+		textPayloadID=Int64.random(in: Int64.min...Int64.max)
 	}
 	
 	deinit {
@@ -268,15 +288,23 @@ class OutboundNearbyConnection:NearbyConnection{
 		var introduction=Sharing_Nearby_Frame()
 		introduction.version = .v1
 		introduction.v1.type = .introduction
-		if urlsToSend.count==1 && !urlsToSend[0].isFileURL{
+		switch payload{
+		case .url(let url):
 			var meta=Sharing_Nearby_TextMetadata()
 			meta.type = .url
-			meta.textTitle=urlsToSend[0].host ?? "URL"
-			meta.size=Int64(urlsToSend[0].absoluteString.utf8.count)
+			meta.textTitle=url.host ?? "URL"
+			meta.size=Int64(url.absoluteString.utf8.count)
 			meta.payloadID=textPayloadID
 			introduction.v1.introduction.textMetadata.append(meta)
-		}else{
-			for url in urlsToSend{
+		case .text(let text):
+			var meta=Sharing_Nearby_TextMetadata()
+			meta.type = .text
+			meta.textTitle=Self.textTitleForPlainText(text)
+			meta.size=Int64(text.utf8.count)
+			meta.payloadID=textPayloadID
+			introduction.v1.introduction.textMetadata.append(meta)
+		case .files(let urls):
+			for url in urls{
 				guard url.isFileURL else {continue}
 				var meta=Sharing_Nearby_FileMetadata()
 				meta.name=FileNameSanitizer.sanitize(url.lastPathComponent)
@@ -327,9 +355,10 @@ class OutboundNearbyConnection:NearbyConnection{
 		case .accept:
 			currentState = .sendingFiles
 			delegate?.outboundConnectionTransferAccepted(connection: self)
-			if urlsToSend.count==1 && !urlsToSend[0].isFileURL{
-				try sendURL()
-			}else{
+			switch payload{
+			case .url, .text:
+				try sendText()
+			case .files:
 				try sendNextFileChunk()
 			}
 		case .reject, .unknown:
@@ -347,10 +376,28 @@ class OutboundNearbyConnection:NearbyConnection{
 		}
 	}
 	
-	private func sendURL() throws{
-		try sendBytesPayload(data: Data(urlsToSend[0].absoluteString.utf8), id: textPayloadID)
+	private func sendText() throws{
+		let bytes:Data
+		switch payload{
+		case .url(let url):
+			bytes=Data(url.absoluteString.utf8)
+		case .text(let text):
+			bytes=Data(text.utf8)
+		case .files:
+			return
+		}
+		try sendBytesPayload(data: bytes, id: textPayloadID)
 		delegate?.outboundConnectionTransferFinished(connection: self)
 		try sendDisconnectionAndDisconnect()
+	}
+
+	private static func textTitleForPlainText(_ text:String) -> String{
+		let trimmed=text.replacingOccurrences(of: "\n", with: " ").trimmingCharacters(in: .whitespaces)
+		if trimmed.isEmpty { return "Text" }
+		if trimmed.count > 30 {
+			return String(trimmed.prefix(30))+"…"
+		}
+		return trimmed
 	}
 	
 	private func sendNextFileChunk() throws{

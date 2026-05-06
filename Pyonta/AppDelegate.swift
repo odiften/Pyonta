@@ -13,18 +13,26 @@ import NearbyShare
 class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDelegate, MainAppDelegate{
 	private var statusItem:NSStatusItem?
 	private var activeIncomingTransfers:[String:TransferInfo]=[:]
+	private var sendWindowController:SendWindowController?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
 		let menu=NSMenu()
 		menu.addItem(withTitle: NSLocalizedString("VisibleToEveryone", value: "Visible to everyone", comment: ""), action: nil, keyEquivalent: "")
 		menu.addItem(withTitle: String(format: NSLocalizedString("DeviceName", value: "Device name: %@", comment: ""), arguments: [Host.current().localizedName!]), action: nil, keyEquivalent: "")
 		menu.addItem(NSMenuItem.separator())
+		let sendItem=NSMenuItem(title: NSLocalizedString("SendFiles", value: "Send files…", comment: ""), action: #selector(sendFiles(_:)), keyEquivalent: "")
+		sendItem.target=self
+		menu.addItem(sendItem)
+		let sendClipboardItem=NSMenuItem(title: NSLocalizedString("SendClipboard", value: "Send clipboard…", comment: ""), action: #selector(sendClipboard(_:)), keyEquivalent: "")
+		sendClipboardItem.target=self
+		menu.addItem(sendClipboardItem)
+		menu.addItem(NSMenuItem.separator())
 		menu.addItem(withTitle: NSLocalizedString("Quit", value: "Quit Pyonta", comment: ""), action: #selector(NSApplication.terminate(_:)), keyEquivalent: "")
 		statusItem=NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 		statusItem?.button?.image=NSImage(named: "MenuBarIcon")
 		statusItem?.menu=menu
 		statusItem?.behavior = .removalAllowed
-		
+
 		let nc=UNUserNotificationCenter.current()
 		nc.requestAuthorization(options: [.alert, .sound]) { granted, err in
 			if !granted{
@@ -43,7 +51,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 		NearbyConnectionManager.shared.mainAppDelegate=self
 		NearbyConnectionManager.shared.becomeVisible()
 	}
-	
+
 	func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
 		statusItem?.isVisible=true
 		return true
@@ -56,7 +64,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
     func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
         return true
     }
-	
+
 	func showNotificationsDeniedAlert(){
 		let alert=NSAlert()
 		alert.alertStyle = .critical
@@ -71,7 +79,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 			NSApplication.shared.terminate(nil)
 		}
 	}
-	
+
 	func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
 		let transferID=response.notification.request.content.userInfo["transferID"]! as! String
 		NearbyConnectionManager.shared.submitUserConsent(transferID: transferID, accept: response.actionIdentifier=="ACCEPT")
@@ -80,7 +88,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 		}
 		completionHandler()
 	}
-	
+
 	func obtainUserConsent(for transfer: TransferMetadata, from device: RemoteDeviceInfo) {
 		let fileStr:String
 		if let textTitle=transfer.textDescription{
@@ -104,7 +112,56 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 		UNUserNotificationCenter.current().add(notificationReq)
 		self.activeIncomingTransfers[transfer.id]=TransferInfo(device: device, transfer: transfer)
 	}
-	
+
+	@objc func sendFiles(_ sender: Any?) {
+		let panel=NSOpenPanel()
+		panel.allowsMultipleSelection=true
+		panel.canChooseFiles=true
+		panel.canChooseDirectories=false
+		panel.title=NSLocalizedString("ChooseFiles.Title", value: "Choose files to send", comment: "")
+		NSApp.activate(ignoringOtherApps: true)
+		panel.begin { [weak self] response in
+			guard response == .OK, !panel.urls.isEmpty else { return }
+			self?.presentSendWindow(SendWindowController(urls: panel.urls))
+		}
+	}
+
+	@objc func sendClipboard(_ sender: Any?) {
+		let pb=NSPasteboard.general
+		guard let raw=pb.string(forType: .string) else {
+			showClipboardEmptyAlert()
+			return
+		}
+		let text=raw.trimmingCharacters(in: .whitespacesAndNewlines)
+		guard !text.isEmpty else {
+			showClipboardEmptyAlert()
+			return
+		}
+		let isURL=AppDelegate.isLikelyURL(text)
+		presentSendWindow(SendWindowController(text: text, isURL: isURL))
+	}
+
+	private func presentSendWindow(_ controller:SendWindowController){
+		self.sendWindowController=controller
+		NotificationCenter.default.addObserver(forName: NSWindow.willCloseNotification, object: controller.window, queue: .main) { [weak self] _ in
+			self?.sendWindowController=nil
+		}
+		controller.showWindow(nil)
+	}
+
+	private func showClipboardEmptyAlert(){
+		let alert=NSAlert()
+		alert.messageText=NSLocalizedString("ClipboardEmpty.Title", value: "Clipboard is empty", comment: "")
+		alert.informativeText=NSLocalizedString("ClipboardEmpty.Body", value: "Copy some text first, then try again.", comment: "")
+		alert.runModal()
+	}
+
+	private static func isLikelyURL(_ text:String) -> Bool {
+		guard !text.contains(" "), !text.contains("\n"), !text.contains("\t") else { return false }
+		guard let url=URL(string: text), let scheme=url.scheme?.lowercased() else { return false }
+		return scheme=="http" || scheme=="https"
+	}
+
 	func incomingTransfer(id: String, didFinishWith error: Error?) {
 		guard let transfer=self.activeIncomingTransfers[id] else {return}
 		if let error=error{
@@ -137,4 +194,41 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 struct TransferInfo{
 	let device:RemoteDeviceInfo
 	let transfer:TransferMetadata
+}
+
+// MARK: - SendWindowController
+//
+// SendViewController.xib (ShareExtension の ShareViewController.xib をコピー)
+// を NSWindow に embed する単純なラッパー。実際の UI ロジックは SendViewController に集約。
+
+class SendWindowController: NSWindowController {
+
+	private let viewController:SendViewController
+
+	convenience init(urls:[URL]){
+		self.init(viewController: SendViewController(urls: urls))
+	}
+
+	convenience init(text:String, isURL:Bool){
+		self.init(viewController: SendViewController(text: text, isURL: isURL))
+	}
+
+	private init(viewController:SendViewController){
+		self.viewController=viewController
+		let window=NSWindow(contentViewController: viewController)
+		window.styleMask = [.titled, .closable]
+		window.title=NSLocalizedString("SendFiles.Title", value: "Send to Android", comment: "")
+		window.isReleasedWhenClosed=false
+		super.init(window: window)
+	}
+
+	required init?(coder:NSCoder){
+		fatalError("init(coder:) has not been implemented")
+	}
+
+	override func showWindow(_ sender: Any?) {
+		super.showWindow(sender)
+		window?.center()
+		NSApp.activate(ignoringOtherApps: true)
+	}
 }

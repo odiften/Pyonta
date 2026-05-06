@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1DF8346CA52C3017A7874A8D /* DeviceListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F56597437179889D33E07EE /* DeviceListCell.swift */; };
+		2DF449CF71B350CCB9F4C0B7 /* QRCode in Frameworks */ = {isa = PBXBuildFile; productRef = 693D8DCB2E43771D00E8E7F4 /* QRCode */; };
 		691F53BB2ABB70840089FD92 /* DeviceListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691F53B92ABB70840089FD92 /* DeviceListCell.swift */; };
 		691F53BC2ABB70840089FD92 /* DeviceListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 691F53BA2ABB70840089FD92 /* DeviceListCell.xib */; };
 		691F53BE2ABF03820089FD92 /* OutboundNearbyConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691F53BD2ABF03820089FD92 /* OutboundNearbyConnection.swift */; };
 		693D8DC92E41325300E8E7F4 /* sharing_enums.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693D8DC82E41325300E8E7F4 /* sharing_enums.pb.swift */; };
 		693D8DCC2E43771D00E8E7F4 /* QRCode in Frameworks */ = {isa = PBXBuildFile; productRef = 693D8DCB2E43771D00E8E7F4 /* QRCode */; };
 		697DDEEC2E43986400B4749C /* SymmetricKey+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697DDEEB2E43986400B4749C /* SymmetricKey+Extensions.swift */; };
-		69F1A11C2E43986400B4749C /* FileNameSanitizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F1A11B2E43986400B4749C /* FileNameSanitizer.swift */; };
 		697DDF0F2E4422B300B4749C /* QrCodeBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697DDF0E2E4422B300B4749C /* QrCodeBackgroundView.swift */; };
 		697DDF132E44AAFB00B4749C /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 697DDF122E44AAFB00B4749C /* Localizable.xcstrings */; };
 		697DDF152E44AAFB00B4749C /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 697DDF142E44AAFB00B4749C /* Localizable.xcstrings */; };
@@ -42,6 +43,11 @@
 		69DCF49C2AB8C58500CBE2CC /* SwiftECC in Frameworks */ = {isa = PBXBuildFile; productRef = 69DCF49B2AB8C58500CBE2CC /* SwiftECC */; };
 		69DCF49D2AB8C9A500CBE2CC /* libNearbyShare.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 69DCF4812AB70D0600CBE2CC /* libNearbyShare.dylib */; };
 		69DCF49E2AB8C9A500CBE2CC /* libNearbyShare.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 69DCF4812AB70D0600CBE2CC /* libNearbyShare.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		69F1A11C2E43986400B4749C /* FileNameSanitizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F1A11B2E43986400B4749C /* FileNameSanitizer.swift */; };
+		7A8B81F18C3AC9AD6C2492BC /* SendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B78BB494BAB35376BBBA3 /* SendViewController.swift */; };
+		8965C028B5F51BC6904A0A39 /* DeviceListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4932415BFE28641894DC11D1 /* DeviceListCell.xib */; };
+		D7FCEDF9255F8B7F4258EF7B /* QrCodeBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CA49504B72D372F5B1C986 /* QrCodeBackgroundView.swift */; };
+		F665E2317B6F5B5679782B3C /* SendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5856668BE3178DE3590AA13D /* SendViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,12 +121,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		220B78BB494BAB35376BBBA3 /* SendViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SendViewController.swift; sourceTree = "<group>"; };
+		2AAC82297684C01DE3C12CBB /* Base */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DeviceListCell.xib; sourceTree = "<group>"; };
+		35CA49504B72D372F5B1C986 /* QrCodeBackgroundView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = QrCodeBackgroundView.swift; sourceTree = "<group>"; };
 		691F53B92ABB70840089FD92 /* DeviceListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListCell.swift; sourceTree = "<group>"; };
 		691F53BA2ABB70840089FD92 /* DeviceListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceListCell.xib; sourceTree = "<group>"; };
 		691F53BD2ABF03820089FD92 /* OutboundNearbyConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutboundNearbyConnection.swift; sourceTree = "<group>"; };
 		693D8DC82E41325300E8E7F4 /* sharing_enums.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sharing_enums.pb.swift; sourceTree = "<group>"; };
 		697DDEEB2E43986400B4749C /* SymmetricKey+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SymmetricKey+Extensions.swift"; sourceTree = "<group>"; };
-		69F1A11B2E43986400B4749C /* FileNameSanitizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNameSanitizer.swift; sourceTree = "<group>"; };
 		697DDF0E2E4422B300B4749C /* QrCodeBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrCodeBackgroundView.swift; sourceTree = "<group>"; };
 		697DDF122E44AAFB00B4749C /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		697DDF142E44AAFB00B4749C /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -153,6 +161,9 @@
 		69DA9A2C29E18CB500A442DA /* securegcm.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = securegcm.pb.swift; sourceTree = "<group>"; };
 		69DA9A2D29E18CB500A442DA /* securemessage.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = securemessage.pb.swift; sourceTree = "<group>"; };
 		69DCF4812AB70D0600CBE2CC /* libNearbyShare.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libNearbyShare.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		69F1A11B2E43986400B4749C /* FileNameSanitizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNameSanitizer.swift; sourceTree = "<group>"; };
+		7AD074992CAFB03AAB30A017 /* Base */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SendViewController.xib; sourceTree = "<group>"; };
+		8F56597437179889D33E07EE /* DeviceListCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DeviceListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				69DCF4942AB8BF7B00CBE2CC /* libNearbyShare.dylib in Frameworks */,
+				2DF449CF71B350CCB9F4C0B7 /* QRCode in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +255,11 @@
 				69DA9A1829E0BF5200A442DA /* Pyonta.entitlements */,
 				698DFB0029E362140064F247 /* Pyonta-Bridging-Header.h */,
 				69D2C32E29E7898C00EC7E30 /* MainMenu.xib */,
+				220B78BB494BAB35376BBBA3 /* SendViewController.swift */,
+				8F56597437179889D33E07EE /* DeviceListCell.swift */,
+				35CA49504B72D372F5B1C986 /* QrCodeBackgroundView.swift */,
+				5856668BE3178DE3590AA13D /* SendViewController.xib */,
+				4932415BFE28641894DC11D1 /* DeviceListCell.xib */,
 			);
 			path = Pyonta;
 			sourceTree = "<group>";
@@ -327,6 +344,7 @@
 			);
 			name = Pyonta;
 			packageProductDependencies = (
+				693D8DCB2E43771D00E8E7F4 /* QRCode */,
 			);
 			productName = Pyonta;
 			productReference = 69DA9A0E29E0BF5100A442DA /* Pyonta.app */;
@@ -437,6 +455,8 @@
 				697DDF132E44AAFB00B4749C /* Localizable.xcstrings in Resources */,
 				697DDF172E44AAFB00B4749C /* Pyonta-InfoPlist.xcstrings in Resources */,
 				69D2C32F29E7898C00EC7E30 /* MainMenu.xib in Resources */,
+				F665E2317B6F5B5679782B3C /* SendViewController.xib in Resources */,
+				8965C028B5F51BC6904A0A39 /* DeviceListCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,6 +479,9 @@
 			files = (
 				698DFB0329E362140064F247 /* NDNotificationCenterHackery.m in Sources */,
 				69DA9A1229E0BF5100A442DA /* AppDelegate.swift in Sources */,
+				7A8B81F18C3AC9AD6C2492BC /* SendViewController.swift in Sources */,
+				1DF8346CA52C3017A7874A8D /* DeviceListCell.swift in Sources */,
+				D7FCEDF9255F8B7F4258EF7B /* QrCodeBackgroundView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,6 +527,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		4932415BFE28641894DC11D1 /* DeviceListCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2AAC82297684C01DE3C12CBB /* Base */,
+			);
+			name = DeviceListCell.xib;
+			sourceTree = "<group>";
+		};
+		5856668BE3178DE3590AA13D /* SendViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7AD074992CAFB03AAB30A017 /* Base */,
+			);
+			name = SendViewController.xib;
+			sourceTree = "<group>";
+		};
 		699DEBA72AB0573200115D22 /* ShareViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -705,9 +744,11 @@
 				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = M5BUPQ3687;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Pyonta/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "近くの Android デバイスを探して、ファイルを送受信するために使います。";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -740,9 +781,11 @@
 				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = M5BUPQ3687;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Pyonta/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "近くの Android デバイスを探して、ファイルを送受信するために使います。";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
