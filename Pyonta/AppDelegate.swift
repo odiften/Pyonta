@@ -6,19 +6,103 @@
 //
 
 import Cocoa
+import SwiftUI
 import UserNotifications
 import NearbyShare
 
+final class BoolToggleState: ObservableObject {
+	@Published var isOn: Bool {
+		didSet {
+			UserDefaults.standard.set(isOn, forKey: key)
+			onChange?(isOn)
+		}
+	}
+	let key: String
+	var onChange: ((Bool) -> Void)?
+
+	init(key: String, defaultValue: Bool) {
+		self.key = key
+		if UserDefaults.standard.object(forKey: key) == nil {
+			UserDefaults.standard.set(defaultValue, forKey: key)
+		}
+		self.isOn = UserDefaults.standard.bool(forKey: key)
+	}
+
+	func reload() {
+		let v = UserDefaults.standard.bool(forKey: key)
+		if isOn != v { isOn = v }
+	}
+}
+
+struct ToggleMenuRow: View {
+	@ObservedObject var state: BoolToggleState
+	let label: String
+	var body: some View {
+		HStack(spacing: 8) {
+			Text(label)
+			Spacer(minLength: 8)
+			CustomToggleSwitch(isOn: $state.isOn)
+		}
+		.padding(.horizontal, 14)
+		.padding(.vertical, 4)
+		.frame(maxWidth: .infinity)
+	}
+}
+
+struct CustomToggleSwitch: View {
+	@Binding var isOn: Bool
+	private let trackWidth: CGFloat = 36
+	private let trackHeight: CGFloat = 20
+	private let knobSize: CGFloat = 16
+	var body: some View {
+		ZStack(alignment: isOn ? .trailing : .leading) {
+			Capsule()
+				.fill(isOn ? Color(NSColor.controlAccentColor) : Color(NSColor.tertiaryLabelColor))
+				.frame(width: trackWidth, height: trackHeight)
+			Circle()
+				.fill(Color.white)
+				.frame(width: knobSize, height: knobSize)
+				.padding(2)
+				.shadow(color: Color.black.opacity(0.18), radius: 1, x: 0, y: 0.5)
+		}
+		.frame(width: trackWidth, height: trackHeight)
+		.contentShape(Capsule())
+		.onTapGesture {
+			withAnimation(.easeInOut(duration: 0.15)) {
+				isOn.toggle()
+			}
+		}
+	}
+}
+
 @main
-class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDelegate, MainAppDelegate{
+class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDelegate, NSMenuDelegate, MainAppDelegate{
+	static let autoAcceptKey="automaticallyAcceptFiles"
+	static let visibilityKey="visibleToEveryone"
 	private var statusItem:NSStatusItem?
 	private var activeIncomingTransfers:[String:TransferInfo]=[:]
 	private var sendWindowController:SendWindowController?
+	private let autoAcceptToggleState = BoolToggleState(key: AppDelegate.autoAcceptKey, defaultValue: false)
+	private let visibilityToggleState = BoolToggleState(key: AppDelegate.visibilityKey, defaultValue: true)
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+		visibilityToggleState.onChange = { isOn in
+			if isOn {
+				NearbyConnectionManager.shared.becomeVisible()
+			} else {
+				NearbyConnectionManager.shared.becomeInvisible()
+			}
+		}
+
 		let menu=NSMenu()
-		menu.addItem(withTitle: NSLocalizedString("VisibleToEveryone", value: "Visible to everyone", comment: ""), action: nil, keyEquivalent: "")
+		menu.delegate=self
+		let visibilityItem=NSMenuItem()
+		visibilityItem.view=makeVisibilityItemView()
+		menu.addItem(visibilityItem)
 		menu.addItem(withTitle: String(format: NSLocalizedString("DeviceName", value: "Device name: %@", comment: ""), arguments: [Host.current().localizedName!]), action: nil, keyEquivalent: "")
+		let autoAcceptItem=NSMenuItem()
+		autoAcceptItem.view=makeAutoAcceptItemView()
+		menu.addItem(autoAcceptItem)
 		menu.addItem(NSMenuItem.separator())
 		let sendItem=NSMenuItem(title: NSLocalizedString("SendFiles", value: "Send files…", comment: ""), action: #selector(sendFiles(_:)), keyEquivalent: "")
 		sendItem.target=self
@@ -49,7 +133,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 		let errorsCategory=UNNotificationCategory(identifier: "ERRORS", actions: [], intentIdentifiers: [])
 		nc.setNotificationCategories([incomingTransfersCategory, errorsCategory])
 		NearbyConnectionManager.shared.mainAppDelegate=self
-		NearbyConnectionManager.shared.becomeVisible()
+		if visibilityToggleState.isOn {
+			NearbyConnectionManager.shared.becomeVisible()
+		}
 	}
 
 	func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
@@ -90,6 +176,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 	}
 
 	func obtainUserConsent(for transfer: TransferMetadata, from device: RemoteDeviceInfo) {
+		let autoAccept=UserDefaults.standard.bool(forKey: AppDelegate.autoAcceptKey)
+		self.activeIncomingTransfers[transfer.id]=TransferInfo(device: device, transfer: transfer, autoAccepted: autoAccept)
+		if autoAccept {
+			NearbyConnectionManager.shared.submitUserConsent(transferID: transfer.id, accept: true)
+			return
+		}
 		let fileStr:String
 		if let textTitle=transfer.textDescription{
 			fileStr=textTitle
@@ -110,7 +202,36 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 		}
 		let notificationReq=UNNotificationRequest(identifier: "transfer_"+transfer.id, content: notificationContent, trigger: nil)
 		UNUserNotificationCenter.current().add(notificationReq)
-		self.activeIncomingTransfers[transfer.id]=TransferInfo(device: device, transfer: transfer)
+	}
+
+	func menuWillOpen(_ menu: NSMenu) {
+		autoAcceptToggleState.reload()
+		visibilityToggleState.reload()
+	}
+
+	private func makeAutoAcceptItemView() -> NSView {
+		return makeToggleItemView(
+			state: autoAcceptToggleState,
+			label: NSLocalizedString("AutoAcceptFiles", value: "Auto-accept files", comment: ""),
+			tooltip: NSLocalizedString("AutoAcceptFiles.Tooltip", value: "When on, anyone on your network who selects this Mac in Quick Share can send files without confirmation.", comment: "")
+		)
+	}
+
+	private func makeVisibilityItemView() -> NSView {
+		return makeToggleItemView(
+			state: visibilityToggleState,
+			label: NSLocalizedString("VisibleToEveryone", value: "Visible to everyone", comment: ""),
+			tooltip: NSLocalizedString("VisibleToEveryone.Tooltip", value: "When off, your Mac is hidden from Quick Share. Sending to other devices still works.", comment: "")
+		)
+	}
+
+	private func makeToggleItemView(state: BoolToggleState, label: String, tooltip: String) -> NSView {
+		let row = ToggleMenuRow(state: state, label: label)
+		let host = NSHostingView(rootView: row)
+		host.frame = NSRect(x: 0, y: 0, width: 280, height: 28)
+		host.autoresizingMask = [.width]
+		host.toolTip = tooltip
+		return host
 	}
 
 	@objc func sendFiles(_ sender: Any?) {
@@ -185,6 +306,25 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 			}
 			notificationContent.categoryIdentifier="ERRORS"
 			UNUserNotificationCenter.current().add(UNNotificationRequest(identifier: "transferError_"+id, content: notificationContent, trigger: nil))
+		}else if transfer.autoAccepted{
+			let notificationContent=UNMutableNotificationContent()
+			notificationContent.title="Pyonta"
+			switch transfer.transfer.kind{
+			case .text:
+				notificationContent.body=String(format: NSLocalizedString("ReceivedTextToClipboard", value: "Text from %@ copied to clipboard", comment: ""), arguments: [transfer.device.name])
+			case .url:
+				notificationContent.body=String(format: NSLocalizedString("ReceivedURLOpened", value: "URL from %@ opened in browser", comment: ""), arguments: [transfer.device.name])
+			case .files:
+				let fileStr:String
+				if transfer.transfer.files.count==1{
+					fileStr=transfer.transfer.files[0].name
+				}else{
+					fileStr=String.localizedStringWithFormat(NSLocalizedString("NFiles", value: "%d files", comment: ""), transfer.transfer.files.count)
+				}
+				notificationContent.body=String(format: NSLocalizedString("ReceivedFiles", value: "Received %1$@ from %2$@", comment: ""), arguments: [fileStr, transfer.device.name])
+			}
+			notificationContent.sound = .default
+			UNUserNotificationCenter.current().add(UNNotificationRequest(identifier: "received_"+id, content: notificationContent, trigger: nil))
 		}
 		UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: ["transfer_"+id])
 		self.activeIncomingTransfers.removeValue(forKey: id)
@@ -194,6 +334,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 struct TransferInfo{
 	let device:RemoteDeviceInfo
 	let transfer:TransferMetadata
+	let autoAccepted:Bool
 }
 
 // MARK: - SendWindowController

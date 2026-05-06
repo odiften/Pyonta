@@ -2146,6 +2146,458 @@
           }
         }
       }
+    },
+    "AutoAcceptFiles": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auto-accept files"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ファイルを自動で受信"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "قبول الملفات تلقائيًا"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dateien automatisch annehmen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aceptar archivos automáticamente"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Accepter automatiquement les fichiers"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fájlok automatikus elfogadása"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Accetta automaticamente i file"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "파일 자동 수락"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bestanden automatisch accepteren"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aceitar arquivos automaticamente"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aceitar ficheiros automaticamente"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Acceptă automat fișierele"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Принимать файлы автоматически"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ยอมรับไฟล์อัตโนมัติ"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Приймати файли автоматично"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自动接收文件"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自動接收檔案"
+          }
+        }
+      }
+    },
+    "AutoAcceptFiles.Tooltip": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When on, anyone on your network who selects this Mac in Quick Share can send files without confirmation."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "オンのとき、同じネットワークの誰でも Quick Share でこの Mac を選べば、確認なしでファイルを送信できます。"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عند التفعيل، يمكن لأي شخص على شبكتك يحدد هذا الـ Mac في Quick Share إرسال ملفات دون تأكيد."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn aktiviert, kann jeder im selben Netzwerk, der diesen Mac in Quick Share auswählt, ohne Bestätigung Dateien senden."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuando está activado, cualquier persona en tu red que seleccione este Mac en Quick Share puede enviar archivos sin confirmación."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lorsque cette option est activée, toute personne sur votre réseau qui sélectionne ce Mac dans Quick Share peut envoyer des fichiers sans confirmation."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bekapcsolt állapotban a hálózaton bárki, aki ezt a Mac-et választja a Quick Share-ben, megerősítés nélkül küldhet fájlokat."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quando attivo, chiunque sulla tua rete che seleziona questo Mac in Quick Share può inviare file senza conferma."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "켜져 있으면 같은 네트워크에서 Quick Share로 이 Mac을 선택한 누구든 확인 없이 파일을 보낼 수 있습니다."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Indien ingeschakeld kan iedereen op uw netwerk die deze Mac selecteert in Quick Share zonder bevestiging bestanden verzenden."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quando ativado, qualquer pessoa na sua rede que selecionar este Mac no Quick Share pode enviar arquivos sem confirmação."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quando ativado, qualquer pessoa na sua rede que selecione este Mac no Quick Share pode enviar ficheiros sem confirmação."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Când este activat, oricine din rețeaua dvs. care selectează acest Mac în Quick Share poate trimite fișiere fără confirmare."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Когда включено, любой в вашей сети, кто выбирает этот Mac в Quick Share, может отправлять файлы без подтверждения."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เมื่อเปิด ใครก็ตามในเครือข่ายของคุณที่เลือก Mac เครื่องนี้ใน Quick Share สามารถส่งไฟล์ได้โดยไม่ต้องยืนยัน"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Коли увімкнено, будь-хто у вашій мережі, хто вибирає цей Mac у Quick Share, може надсилати файли без підтвердження."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "开启后，您网络中任何在 Quick Share 中选择此 Mac 的人都可以无需确认就发送文件。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "啟用後，您網路上任何在 Quick Share 中選擇此 Mac 的人都可以無需確認就傳送檔案。"
+          }
+        }
+      }
+    },
+    "VisibleToEveryone.Tooltip": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When off, your Mac is hidden from Quick Share. Sending to other devices still works."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "オフのとき、Quick Share からこの Mac は見えなくなります。他のデバイスへの送信は引き続き可能です。"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عند الإيقاف، يتم إخفاء جهاز Mac الخاص بك من Quick Share. الإرسال إلى الأجهزة الأخرى يستمر بالعمل."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn deaktiviert, ist dein Mac für Quick Share verborgen. Das Senden an andere Geräte funktioniert weiterhin."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuando está desactivado, tu Mac está oculto en Quick Share. Sigue siendo posible enviar a otros dispositivos."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lorsque cette option est désactivée, votre Mac est masqué dans Quick Share. L'envoi vers d'autres appareils fonctionne toujours."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kikapcsolt állapotban a Mac-et nem látja a Quick Share. A más eszközökre küldés továbbra is működik."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quando disattivato, il tuo Mac è nascosto in Quick Share. L'invio ad altri dispositivi funziona ancora."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "꺼져 있으면 Quick Share에서 이 Mac이 보이지 않습니다. 다른 기기로 보내는 것은 계속 작동합니다."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Indien uitgeschakeld is uw Mac verborgen voor Quick Share. Verzenden naar andere apparaten blijft werken."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quando desativado, seu Mac fica oculto no Quick Share. O envio para outros dispositivos continua funcionando."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quando desativado, o seu Mac fica oculto no Quick Share. O envio para outros dispositivos continua a funcionar."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Când este dezactivat, Mac-ul dvs. este ascuns de Quick Share. Trimiterea către alte dispozitive funcționează în continuare."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Когда выключено, ваш Mac скрыт от Quick Share. Отправка на другие устройства продолжает работать."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เมื่อปิด Mac ของคุณจะถูกซ่อนจาก Quick Share การส่งไปยังอุปกรณ์อื่นยังคงใช้งานได้"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Коли вимкнено, ваш Mac прихований від Quick Share. Надсилання на інші пристрої продовжує працювати."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关闭后，您的 Mac 在 Quick Share 中将被隐藏。向其他设备发送仍然可用。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "關閉後，您的 Mac 在 Quick Share 中將被隱藏。向其他裝置傳送仍可用。"
+          }
+        }
+      }
+    },
+    "ReceivedFiles": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Received %1$@ from %2$@"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%2$@ から %1$@ を受信しました"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تم استلام %1$@ من %2$@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ von %2$@ empfangen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recibido %1$@ de %2$@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reçu %1$@ de %2$@"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ fogadva innen: %2$@"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ricevuto %1$@ da %2$@"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%2$@에서 %1$@을(를) 받았습니다"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ ontvangen van %2$@"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recebido %1$@ de %2$@"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recebido %1$@ de %2$@"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "S-a primit %1$@ de la %2$@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Получено %1$@ от %2$@"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ได้รับ %1$@ จาก %2$@"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Отримано %1$@ від %2$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已从 %2$@ 接收 %1$@"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已從 %2$@ 接收 %1$@"
+          }
+        }
+      }
     }
   },
   "version": "1.0"
