@@ -71,16 +71,21 @@ public enum NearbyError:Error{
 }
 
 public struct TransferMetadata{
+	public enum Kind{
+		case files, text, url
+	}
 	public let files:[FileMetadata]
 	public let id:String
 	public let pinCode:String?
 	public let textDescription:String?
-	
-	init(files: [FileMetadata], id: String, pinCode: String?, textDescription: String?=nil){
+	public let kind:Kind
+
+	init(files: [FileMetadata], id: String, pinCode: String?, textDescription: String?=nil, kind: Kind = .files){
 		self.files = files
 		self.id = id
 		self.pinCode = pinCode
 		self.textDescription = textDescription
+		self.kind = kind
 	}
 }
 

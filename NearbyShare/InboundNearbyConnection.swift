@@ -16,12 +16,13 @@ import SwiftECC
 import BigInt
 
 class InboundNearbyConnection: NearbyConnection{
-	
+
 	private var currentState:State = .initial
 	public var delegate:InboundNearbyConnectionDelegate?
 	private var cipherCommitment:Data?
-	
+
 	private var textPayloadID:Int64=0
+	private var textPayloadIsURL:Bool=false
 	
 	enum State{
 		case initial, receivedConnectionRequest, sentUkeyServerInit, receivedUkeyClientFinish, sentConnectionResponse, sentPairedKeyResult, receivedPairedKeyResult, waitingForUserConsent, receivingFiles, disconnected
@@ -119,8 +120,15 @@ class InboundNearbyConnection: NearbyConnection{
 	
 	override func processBytesPayload(payload: Data, id: Int64) throws -> Bool {
 		if id==textPayloadID{
-			if let urlStr=String(data: payload, encoding: .utf8), let url=URL(string: urlStr){
-				NSWorkspace.shared.open(url)
+			if let s=String(data: payload, encoding: .utf8){
+				if textPayloadIsURL, let url=URL(string: s){
+					NSWorkspace.shared.open(url)
+				}else{
+					DispatchQueue.main.async {
+						NSPasteboard.general.clearContents()
+						NSPasteboard.general.setString(s, forType: .string)
+					}
+				}
 			}
 			try sendDisconnectionAndDisconnect()
 			return true
@@ -319,22 +327,19 @@ class InboundNearbyConnection: NearbyConnection{
 		}else if frame.v1.introduction.textMetadata.count==1{
 			let meta=frame.v1.introduction.textMetadata[0]
 			if case .url=meta.type{
-				let metadata=TransferMetadata(files: [], id: id, pinCode: pinCode, textDescription: meta.textTitle)
 				textPayloadID=meta.payloadID
+				textPayloadIsURL=true
+				let metadata=TransferMetadata(files: [], id: id, pinCode: pinCode, textDescription: meta.textTitle, kind: .url)
 				DispatchQueue.main.async {
 					self.delegate?.obtainUserConsent(for: metadata, from: self.remoteDeviceInfo!, connection: self)
 				}
 			}else if case .text=meta.type{
-				let downloadsDirectory=(try FileManager.default.url(for: .downloadsDirectory, in: .userDomainMask, appropriateFor: nil, create: true)).resolvingSymlinksInPath()
-				let dateFormatter=DateFormatter()
-				dateFormatter.dateFormat="yyyy-MM-dd HH.mm.ss"
-				let dest=makeFileDestinationURL(downloadsDirectory.appendingPathComponent("\(dateFormatter.string(from: Date())).txt"))
-				let info=InternalFileInfo(meta: FileMetadata(name: dest.lastPathComponent, size: meta.size, mimeType: "text/plain"),
-										  payloadID: meta.payloadID,
-										  destinationURL: dest)
-				transferredFiles[meta.payloadID]=info
+				textPayloadID=meta.payloadID
+				textPayloadIsURL=false
+				let title=meta.textTitle.isEmpty ? NSLocalizedString("ClipboardText", value: "Text", comment: "") : meta.textTitle
+				let metadata=TransferMetadata(files: [], id: id, pinCode: pinCode, textDescription: title, kind: .text)
 				DispatchQueue.main.async {
-					self.delegate?.obtainUserConsent(for: TransferMetadata(files: [info.meta], id: self.id, pinCode: self.pinCode), from: self.remoteDeviceInfo!, connection: self)
+					self.delegate?.obtainUserConsent(for: metadata, from: self.remoteDeviceInfo!, connection: self)
 				}
 			}else{
 				rejectTransfer(with: .unsupportedAttachmentType)
