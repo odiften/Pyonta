@@ -28,7 +28,7 @@ public struct RemoteDeviceInfo{
 	}
 	
 	init(info:EndpointInfo, id: String? = nil){
-		self.name=info.name!
+		self.name=info.name ?? NSLocalizedString("UnknownAndroidDevice", value: "Android device", comment: "Fallback name when an Android peer advertises without a device name (Visibility=Hidden)")
 		self.type=info.deviceType
 		self.qrCodeData=info.qrCodeData
 		self.id=id
@@ -114,15 +114,29 @@ struct EndpointInfo{
 	}
 	
 	init?(data:Data){
-		guard data.count>17 else {return nil}
+		let hexDump=data.prefix(64).map{String(format:"%02x",$0)}.joined(separator: " ")
+		os_log("EndpointInfo decode: count=%d byte0=0x%02x hex=%{public}@", log: pyontaLog, type: .info, data.count, Int(data.first ?? 0), hexDump)
+		guard data.count>=17 else {
+			os_log("  -> reject: data too short", log: pyontaLog, type: .info)
+			return nil
+		}
 		let hasName=(data[0] & 0x10)==0
+		os_log("  hasName=%d (bit0x10=%d), deviceTypeRaw=%d", log: pyontaLog, type: .info, hasName ? 1 : 0, Int(data[0] & 0x10), Int(data[0] & 7) >> 1)
 		let deviceNameLength:Int
 		let deviceName:String?
 		if hasName{
 			deviceNameLength=Int(data[17])
-			guard data.count>=deviceNameLength+18 else {return nil}
-			guard let _deviceName=String(data: data[18..<(18+deviceNameLength)], encoding: .utf8) else {return nil}
+			os_log("  deviceNameLength byte17 = %d", log: pyontaLog, type: .info, deviceNameLength)
+			guard data.count>=deviceNameLength+18 else {
+				os_log("  -> reject: name length %d exceeds data (count=%d)", log: pyontaLog, type: .info, deviceNameLength, data.count)
+				return nil
+			}
+			guard let _deviceName=String(data: data[18..<(18+deviceNameLength)], encoding: .utf8) else {
+				os_log("  -> reject: UTF-8 decode failed", log: pyontaLog, type: .info)
+				return nil
+			}
 			deviceName=_deviceName
+			os_log("  decoded name=%{public}@", log: pyontaLog, type: .info, _deviceName)
 		}else{
 			deviceNameLength=0
 			deviceName=nil
@@ -380,9 +394,7 @@ public class NearbyConnectionManager : NSObject, NetServiceDelegate, InboundNear
 		os_log("  -> EndpointInfo: name=%{public}@ type=%d", log: pyontaLog, type: .info, endpointInfo.name ?? "(nil)", endpointInfo.deviceType.rawValue)
 		
 		var deviceInfo:RemoteDeviceInfo?
-		if let _=endpointInfo.name{
-			deviceInfo=addFoundDevice(foundService: &foundService, endpointInfo: endpointInfo, endpointID: endpointID)
-		}
+		deviceInfo=addFoundDevice(foundService: &foundService, endpointInfo: endpointInfo, endpointID: endpointID)
 		
 		if let qrData=endpointInfo.qrCodeData, let _=qrCodeAdvertisingToken{
 #if DEBUG
