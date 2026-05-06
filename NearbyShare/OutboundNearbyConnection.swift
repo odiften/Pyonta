@@ -11,9 +11,12 @@ import CryptoKit
 import CommonCrypto
 import System
 import UniformTypeIdentifiers
+import os.log
 
 import SwiftECC
 import BigInt
+
+fileprivate let pyontaLog = OSLog(subsystem: "com.odiften.pyonta", category: "send")
 
 class OutboundNearbyConnection:NearbyConnection{
 	private var currentState:State = .initial
@@ -101,16 +104,18 @@ class OutboundNearbyConnection:NearbyConnection{
 	
 	override func processReceivedFrame(frameData: Data) {
 		do{
-			#if DEBUG
-			print("received \(frameData), state is \(currentState)")
-			#endif
+			os_log("recv frame: state=%{public}@ size=%d", log: pyontaLog, type: .info, "\(currentState)", frameData.count)
 			switch currentState {
 			case .initial:
 				protocolError()
 			case .sentUkeyClientInit:
 				try processUkey2ServerInit(frame: try Securegcm_Ukey2Message(serializedData: frameData), raw: frameData)
 			case .sentUkeyClientFinish:
-				try processConnectionResponse(frame: try Location_Nearby_Connections_OfflineFrame(serializedData: frameData))
+				let offlineFrame = try Location_Nearby_Connections_OfflineFrame(serializedData: frameData)
+				if let json = try? offlineFrame.jsonString() {
+					os_log("  OfflineFrame: %{public}@", log: pyontaLog, type: .info, json)
+				}
+				try processConnectionResponse(frame: offlineFrame)
 			default:
 				let smsg=try Securemessage_SecureMessage(serializedData: frameData)
 				try decryptAndProcessReceivedSecureMessage(smsg)
@@ -126,13 +131,15 @@ class OutboundNearbyConnection:NearbyConnection{
 	}
 	
 	override func processTransferSetupFrame(_ frame: Sharing_Nearby_Frame) throws {
+		if let json = try? frame.jsonString() {
+			os_log("TransferSetup parsed: state=%{public}@ json=%{public}@", log: pyontaLog, type: .info, "\(currentState)", json)
+		}
 		if frame.hasV1 && frame.v1.hasType, case .cancel = frame.v1.type {
-			print("Transfer canceled")
+			os_log("Transfer canceled by remote", log: pyontaLog, type: .info)
 			try sendDisconnectionAndDisconnect()
 			delegate?.outboundConnection(connection: self, failedWithError: NearbyError.canceled(reason: .userCanceled))
 			return
 		}
-		print(frame)
 		switch currentState{
 		case .sentPairedKeyEncryption:
 			try processPairedKeyEncryption(frame: frame)

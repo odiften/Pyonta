@@ -316,7 +316,7 @@ Gw
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="dq7-IV-6Ef">
                     <rect key="frame" x="80" y="113" width="220" height="220"/>
                     <subviews>
-                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="lnf-Ci-bVP" customClass="QrCodeBackgroundView" customModule="ShareExtension" customModuleProvider="target">
+                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="lnf-Ci-bVP" customClass="QrCodeBackgroundView" customModule="Pyonta" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="220" height="220"/>
                         </customView>
                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="9Hk-Pa-eYI">
