@@ -118,6 +118,16 @@ class ShareViewController: NSViewController, ShareExtensionDelegate{
 		super.viewDidLoad()
 		NearbyConnectionManager.shared.startDeviceDiscovery()
 		NearbyConnectionManager.shared.addShareExtensionDelegate(self)
+		scheduleAutomaticQrCodeView()
+	}
+
+	private func scheduleAutomaticQrCodeView() {
+		DispatchQueue.main.asyncAfter(deadline: .now()+3.0) { [weak self] in
+			guard let self=self else { return }
+			if self.foundDevices.isEmpty && self.sheetWindow==nil && self.chosenDevice==nil {
+				self.useQrCode(nil)
+			}
+		}
 	}
 	
 	override func viewWillDisappear() {
@@ -199,7 +209,17 @@ class ShareViewController: NSViewController, ShareExtensionDelegate{
 		foundDevices.append(device)
 		listView?.animator().insertItems(at: [[0, foundDevices.count-1]])
 	}
-	
+
+	func updateDevice(device: RemoteDeviceInfo) {
+		for i in foundDevices.indices {
+			if foundDevices[i].id==device.id {
+				foundDevices[i]=device
+				listView?.animator().reloadItems(at: [[0, i]])
+				break
+			}
+		}
+	}
+
 	func removeDevice(id: String){
 		if chosenDevice != nil{
 			return

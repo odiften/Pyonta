@@ -25,8 +25,122 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : ""
+            "state" : "translated",
+            "value" : "Copyright © 2026 odiften"
+          }
+        }
+      }
+    },
+    "NSLocalNetworkUsageDescription" : {
+      "comment" : "Shown in the macOS system prompt when the app first requests local network access. Must clearly state why the app needs to discover devices on the local Wi-Fi.",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يستخدم Pyonta شبكتك المحلية للعثور على أجهزة Android القريبة ونقل الملفات عبر Quick Share."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pyonta verwendet Ihr lokales Netzwerk, um Android-Geräte in der Nähe zu finden und Dateien über Quick Share zu übertragen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pyonta uses your local network to discover nearby Android devices and transfer files via Quick Share."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pyonta usa tu red local para descubrir dispositivos Android cercanos y transferir archivos mediante Quick Share."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pyonta utilise votre réseau local pour détecter les appareils Android à proximité et transférer des fichiers via Quick Share."
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A Pyonta a helyi hálózatot használja a közeli Android eszközök felderítéséhez és a fájlok Quick Share-en keresztüli átviteléhez."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pyonta utilizza la rete locale per rilevare dispositivi Android nelle vicinanze e trasferire file tramite Quick Share."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "近くの Android デバイスを探し、Quick Share でファイルを送受信するために、Pyonta はローカルネットワークを使用します。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pyonta는 주변 Android 기기를 찾고 Quick Share를 통해 파일을 전송하기 위해 로컬 네트워크를 사용합니다."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pyonta gebruikt uw lokale netwerk om Android-apparaten in de buurt te vinden en bestanden via Quick Share over te dragen."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O Pyonta usa sua rede local para descobrir dispositivos Android próximos e transferir arquivos via Quick Share."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O Pyonta utiliza a sua rede local para descobrir dispositivos Android próximos e transferir ficheiros via Quick Share."
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pyonta folosește rețeaua locală pentru a descoperi dispozitive Android din apropiere și a transfera fișiere prin Quick Share."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pyonta использует вашу локальную сеть для обнаружения находящихся рядом устройств Android и передачи файлов через Quick Share."
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pyonta ใช้เครือข่ายภายในของคุณเพื่อค้นหาอุปกรณ์ Android ที่อยู่ใกล้เคียงและถ่ายโอนไฟล์ผ่าน Quick Share"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pyonta використовує вашу локальну мережу для пошуку поблизу пристроїв Android і передавання файлів через Quick Share."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pyonta 使用您的本地网络查找附近的 Android 设备并通过 Quick Share 传输文件。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pyonta 使用您的本機網路尋找附近的 Android 裝置，並透過 Quick Share 傳輸檔案。"
           }
         }
       }

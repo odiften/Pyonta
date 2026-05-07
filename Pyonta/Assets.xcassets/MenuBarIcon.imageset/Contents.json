@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "NearbyShare.png",
+      "filename" : "menubar.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "NearbyShare@2x.png",
+      "filename" : "menubar@2x.png",
       "scale" : "2x"
     },
     {

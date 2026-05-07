@@ -79,11 +79,14 @@ struct CustomToggleSwitch: View {
 class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDelegate, NSMenuDelegate, MainAppDelegate{
 	static let autoAcceptKey="automaticallyAcceptFiles"
 	static let visibilityKey="visibleToEveryone"
+	static let launchAtLoginKey="launchAtLogin"
 	private var statusItem:NSStatusItem?
 	private var activeIncomingTransfers:[String:TransferInfo]=[:]
 	private var sendWindowController:SendWindowController?
 	private let autoAcceptToggleState = BoolToggleState(key: AppDelegate.autoAcceptKey, defaultValue: false)
 	private let visibilityToggleState = BoolToggleState(key: AppDelegate.visibilityKey, defaultValue: true)
+	// macOS 12 以前ではメニューに表示しないが、状態自体は保持しておく（13 にアップ時にそのまま使える）
+	private let launchAtLoginToggleState = BoolToggleState(key: AppDelegate.launchAtLoginKey, defaultValue: false)
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
 		visibilityToggleState.onChange = { isOn in
@@ -91,6 +94,18 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 				NearbyConnectionManager.shared.becomeVisible()
 			} else {
 				NearbyConnectionManager.shared.becomeInvisible()
+			}
+		}
+
+		// SMAppService の状態を真として、UserDefaults に同期してから onChange を繋ぐ。
+		// 順序が大事: isOn 代入 -> didSet -> onChange?(isOn)。onChange はまだ nil なので無害。
+		if #available(macOS 13.0, *) {
+			let actual = LaunchAtLogin.isEnabled
+			if launchAtLoginToggleState.isOn != actual {
+				launchAtLoginToggleState.isOn = actual
+			}
+			launchAtLoginToggleState.onChange = { isOn in
+				LaunchAtLogin.setEnabled(isOn)
 			}
 		}
 
@@ -103,6 +118,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 		let autoAcceptItem=NSMenuItem()
 		autoAcceptItem.view=makeAutoAcceptItemView()
 		menu.addItem(autoAcceptItem)
+		if #available(macOS 13.0, *) {
+			let launchItem=NSMenuItem()
+			launchItem.view=makeLaunchAtLoginItemView()
+			menu.addItem(launchItem)
+		}
 		menu.addItem(NSMenuItem.separator())
 		let sendItem=NSMenuItem(title: NSLocalizedString("SendFiles", value: "Send files…", comment: ""), action: #selector(sendFiles(_:)), keyEquivalent: "")
 		sendItem.target=self
@@ -207,6 +227,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 	func menuWillOpen(_ menu: NSMenu) {
 		autoAcceptToggleState.reload()
 		visibilityToggleState.reload()
+		// Launch at login は SMAppService が真の値を持つので OS から取り直す。
+		// ユーザーがシステム設定→ログイン項目から直接 OFF にしたケースに追従するため。
+		if #available(macOS 13.0, *) {
+			let actual = LaunchAtLogin.isEnabled
+			if launchAtLoginToggleState.isOn != actual {
+				launchAtLoginToggleState.isOn = actual
+			}
+		}
 	}
 
 	private func makeAutoAcceptItemView() -> NSView {
@@ -222,6 +250,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 			state: visibilityToggleState,
 			label: NSLocalizedString("VisibleToEveryone", value: "Visible to everyone", comment: ""),
 			tooltip: NSLocalizedString("VisibleToEveryone.Tooltip", value: "When off, your Mac is hidden from Quick Share. Sending to other devices still works.", comment: "")
+		)
+	}
+
+	private func makeLaunchAtLoginItemView() -> NSView {
+		return makeToggleItemView(
+			state: launchAtLoginToggleState,
+			label: NSLocalizedString("LaunchAtLogin", value: "Launch at login", comment: ""),
+			tooltip: NSLocalizedString("LaunchAtLogin.Tooltip", value: "When on, Pyonta starts automatically when you log in to your Mac.", comment: "")
 		)
 	}
 

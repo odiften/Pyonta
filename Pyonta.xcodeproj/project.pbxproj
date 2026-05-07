@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1DF8346CA52C3017A7874A8D /* DeviceListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F56597437179889D33E07EE /* DeviceListCell.swift */; };
 		2DF449CF71B350CCB9F4C0B7 /* QRCode in Frameworks */ = {isa = PBXBuildFile; productRef = 693D8DCB2E43771D00E8E7F4 /* QRCode */; };
+		5889CC783321E6CE0C934A55 /* LaunchAtLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE1DEE0802DAFA2BB5A5AF /* LaunchAtLogin.swift */; };
 		691F53BB2ABB70840089FD92 /* DeviceListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691F53B92ABB70840089FD92 /* DeviceListCell.swift */; };
 		691F53BC2ABB70840089FD92 /* DeviceListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 691F53BA2ABB70840089FD92 /* DeviceListCell.xib */; };
 		691F53BE2ABF03820089FD92 /* OutboundNearbyConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691F53BD2ABF03820089FD92 /* OutboundNearbyConnection.swift */; };
@@ -46,6 +47,7 @@
 		69F1A11C2E43986400B4749C /* FileNameSanitizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F1A11B2E43986400B4749C /* FileNameSanitizer.swift */; };
 		7A8B81F18C3AC9AD6C2492BC /* SendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B78BB494BAB35376BBBA3 /* SendViewController.swift */; };
 		8965C028B5F51BC6904A0A39 /* DeviceListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4932415BFE28641894DC11D1 /* DeviceListCell.xib */; };
+		97FDA59A6E380CBB2C9D27B5 /* NearbyDeviceNameResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF69E29EBBAE75CC9167F39 /* NearbyDeviceNameResolver.swift */; };
 		D7FCEDF9255F8B7F4258EF7B /* QrCodeBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CA49504B72D372F5B1C986 /* QrCodeBackgroundView.swift */; };
 		F665E2317B6F5B5679782B3C /* SendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5856668BE3178DE3590AA13D /* SendViewController.xib */; };
 /* End PBXBuildFile section */
@@ -121,6 +123,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		17EE1DEE0802DAFA2BB5A5AF /* LaunchAtLogin.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LaunchAtLogin.swift; sourceTree = "<group>"; };
 		220B78BB494BAB35376BBBA3 /* SendViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SendViewController.swift; sourceTree = "<group>"; };
 		2AAC82297684C01DE3C12CBB /* Base */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DeviceListCell.xib; sourceTree = "<group>"; };
 		35CA49504B72D372F5B1C986 /* QrCodeBackgroundView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = QrCodeBackgroundView.swift; sourceTree = "<group>"; };
@@ -164,6 +167,8 @@
 		69F1A11B2E43986400B4749C /* FileNameSanitizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNameSanitizer.swift; sourceTree = "<group>"; };
 		7AD074992CAFB03AAB30A017 /* Base */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SendViewController.xib; sourceTree = "<group>"; };
 		8F56597437179889D33E07EE /* DeviceListCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DeviceListCell.swift; sourceTree = "<group>"; };
+		B510646A74530F7259C79902 /* mul */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/SendViewController.xcstrings; sourceTree = "<group>"; };
+		CCF69E29EBBAE75CC9167F39 /* NearbyDeviceNameResolver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NearbyDeviceNameResolver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,6 +265,7 @@
 				35CA49504B72D372F5B1C986 /* QrCodeBackgroundView.swift */,
 				5856668BE3178DE3590AA13D /* SendViewController.xib */,
 				4932415BFE28641894DC11D1 /* DeviceListCell.xib */,
+				17EE1DEE0802DAFA2BB5A5AF /* LaunchAtLogin.swift */,
 			);
 			path = Pyonta;
 			sourceTree = "<group>";
@@ -289,6 +295,7 @@
 				69DA9A2029E0CC4E00A442DA /* Data+Extensions.swift */,
 				697DDEEB2E43986400B4749C /* SymmetricKey+Extensions.swift */,
 				69F1A11B2E43986400B4749C /* FileNameSanitizer.swift */,
+				CCF69E29EBBAE75CC9167F39 /* NearbyDeviceNameResolver.swift */,
 			);
 			path = NearbyShare;
 			sourceTree = "<group>";
@@ -482,6 +489,7 @@
 				7A8B81F18C3AC9AD6C2492BC /* SendViewController.swift in Sources */,
 				1DF8346CA52C3017A7874A8D /* DeviceListCell.swift in Sources */,
 				D7FCEDF9255F8B7F4258EF7B /* QrCodeBackgroundView.swift in Sources */,
+				5889CC783321E6CE0C934A55 /* LaunchAtLogin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,6 +511,7 @@
 				697DDEEC2E43986400B4749C /* SymmetricKey+Extensions.swift in Sources */,
 				69DCF4932AB70E9700CBE2CC /* Data+Extensions.swift in Sources */,
 				69F1A11C2E43986400B4749C /* FileNameSanitizer.swift in Sources */,
+				97FDA59A6E380CBB2C9D27B5 /* NearbyDeviceNameResolver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,6 +548,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				7AD074992CAFB03AAB30A017 /* Base */,
+				B510646A74530F7259C79902 /* mul */,
 			);
 			name = SendViewController.xib;
 			sourceTree = "<group>";
@@ -563,10 +573,11 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = M5BUPQ3687;
+				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShareExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Pyonta;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026 odiften";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -590,10 +601,11 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = M5BUPQ3687;
+				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShareExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Pyonta;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026 odiften";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -743,12 +755,13 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = M5BUPQ3687;
+				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Pyonta/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "近くの Android デバイスを探して、ファイルを送受信するために使います。";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026 odiften";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Pyonta uses your local network to discover nearby Android devices and transfer files via Quick Share.";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -780,12 +793,13 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = M5BUPQ3687;
+				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Pyonta/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "近くの Android デバイスを探して、ファイルを送受信するために使います。";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026 odiften";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Pyonta uses your local network to discover nearby Android devices and transfer files via Quick Share.";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (

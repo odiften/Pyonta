@@ -196,6 +196,7 @@ public protocol MainAppDelegate{
 
 public protocol ShareExtensionDelegate:AnyObject{
 	func addDevice(device:RemoteDeviceInfo)
+	func updateDevice(device:RemoteDeviceInfo)
 	func removeDevice(id:String)
 	func startTransferWithQrCode(device:RemoteDeviceInfo)
 	func connectionWasEstablished(pinCode:String)
@@ -203,6 +204,12 @@ public protocol ShareExtensionDelegate:AnyObject{
 	func transferAccepted()
 	func transferProgress(progress:Double)
 	func transferFinished()
+}
+
+// Default empty implementation so older delegates compile.
+// hostname 解決で機種名が後から判明したときの再描画用。
+public extension ShareExtensionDelegate {
+	func updateDevice(device:RemoteDeviceInfo) {}
 }
 
 public class NearbyConnectionManager : NSObject, NetServiceDelegate, InboundNearbyConnectionDelegate, OutboundNearbyConnectionDelegate{
@@ -218,7 +225,8 @@ public class NearbyConnectionManager : NSObject, NetServiceDelegate, InboundNear
 	private var discoveryRefCount=0
 	
 	private var browser:NWBrowser?
-	
+	private let deviceNameResolver = NearbyDeviceNameResolver()
+
 	private var qrCodePublicKey:ECPublicKey?
 	private var qrCodePrivateKey:ECPrivateKey?
 	private var qrCodeAdvertisingToken:Data?
@@ -350,6 +358,7 @@ public class NearbyConnectionManager : NSObject, NetServiceDelegate, InboundNear
 		if discoveryRefCount==0{
 			browser?.cancel()
 			browser=nil
+			deviceNameResolver.cancelAll()
 		}
 	}
 	
@@ -414,9 +423,27 @@ public class NearbyConnectionManager : NSObject, NetServiceDelegate, InboundNear
 			return
 		}
 		os_log("  -> EndpointInfo: name=%{public}@ type=%d", log: pyontaLog, type: .info, endpointInfo.name ?? "(nil)", endpointInfo.deviceType.rawValue)
-		
+
+		// Quick Share v3 (Hidden mode) では Bonjour TXT に name が無い。
+		// その場合は mDNS hostname の reverse DNS lookup で機種名を補完する。
+		let needsDeviceNameLookup=deviceNameResolver.needsLookup(for: endpointInfo)
+
 		var deviceInfo:RemoteDeviceInfo?
 		deviceInfo=addFoundDevice(foundService: &foundService, endpointInfo: endpointInfo, endpointID: endpointID)
+
+		if needsDeviceNameLookup {
+			let capturedEndpointInfo=endpointInfo
+			deviceNameResolver.resolveName(for: service, endpointID: endpointID) { [weak self] resolvedName in
+				guard let self=self else { return }
+				// すでに別経路で名前が解決済 / デバイスが消えた場合はスキップ
+				guard var stale=self.foundServices[endpointID] else { return }
+				var updatedEndpointInfo=capturedEndpointInfo
+				updatedEndpointInfo.name=resolvedName
+				_=self.addFoundDevice(foundService: &stale, endpointInfo: updatedEndpointInfo, endpointID: endpointID)
+			}
+		} else {
+			deviceNameResolver.cancelLookup(for: endpointID)
+		}
 		
 		if let qrData=endpointInfo.qrCodeData, let _=qrCodeAdvertisingToken{
 #if DEBUG
@@ -448,18 +475,24 @@ public class NearbyConnectionManager : NSObject, NetServiceDelegate, InboundNear
 	}
 	
 	private func addFoundDevice(foundService:inout FoundServiceInfo, endpointInfo:EndpointInfo, endpointID:String) -> RemoteDeviceInfo{
+		let hadPreviousDevice=foundServices[endpointID]?.device != nil
 		let deviceInfo=RemoteDeviceInfo(info: endpointInfo, id: endpointID)
 		foundService.device=deviceInfo
 		foundServices[endpointID]=foundService
-		os_log("addFoundDevice: name=%{public}@ id=%{public}@ delegates=%d", log: pyontaLog, type: .info, deviceInfo.name, endpointID, shareExtensionDelegates.count)
+		os_log("addFoundDevice: name=%{public}@ id=%{public}@ delegates=%d previous=%{public}@", log: pyontaLog, type: .info, deviceInfo.name, endpointID, shareExtensionDelegates.count, hadPreviousDevice ? "yes(update)" : "no(add)")
 		for delegate in shareExtensionDelegates{
-			delegate.addDevice(device: deviceInfo)
+			if hadPreviousDevice {
+				delegate.updateDevice(device: deviceInfo)
+			} else {
+				delegate.addDevice(device: deviceInfo)
+			}
 		}
 		return deviceInfo
 	}
-	
+
 	private func maybeRemoveFoundDevice(service:NWBrowser.Result){
 		guard let endpointID=endpointID(for: service) else {return}
+		deviceNameResolver.cancelLookup(for: endpointID)
 		guard let _=foundServices.removeValue(forKey: endpointID) else {return}
 		for delegate in shareExtensionDelegates {
 			delegate.removeDevice(id: endpointID)
