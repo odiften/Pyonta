@@ -3,3 +3,10 @@ DerivedData/
 .DS_Store
 xcuserdata/
 build/
+.env
+*.xcarchive
+*.ipa
+*.pkg
+*.dSYM.zip
+*.xcdistributionlogs
+ExportOptions.local.plist

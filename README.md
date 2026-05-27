@@ -36,6 +36,16 @@ open Pyonta.xcodeproj
 
 In Xcode, set the Team to your own under Signing & Capabilities for both the **Pyonta** and **ShareExtension** targets, then ▶︎ Run.
 
+## App Store archive
+
+Pyonta uses RevenueCat for Pyonta+ purchases. Do not commit the RevenueCat public SDK key. Pass it at build time instead:
+
+```
+REVENUECAT_API_KEY=appl_... ./scripts/archive_appstore.sh
+```
+
+The script refuses to create an App Store archive when the key is missing. It injects the value into the app's `RevenueCatAPIKey` Info.plist entry through the `REVENUECAT_API_KEY` build setting.
+
 ## Credits
 
 Pyonta is a fork of [grishka/NearDrop](https://github.com/grishka/NearDrop). NearDrop did the hard reverse-engineering work of the Quick Share protocol and built the original Swift implementation. Pyonta is licensed under the same Unlicense terms.
