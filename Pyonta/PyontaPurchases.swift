@@ -10,7 +10,7 @@ import os.log
 fileprivate let pyontaPurchasesLog = OSLog(subsystem: "com.odiften.pyonta", category: "purchases")
 
 enum PyontaPurchaseConfiguration {
-	static let plusEntitlementID = "plus"
+	static let plusEntitlementID = "pyonta_plus"
 
 	static var revenueCatAPIKey: String {
 		let value = Bundle.main.object(forInfoDictionaryKey: "RevenueCatAPIKey") as? String ?? ""
@@ -68,16 +68,17 @@ final class PyontaPurchases {
 			return
 		}
 
-		Purchases.shared.getCustomerInfo { [weak self] customerInfo, error in
-			DispatchQueue.main.async {
+		Purchases.shared.getCustomerInfo { customerInfo, error in
+			OperationQueue.main.addOperation {
+				let purchases = PyontaPurchases.shared
 				if let error = error {
-					self?.lastError = error
+					purchases.lastError = error
 					os_log("Failed to refresh RevenueCat customer info: %{public}@", log: pyontaPurchasesLog, type: .error, "\(error)")
 				}
 				if let customerInfo = customerInfo {
-					self?.update(customerInfo: customerInfo)
+					purchases.update(customerInfo: customerInfo)
 				}
-				completion?(self?.canReceiveIncomingTransfers ?? false)
+				completion?(purchases.canReceiveIncomingTransfers)
 			}
 		}
 	}
@@ -88,18 +89,18 @@ final class PyontaPurchases {
 			return
 		}
 
-		Purchases.shared.getOfferings { [weak self] offerings, error in
-			DispatchQueue.main.async {
-				guard let self = self else { return }
+		Purchases.shared.getOfferings { offerings, error in
+			OperationQueue.main.addOperation {
+				let purchases = PyontaPurchases.shared
 				if let error = error {
-					self.lastError = error
+					purchases.lastError = error
 					os_log("Failed to fetch RevenueCat offerings: %{public}@", log: pyontaPurchasesLog, type: .error, "\(error)")
 				}
 				guard let packages = offerings?.current?.availablePackages, !packages.isEmpty else {
-					self.showAlert(messageKey: "PlusNoOfferings.Message", defaultMessage: "No Pyonta+ products are available yet. Check the RevenueCat offering and App Store Connect product setup.")
+					purchases.showAlert(messageKey: "PlusNoOfferings.Message", defaultMessage: "No Pyonta+ products are available yet. Check the RevenueCat offering and App Store Connect product setup.")
 					return
 				}
-				self.presentPackagePicker(packages: Array(packages.prefix(3)))
+				purchases.presentPackagePicker(packages: Array(packages.prefix(3)))
 			}
 		}
 	}
@@ -110,22 +111,22 @@ final class PyontaPurchases {
 			return
 		}
 
-		Purchases.shared.restorePurchases { [weak self] customerInfo, error in
-			DispatchQueue.main.async {
-				guard let self = self else { return }
+		Purchases.shared.restorePurchases { customerInfo, error in
+			OperationQueue.main.addOperation {
+				let purchases = PyontaPurchases.shared
 				if let error = error {
-					self.lastError = error
+					purchases.lastError = error
 					os_log("Failed to restore RevenueCat purchases: %{public}@", log: pyontaPurchasesLog, type: .error, "\(error)")
-					self.showAlert(messageKey: "PlusPurchaseFailed.Message", defaultMessage: "Purchase could not be completed. Please try again.")
+					purchases.showAlert(messageKey: "PlusPurchaseFailed.Message", defaultMessage: "Purchase could not be completed. Please try again.")
 					return
 				}
 				if let customerInfo = customerInfo {
-					self.update(customerInfo: customerInfo)
+					purchases.update(customerInfo: customerInfo)
 				}
-				if self.isPlusActive {
-					self.showAlert(messageKey: "PlusRestoreSuccess.Message", defaultMessage: "Purchases restored. Pyonta+ is active.")
+				if purchases.isPlusActive {
+					purchases.showAlert(messageKey: "PlusRestoreSuccess.Message", defaultMessage: "Purchases restored. Pyonta+ is active.")
 				} else {
-					self.showAlert(messageKey: "PlusRestoreMissing.Message", defaultMessage: "No active Pyonta+ purchase was found for this Apple ID.")
+					purchases.showAlert(messageKey: "PlusRestoreMissing.Message", defaultMessage: "No active Pyonta+ purchase was found for this Apple ID.")
 				}
 			}
 		}
@@ -160,21 +161,21 @@ final class PyontaPurchases {
 	}
 
 	private func purchase(package: Package) {
-		Purchases.shared.purchase(package: package) { [weak self] _, customerInfo, error, userCancelled in
-			DispatchQueue.main.async {
-				guard let self = self else { return }
+		Purchases.shared.purchase(package: package) { _, customerInfo, error, userCancelled in
+			OperationQueue.main.addOperation {
+				let purchases = PyontaPurchases.shared
 				if userCancelled { return }
 				if let error = error {
-					self.lastError = error
+					purchases.lastError = error
 					os_log("RevenueCat purchase failed: %{public}@", log: pyontaPurchasesLog, type: .error, "\(error)")
-					self.showAlert(messageKey: "PlusPurchaseFailed.Message", defaultMessage: "Purchase could not be completed. Please try again.")
+					purchases.showAlert(messageKey: "PlusPurchaseFailed.Message", defaultMessage: "Purchase could not be completed. Please try again.")
 					return
 				}
 				if let customerInfo = customerInfo {
-					self.update(customerInfo: customerInfo)
+					purchases.update(customerInfo: customerInfo)
 				}
-				if self.isPlusActive {
-					self.showAlert(messageKey: "PlusPurchaseSuccess.Message", defaultMessage: "Pyonta+ is active. Receiving from Android is now unlocked.")
+				if purchases.isPlusActive {
+					purchases.showAlert(messageKey: "PlusPurchaseSuccess.Message", defaultMessage: "Pyonta+ is active. Receiving from Android is now unlocked.")
 				}
 			}
 		}
