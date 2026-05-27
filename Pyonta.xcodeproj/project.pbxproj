@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1DF8346CA52C3017A7874A8D /* DeviceListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F56597437179889D33E07EE /* DeviceListCell.swift */; };
 		2DF449CF71B350CCB9F4C0B7 /* QRCode in Frameworks */ = {isa = PBXBuildFile; productRef = 693D8DCB2E43771D00E8E7F4 /* QRCode */; };
+		50072E435B7CE842D2C4F07B /* InboundTransferValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D657D981E4AB9A9065599B /* InboundTransferValidationTests.swift */; };
 		5889CC783321E6CE0C934A55 /* LaunchAtLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE1DEE0802DAFA2BB5A5AF /* LaunchAtLogin.swift */; };
 		691F53BB2ABB70840089FD92 /* DeviceListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691F53B92ABB70840089FD92 /* DeviceListCell.swift */; };
 		691F53BC2ABB70840089FD92 /* DeviceListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 691F53BA2ABB70840089FD92 /* DeviceListCell.xib */; };
@@ -47,12 +48,23 @@
 		69F1A11C2E43986400B4749C /* FileNameSanitizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F1A11B2E43986400B4749C /* FileNameSanitizer.swift */; };
 		7A8B81F18C3AC9AD6C2492BC /* SendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B78BB494BAB35376BBBA3 /* SendViewController.swift */; };
 		8965C028B5F51BC6904A0A39 /* DeviceListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4932415BFE28641894DC11D1 /* DeviceListCell.xib */; };
+		8DC9CBCED27B9621CEE95443 /* EndpointInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C110C7382CC821CC6FFE89 /* EndpointInfoTests.swift */; };
 		97FDA59A6E380CBB2C9D27B5 /* NearbyDeviceNameResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF69E29EBBAE75CC9167F39 /* NearbyDeviceNameResolver.swift */; };
+		B458EADADD6E0A02AB641F64 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFE1F4656A6771933F0B3868 /* Cocoa.framework */; };
+		C9F1ACDA0E1B784E6C0D64D2 /* libNearbyShare.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 69DCF4812AB70D0600CBE2CC /* libNearbyShare.dylib */; };
+		D2CDD75882C837E5088D2AFD /* FileNameSanitizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372A55FA979A93E947BDBA41 /* FileNameSanitizerTests.swift */; };
 		D7FCEDF9255F8B7F4258EF7B /* QrCodeBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CA49504B72D372F5B1C986 /* QrCodeBackgroundView.swift */; };
 		F665E2317B6F5B5679782B3C /* SendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5856668BE3178DE3590AA13D /* SendViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		1A9FA529F5D5E7B954F4D14F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 69DA9A0629E0BF5100A442DA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 69DCF4802AB70D0600CBE2CC;
+			remoteInfo = NearbyShare;
+		};
 		699DEBAC2AB0573200115D22 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 69DA9A0629E0BF5100A442DA /* Project object */;
@@ -123,10 +135,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		16D657D981E4AB9A9065599B /* InboundTransferValidationTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InboundTransferValidationTests.swift; sourceTree = "<group>"; };
 		17EE1DEE0802DAFA2BB5A5AF /* LaunchAtLogin.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LaunchAtLogin.swift; sourceTree = "<group>"; };
 		220B78BB494BAB35376BBBA3 /* SendViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SendViewController.swift; sourceTree = "<group>"; };
 		2AAC82297684C01DE3C12CBB /* Base */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DeviceListCell.xib; sourceTree = "<group>"; };
 		35CA49504B72D372F5B1C986 /* QrCodeBackgroundView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = QrCodeBackgroundView.swift; sourceTree = "<group>"; };
+		372A55FA979A93E947BDBA41 /* FileNameSanitizerTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FileNameSanitizerTests.swift; sourceTree = "<group>"; };
+		49C110C7382CC821CC6FFE89 /* EndpointInfoTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EndpointInfoTests.swift; sourceTree = "<group>"; };
 		691F53B92ABB70840089FD92 /* DeviceListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListCell.swift; sourceTree = "<group>"; };
 		691F53BA2ABB70840089FD92 /* DeviceListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceListCell.xib; sourceTree = "<group>"; };
 		691F53BD2ABF03820089FD92 /* OutboundNearbyConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutboundNearbyConnection.swift; sourceTree = "<group>"; };
@@ -167,8 +182,10 @@
 		69F1A11B2E43986400B4749C /* FileNameSanitizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNameSanitizer.swift; sourceTree = "<group>"; };
 		7AD074992CAFB03AAB30A017 /* Base */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SendViewController.xib; sourceTree = "<group>"; };
 		8F56597437179889D33E07EE /* DeviceListCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DeviceListCell.swift; sourceTree = "<group>"; };
+		AFE1F4656A6771933F0B3868 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		B510646A74530F7259C79902 /* mul */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/SendViewController.xcstrings; sourceTree = "<group>"; };
 		CCF69E29EBBAE75CC9167F39 /* NearbyDeviceNameResolver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NearbyDeviceNameResolver.swift; sourceTree = "<group>"; };
+		E14264A465ABEFFB7148043E /* PyontaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PyontaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,14 +216,35 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		87773AEB097368D9A7A5D9A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B458EADADD6E0A02AB641F64 /* Cocoa.framework in Frameworks */,
+				C9F1ACDA0E1B784E6C0D64D2 /* libNearbyShare.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07B202640D9D3BF86B47CC08 /* PyontaTests */ = {
+			isa = PBXGroup;
+			children = (
+				372A55FA979A93E947BDBA41 /* FileNameSanitizerTests.swift */,
+				49C110C7382CC821CC6FFE89 /* EndpointInfoTests.swift */,
+				16D657D981E4AB9A9065599B /* InboundTransferValidationTests.swift */,
+			);
+			name = PyontaTests;
+			path = PyontaTests;
+			sourceTree = "<group>";
+		};
 		698DFAEC29E353220064F247 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				698DFAED29E353220064F247 /* UserNotifications.framework */,
 				698DFAEF29E353220064F247 /* UserNotificationsUI.framework */,
+				6EB31BC80C6B5D77BA5B3B6C /* OS X */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -236,6 +274,7 @@
 				69DCF4822AB70D0600CBE2CC /* NearbyShare */,
 				698DFAEC29E353220064F247 /* Frameworks */,
 				69DA9A0F29E0BF5100A442DA /* Products */,
+				07B202640D9D3BF86B47CC08 /* PyontaTests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -245,6 +284,7 @@
 				69DA9A0E29E0BF5100A442DA /* Pyonta.app */,
 				699DEBA12AB0573200115D22 /* ShareExtension.appex */,
 				69DCF4812AB70D0600CBE2CC /* libNearbyShare.dylib */,
+				E14264A465ABEFFB7148043E /* PyontaTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -300,6 +340,14 @@
 			path = NearbyShare;
 			sourceTree = "<group>";
 		};
+		6EB31BC80C6B5D77BA5B3B6C /* OS X */ = {
+			isa = PBXGroup;
+			children = (
+				AFE1F4656A6771933F0B3868 /* Cocoa.framework */,
+			);
+			name = "OS X";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -313,6 +361,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		4B26D2C4B7DF4BC6961B9D84 /* PyontaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C56E9D4C9E7F934955CA31DA /* Build configuration list for PBXNativeTarget "PyontaTests" */;
+			buildPhases = (
+				8FF27A1C08736D06E7B87973 /* Sources */,
+				87773AEB097368D9A7A5D9A0 /* Frameworks */,
+				016A29346787055A33B6DA3C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				999305E597D2F2A869B8456C /* PBXTargetDependency */,
+			);
+			name = PyontaTests;
+			productName = PyontaTests;
+			productReference = E14264A465ABEFFB7148043E /* PyontaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		699DEBA02AB0573200115D22 /* ShareExtension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 699DEBB12AB0573200115D22 /* Build configuration list for PBXNativeTarget "ShareExtension" */;
@@ -388,6 +454,9 @@
 				LastSwiftUpdateCheck = 1700;
 				LastUpgradeCheck = 1700;
 				TargetAttributes = {
+					4B26D2C4B7DF4BC6961B9D84 = {
+						CreatedOnToolsVersion = 17.0;
+					};
 					699DEBA02AB0573200115D22 = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
@@ -438,11 +507,19 @@
 				69DA9A0D29E0BF5100A442DA /* Pyonta */,
 				699DEBA02AB0573200115D22 /* ShareExtension */,
 				69DCF4802AB70D0600CBE2CC /* NearbyShare */,
+				4B26D2C4B7DF4BC6961B9D84 /* PyontaTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		016A29346787055A33B6DA3C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		699DEB9F2AB0573200115D22 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -515,6 +592,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8FF27A1C08736D06E7B87973 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2CDD75882C837E5088D2AFD /* FileNameSanitizerTests.swift in Sources */,
+				8DC9CBCED27B9621CEE95443 /* EndpointInfoTests.swift in Sources */,
+				50072E435B7CE842D2C4F07B /* InboundTransferValidationTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -532,6 +619,12 @@
 			isa = PBXTargetDependency;
 			target = 69DCF4802AB70D0600CBE2CC /* NearbyShare */;
 			targetProxy = 69DCF49F2AB8C9A500CBE2CC /* PBXContainerItemProxy */;
+		};
+		999305E597D2F2A869B8456C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = NearbyShare;
+			target = 69DCF4802AB70D0600CBE2CC /* NearbyShare */;
+			targetProxy = 1A9FA529F5D5E7B954F4D14F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -565,6 +658,29 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		3DD897104ACB528CE0F2B79B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M5BUPQ3687;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026 odiften";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@loader_path/../Frameworks",
+					"@loader_path/../../..",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.odiften.pyonta.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "";
+			};
+			name = Release;
+		};
 		699DEBAF2AB0573200115D22 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -849,6 +965,29 @@
 			};
 			name = Release;
 		};
+		717330820810B5A4BF2FB66E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M5BUPQ3687;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026 odiften";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@loader_path/../Frameworks",
+					"@loader_path/../../..",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.odiften.pyonta.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -884,6 +1023,15 @@
 			buildConfigurations = (
 				69DCF4872AB70D0600CBE2CC /* Debug */,
 				69DCF4882AB70D0600CBE2CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C56E9D4C9E7F934955CA31DA /* Build configuration list for PBXNativeTarget "PyontaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DD897104ACB528CE0F2B79B /* Release */,
+				717330820810B5A4BF2FB66E /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

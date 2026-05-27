@@ -9,6 +9,9 @@ import Cocoa
 import SwiftUI
 import UserNotifications
 import NearbyShare
+import os.log
+
+fileprivate let pyontaAppLog = OSLog(subsystem: "com.odiften.pyonta", category: "app")
 
 final class BoolToggleState: ObservableObject {
 	@Published var isOn: Bool {
@@ -131,6 +134,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 		sendClipboardItem.target=self
 		menu.addItem(sendClipboardItem)
 		menu.addItem(NSMenuItem.separator())
+		let odiftenItem=NSMenuItem(title: NSLocalizedString("OdiftenContact", value: "Made by odiften / App development inquiries…", comment: ""), action: #selector(openOdiftenContact(_:)), keyEquivalent: "")
+		odiftenItem.target=self
+		odiftenItem.toolTip=NSLocalizedString("OdiftenContact.Tooltip", value: "Open a contact email to odiften.", comment: "")
+		menu.addItem(odiftenItem)
+		menu.addItem(NSMenuItem.separator())
 		menu.addItem(withTitle: NSLocalizedString("Quit", value: "Quit Pyonta", comment: ""), action: #selector(NSApplication.terminate(_:)), keyEquivalent: "")
 		statusItem=NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 		statusItem?.button?.image=NSImage(named: "MenuBarIcon")
@@ -139,10 +147,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 
 		let nc=UNUserNotificationCenter.current()
 		nc.requestAuthorization(options: [.alert, .sound]) { granted, err in
+			if let err=err {
+				os_log("Notification authorization failed: %{public}@", log: pyontaAppLog, type: .error, "\(err)")
+			}
+			os_log("Notification authorization result: granted=%{public}@", log: pyontaAppLog, type: .info, granted ? "yes" : "no")
 			if !granted{
-				DispatchQueue.main.async {
-					self.showNotificationsDeniedAlert()
-				}
+				os_log("Notifications are unavailable; incoming transfers will use the in-app fallback prompt", log: pyontaAppLog, type: .info)
 			}
 		}
 		nc.delegate=self
@@ -164,6 +174,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 	}
 
     func applicationWillTerminate(_ aNotification: Notification) {
+		NearbyConnectionManager.shared.becomeInvisible()
 		UNUserNotificationCenter.current().removeAllDeliveredNotifications()
     }
 
@@ -195,6 +206,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 		completionHandler()
 	}
 
+	func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+		if #available(macOS 11.0, *) {
+			completionHandler([.banner, .sound])
+		}else{
+			completionHandler([.alert, .sound])
+		}
+	}
+
 	func obtainUserConsent(for transfer: TransferMetadata, from device: RemoteDeviceInfo) {
 		let autoAccept=UserDefaults.standard.bool(forKey: AppDelegate.autoAcceptKey)
 		self.activeIncomingTransfers[transfer.id]=TransferInfo(device: device, transfer: transfer, autoAccepted: autoAccept)
@@ -221,7 +240,42 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 			NDNotificationCenterHackery.removeDefaultAction(notificationContent)
 		}
 		let notificationReq=UNNotificationRequest(identifier: "transfer_"+transfer.id, content: notificationContent, trigger: nil)
-		UNUserNotificationCenter.current().add(notificationReq)
+		let notificationCenter=UNUserNotificationCenter.current()
+		notificationCenter.getNotificationSettings { settings in
+			let isAuthorized=settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional
+			let canShowAlert=isAuthorized && settings.alertSetting == .enabled
+			guard canShowAlert else {
+				os_log("Notification unavailable for incoming transfer: auth=%ld alert=%ld", log: pyontaAppLog, type: .info, settings.authorizationStatus.rawValue, settings.alertSetting.rawValue)
+				DispatchQueue.main.async {
+					self.showIncomingTransferFallbackAlert(transfer: transfer, from: device, fileStr: fileStr)
+				}
+				return
+			}
+			notificationCenter.add(notificationReq) { error in
+				if let error=error {
+					os_log("Failed to add incoming transfer notification: %{public}@", log: pyontaAppLog, type: .error, "\(error)")
+					DispatchQueue.main.async {
+						self.showIncomingTransferFallbackAlert(transfer: transfer, from: device, fileStr: fileStr)
+					}
+				}
+			}
+		}
+	}
+
+	private func showIncomingTransferFallbackAlert(transfer: TransferMetadata, from device: RemoteDeviceInfo, fileStr: String){
+		guard activeIncomingTransfers[transfer.id] != nil else { return }
+		NSApp.activate(ignoringOtherApps: true)
+		let alert=NSAlert()
+		alert.messageText=String(format: NSLocalizedString("DeviceSendingFiles", value: "%1$@ is sending you %2$@", comment: ""), arguments: [device.name, fileStr])
+		alert.informativeText=String(format:NSLocalizedString("PinCode", value: "PIN: %@", comment: ""), arguments: [transfer.pinCode ?? "----"])
+		alert.addButton(withTitle: NSLocalizedString("Accept", comment: ""))
+		alert.addButton(withTitle: NSLocalizedString("Decline", comment: ""))
+		let result=alert.runModal()
+		let accepted=result == NSApplication.ModalResponse.alertFirstButtonReturn
+		NearbyConnectionManager.shared.submitUserConsent(transferID: transfer.id, accept: accepted)
+		if !accepted{
+			activeIncomingTransfers.removeValue(forKey: transfer.id)
+		}
 	}
 
 	func menuWillOpen(_ menu: NSMenu) {
@@ -268,6 +322,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 		host.autoresizingMask = [.width]
 		host.toolTip = tooltip
 		return host
+	}
+
+	@objc func openOdiftenContact(_ sender: Any?) {
+		let subject="Pyonta app inquiry".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "Pyonta%20app%20inquiry"
+		if let url=URL(string: "mailto:info@odiften.com?subject=\(subject)") {
+			NSWorkspace.shared.open(url)
+		}
 	}
 
 	@objc func sendFiles(_ sender: Any?) {
@@ -334,8 +395,19 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 					notificationContent.body=NSLocalizedString("Error.Protocol", value: "Communication error", comment: "")
 				case .ukey2:
 					notificationContent.body=NSLocalizedString("Error.Crypto", value: "Encryption error", comment: "")
-				case .canceled(reason: _):
-					break; // can't happen for incoming transfers
+				case .canceled(reason: let reason):
+					switch reason {
+					case .timedOut:
+						notificationContent.body=NSLocalizedString("TransferTimedOut", value: "Timed out", comment: "")
+					case .userRejected:
+						notificationContent.body=NSLocalizedString("TransferDeclined", value: "Declined", comment: "")
+					case .userCanceled:
+						notificationContent.body=NSLocalizedString("TransferCanceled", value: "Canceled", comment: "")
+					case .notEnoughSpace:
+						notificationContent.body=NSLocalizedString("NotEnoughSpace", value: "Not enough disk space", comment: "")
+					case .unsupportedType:
+						notificationContent.body=NSLocalizedString("UnsupportedType", value: "Attachment type not supported", comment: "")
+					}
 				}
 			}else{
 				notificationContent.body=error.localizedDescription

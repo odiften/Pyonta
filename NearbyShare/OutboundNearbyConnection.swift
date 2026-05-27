@@ -19,6 +19,8 @@ import BigInt
 fileprivate let pyontaLog = OSLog(subsystem: "com.odiften.pyonta", category: "send")
 
 class OutboundNearbyConnection:NearbyConnection{
+	private static let connectionSetupTimeout:TimeInterval = 15.0
+	private static let transferResponseTimeout:TimeInterval = 30.0
 	private var currentState:State = .initial
 	private let payload:Payload
 	private var ukeyClientFinishMsgData:Data?
@@ -29,11 +31,17 @@ class OutboundNearbyConnection:NearbyConnection{
 	private var totalBytesSent:Int64=0
 	private var cancelled:Bool=false
 	private var textPayloadID:Int64=0
+	private var timeoutWorkItem:DispatchWorkItem?
+	private var didReportTerminalState=false
 
 	public var qrCodePrivateKey:ECPrivateKey?
 
 	enum State{
 		case initial, sentUkeyClientInit, sentUkeyClientFinish, sentPairedKeyEncryption, sentPairedKeyResult, sentIntroduction, sendingFiles
+	}
+
+	private enum TimeoutPhase:String{
+		case connectionSetup, transferResponse
 	}
 
 	private enum Payload{
@@ -65,6 +73,7 @@ class OutboundNearbyConnection:NearbyConnection{
 	}
 	
 	deinit {
+		cancelTimeout()
 		if let transfer=currentTransfer, let handle=transfer.handle{
 			try? handle.close()
 		}
@@ -74,9 +83,16 @@ class OutboundNearbyConnection:NearbyConnection{
 			}
 		}
 	}
-	
+
+	override func start() {
+		scheduleTimeout(after: Self.connectionSetupTimeout, phase: .connectionSetup)
+		super.start()
+	}
+
 	public func cancel(){
 		cancelled=true
+		lastError=NearbyError.canceled(reason: .userCanceled)
+		cancelTimeout()
 		if encryptionDone{
 			var cancel=Sharing_Nearby_Frame()
 			cancel.version = .v1
@@ -87,6 +103,21 @@ class OutboundNearbyConnection:NearbyConnection{
 		try? sendDisconnectionAndDisconnect()
 	}
 	
+	override func handleConnectionClosure() {
+		super.handleConnectionClosure()
+		cancelTimeout()
+		guard !didReportTerminalState else { return }
+		if !encryptionDone {
+			if let error=lastError as? NearbyError, case .canceled = error {
+				reportFailure(error)
+			} else {
+				reportFailure(NearbyError.canceled(reason: .timedOut))
+			}
+		} else {
+			reportFailure(lastError ?? NearbyError.protocolError("Connection closed"))
+		}
+	}
+
 	override func connectionReady() {
 		super.connectionReady()
 		do{
@@ -137,7 +168,7 @@ class OutboundNearbyConnection:NearbyConnection{
 		if frame.hasV1 && frame.v1.hasType, case .cancel = frame.v1.type {
 			os_log("Transfer canceled by remote", log: pyontaLog, type: .info)
 			try sendDisconnectionAndDisconnect()
-			delegate?.outboundConnection(connection: self, failedWithError: NearbyError.canceled(reason: .userCanceled))
+			reportFailure(NearbyError.canceled(reason: .userCanceled))
 			return
 		}
 		switch currentState{
@@ -156,7 +187,46 @@ class OutboundNearbyConnection:NearbyConnection{
 	
 	override func protocolError() {
 		super.protocolError()
-		delegate?.outboundConnection(connection: self, failedWithError: lastError!)
+		reportFailure(lastError ?? NearbyError.protocolError("Protocol error"))
+	}
+
+	private func scheduleTimeout(after interval:TimeInterval, phase:TimeoutPhase){
+		cancelTimeout()
+		let workItem=DispatchWorkItem { [weak self] in
+			guard let self=self else { return }
+			guard !self.didReportTerminalState else { return }
+			switch phase {
+			case .connectionSetup:
+				guard !self.encryptionDone else { return }
+			case .transferResponse:
+				guard self.currentState != .sendingFiles else { return }
+			}
+			self.lastError=NearbyError.canceled(reason: .timedOut)
+			os_log("Outgoing transfer timed out: id=%{public}@ phase=%{public}@ state=%{public}@", log: pyontaLog, type: .info, self.id, phase.rawValue, "\(self.currentState)")
+			self.connection.cancel()
+			self.reportFailure(self.lastError!)
+		}
+		timeoutWorkItem=workItem
+		DispatchQueue.main.asyncAfter(deadline: .now()+interval, execute: workItem)
+	}
+
+	private func cancelTimeout(){
+		timeoutWorkItem?.cancel()
+		timeoutWorkItem=nil
+	}
+
+	private func reportFailure(_ error:Error){
+		guard !didReportTerminalState else { return }
+		didReportTerminalState=true
+		cancelTimeout()
+		delegate?.outboundConnection(connection: self, failedWithError: error)
+	}
+
+	private func reportFinished(){
+		guard !didReportTerminalState else { return }
+		didReportTerminalState=true
+		cancelTimeout()
+		delegate?.outboundConnectionTransferFinished(connection: self)
 	}
 	
 	private func sendConnectionRequest() throws {
@@ -248,6 +318,7 @@ class OutboundNearbyConnection:NearbyConnection{
 		sendFrameAsync(try resp.serializedData())
 		
 		encryptionDone=true
+		scheduleTimeout(after: Self.transferResponseTimeout, phase: .transferResponse)
 		delegate?.outboundConnectionWasEstablished(connection: self)
 	}
 	
@@ -361,6 +432,7 @@ class OutboundNearbyConnection:NearbyConnection{
 		switch frame.v1.connectionResponse.status{
 		case .accept:
 			currentState = .sendingFiles
+			cancelTimeout()
 			delegate?.outboundConnectionTransferAccepted(connection: self)
 			switch payload{
 			case .url, .text:
@@ -369,16 +441,16 @@ class OutboundNearbyConnection:NearbyConnection{
 				try sendNextFileChunk()
 			}
 		case .reject, .unknown:
-			delegate?.outboundConnection(connection: self, failedWithError: NearbyError.canceled(reason: .userRejected))
+			reportFailure(NearbyError.canceled(reason: .userRejected))
 			try sendDisconnectionAndDisconnect()
 		case .notEnoughSpace:
-			delegate?.outboundConnection(connection: self, failedWithError: NearbyError.canceled(reason: .notEnoughSpace))
+			reportFailure(NearbyError.canceled(reason: .notEnoughSpace))
 			try sendDisconnectionAndDisconnect()
 		case .timedOut:
-			delegate?.outboundConnection(connection: self, failedWithError: NearbyError.canceled(reason: .timedOut))
+			reportFailure(NearbyError.canceled(reason: .timedOut))
 			try sendDisconnectionAndDisconnect()
 		case .unsupportedAttachmentType:
-			delegate?.outboundConnection(connection: self, failedWithError: NearbyError.canceled(reason: .unsupportedType))
+			reportFailure(NearbyError.canceled(reason: .unsupportedType))
 			try sendDisconnectionAndDisconnect()
 		}
 	}
@@ -394,7 +466,7 @@ class OutboundNearbyConnection:NearbyConnection{
 			return
 		}
 		try sendBytesPayload(data: bytes, id: textPayloadID)
-		delegate?.outboundConnectionTransferFinished(connection: self)
+		reportFinished()
 		try sendDisconnectionAndDisconnect()
 	}
 
@@ -420,7 +492,7 @@ class OutboundNearbyConnection:NearbyConnection{
 				print("Disconnecting because all files have been transferred")
 				#endif
 				try sendDisconnectionAndDisconnect()
-				delegate?.outboundConnectionTransferFinished(connection: self)
+				reportFinished()
 				return
 			}
 			currentTransfer=queue.removeFirst()

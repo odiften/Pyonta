@@ -11,15 +11,22 @@ import CryptoKit
 import CommonCrypto
 import System
 import AppKit
+import os.log
 
 import SwiftECC
 import BigInt
 
+fileprivate let pyontaReceiveLog = OSLog(subsystem: "com.odiften.pyonta", category: "receive")
+
 class InboundNearbyConnection: NearbyConnection{
 
+	private static let userConsentTimeout:TimeInterval = 60.0
+	private static let minimumFreeBytesAfterTransfer:Int64 = 100*1024*1024
+	static let maximumIncomingFileCount = 1000
 	private var currentState:State = .initial
 	public var delegate:InboundNearbyConnectionDelegate?
 	private var cipherCommitment:Data?
+	private var consentTimeoutWorkItem:DispatchWorkItem?
 
 	private var textPayloadID:Int64=0
 	private var textPayloadIsURL:Bool=false
@@ -31,9 +38,14 @@ class InboundNearbyConnection: NearbyConnection{
 	override init(connection: NWConnection, id:String) {
 		super.init(connection: connection, id: id)
 	}
+
+	deinit {
+		cancelUserConsentTimeout()
+	}
 	
 	override func handleConnectionClosure() {
 		super.handleConnectionClosure()
+		cancelUserConsentTimeout()
 		currentState = .disconnected
 		do{
 			try deletePartiallyReceivedFiles()
@@ -68,9 +80,7 @@ class InboundNearbyConnection: NearbyConnection{
 		}catch{
 			lastError=error
 			print("Deserialization error: \(error) in state \(currentState)")
-#if !DEBUG
 			protocolError()
-#endif
 		}
 	}
 	
@@ -156,6 +166,7 @@ class InboundNearbyConnection: NearbyConnection{
 		guard let deviceName=String(data: endpointInfo[18..<(18+deviceNameLength)], encoding: .utf8) else { throw NearbyError.protocolError("Device name is not valid UTF-8") }
 		let rawDeviceType:Int=Int(endpointInfo[0] & 7) >> 1
 		remoteDeviceInfo=RemoteDeviceInfo(name: deviceName, type: RemoteDeviceInfo.DeviceType.fromRawValue(value: rawDeviceType))
+		os_log("Inbound connection request: id=%{public}@ device=%{public}@", log: pyontaReceiveLog, type: .info, id, deviceName)
 		currentState = .receivedConnectionRequest
 	}
 	
@@ -312,6 +323,12 @@ class InboundNearbyConnection: NearbyConnection{
 		currentState = .waitingForUserConsent
 		if frame.v1.introduction.fileMetadata.count>0 && frame.v1.introduction.textMetadata.isEmpty{
 			let downloadsDirectory=(try FileManager.default.url(for: .downloadsDirectory, in: .userDomainMask, appropriateFor: nil, create: true)).resolvingSymlinksInPath()
+			do{
+				_=try Self.validatedIncomingFileTotalSize(frame.v1.introduction.fileMetadata, availableBytes: Self.availableBytes(for: downloadsDirectory))
+			}catch NearbyError.canceled(reason: .notEnoughSpace){
+				rejectTransfer(with: .notEnoughSpace)
+				return
+			}
 			for file in frame.v1.introduction.fileMetadata{
 				let safeName=FileNameSanitizer.sanitize(file.name)
 				let dest=makeFileDestinationURL(downloadsDirectory.appendingPathComponent(safeName))
@@ -321,6 +338,7 @@ class InboundNearbyConnection: NearbyConnection{
 				transferredFiles[file.payloadID]=info
 			}
 			let metadata=TransferMetadata(files: transferredFiles.map({$0.value.meta}), id: id, pinCode: pinCode)
+			scheduleUserConsentTimeout()
 			DispatchQueue.main.async {
 				self.delegate?.obtainUserConsent(for: metadata, from: self.remoteDeviceInfo!, connection: self)
 			}
@@ -330,6 +348,7 @@ class InboundNearbyConnection: NearbyConnection{
 				textPayloadID=meta.payloadID
 				textPayloadIsURL=true
 				let metadata=TransferMetadata(files: [], id: id, pinCode: pinCode, textDescription: meta.textTitle, kind: .url)
+				scheduleUserConsentTimeout()
 				DispatchQueue.main.async {
 					self.delegate?.obtainUserConsent(for: metadata, from: self.remoteDeviceInfo!, connection: self)
 				}
@@ -338,6 +357,7 @@ class InboundNearbyConnection: NearbyConnection{
 				textPayloadIsURL=false
 				let title=meta.textTitle.isEmpty ? NSLocalizedString("ClipboardText", value: "Text", comment: "") : meta.textTitle
 				let metadata=TransferMetadata(files: [], id: id, pinCode: pinCode, textDescription: title, kind: .text)
+				scheduleUserConsentTimeout()
 				DispatchQueue.main.async {
 					self.delegate?.obtainUserConsent(for: metadata, from: self.remoteDeviceInfo!, connection: self)
 				}
@@ -348,8 +368,42 @@ class InboundNearbyConnection: NearbyConnection{
 			rejectTransfer(with: .unsupportedAttachmentType)
 		}
 	}
+
+	static func validatedIncomingFileTotalSize(_ files:[Sharing_Nearby_FileMetadata], availableBytes:Int64?) throws -> Int64 {
+		guard files.count <= maximumIncomingFileCount else { throw NearbyError.protocolError("Too many files in introduction") }
+
+		var payloadIDs=Set<Int64>()
+		var totalSize:Int64=0
+		for file in files {
+			guard file.hasPayloadID else { throw NearbyError.requiredFieldMissing("introduction.fileMetadata.payloadID") }
+			guard file.hasSize else { throw NearbyError.requiredFieldMissing("introduction.fileMetadata.size") }
+			guard file.size >= 0 else { throw NearbyError.protocolError("File size must not be negative") }
+			guard payloadIDs.insert(file.payloadID).inserted else { throw NearbyError.protocolError("Duplicate file payload ID") }
+			guard file.size <= Int64.max-totalSize else { throw NearbyError.protocolError("Total incoming file size overflow") }
+			totalSize+=file.size
+		}
+
+		if let availableBytes=availableBytes {
+			guard availableBytes > minimumFreeBytesAfterTransfer else { throw NearbyError.canceled(reason: .notEnoughSpace) }
+			guard totalSize <= availableBytes-minimumFreeBytesAfterTransfer else { throw NearbyError.canceled(reason: .notEnoughSpace) }
+		}
+		return totalSize
+	}
+
+	private static func availableBytes(for directory:URL) -> Int64? {
+		if let values=try? directory.resourceValues(forKeys: [.volumeAvailableCapacityForImportantUsageKey]),
+		   let capacity=values.volumeAvailableCapacityForImportantUsage {
+			return capacity
+		}
+		if let attributes=try? FileManager.default.attributesOfFileSystem(forPath: directory.path),
+		   let freeSize=attributes[.systemFreeSize] as? NSNumber {
+			return freeSize.int64Value
+		}
+		return nil
+	}
 	
 	func submitUserConsent(accepted:Bool){
+		cancelUserConsentTimeout()
 		DispatchQueue.global(qos: .utility).async {
 			if accepted{
 				self.acceptTransfer()
@@ -361,6 +415,7 @@ class InboundNearbyConnection: NearbyConnection{
 	
 	private func acceptTransfer(){
 		do{
+			cancelUserConsentTimeout()
 			for (id, file) in transferredFiles{
 				FileManager.default.createFile(atPath: file.destinationURL.path, contents: nil)
 				let handle=try FileHandle(forWritingTo: file.destinationURL)
@@ -388,6 +443,7 @@ class InboundNearbyConnection: NearbyConnection{
 	}
 	
 	private func rejectTransfer(with reason:Sharing_Nearby_ConnectionResponseFrame.Status = .reject){
+		cancelUserConsentTimeout()
 		var frame=Sharing_Nearby_Frame()
 		frame.version = .v1
 		frame.v1.type = .response
@@ -406,6 +462,24 @@ class InboundNearbyConnection: NearbyConnection{
 			guard file.created else { continue }
 			try FileManager.default.removeItem(at: file.destinationURL)
 		}
+	}
+
+	private func scheduleUserConsentTimeout(){
+		cancelUserConsentTimeout()
+		let workItem=DispatchWorkItem { [weak self] in
+			guard let self=self else { return }
+			guard self.currentState == .waitingForUserConsent else { return }
+			os_log("Inbound transfer timed out waiting for user consent: id=%{public}@", log: pyontaReceiveLog, type: .info, self.id)
+			self.lastError=NearbyError.canceled(reason: .timedOut)
+			self.rejectTransfer(with: .timedOut)
+		}
+		consentTimeoutWorkItem=workItem
+		DispatchQueue.main.asyncAfter(deadline: .now()+Self.userConsentTimeout, execute: workItem)
+	}
+
+	private func cancelUserConsentTimeout(){
+		consentTimeoutWorkItem?.cancel()
+		consentTimeoutWorkItem=nil
 	}
 }
 

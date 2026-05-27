@@ -11,6 +11,8 @@ import System
 import CryptoKit
 import SwiftECC
 import os.log
+import dnssd
+import SystemConfiguration
 
 fileprivate let pyontaLog = OSLog(subsystem: "com.odiften.pyonta", category: "discovery")
 
@@ -105,6 +107,74 @@ struct OutgoingTransferInfo{
 	let device:RemoteDeviceInfo
 	let connection:OutboundNearbyConnection
 	let delegate:ShareExtensionDelegate
+}
+
+private final class BonjourServicePublisher {
+	private let log:OSLog
+	private var serviceRef:DNSServiceRef?
+	private var fallbackService:NetService?
+
+	init(log:OSLog) {
+		self.log=log
+	}
+
+	func publish(type:String, name:String, port:Int32, txtRecord:Data) {
+		stop()
+
+		let interfaceName=Self.primaryIPv4InterfaceName()
+		let interfaceIndex=interfaceName.flatMap { UInt32(if_nametoindex($0)) } ?? 0
+		guard interfaceIndex != 0 else {
+			os_log("Publishing mDNS service on all interfaces (no primary interface found): name=%{public}@ port=%d", log: log, type: .info, name, port)
+			publishWithNetService(type: type, name: name, port: port, txtRecord: txtRecord)
+			return
+		}
+
+		var ref:DNSServiceRef?
+		let error:DNSServiceErrorType=txtRecord.withUnsafeBytes { txtBytes in
+			DNSServiceRegister(
+				&ref,
+				0,
+				interfaceIndex,
+				name,
+				type,
+				"local.",
+				nil,
+				UInt16(port).bigEndian,
+				UInt16(txtRecord.count),
+				txtBytes.baseAddress,
+				nil,
+				nil
+			)
+		}
+		if error == kDNSServiceErr_NoError, let ref=ref {
+			serviceRef=ref
+			os_log("Publishing mDNS service: name=%{public}@ port=%d interface=%{public}@(%d)", log: log, type: .info, name, port, interfaceName!, interfaceIndex)
+		} else {
+			os_log("DNSServiceRegister failed (%d); falling back to all-interface NetService publish", log: log, type: .error, error)
+			publishWithNetService(type: type, name: name, port: port, txtRecord: txtRecord)
+		}
+	}
+
+	func stop() {
+		if let serviceRef=serviceRef {
+			DNSServiceRefDeallocate(serviceRef)
+			self.serviceRef=nil
+		}
+		fallbackService?.stop()
+		fallbackService=nil
+	}
+
+	private func publishWithNetService(type:String, name:String, port:Int32, txtRecord:Data) {
+		let service=NetService(domain: "", type: type, name: name, port: port)
+		service.setTXTRecord(txtRecord)
+		service.publish()
+		fallbackService=service
+	}
+
+	private static func primaryIPv4InterfaceName() -> String? {
+		guard let state=SCDynamicStoreCopyValue(nil, "State:/Network/Global/IPv4" as CFString) as? [String:Any] else { return nil }
+		return state["PrimaryInterface"] as? String
+	}
 }
 
 struct EndpointInfo{
@@ -216,7 +286,7 @@ public class NearbyConnectionManager : NSObject, NetServiceDelegate, InboundNear
 	
 	private var tcpListener:NWListener;
 	public let endpointID:[UInt8]=generateEndpointID()
-	private var mdnsService:NetService?
+	private var mdnsService:BonjourServicePublisher?
 	private var activeConnections:[String:InboundNearbyConnection]=[:]
 	private var foundServices:[String:FoundServiceInfo]=[:]
 	private var shareExtensionDelegates:[ShareExtensionDelegate]=[]
@@ -263,12 +333,14 @@ public class NearbyConnectionManager : NSObject, NetServiceDelegate, InboundNear
 	
 	private func startTCPListener(){
 		tcpListener.stateUpdateHandler={(state:NWListener.State) in
+			os_log("TCP listener state changed to %{public}@", log: pyontaLog, type: .info, "\(state)")
 			if case .ready = state {
 				self.initMDNS()
 			}
 		}
 		tcpListener.newConnectionHandler={(connection:NWConnection) in
 			let id=UUID().uuidString
+			os_log("Accepted inbound connection: id=%{public}@ endpoint=%{public}@", log: pyontaLog, type: .info, id, "\(connection.endpoint)")
 			let conn=InboundNearbyConnection(connection: connection, id: id)
 			self.activeConnections[id]=conn
 			conn.delegate=self
@@ -297,12 +369,11 @@ public class NearbyConnectionManager : NSObject, NetServiceDelegate, InboundNear
 		let endpointInfo=EndpointInfo(name: Host.current().localizedName!, deviceType: .computer)
 		
 		let port:Int32=Int32(tcpListener.port!.rawValue)
-		mdnsService=NetService(domain: "", type: "_FC9F5ED42C8A._tcp.", name: name, port: port)
-		mdnsService?.delegate=self
-		mdnsService?.setTXTRecord(NetService.data(fromTXTRecord: [
+		let txtRecord=NetService.data(fromTXTRecord: [
 			"n": endpointInfo.serialize().urlSafeBase64EncodedString().data(using: .utf8)!
-		]))
-		mdnsService?.publish()
+		])
+		mdnsService=BonjourServicePublisher(log: pyontaLog)
+		mdnsService?.publish(type: "_FC9F5ED42C8A._tcp", name: name, port: port, txtRecord: txtRecord)
 	}
 	
 	func obtainUserConsent(for transfer: TransferMetadata, from device: RemoteDeviceInfo, connection: InboundNearbyConnection) {
@@ -403,8 +474,12 @@ public class NearbyConnectionManager : NSObject, NetServiceDelegate, InboundNear
 			os_log("  -> rejected: invalid endpointID", log: pyontaLog, type: .info)
 			return
 		}
+		if endpointID == String(bytes: self.endpointID, encoding: .ascii)! {
+			os_log("  -> ignored (self endpointID=%{public}@)", log: pyontaLog, type: .info, endpointID)
+			return
+		}
 		os_log("  -> service name valid, endpointID=%{public}@", log: pyontaLog, type: .info, endpointID)
-		var foundService=FoundServiceInfo(service: service)
+		var foundService=preferredFoundService(for: endpointID, newService: service)
 		
 		guard case let NWBrowser.Result.Metadata.bonjour(txtRecord)=service.metadata else {
 			os_log("  -> rejected: no bonjour TXT metadata", log: pyontaLog, type: .info)
@@ -473,6 +548,44 @@ public class NearbyConnectionManager : NSObject, NetServiceDelegate, InboundNear
 			}
 		}
 	}
+
+	private func preferredFoundService(for endpointID:String, newService:NWBrowser.Result) -> FoundServiceInfo{
+		guard let existing=foundServices[endpointID] else {
+			return FoundServiceInfo(service: newService)
+		}
+		let existingScore=servicePreferenceScore(existing.service)
+		let newScore=servicePreferenceScore(newService)
+		if newScore < existingScore {
+			os_log("  -> keeping existing service route for %{public}@ (existing=%d new=%d)", log: pyontaLog, type: .info, endpointID, existingScore, newScore)
+			return existing
+		}
+		if newScore > existingScore {
+			os_log("  -> replacing service route for %{public}@ (existing=%d new=%d)", log: pyontaLog, type: .info, endpointID, existingScore, newScore)
+		}
+		return FoundServiceInfo(service: newService)
+	}
+
+	private func servicePreferenceScore(_ service:NWBrowser.Result) -> Int{
+		guard !service.interfaces.isEmpty else { return 10 }
+		return service.interfaces.reduce(0) { score, interface in
+			let interfaceScore:Int
+			switch interface.type {
+			case .wifi:
+				interfaceScore=400
+			case .wiredEthernet:
+				interfaceScore=300
+			case .cellular:
+				interfaceScore=200
+			case .other:
+				interfaceScore=100
+			case .loopback:
+				interfaceScore=0
+			@unknown default:
+				interfaceScore=50
+			}
+			return max(score, interfaceScore)
+		}
+	}
 	
 	private func addFoundDevice(foundService:inout FoundServiceInfo, endpointInfo:EndpointInfo, endpointID:String) -> RemoteDeviceInfo{
 		let hadPreviousDevice=foundServices[endpointID]?.device != nil
@@ -528,6 +641,7 @@ public class NearbyConnectionManager : NSObject, NetServiceDelegate, InboundNear
 	
 	public func startOutgoingTransfer(deviceID:String, delegate:ShareExtensionDelegate, urls:[URL]){
 		guard let info=foundServices[deviceID] else {return}
+		os_log("Starting outgoing file transfer: id=%{public}@ endpoint=%{public}@ interfaces=%{public}@", log: pyontaLog, type: .info, deviceID, "\(info.service.endpoint)", "\(info.service.interfaces)")
 		let tcp=NWProtocolTCP.Options.init()
 		tcp.noDelay=true
 		let nwconn=NWConnection(to: info.service.endpoint, using: NWParameters(tls: .none, tcp: tcp))
@@ -541,6 +655,7 @@ public class NearbyConnectionManager : NSObject, NetServiceDelegate, InboundNear
 
 	public func startOutgoingTransfer(deviceID:String, delegate:ShareExtensionDelegate, text:String, isURL:Bool){
 		guard let info=foundServices[deviceID] else {return}
+		os_log("Starting outgoing text transfer: id=%{public}@ endpoint=%{public}@ interfaces=%{public}@", log: pyontaLog, type: .info, deviceID, "\(info.service.endpoint)", "\(info.service.interfaces)")
 		let tcp=NWProtocolTCP.Options.init()
 		tcp.noDelay=true
 		let nwconn=NWConnection(to: info.service.endpoint, using: NWParameters(tls: .none, tcp: tcp))
@@ -589,4 +704,3 @@ public class NearbyConnectionManager : NSObject, NetServiceDelegate, InboundNear
 		outgoingTransfers.removeValue(forKey: connection.id)
 	}
 }
-

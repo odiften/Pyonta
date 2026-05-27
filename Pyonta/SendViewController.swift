@@ -11,6 +11,9 @@ import Foundation
 import Cocoa
 import NearbyShare
 import QRCode
+import os.log
+
+fileprivate let pyontaSendViewLog = OSLog(subsystem: "com.odiften.pyonta", category: "send-ui")
 
 class SendViewController: NSViewController, ShareExtensionDelegate {
 
@@ -115,9 +118,10 @@ class SendViewController: NSViewController, ShareExtensionDelegate {
 	}
 
 	private func scheduleAutomaticQrCodeView() {
-		DispatchQueue.main.asyncAfter(deadline: .now()+3.0) { [weak self] in
+		DispatchQueue.main.asyncAfter(deadline: .now()+10.0) { [weak self] in
 			guard let self=self else { return }
 			if self.foundDevices.isEmpty && self.sheetWindow==nil && self.chosenDevice==nil {
+				os_log("Auto-opening QR code after discovery fallback delay", log: pyontaSendViewLog, type: .info)
 				self.useQrCode(nil)
 			}
 		}
@@ -138,6 +142,7 @@ class SendViewController: NSViewController, ShareExtensionDelegate {
 	}
 
 	@IBAction func useQrCode(_ sender: AnyObject?) {
+		os_log("Opening QR code sheet", log: pyontaSendViewLog, type: .info)
 		let window=contentWrap!.window!
 		let sheetWindow=NSWindow()
 		sheetWindow.contentView=qrCodeSheetView!

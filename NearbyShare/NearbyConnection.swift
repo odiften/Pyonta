@@ -10,9 +10,12 @@ import Network
 import CommonCrypto
 import CryptoKit
 import System
+import os.log
 
 import SwiftECC
 import BigInt
+
+fileprivate let pyontaConnectionLog = OSLog(subsystem: "com.odiften.pyonta", category: "connection")
 
 class NearbyConnection{
 	internal static let SANE_FRAME_LENGTH=5*1024*1024
@@ -54,11 +57,18 @@ class NearbyConnection{
 	func start(){
 		connection.stateUpdateHandler={state in
 			if case .ready = state {
+				os_log("Socket ready: id=%{public}@ endpoint=%{public}@", log: pyontaConnectionLog, type: .info, self.id, "\(self.connection.endpoint)")
 				self.connectionReady()
 				self.receiveFrameAsync()
+			} else if case .waiting(let err) = state {
+				self.lastError=err
+				os_log("Socket waiting: id=%{public}@ endpoint=%{public}@ error=%{public}@", log: pyontaConnectionLog, type: .info, self.id, "\(self.connection.endpoint)", "\(err)")
 			} else if case .failed(let err) = state {
 				self.lastError=err
-				print("Error opening socket: \(err)")
+				os_log("Socket failed: id=%{public}@ endpoint=%{public}@ error=%{public}@", log: pyontaConnectionLog, type: .error, self.id, "\(self.connection.endpoint)", "\(err)")
+				self.handleConnectionClosure()
+			} else if case .cancelled = state {
+				os_log("Socket cancelled: id=%{public}@ endpoint=%{public}@", log: pyontaConnectionLog, type: .info, self.id, "\(self.connection.endpoint)")
 				self.handleConnectionClosure()
 			}
 		}
