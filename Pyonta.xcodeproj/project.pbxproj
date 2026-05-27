@@ -11,6 +11,8 @@
 		2DF449CF71B350CCB9F4C0B7 /* QRCode in Frameworks */ = {isa = PBXBuildFile; productRef = 693D8DCB2E43771D00E8E7F4 /* QRCode */; };
 		50072E435B7CE842D2C4F07B /* InboundTransferValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D657D981E4AB9A9065599B /* InboundTransferValidationTests.swift */; };
 		5889CC783321E6CE0C934A55 /* LaunchAtLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE1DEE0802DAFA2BB5A5AF /* LaunchAtLogin.swift */; };
+		A11CE0022F00000100000002 /* PyontaPurchases.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11CE0012F00000100000001 /* PyontaPurchases.swift */; };
+		A11CE0032F00000100000003 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = A11CE0052F00000100000005 /* RevenueCat */; };
 		691F53BB2ABB70840089FD92 /* DeviceListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691F53B92ABB70840089FD92 /* DeviceListCell.swift */; };
 		691F53BC2ABB70840089FD92 /* DeviceListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 691F53BA2ABB70840089FD92 /* DeviceListCell.xib */; };
 		691F53BE2ABF03820089FD92 /* OutboundNearbyConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691F53BD2ABF03820089FD92 /* OutboundNearbyConnection.swift */; };
@@ -182,6 +184,7 @@
 		69F1A11B2E43986400B4749C /* FileNameSanitizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNameSanitizer.swift; sourceTree = "<group>"; };
 		7AD074992CAFB03AAB30A017 /* Base */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SendViewController.xib; sourceTree = "<group>"; };
 		8F56597437179889D33E07EE /* DeviceListCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DeviceListCell.swift; sourceTree = "<group>"; };
+		A11CE0012F00000100000001 /* PyontaPurchases.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PyontaPurchases.swift; sourceTree = "<group>"; };
 		AFE1F4656A6771933F0B3868 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		B510646A74530F7259C79902 /* mul */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/SendViewController.xcstrings; sourceTree = "<group>"; };
 		CCF69E29EBBAE75CC9167F39 /* NearbyDeviceNameResolver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NearbyDeviceNameResolver.swift; sourceTree = "<group>"; };
@@ -204,6 +207,7 @@
 			files = (
 				69DCF4942AB8BF7B00CBE2CC /* libNearbyShare.dylib in Frameworks */,
 				2DF449CF71B350CCB9F4C0B7 /* QRCode in Frameworks */,
+				A11CE0032F00000100000003 /* RevenueCat in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +310,7 @@
 				5856668BE3178DE3590AA13D /* SendViewController.xib */,
 				4932415BFE28641894DC11D1 /* DeviceListCell.xib */,
 				17EE1DEE0802DAFA2BB5A5AF /* LaunchAtLogin.swift */,
+				A11CE0012F00000100000001 /* PyontaPurchases.swift */,
 			);
 			path = Pyonta;
 			sourceTree = "<group>";
@@ -418,6 +423,7 @@
 			name = Pyonta;
 			packageProductDependencies = (
 				693D8DCB2E43771D00E8E7F4 /* QRCode */,
+				A11CE0052F00000100000005 /* RevenueCat */,
 			);
 			productName = Pyonta;
 			productReference = 69DA9A0E29E0BF5100A442DA /* Pyonta.app */;
@@ -463,6 +469,11 @@
 					69DA9A0D29E0BF5100A442DA = {
 						CreatedOnToolsVersion = 14.3;
 						LastSwiftMigration = 1430;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 					69DCF4802AB70D0600CBE2CC = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -499,6 +510,7 @@
 				69DA9A2429E189EF00A442DA /* XCRemoteSwiftPackageReference "swift-protobuf" */,
 				69DA9A3429E1994C00A442DA /* XCRemoteSwiftPackageReference "SwiftECC" */,
 				693D8DCA2E43771D00E8E7F4 /* XCRemoteSwiftPackageReference "qrcode" */,
+				A11CE0042F00000100000004 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */,
 			);
 			productRefGroup = 69DA9A0F29E0BF5100A442DA /* Products */;
 			projectDirPath = "";
@@ -567,6 +579,7 @@
 				1DF8346CA52C3017A7874A8D /* DeviceListCell.swift in Sources */,
 				D7FCEDF9255F8B7F4258EF7B /* QrCodeBackgroundView.swift in Sources */,
 				5889CC783321E6CE0C934A55 /* LaunchAtLogin.swift in Sources */,
+				A11CE0022F00000100000002 /* PyontaPurchases.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -880,6 +893,7 @@
 				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Pyonta uses your local network to discover nearby Android devices and transfer files via Quick Share.";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				INFOPLIST_KEY_RevenueCatAPIKey = "$(REVENUECAT_API_KEY)";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -889,6 +903,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.odiften.pyonta;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				REVENUECAT_API_KEY = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Pyonta/Pyonta-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -918,6 +933,7 @@
 				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Pyonta uses your local network to discover nearby Android devices and transfer files via Quick Share.";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				INFOPLIST_KEY_RevenueCatAPIKey = "$(REVENUECAT_API_KEY)";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -927,6 +943,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.odiften.pyonta;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				REVENUECAT_API_KEY = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Pyonta/Pyonta-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -1063,6 +1080,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		A11CE0042F00000100000004 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RevenueCat/purchases-ios-spm.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.43.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1080,6 +1105,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 69DA9A3429E1994C00A442DA /* XCRemoteSwiftPackageReference "SwiftECC" */;
 			productName = SwiftECC;
+		};
+		A11CE0052F00000100000005 /* RevenueCat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A11CE0042F00000100000004 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
+			productName = RevenueCat;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

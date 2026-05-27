@@ -92,6 +92,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 	private let launchAtLoginToggleState = BoolToggleState(key: AppDelegate.launchAtLoginKey, defaultValue: false)
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+		PyontaPurchases.shared.configure()
+
 		visibilityToggleState.onChange = { isOn in
 			if isOn {
 				NearbyConnectionManager.shared.becomeVisible()
@@ -133,6 +135,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 		let sendClipboardItem=NSMenuItem(title: NSLocalizedString("SendClipboard", value: "Send clipboard…", comment: ""), action: #selector(sendClipboard(_:)), keyEquivalent: "")
 		sendClipboardItem.target=self
 		menu.addItem(sendClipboardItem)
+		menu.addItem(NSMenuItem.separator())
+		let upgradeItem=NSMenuItem(title: NSLocalizedString("UpgradeToPlus", value: "Upgrade to Pyonta+…", comment: ""), action: #selector(upgradeToPlus(_:)), keyEquivalent: "")
+		upgradeItem.target=self
+		menu.addItem(upgradeItem)
+		let restorePurchasesItem=NSMenuItem(title: NSLocalizedString("RestorePurchases", value: "Restore purchases…", comment: ""), action: #selector(restorePurchases(_:)), keyEquivalent: "")
+		restorePurchasesItem.target=self
+		menu.addItem(restorePurchasesItem)
 		menu.addItem(NSMenuItem.separator())
 		let odiftenItem=NSMenuItem(title: NSLocalizedString("OdiftenContact", value: "Made by odiften / App development inquiries…", comment: ""), action: #selector(openOdiftenContact(_:)), keyEquivalent: "")
 		odiftenItem.target=self
@@ -215,6 +224,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 	}
 
 	func obtainUserConsent(for transfer: TransferMetadata, from device: RemoteDeviceInfo) {
+		guard PyontaPurchases.shared.canReceiveIncomingTransfers else {
+			NearbyConnectionManager.shared.submitUserConsent(transferID: transfer.id, accept: false)
+			DispatchQueue.main.async {
+				PyontaPurchases.shared.showPlusRequiredAlert()
+			}
+			return
+		}
+
 		let autoAccept=UserDefaults.standard.bool(forKey: AppDelegate.autoAcceptKey)
 		self.activeIncomingTransfers[transfer.id]=TransferInfo(device: device, transfer: transfer, autoAccepted: autoAccept)
 		if autoAccept {
@@ -322,6 +339,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 		host.autoresizingMask = [.width]
 		host.toolTip = tooltip
 		return host
+	}
+
+	@objc func upgradeToPlus(_ sender: Any?) {
+		PyontaPurchases.shared.presentPurchaseOptions()
+	}
+
+	@objc func restorePurchases(_ sender: Any?) {
+		PyontaPurchases.shared.restorePurchases()
 	}
 
 	@objc func openOdiftenContact(_ sender: Any?) {
