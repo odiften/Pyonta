@@ -30,7 +30,19 @@ if [[ -z "$api_key" || "$api_key" == "REVENUECAT_PUBLIC_API_KEY" ]]; then
 	cat >&2 <<'EOF'
 Missing REVENUECAT_API_KEY.
 
-Create the Pyonta app in RevenueCat, copy the Apple public SDK key, then run:
+Create the Pyonta app in RevenueCat, connect the Apple App Store app,
+copy the Apple platform public SDK key, then run:
+  REVENUECAT_API_KEY=appl_... ./scripts/archive_appstore.sh
+EOF
+	exit 64
+fi
+
+if [[ "$api_key" == test_* ]]; then
+	cat >&2 <<'EOF'
+REVENUECAT_API_KEY is a RevenueCat Test Store key.
+
+Do not submit App Store builds with a test_ key. Connect the Apple App Store
+app in RevenueCat, copy the Apple platform public SDK key, and rerun:
   REVENUECAT_API_KEY=appl_... ./scripts/archive_appstore.sh
 EOF
 	exit 64

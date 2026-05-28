@@ -38,13 +38,13 @@ In Xcode, set the Team to your own under Signing & Capabilities for both the **P
 
 ## App Store archive
 
-Pyonta uses RevenueCat for Pyonta+ purchases. Do not commit the RevenueCat public SDK key. Pass it at build time instead:
+Pyonta uses RevenueCat for Pyonta+ purchases. Do not commit the RevenueCat public SDK key. Pass the Apple platform public SDK key at build time instead:
 
 ```
 REVENUECAT_API_KEY=appl_... ./scripts/archive_appstore.sh
 ```
 
-The script refuses to create an App Store archive when the key is missing. It injects the value into the app's `RevenueCatAPIKey` Info.plist entry through the `REVENUECAT_API_KEY` build setting.
+The script refuses to create an App Store archive when the key is missing or when a RevenueCat Test Store `test_` key is provided. It injects the value into the app's `RevenueCatAPIKey` Info.plist entry through the `REVENUECAT_API_KEY` build setting.
 
 ## Credits
 
