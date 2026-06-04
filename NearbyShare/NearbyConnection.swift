@@ -57,18 +57,18 @@ class NearbyConnection{
 	func start(){
 		connection.stateUpdateHandler={state in
 			if case .ready = state {
-				os_log("Socket ready: id=%{public}@ endpoint=%{public}@", log: pyontaConnectionLog, type: .info, self.id, "\(self.connection.endpoint)")
+				os_log("Socket ready: id=%{private}@ endpoint=%{private}@", log: pyontaConnectionLog, type: .info, self.id, "\(self.connection.endpoint)")
 				self.connectionReady()
 				self.receiveFrameAsync()
 			} else if case .waiting(let err) = state {
 				self.lastError=err
-				os_log("Socket waiting: id=%{public}@ endpoint=%{public}@ error=%{public}@", log: pyontaConnectionLog, type: .info, self.id, "\(self.connection.endpoint)", "\(err)")
+				os_log("Socket waiting: id=%{private}@ endpoint=%{private}@ error=%{private}@", log: pyontaConnectionLog, type: .info, self.id, "\(self.connection.endpoint)", "\(err)")
 			} else if case .failed(let err) = state {
 				self.lastError=err
-				os_log("Socket failed: id=%{public}@ endpoint=%{public}@ error=%{public}@", log: pyontaConnectionLog, type: .error, self.id, "\(self.connection.endpoint)", "\(err)")
+				os_log("Socket failed: id=%{private}@ endpoint=%{private}@ error=%{private}@", log: pyontaConnectionLog, type: .error, self.id, "\(self.connection.endpoint)", "\(err)")
 				self.handleConnectionClosure()
 			} else if case .cancelled = state {
-				os_log("Socket cancelled: id=%{public}@ endpoint=%{public}@", log: pyontaConnectionLog, type: .info, self.id, "\(self.connection.endpoint)")
+				os_log("Socket cancelled: id=%{private}@ endpoint=%{private}@", log: pyontaConnectionLog, type: .info, self.id, "\(self.connection.endpoint)")
 				self.handleConnectionClosure()
 			}
 		}
@@ -79,7 +79,9 @@ class NearbyConnection{
 	func connectionReady(){}
 	
 	internal func handleConnectionClosure(){
+#if DEBUG
 		print("Connection closed")
+#endif
 	}
 	
 	internal func protocolError(){
@@ -310,7 +312,9 @@ class NearbyConnection{
 			#endif
 			sendKeepAlive(ack: true)
 		}else{
+#if DEBUG
 			print("Unhandled offline frame encrypted: \(offlineFrame)")
+#endif
 		}
 	}
 	
@@ -426,11 +430,14 @@ class NearbyConnection{
 		offlineFrame.v1.disconnection=Location_Nearby_Connections_DisconnectionFrame()
 		
 		if encryptionDone{
-			try encryptAndSendOfflineFrame(offlineFrame)
+			try encryptAndSendOfflineFrame(offlineFrame) {
+				self.disconnect()
+			}
 		}else{
-			sendFrameAsync(try offlineFrame.serializedData())
+			sendFrameAsync(try offlineFrame.serializedData()) {
+				self.disconnect()
+			}
 		}
-		disconnect()
 	}
 	
 	internal func sendUkey2Alert(type:Securegcm_Ukey2Alert.AlertType){
@@ -456,7 +463,7 @@ class NearbyConnection{
 				sendFrameAsync(try offlineFrame.serializedData())
 			}
 		}catch{
-			print("Error sending KEEP_ALIVE: \(error)")
+			os_log("Error sending KEEP_ALIVE: %{private}@", log: pyontaConnectionLog, type: .error, "\(error)")
 		}
 	}
 }

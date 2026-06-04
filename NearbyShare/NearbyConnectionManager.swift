@@ -109,6 +109,22 @@ struct OutgoingTransferInfo{
 	let delegate:ShareExtensionDelegate
 }
 
+private struct NetworkPathSignature: Equatable {
+	let isSatisfied:Bool
+	let status:String
+	let usesWiFi:Bool
+	let usesWiredEthernet:Bool
+	let interfaces:[String]
+
+	init(path:NWPath) {
+		isSatisfied=path.status == .satisfied
+		status="\(path.status)"
+		usesWiFi=path.usesInterfaceType(.wifi)
+		usesWiredEthernet=path.usesInterfaceType(.wiredEthernet)
+		interfaces=path.availableInterfaces.map { $0.name }.sorted()
+	}
+}
+
 private final class BonjourServicePublisher {
 	private let log:OSLog
 	private var serviceRef:DNSServiceRef?
@@ -124,7 +140,7 @@ private final class BonjourServicePublisher {
 		let interfaceName=Self.primaryIPv4InterfaceName()
 		let interfaceIndex=interfaceName.flatMap { UInt32(if_nametoindex($0)) } ?? 0
 		guard interfaceIndex != 0 else {
-			os_log("Publishing mDNS service on all interfaces (no primary interface found): name=%{public}@ port=%d", log: log, type: .info, name, port)
+			os_log("Publishing mDNS service on all interfaces (no primary interface found): name=%{private}@ port=%d", log: log, type: .info, name, port)
 			publishWithNetService(type: type, name: name, port: port, txtRecord: txtRecord)
 			return
 		}
@@ -148,7 +164,7 @@ private final class BonjourServicePublisher {
 		}
 		if error == kDNSServiceErr_NoError, let ref=ref {
 			serviceRef=ref
-			os_log("Publishing mDNS service: name=%{public}@ port=%d interface=%{public}@(%d)", log: log, type: .info, name, port, interfaceName!, interfaceIndex)
+			os_log("Publishing mDNS service: name=%{private}@ port=%d interface=%{private}@(%d)", log: log, type: .info, name, port, interfaceName!, interfaceIndex)
 		} else {
 			os_log("DNSServiceRegister failed (%d); falling back to all-interface NetService publish", log: log, type: .error, error)
 			publishWithNetService(type: type, name: name, port: port, txtRecord: txtRecord)
@@ -189,29 +205,43 @@ struct EndpointInfo{
 	}
 	
 	init?(data:Data){
+#if DEBUG
 		let hexDump=data.prefix(64).map{String(format:"%02x",$0)}.joined(separator: " ")
 		os_log("EndpointInfo decode: count=%d byte0=0x%02x hex=%{public}@", log: pyontaLog, type: .info, data.count, Int(data.first ?? 0), hexDump)
+#endif
 		guard data.count>=17 else {
+#if DEBUG
 			os_log("  -> reject: data too short", log: pyontaLog, type: .info)
+#endif
 			return nil
 		}
 		let hasName=(data[0] & 0x10)==0
+#if DEBUG
 		os_log("  hasName=%d (bit0x10=%d), deviceTypeRaw=%d", log: pyontaLog, type: .info, hasName ? 1 : 0, Int(data[0] & 0x10), Int(data[0] & 7) >> 1)
+#endif
 		let deviceNameLength:Int
 		let deviceName:String?
 		if hasName{
 			deviceNameLength=Int(data[17])
+#if DEBUG
 			os_log("  deviceNameLength byte17 = %d", log: pyontaLog, type: .info, deviceNameLength)
+#endif
 			guard data.count>=deviceNameLength+18 else {
+#if DEBUG
 				os_log("  -> reject: name length %d exceeds data (count=%d)", log: pyontaLog, type: .info, deviceNameLength, data.count)
+#endif
 				return nil
 			}
 			guard let _deviceName=String(data: data[18..<(18+deviceNameLength)], encoding: .utf8) else {
+#if DEBUG
 				os_log("  -> reject: UTF-8 decode failed", log: pyontaLog, type: .info)
+#endif
 				return nil
 			}
 			deviceName=_deviceName
-			os_log("  decoded name=%{public}@", log: pyontaLog, type: .info, _deviceName)
+#if DEBUG
+			os_log("  decoded name=%{private}@", log: pyontaLog, type: .info, _deviceName)
+#endif
 		}else{
 			deviceNameLength=0
 			deviceName=nil
@@ -296,6 +326,11 @@ public class NearbyConnectionManager : NSObject, NetServiceDelegate, InboundNear
 	
 	private var browser:NWBrowser?
 	private let deviceNameResolver = NearbyDeviceNameResolver()
+	private let networkPathMonitor=NWPathMonitor()
+	private let networkPathMonitorQueue=DispatchQueue(label: "com.odiften.pyonta.networkPathMonitor", qos: .utility)
+	private var lastNetworkPathSignature:NetworkPathSignature?
+	private var networkResyncWorkItem:DispatchWorkItem?
+	private var emptyDiscoveryRefreshTimer:Timer?
 
 	private var qrCodePublicKey:ECPublicKey?
 	private var qrCodePrivateKey:ECPrivateKey?
@@ -308,6 +343,7 @@ public class NearbyConnectionManager : NSObject, NetServiceDelegate, InboundNear
 	override init() {
 		tcpListener=try! NWListener(using: NWParameters(tls: .none))
 		super.init()
+		startNetworkPathMonitor()
 	}
 	
 	private var tcpListenerStarted=false
@@ -330,17 +366,66 @@ public class NearbyConnectionManager : NSObject, NetServiceDelegate, InboundNear
 		mdnsService?.stop()
 		mdnsService=nil
 	}
+
+	private func startNetworkPathMonitor(){
+		networkPathMonitor.pathUpdateHandler={ [weak self] path in
+			let signature=NetworkPathSignature(path: path)
+			DispatchQueue.main.async {
+				self?.handleNetworkPathUpdate(signature)
+			}
+		}
+		networkPathMonitor.start(queue: networkPathMonitorQueue)
+	}
+
+	private func handleNetworkPathUpdate(_ signature:NetworkPathSignature){
+		guard lastNetworkPathSignature != signature else { return }
+		lastNetworkPathSignature=signature
+		os_log("Network path changed: status=%{public}@ wifi=%{public}@ wired=%{public}@ interfaces=%{private}@",
+			   log: pyontaLog,
+			   type: .info,
+			   signature.status,
+			   signature.usesWiFi ? "yes" : "no",
+			   signature.usesWiredEthernet ? "yes" : "no",
+			   signature.interfaces.joined(separator: ","))
+
+		if signature.isSatisfied {
+			scheduleNetworkResync(reason: "network path changed")
+		} else {
+			mdnsService?.stop()
+			mdnsService=nil
+			pauseDeviceBrowserForNetworkLoss(reason: "network path unavailable")
+		}
+	}
+
+	private func scheduleNetworkResync(reason:String){
+		networkResyncWorkItem?.cancel()
+		let workItem=DispatchWorkItem { [weak self] in
+			self?.resyncNetworkServices(reason: reason)
+		}
+		networkResyncWorkItem=workItem
+		DispatchQueue.main.asyncAfter(deadline: .now()+1.0, execute: workItem)
+	}
+
+	private func resyncNetworkServices(reason:String){
+		os_log("Resyncing network services: %{public}@", log: pyontaLog, type: .info, reason)
+		if isVisible, tcpListener.port != nil {
+			initMDNS()
+		}
+		if discoveryRefCount>0 {
+			restartDeviceBrowser(reason: reason, clearFoundDevices: true)
+		}
+	}
 	
 	private func startTCPListener(){
 		tcpListener.stateUpdateHandler={(state:NWListener.State) in
-			os_log("TCP listener state changed to %{public}@", log: pyontaLog, type: .info, "\(state)")
+			os_log("TCP listener state changed to %{private}@", log: pyontaLog, type: .info, "\(state)")
 			if case .ready = state {
 				self.initMDNS()
 			}
 		}
 		tcpListener.newConnectionHandler={(connection:NWConnection) in
 			let id=UUID().uuidString
-			os_log("Accepted inbound connection: id=%{public}@ endpoint=%{public}@", log: pyontaLog, type: .info, id, "\(connection.endpoint)")
+			os_log("Accepted inbound connection: id=%{private}@ endpoint=%{private}@", log: pyontaLog, type: .info, id, "\(connection.endpoint)")
 			let conn=InboundNearbyConnection(connection: connection, id: id)
 			self.activeConnections[id]=conn
 			conn.delegate=self
@@ -393,44 +478,103 @@ public class NearbyConnectionManager : NSObject, NetServiceDelegate, InboundNear
 	}
 	
 	public func startDeviceDiscovery(){
+#if DEBUG
 		os_log("startDeviceDiscovery called (refCount=%d)", log: pyontaLog, type: .info, discoveryRefCount)
+#endif
 		if discoveryRefCount==0{
-			foundServices.removeAll()
-			if browser==nil{
-				browser=NWBrowser(for: .bonjourWithTXTRecord(type: "_FC9F5ED42C8A._tcp.", domain: nil), using: .tcp)
-				browser?.stateUpdateHandler={state in
-					os_log("NWBrowser state changed to %{public}@", log: pyontaLog, type: .info, "\(state)")
-				}
-				browser?.browseResultsChangedHandler={newResults, changes in
-					os_log("browseResultsChangedHandler: %d changes, %d total results", log: pyontaLog, type: .info, changes.count, newResults.count)
-					for change in changes{
-						switch change{
-						case let .added(res):
-							os_log("  added: %{public}@", log: pyontaLog, type: .info, "\(res.endpoint)")
-							self.maybeAddFoundDevice(service: res)
-						case let .removed(res):
-							os_log("  removed: %{public}@", log: pyontaLog, type: .info, "\(res.endpoint)")
-							self.maybeRemoveFoundDevice(service: res)
-						default:
-							break
-						}
-					}
-				}
-			}
-			browser?.start(queue: .main)
-			os_log("NWBrowser.start called", log: pyontaLog, type: .info)
+			clearFoundDevices(reason: "device discovery started")
+			startDeviceBrowser()
+			startEmptyDiscoveryRefreshTimer()
 		}
 		discoveryRefCount+=1
 	}
 	
 	public func stopDeviceDiscovery(){
+		if discoveryRefCount<=0{
+			os_log("stopDeviceDiscovery called with no active discovery", log: pyontaLog, type: .fault)
+			discoveryRefCount=0
+			return
+		}
 		discoveryRefCount-=1
-		assert(discoveryRefCount>=0)
 		if discoveryRefCount==0{
 			browser?.cancel()
 			browser=nil
+			stopEmptyDiscoveryRefreshTimer()
 			deviceNameResolver.cancelAll()
 		}
+	}
+
+	private func startDeviceBrowser(){
+		browser?.cancel()
+		let browser=NWBrowser(for: .bonjourWithTXTRecord(type: "_FC9F5ED42C8A._tcp.", domain: nil), using: .tcp)
+		browser.stateUpdateHandler={ [weak self] state in
+#if DEBUG
+			os_log("NWBrowser state changed to %{public}@", log: pyontaLog, type: .info, "\(state)")
+#endif
+			if case .failed = state {
+				DispatchQueue.main.async {
+					self?.restartDeviceBrowser(reason: "NWBrowser failed", clearFoundDevices: true)
+				}
+			}
+		}
+		browser.browseResultsChangedHandler={ [weak self] newResults, changes in
+			guard let self=self else { return }
+#if DEBUG
+			os_log("browseResultsChangedHandler: %d changes, %d total results", log: pyontaLog, type: .info, changes.count, newResults.count)
+#endif
+			for change in changes{
+				switch change{
+				case let .added(res):
+#if DEBUG
+					os_log("  added: %{public}@", log: pyontaLog, type: .info, "\(res.endpoint)")
+#endif
+					self.maybeAddFoundDevice(service: res)
+				case let .removed(res):
+#if DEBUG
+					os_log("  removed: %{public}@", log: pyontaLog, type: .info, "\(res.endpoint)")
+#endif
+					self.maybeRemoveFoundDevice(service: res)
+				default:
+					break
+				}
+			}
+		}
+		self.browser=browser
+		browser.start(queue: .main)
+#if DEBUG
+		os_log("NWBrowser.start called", log: pyontaLog, type: .info)
+#endif
+	}
+
+	private func restartDeviceBrowser(reason:String, clearFoundDevices:Bool){
+		guard discoveryRefCount>0 else { return }
+		os_log("Restarting device discovery: %{public}@", log: pyontaLog, type: .info, reason)
+		browser?.cancel()
+		browser=nil
+		if clearFoundDevices {
+			self.clearFoundDevices(reason: reason)
+		}
+		startDeviceBrowser()
+	}
+
+	private func pauseDeviceBrowserForNetworkLoss(reason:String){
+		browser?.cancel()
+		browser=nil
+		clearFoundDevices(reason: reason)
+	}
+
+	private func startEmptyDiscoveryRefreshTimer(){
+		emptyDiscoveryRefreshTimer?.invalidate()
+		emptyDiscoveryRefreshTimer=Timer.scheduledTimer(withTimeInterval: 12.0, repeats: true) { [weak self] _ in
+			guard let self=self else { return }
+			guard self.discoveryRefCount>0, self.foundServices.isEmpty else { return }
+			self.restartDeviceBrowser(reason: "empty discovery refresh", clearFoundDevices: false)
+		}
+	}
+
+	private func stopEmptyDiscoveryRefreshTimer(){
+		emptyDiscoveryRefreshTimer?.invalidate()
+		emptyDiscoveryRefreshTimer=nil
 	}
 	
 	public func addShareExtensionDelegate(_ delegate:ShareExtensionDelegate){
@@ -463,41 +607,61 @@ public class NearbyConnectionManager : NSObject, NetServiceDelegate, InboundNear
 	}
 	
 	private func maybeAddFoundDevice(service:NWBrowser.Result){
+#if DEBUG
 		os_log("maybeAddFoundDevice: %{public}@", log: pyontaLog, type: .info, "\(service.endpoint)")
+#endif
 		for interface in service.interfaces{
 			if case .loopback=interface.type{
+#if DEBUG
 				os_log("  -> ignored (loopback)", log: pyontaLog, type: .info)
+#endif
 				return
 			}
 		}
 		guard let endpointID=endpointID(for: service) else {
+#if DEBUG
 			os_log("  -> rejected: invalid endpointID", log: pyontaLog, type: .info)
+#endif
 			return
 		}
 		if endpointID == String(bytes: self.endpointID, encoding: .ascii)! {
-			os_log("  -> ignored (self endpointID=%{public}@)", log: pyontaLog, type: .info, endpointID)
+#if DEBUG
+			os_log("  -> ignored (self endpointID=%{private}@)", log: pyontaLog, type: .info, endpointID)
+#endif
 			return
 		}
-		os_log("  -> service name valid, endpointID=%{public}@", log: pyontaLog, type: .info, endpointID)
+#if DEBUG
+		os_log("  -> service name valid, endpointID=%{private}@", log: pyontaLog, type: .info, endpointID)
+#endif
 		var foundService=preferredFoundService(for: endpointID, newService: service)
 		
 		guard case let NWBrowser.Result.Metadata.bonjour(txtRecord)=service.metadata else {
+#if DEBUG
 			os_log("  -> rejected: no bonjour TXT metadata", log: pyontaLog, type: .info)
+#endif
 			return
 		}
 		guard let endpointInfoEncoded=txtRecord.dictionary["n"] else {
+#if DEBUG
 			os_log("  -> rejected: TXT lacks 'n' key", log: pyontaLog, type: .info)
+#endif
 			return
 		}
 		guard let endpointInfoSerialized=Data.dataFromUrlSafeBase64(endpointInfoEncoded) else {
+#if DEBUG
 			os_log("  -> rejected: 'n' value not valid base64", log: pyontaLog, type: .info)
+#endif
 			return
 		}
 		guard var endpointInfo=EndpointInfo(data: endpointInfoSerialized) else {
+#if DEBUG
 			os_log("  -> rejected: EndpointInfo decode failed", log: pyontaLog, type: .info)
+#endif
 			return
 		}
-		os_log("  -> EndpointInfo: name=%{public}@ type=%d", log: pyontaLog, type: .info, endpointInfo.name ?? "(nil)", endpointInfo.deviceType.rawValue)
+#if DEBUG
+		os_log("  -> EndpointInfo: name=%{private}@ type=%d", log: pyontaLog, type: .info, endpointInfo.name ?? "(nil)", endpointInfo.deviceType.rawValue)
+#endif
 
 		// Quick Share v3 (Hidden mode) では Bonjour TXT に name が無い。
 		// その場合は mDNS hostname の reverse DNS lookup で機種名を補完する。
@@ -556,11 +720,15 @@ public class NearbyConnectionManager : NSObject, NetServiceDelegate, InboundNear
 		let existingScore=servicePreferenceScore(existing.service)
 		let newScore=servicePreferenceScore(newService)
 		if newScore < existingScore {
-			os_log("  -> keeping existing service route for %{public}@ (existing=%d new=%d)", log: pyontaLog, type: .info, endpointID, existingScore, newScore)
+#if DEBUG
+			os_log("  -> keeping existing service route for %{private}@ (existing=%d new=%d)", log: pyontaLog, type: .info, endpointID, existingScore, newScore)
+#endif
 			return existing
 		}
 		if newScore > existingScore {
-			os_log("  -> replacing service route for %{public}@ (existing=%d new=%d)", log: pyontaLog, type: .info, endpointID, existingScore, newScore)
+#if DEBUG
+			os_log("  -> replacing service route for %{private}@ (existing=%d new=%d)", log: pyontaLog, type: .info, endpointID, existingScore, newScore)
+#endif
 		}
 		return FoundServiceInfo(service: newService)
 	}
@@ -592,7 +760,9 @@ public class NearbyConnectionManager : NSObject, NetServiceDelegate, InboundNear
 		let deviceInfo=RemoteDeviceInfo(info: endpointInfo, id: endpointID)
 		foundService.device=deviceInfo
 		foundServices[endpointID]=foundService
-		os_log("addFoundDevice: name=%{public}@ id=%{public}@ delegates=%d previous=%{public}@", log: pyontaLog, type: .info, deviceInfo.name, endpointID, shareExtensionDelegates.count, hadPreviousDevice ? "yes(update)" : "no(add)")
+#if DEBUG
+		os_log("addFoundDevice: name=%{private}@ id=%{private}@ delegates=%d previous=%{public}@", log: pyontaLog, type: .info, deviceInfo.name, endpointID, shareExtensionDelegates.count, hadPreviousDevice ? "yes(update)" : "no(add)")
+#endif
 		for delegate in shareExtensionDelegates{
 			if hadPreviousDevice {
 				delegate.updateDevice(device: deviceInfo)
@@ -605,10 +775,28 @@ public class NearbyConnectionManager : NSObject, NetServiceDelegate, InboundNear
 
 	private func maybeRemoveFoundDevice(service:NWBrowser.Result){
 		guard let endpointID=endpointID(for: service) else {return}
+		removeFoundDevice(endpointID: endpointID, reason: "browser result removed")
+	}
+
+	private func removeFoundDevice(endpointID:String, reason:String){
 		deviceNameResolver.cancelLookup(for: endpointID)
 		guard let _=foundServices.removeValue(forKey: endpointID) else {return}
+		os_log("Removing discovered device: id=%{private}@ reason=%{public}@", log: pyontaLog, type: .info, endpointID, reason)
 		for delegate in shareExtensionDelegates {
 			delegate.removeDevice(id: endpointID)
+		}
+	}
+
+	private func clearFoundDevices(reason:String){
+		guard !foundServices.isEmpty else { return }
+		let endpointIDs=Array(foundServices.keys)
+		foundServices.removeAll()
+		deviceNameResolver.cancelAll()
+		os_log("Clearing discovered devices: count=%d reason=%{public}@", log: pyontaLog, type: .info, endpointIDs.count, reason)
+		for endpointID in endpointIDs {
+			for delegate in shareExtensionDelegates {
+				delegate.removeDevice(id: endpointID)
+			}
 		}
 	}
 	
@@ -641,7 +829,7 @@ public class NearbyConnectionManager : NSObject, NetServiceDelegate, InboundNear
 	
 	public func startOutgoingTransfer(deviceID:String, delegate:ShareExtensionDelegate, urls:[URL]){
 		guard let info=foundServices[deviceID] else {return}
-		os_log("Starting outgoing file transfer: id=%{public}@ endpoint=%{public}@ interfaces=%{public}@", log: pyontaLog, type: .info, deviceID, "\(info.service.endpoint)", "\(info.service.interfaces)")
+		os_log("Starting outgoing file transfer: id=%{private}@ endpoint=%{private}@ interfaces=%{private}@", log: pyontaLog, type: .info, deviceID, "\(info.service.endpoint)", "\(info.service.interfaces)")
 		let tcp=NWProtocolTCP.Options.init()
 		tcp.noDelay=true
 		let nwconn=NWConnection(to: info.service.endpoint, using: NWParameters(tls: .none, tcp: tcp))
@@ -655,7 +843,7 @@ public class NearbyConnectionManager : NSObject, NetServiceDelegate, InboundNear
 
 	public func startOutgoingTransfer(deviceID:String, delegate:ShareExtensionDelegate, text:String, isURL:Bool){
 		guard let info=foundServices[deviceID] else {return}
-		os_log("Starting outgoing text transfer: id=%{public}@ endpoint=%{public}@ interfaces=%{public}@", log: pyontaLog, type: .info, deviceID, "\(info.service.endpoint)", "\(info.service.interfaces)")
+		os_log("Starting outgoing text transfer: id=%{private}@ endpoint=%{private}@ interfaces=%{private}@", log: pyontaLog, type: .info, deviceID, "\(info.service.endpoint)", "\(info.service.interfaces)")
 		let tcp=NWProtocolTCP.Options.init()
 		tcp.noDelay=true
 		let nwconn=NWConnection(to: info.service.endpoint, using: NWParameters(tls: .none, tcp: tcp))
@@ -694,6 +882,9 @@ public class NearbyConnectionManager : NSObject, NetServiceDelegate, InboundNear
 			transfer.delegate.connectionFailed(with: failedWithError)
 		}
 		outgoingTransfers.removeValue(forKey: connection.id)
+		if shouldRemoveFoundDevice(after: failedWithError) {
+			removeFoundDevice(endpointID: connection.id, reason: "outgoing connection failed")
+		}
 	}
 	
 	func outboundConnectionTransferFinished(connection: OutboundNearbyConnection) {
@@ -702,5 +893,15 @@ public class NearbyConnectionManager : NSObject, NetServiceDelegate, InboundNear
 			transfer.delegate.transferFinished()
 		}
 		outgoingTransfers.removeValue(forKey: connection.id)
+	}
+
+	private func shouldRemoveFoundDevice(after error:Error) -> Bool{
+		guard let nearbyError=error as? NearbyError else { return false }
+		switch nearbyError {
+		case .inputOutput, .canceled(.timedOut):
+			return true
+		default:
+			return false
+		}
 	}
 }

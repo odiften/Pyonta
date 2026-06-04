@@ -31,17 +31,23 @@ final class NearbyDeviceNameResolver {
     func resolveName(for service: NWBrowser.Result, endpointID: String, completion: @escaping (String) -> Void) {
         let lookupToken = UUID()
         lookupTokens[endpointID] = lookupToken
-        os_log("resolveName start: endpointID=%{public}@", log: resolverLog, type: .info, endpointID)
+#if DEBUG
+        os_log("resolveName start: endpointID=%{private}@", log: resolverLog, type: .info, endpointID)
+#endif
 
         resolveAdvertisedHostname(for: service) { [weak self] hostname in
             guard let self else { return }
             guard self.lookupTokens[endpointID] == lookupToken else { return }
             self.lookupTokens.removeValue(forKey: endpointID)
             guard let hostname else {
-                os_log("resolveName failed: endpointID=%{public}@ (no hostname)", log: resolverLog, type: .info, endpointID)
+#if DEBUG
+                os_log("resolveName failed: endpointID=%{private}@ (no hostname)", log: resolverLog, type: .info, endpointID)
+#endif
                 return
             }
-            os_log("resolveName ok: endpointID=%{public}@ hostname=%{public}@", log: resolverLog, type: .info, endpointID, hostname)
+#if DEBUG
+            os_log("resolveName ok: endpointID=%{private}@ hostname=%{private}@", log: resolverLog, type: .info, endpointID, hostname)
+#endif
             completion(hostname)
         }
     }

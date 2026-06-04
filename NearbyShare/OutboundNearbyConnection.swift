@@ -135,7 +135,9 @@ class OutboundNearbyConnection:NearbyConnection{
 	
 	override func processReceivedFrame(frameData: Data) {
 		do{
+#if DEBUG
 			os_log("recv frame: state=%{public}@ size=%d", log: pyontaLog, type: .info, "\(currentState)", frameData.count)
+#endif
 			switch currentState {
 			case .initial:
 				protocolError()
@@ -143,9 +145,11 @@ class OutboundNearbyConnection:NearbyConnection{
 				try processUkey2ServerInit(frame: try Securegcm_Ukey2Message(serializedData: frameData), raw: frameData)
 			case .sentUkeyClientFinish:
 				let offlineFrame = try Location_Nearby_Connections_OfflineFrame(serializedData: frameData)
+#if DEBUG
 				if let json = try? offlineFrame.jsonString() {
-					os_log("  OfflineFrame: %{public}@", log: pyontaLog, type: .info, json)
+					os_log("  OfflineFrame: %{private}@", log: pyontaLog, type: .info, json)
 				}
+#endif
 				try processConnectionResponse(frame: offlineFrame)
 			default:
 				let smsg=try Securemessage_SecureMessage(serializedData: frameData)
@@ -162,9 +166,11 @@ class OutboundNearbyConnection:NearbyConnection{
 	}
 	
 	override func processTransferSetupFrame(_ frame: Sharing_Nearby_Frame) throws {
+#if DEBUG
 		if let json = try? frame.jsonString() {
-			os_log("TransferSetup parsed: state=%{public}@ json=%{public}@", log: pyontaLog, type: .info, "\(currentState)", json)
+			os_log("TransferSetup parsed: state=%{public}@ json=%{private}@", log: pyontaLog, type: .info, "\(currentState)", json)
 		}
+#endif
 		if frame.hasV1 && frame.v1.hasType, case .cancel = frame.v1.type {
 			os_log("Transfer canceled by remote", log: pyontaLog, type: .info)
 			try sendDisconnectionAndDisconnect()
@@ -202,7 +208,7 @@ class OutboundNearbyConnection:NearbyConnection{
 				guard self.currentState != .sendingFiles else { return }
 			}
 			self.lastError=NearbyError.canceled(reason: .timedOut)
-			os_log("Outgoing transfer timed out: id=%{public}@ phase=%{public}@ state=%{public}@", log: pyontaLog, type: .info, self.id, phase.rawValue, "\(self.currentState)")
+			os_log("Outgoing transfer timed out: id=%{private}@ phase=%{public}@ state=%{public}@", log: pyontaLog, type: .info, self.id, phase.rawValue, "\(self.currentState)")
 			self.connection.cancel()
 			self.reportFailure(self.lastError!)
 		}

@@ -20,6 +20,7 @@ class ShareViewController: NSViewController, ShareExtensionDelegate{
 	private var chosenDevice:RemoteDeviceInfo?
 	private var lastError:Error?
 	private var sheetWindow:NSWindow?
+	private var discoveryActive=false
 	
 	@IBOutlet var filesIcon:NSImageView?
 	@IBOutlet var filesLabel:NSTextField?
@@ -120,6 +121,7 @@ class ShareViewController: NSViewController, ShareExtensionDelegate{
 	override func viewDidLoad(){
 		super.viewDidLoad()
 		NearbyConnectionManager.shared.startDeviceDiscovery()
+		discoveryActive=true
 		NearbyConnectionManager.shared.addShareExtensionDelegate(self)
 		scheduleAutomaticQrCodeView()
 	}
@@ -136,9 +138,15 @@ class ShareViewController: NSViewController, ShareExtensionDelegate{
 	
 	override func viewWillDisappear() {
 		if chosenDevice==nil{
-			NearbyConnectionManager.shared.stopDeviceDiscovery()
+			stopDiscoveryIfNeeded()
 		}
 		NearbyConnectionManager.shared.removeShareExtensionDelegate(self)
+	}
+
+	private func stopDiscoveryIfNeeded(){
+		guard discoveryActive else { return }
+		NearbyConnectionManager.shared.stopDeviceDiscovery()
+		discoveryActive=false
 	}
 
 	@IBAction func cancel(_ sender: AnyObject?) {
@@ -186,7 +194,9 @@ class ShareViewController: NSViewController, ShareExtensionDelegate{
 			if url.isFileURL{
 				let isDirectory=UnsafeMutablePointer<ObjCBool>.allocate(capacity: 1)
 				if FileManager.default.fileExists(atPath: url.path, isDirectory: isDirectory) && isDirectory.pointee.boolValue{
+#if DEBUG
 					print("Canceling share request because URL \(url) is a directory")
+#endif
 					let cancelError = NSError(domain: NSCocoaErrorDomain, code: NSUserCancelledError, userInfo: nil)
 					self.extensionContext!.cancelRequest(withError: cancelError)
 					return
@@ -295,7 +305,8 @@ class ShareViewController: NSViewController, ShareExtensionDelegate{
 	}
 	
 	func selectDevice(device:RemoteDeviceInfo){
-		NearbyConnectionManager.shared.stopDeviceDiscovery()
+		chosenDevice=device
+		stopDiscoveryIfNeeded()
 		listViewWrapper?.animator().isHidden=true
 		progressView?.animator().isHidden=false
 		qrCodeButton?.animator().isHidden=true
@@ -303,7 +314,6 @@ class ShareViewController: NSViewController, ShareExtensionDelegate{
 		progressDeviceIcon?.image=imageForDeviceType(type: device.type)
 		progressProgressBar?.startAnimation(nil)
 		progressState?.stringValue=NSLocalizedString("Connecting", value: "Connecting...", comment: "")
-		chosenDevice=device
 		NearbyConnectionManager.shared.startOutgoingTransfer(deviceID: device.id!, delegate: self, urls: urls)
 	}
 	

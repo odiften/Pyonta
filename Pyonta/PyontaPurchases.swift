@@ -73,7 +73,7 @@ final class PyontaPurchases {
 				let purchases = PyontaPurchases.shared
 				if let error = error {
 					purchases.lastError = error
-					os_log("Failed to refresh RevenueCat customer info: %{public}@", log: pyontaPurchasesLog, type: .error, "\(error)")
+					os_log("Failed to refresh RevenueCat customer info: %{private}@", log: pyontaPurchasesLog, type: .error, "\(error)")
 				}
 				if let customerInfo = customerInfo {
 					purchases.update(customerInfo: customerInfo)
@@ -94,7 +94,7 @@ final class PyontaPurchases {
 				let purchases = PyontaPurchases.shared
 				if let error = error {
 					purchases.lastError = error
-					os_log("Failed to fetch RevenueCat offerings: %{public}@", log: pyontaPurchasesLog, type: .error, "\(error)")
+					os_log("Failed to fetch RevenueCat offerings: %{private}@", log: pyontaPurchasesLog, type: .error, "\(error)")
 				}
 				guard let packages = offerings?.current?.availablePackages, !packages.isEmpty else {
 					purchases.showAlert(messageKey: "PlusNoOfferings.Message", defaultMessage: "No Pyonta+ products are available yet. Check the RevenueCat offering and App Store Connect product setup.")
@@ -116,7 +116,7 @@ final class PyontaPurchases {
 				let purchases = PyontaPurchases.shared
 				if let error = error {
 					purchases.lastError = error
-					os_log("Failed to restore RevenueCat purchases: %{public}@", log: pyontaPurchasesLog, type: .error, "\(error)")
+					os_log("Failed to restore RevenueCat purchases: %{private}@", log: pyontaPurchasesLog, type: .error, "\(error)")
 					purchases.showAlert(messageKey: "PlusPurchaseFailed.Message", defaultMessage: "Purchase could not be completed. Please try again.")
 					return
 				}
@@ -134,7 +134,7 @@ final class PyontaPurchases {
 
 	func showPlusRequiredAlert() {
 		let alert = NSAlert()
-		alert.messageText = "Pyonta+"
+		alert.messageText = NSLocalizedString("UpgradeToPlus.Title", value: "Upgrade to Pyonta+", comment: "")
 		alert.informativeText = NSLocalizedString("PlusRequired.Message", value: "Receiving from Android requires Pyonta+. Upgrade, then ask the sender to try again.", comment: "")
 		alert.addButton(withTitle: NSLocalizedString("UpgradeToPlus", value: "Upgrade to Pyonta+…", comment: ""))
 		alert.addButton(withTitle: NSLocalizedString("Cancel", value: "Cancel", comment: ""))
@@ -147,7 +147,7 @@ final class PyontaPurchases {
 
 	private func presentPackagePicker(packages: [Package]) {
 		let alert = NSAlert()
-		alert.messageText = "Pyonta+"
+		alert.messageText = NSLocalizedString("UpgradeToPlus.Title", value: "Upgrade to Pyonta+", comment: "")
 		alert.informativeText = NSLocalizedString("PlusRequired.Message", value: "Receiving from Android requires Pyonta+. Upgrade, then ask the sender to try again.", comment: "")
 		for package in packages {
 			alert.addButton(withTitle: Self.buttonTitle(for: package))
@@ -167,7 +167,7 @@ final class PyontaPurchases {
 				if userCancelled { return }
 				if let error = error {
 					purchases.lastError = error
-					os_log("RevenueCat purchase failed: %{public}@", log: pyontaPurchasesLog, type: .error, "\(error)")
+					os_log("RevenueCat purchase failed: %{private}@", log: pyontaPurchasesLog, type: .error, "\(error)")
 					purchases.showAlert(messageKey: "PlusPurchaseFailed.Message", defaultMessage: "Purchase could not be completed. Please try again.")
 					return
 				}
@@ -188,7 +188,7 @@ final class PyontaPurchases {
 
 	private func showAlert(messageKey: String, defaultMessage: String) {
 		let alert = NSAlert()
-		alert.messageText = "Pyonta+"
+		alert.messageText = "Pyonta"
 		alert.informativeText = NSLocalizedString(messageKey, value: defaultMessage, comment: "")
 		NSApp.activate(ignoringOtherApps: true)
 		alert.runModal()

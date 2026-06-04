@@ -17,6 +17,8 @@ import SwiftECC
 import BigInt
 
 fileprivate let pyontaReceiveLog = OSLog(subsystem: "com.odiften.pyonta", category: "receive")
+fileprivate let openReceivedURLsUserDefaultsKey = "openReceivedURLs"
+fileprivate let autoAcceptUserDefaultsKey = "automaticallyAcceptFiles"
 
 class InboundNearbyConnection: NearbyConnection{
 
@@ -30,6 +32,26 @@ class InboundNearbyConnection: NearbyConnection{
 
 	private var textPayloadID:Int64=0
 	private var textPayloadIsURL:Bool=false
+
+	private static func shouldOpenReceivedURLs() -> Bool {
+		let defaults=UserDefaults.standard
+		guard defaults.bool(forKey: autoAcceptUserDefaultsKey) else { return false }
+		guard defaults.object(forKey: openReceivedURLsUserDefaultsKey) != nil else { return false }
+		return defaults.bool(forKey: openReceivedURLsUserDefaultsKey)
+	}
+
+	private static func httpURL(from text:String) -> URL? {
+		let trimmed=text.trimmingCharacters(in: .whitespacesAndNewlines)
+		guard !trimmed.contains(" "), !trimmed.contains("\n"), !trimmed.contains("\t") else { return nil }
+		guard let url=URL(string: trimmed), let scheme=url.scheme?.lowercased() else { return nil }
+		guard scheme=="http" || scheme=="https" else { return nil }
+		return url
+	}
+
+	private static func copyToPasteboard(_ text:String) {
+		NSPasteboard.general.clearContents()
+		NSPasteboard.general.setString(text, forType: .string)
+	}
 	
 	enum State{
 		case initial, receivedConnectionRequest, sentUkeyServerInit, receivedUkeyClientFinish, sentConnectionResponse, sentPairedKeyResult, receivedPairedKeyResult, waitingForUserConsent, receivingFiles, disconnected
@@ -50,7 +72,7 @@ class InboundNearbyConnection: NearbyConnection{
 		do{
 			try deletePartiallyReceivedFiles()
 		}catch{
-			print("Error deleting partially received files: \(error)")
+			os_log("Error deleting partially received files: %{private}@", log: pyontaReceiveLog, type: .error, "\(error)")
 		}
 		DispatchQueue.main.async {
 			self.delegate?.connectionWasTerminated(connection: self, error: self.lastError)
@@ -79,14 +101,18 @@ class InboundNearbyConnection: NearbyConnection{
 			}
 		}catch{
 			lastError=error
+#if DEBUG
 			print("Deserialization error: \(error) in state \(currentState)")
+#endif
 			protocolError()
 		}
 	}
 	
 	override internal func processTransferSetupFrame(_ frame:Sharing_Nearby_Frame) throws{
 		if frame.hasV1 && frame.v1.hasType, case .cancel = frame.v1.type {
+#if DEBUG
 			print("Transfer canceled")
+#endif
 			try sendDisconnectionAndDisconnect()
 			return
 		}
@@ -98,8 +124,10 @@ class InboundNearbyConnection: NearbyConnection{
 		case .receivedPairedKeyResult:
 			try processIntroductionFrame(frame)
 		default:
+#if DEBUG
 			print("Unexpected connection state in processTransferSetupFrame: \(currentState)")
 			print(frame)
+#endif
 		}
 	}
 	
@@ -131,14 +159,21 @@ class InboundNearbyConnection: NearbyConnection{
 	override func processBytesPayload(payload: Data, id: Int64) throws -> Bool {
 		if id==textPayloadID{
 			if let s=String(data: payload, encoding: .utf8){
-				if textPayloadIsURL, let url=URL(string: s){
-					NSWorkspace.shared.open(url)
-				}else{
-					DispatchQueue.main.async {
-						NSPasteboard.general.clearContents()
-						NSPasteboard.general.setString(s, forType: .string)
+				DispatchQueue.main.async {
+					if self.textPayloadIsURL,
+					   Self.shouldOpenReceivedURLs(),
+					   let url=Self.httpURL(from: s),
+					   NSWorkspace.shared.open(url) {
+						return
 					}
+					Self.copyToPasteboard(s)
 				}
+				os_log("Received text payload: id=%{private}@ kind=%{public}@ bytes=%d",
+					   log: pyontaReceiveLog,
+					   type: .info,
+					   "\(id)",
+					   textPayloadIsURL ? "url" : "text",
+					   payload.count)
 			}
 			try sendDisconnectionAndDisconnect()
 			return true
@@ -166,7 +201,7 @@ class InboundNearbyConnection: NearbyConnection{
 		guard let deviceName=String(data: endpointInfo[18..<(18+deviceNameLength)], encoding: .utf8) else { throw NearbyError.protocolError("Device name is not valid UTF-8") }
 		let rawDeviceType:Int=Int(endpointInfo[0] & 7) >> 1
 		remoteDeviceInfo=RemoteDeviceInfo(name: deviceName, type: RemoteDeviceInfo.DeviceType.fromRawValue(value: rawDeviceType))
-		os_log("Inbound connection request: id=%{public}@ device=%{public}@", log: pyontaReceiveLog, type: .info, id, deviceName)
+		os_log("Inbound connection request: id=%{private}@ device=%{private}@", log: pyontaReceiveLog, type: .info, id, deviceName)
 		currentState = .receivedConnectionRequest
 	}
 	
@@ -278,7 +313,9 @@ class InboundNearbyConnection: NearbyConnection{
 			try sendTransferSetupFrame(pairedEncryption)
 			currentState = .sentConnectionResponse
 		} else {
+#if DEBUG
 			print("Unhandled offline frame plaintext: \(frame)")
+#endif
 		}
 	}
 	
@@ -342,24 +379,28 @@ class InboundNearbyConnection: NearbyConnection{
 			DispatchQueue.main.async {
 				self.delegate?.obtainUserConsent(for: metadata, from: self.remoteDeviceInfo!, connection: self)
 			}
-		}else if frame.v1.introduction.textMetadata.count==1{
-			let meta=frame.v1.introduction.textMetadata[0]
-			if case .url=meta.type{
-				textPayloadID=meta.payloadID
-				textPayloadIsURL=true
-				let metadata=TransferMetadata(files: [], id: id, pinCode: pinCode, textDescription: meta.textTitle, kind: .url)
-				scheduleUserConsentTimeout()
-				DispatchQueue.main.async {
-					self.delegate?.obtainUserConsent(for: metadata, from: self.remoteDeviceInfo!, connection: self)
-				}
-			}else if case .text=meta.type{
-				textPayloadID=meta.payloadID
-				textPayloadIsURL=false
-				let title=meta.textTitle.isEmpty ? NSLocalizedString("ClipboardText", value: "Text", comment: "") : meta.textTitle
-				let metadata=TransferMetadata(files: [], id: id, pinCode: pinCode, textDescription: title, kind: .text)
-				scheduleUserConsentTimeout()
-				DispatchQueue.main.async {
-					self.delegate?.obtainUserConsent(for: metadata, from: self.remoteDeviceInfo!, connection: self)
+			}else if frame.v1.introduction.textMetadata.count==1{
+				let meta=frame.v1.introduction.textMetadata[0]
+				if case .url=meta.type{
+					guard meta.hasPayloadID else { throw NearbyError.requiredFieldMissing("introduction.textMetadata.payloadID") }
+					textPayloadID=meta.payloadID
+					textPayloadIsURL=true
+					let metadata=TransferMetadata(files: [], id: id, pinCode: pinCode, textDescription: meta.textTitle, kind: .url)
+					os_log("Incoming URL metadata: id=%{private}@ payload=%{private}@", log: pyontaReceiveLog, type: .info, id, "\(meta.payloadID)")
+					scheduleUserConsentTimeout()
+					DispatchQueue.main.async {
+						self.delegate?.obtainUserConsent(for: metadata, from: self.remoteDeviceInfo!, connection: self)
+					}
+				}else if case .text=meta.type{
+					guard meta.hasPayloadID else { throw NearbyError.requiredFieldMissing("introduction.textMetadata.payloadID") }
+					textPayloadID=meta.payloadID
+					textPayloadIsURL=false
+					let title=meta.textTitle.isEmpty ? NSLocalizedString("ClipboardText", value: "Text", comment: "") : meta.textTitle
+					let metadata=TransferMetadata(files: [], id: id, pinCode: pinCode, textDescription: title, kind: .text)
+					os_log("Incoming text metadata: id=%{private}@ payload=%{private}@", log: pyontaReceiveLog, type: .info, id, "\(meta.payloadID)")
+					scheduleUserConsentTimeout()
+					DispatchQueue.main.async {
+						self.delegate?.obtainUserConsent(for: metadata, from: self.remoteDeviceInfo!, connection: self)
 				}
 			}else{
 				rejectTransfer(with: .unsupportedAttachmentType)
@@ -452,7 +493,7 @@ class InboundNearbyConnection: NearbyConnection{
 			try sendTransferSetupFrame(frame)
 			try sendDisconnectionAndDisconnect()
 		}catch{
-			print("Error \(error)")
+			os_log("Error rejecting incoming transfer: %{private}@", log: pyontaReceiveLog, type: .error, "\(error)")
 			protocolError()
 		}
 	}
@@ -469,7 +510,7 @@ class InboundNearbyConnection: NearbyConnection{
 		let workItem=DispatchWorkItem { [weak self] in
 			guard let self=self else { return }
 			guard self.currentState == .waitingForUserConsent else { return }
-			os_log("Inbound transfer timed out waiting for user consent: id=%{public}@", log: pyontaReceiveLog, type: .info, self.id)
+			os_log("Inbound transfer timed out waiting for user consent: id=%{private}@", log: pyontaReceiveLog, type: .info, self.id)
 			self.lastError=NearbyError.canceled(reason: .timedOut)
 			self.rejectTransfer(with: .timedOut)
 		}

@@ -54,13 +54,14 @@ struct ToggleMenuRow: View {
 
 struct CustomToggleSwitch: View {
 	@Binding var isOn: Bool
+	var isEnabled: Bool = true
 	private let trackWidth: CGFloat = 36
 	private let trackHeight: CGFloat = 20
 	private let knobSize: CGFloat = 16
 	var body: some View {
 		ZStack(alignment: isOn ? .trailing : .leading) {
 			Capsule()
-				.fill(isOn ? Color(NSColor.controlAccentColor) : Color(NSColor.tertiaryLabelColor))
+				.fill(isOn && isEnabled ? Color(NSColor.controlAccentColor) : Color(NSColor.tertiaryLabelColor))
 				.frame(width: trackWidth, height: trackHeight)
 			Circle()
 				.fill(Color.white)
@@ -71,6 +72,7 @@ struct CustomToggleSwitch: View {
 		.frame(width: trackWidth, height: trackHeight)
 		.contentShape(Capsule())
 		.onTapGesture {
+			guard isEnabled else { return }
 			withAnimation(.easeInOut(duration: 0.15)) {
 				isOn.toggle()
 			}
@@ -78,21 +80,50 @@ struct CustomToggleSwitch: View {
 	}
 }
 
+struct DependentToggleMenuRow: View {
+	@ObservedObject var state: BoolToggleState
+	@ObservedObject var enablingState: BoolToggleState
+	let label: String
+	var body: some View {
+		let isEnabled = enablingState.isOn
+		HStack(spacing: 8) {
+			Text(label)
+			Spacer(minLength: 8)
+			CustomToggleSwitch(isOn: $state.isOn, isEnabled: isEnabled)
+		}
+		.padding(.horizontal, 14)
+		.padding(.vertical, 4)
+		.frame(maxWidth: .infinity)
+		.opacity(isEnabled ? 1 : 0.45)
+	}
+}
+
 @main
 class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDelegate, NSMenuDelegate, MainAppDelegate{
 	static let autoAcceptKey="automaticallyAcceptFiles"
+	static let openReceivedURLsKey="openReceivedURLs"
 	static let visibilityKey="visibleToEveryone"
 	static let launchAtLoginKey="launchAtLogin"
 	private var statusItem:NSStatusItem?
 	private var activeIncomingTransfers:[String:TransferInfo]=[:]
 	private var sendWindowController:SendWindowController?
 	private let autoAcceptToggleState = BoolToggleState(key: AppDelegate.autoAcceptKey, defaultValue: false)
+	private let openReceivedURLsToggleState = BoolToggleState(key: AppDelegate.openReceivedURLsKey, defaultValue: false)
 	private let visibilityToggleState = BoolToggleState(key: AppDelegate.visibilityKey, defaultValue: true)
 	// macOS 12 以前ではメニューに表示しないが、状態自体は保持しておく（13 にアップ時にそのまま使える）
 	private let launchAtLoginToggleState = BoolToggleState(key: AppDelegate.launchAtLoginKey, defaultValue: false)
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
 		PyontaPurchases.shared.configure()
+
+		if !autoAcceptToggleState.isOn && openReceivedURLsToggleState.isOn {
+			openReceivedURLsToggleState.isOn = false
+		}
+		autoAcceptToggleState.onChange = { [weak self] isOn in
+			if !isOn {
+				self?.openReceivedURLsToggleState.isOn = false
+			}
+		}
 
 		visibilityToggleState.onChange = { isOn in
 			if isOn {
@@ -123,6 +154,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 		let autoAcceptItem=NSMenuItem()
 		autoAcceptItem.view=makeAutoAcceptItemView()
 		menu.addItem(autoAcceptItem)
+		let openReceivedURLsItem=NSMenuItem()
+		openReceivedURLsItem.view=makeOpenReceivedURLsItemView()
+		menu.addItem(openReceivedURLsItem)
 		if #available(macOS 13.0, *) {
 			let launchItem=NSMenuItem()
 			launchItem.view=makeLaunchAtLoginItemView()
@@ -143,11 +177,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 		restorePurchasesItem.target=self
 		menu.addItem(restorePurchasesItem)
 		menu.addItem(NSMenuItem.separator())
-		let odiftenItem=NSMenuItem(title: NSLocalizedString("OdiftenContact", value: "Made by odiften / App development inquiries…", comment: ""), action: #selector(openOdiftenContact(_:)), keyEquivalent: "")
-		odiftenItem.target=self
-		odiftenItem.toolTip=NSLocalizedString("OdiftenContact.Tooltip", value: "Open a contact email to odiften.", comment: "")
-		menu.addItem(odiftenItem)
-		menu.addItem(NSMenuItem.separator())
 		menu.addItem(withTitle: NSLocalizedString("Quit", value: "Quit Pyonta", comment: ""), action: #selector(NSApplication.terminate(_:)), keyEquivalent: "")
 		statusItem=NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 		statusItem?.button?.image=NSImage(named: "MenuBarIcon")
@@ -157,7 +186,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 		let nc=UNUserNotificationCenter.current()
 		nc.requestAuthorization(options: [.alert, .sound]) { granted, err in
 			if let err=err {
-				os_log("Notification authorization failed: %{public}@", log: pyontaAppLog, type: .error, "\(err)")
+				os_log("Notification authorization failed: %{private}@", log: pyontaAppLog, type: .error, "\(err)")
 			}
 			os_log("Notification authorization result: granted=%{public}@", log: pyontaAppLog, type: .info, granted ? "yes" : "no")
 			if !granted{
@@ -270,7 +299,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 			}
 			notificationCenter.add(notificationReq) { error in
 				if let error=error {
-					os_log("Failed to add incoming transfer notification: %{public}@", log: pyontaAppLog, type: .error, "\(error)")
+					os_log("Failed to add incoming transfer notification: %{private}@", log: pyontaAppLog, type: .error, "\(error)")
 					DispatchQueue.main.async {
 						self.showIncomingTransferFallbackAlert(transfer: transfer, from: device, fileStr: fileStr)
 					}
@@ -297,6 +326,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 
 	func menuWillOpen(_ menu: NSMenu) {
 		autoAcceptToggleState.reload()
+		openReceivedURLsToggleState.reload()
+		if !autoAcceptToggleState.isOn && openReceivedURLsToggleState.isOn {
+			openReceivedURLsToggleState.isOn = false
+		}
 		visibilityToggleState.reload()
 		// Launch at login は SMAppService が真の値を持つので OS から取り直す。
 		// ユーザーがシステム設定→ログイン項目から直接 OFF にしたケースに追従するため。
@@ -311,9 +344,22 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 	private func makeAutoAcceptItemView() -> NSView {
 		return makeToggleItemView(
 			state: autoAcceptToggleState,
-			label: NSLocalizedString("AutoAcceptFiles", value: "Auto-accept files", comment: ""),
-			tooltip: NSLocalizedString("AutoAcceptFiles.Tooltip", value: "When on, anyone on your network who selects this Mac in Quick Share can send files without confirmation.", comment: "")
+			label: NSLocalizedString("AutoAcceptFiles", value: "Receive without asking", comment: ""),
+			tooltip: NSLocalizedString("AutoAcceptFiles.Tooltip", value: "When on, files, text, and URLs from Android are accepted without asking. If URL opening is also on, received URLs can open immediately.", comment: "")
 		)
+	}
+
+	private func makeOpenReceivedURLsItemView() -> NSView {
+		let row = DependentToggleMenuRow(
+			state: openReceivedURLsToggleState,
+			enablingState: autoAcceptToggleState,
+			label: NSLocalizedString("OpenReceivedURLs", value: "Open URLs automatically", comment: "")
+		)
+		let host = NSHostingView(rootView: row)
+		host.frame = NSRect(x: 0, y: 0, width: 280, height: 28)
+		host.autoresizingMask = [.width]
+		host.toolTip = NSLocalizedString("OpenReceivedURLs.Tooltip", value: "Available when Receive without asking is on. When on, URLs from Android open in your default browser immediately; when off, URLs are copied to clipboard.", comment: "")
+		return host
 	}
 
 	private func makeVisibilityItemView() -> NSView {
@@ -347,13 +393,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 
 	@objc func restorePurchases(_ sender: Any?) {
 		PyontaPurchases.shared.restorePurchases()
-	}
-
-	@objc func openOdiftenContact(_ sender: Any?) {
-		let subject="Pyonta app inquiry".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "Pyonta%20app%20inquiry"
-		if let url=URL(string: "mailto:info@odiften.com?subject=\(subject)") {
-			NSWorkspace.shared.open(url)
-		}
 	}
 
 	@objc func sendFiles(_ sender: Any?) {
@@ -405,6 +444,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 		return scheme=="http" || scheme=="https"
 	}
 
+	private static func shouldOpenReceivedURLs() -> Bool {
+		let defaults=UserDefaults.standard
+		guard defaults.bool(forKey: autoAcceptKey) else { return false }
+		guard defaults.object(forKey: openReceivedURLsKey) != nil else { return false }
+		return defaults.bool(forKey: openReceivedURLsKey)
+	}
+
 	func incomingTransfer(id: String, didFinishWith error: Error?) {
 		guard let transfer=self.activeIncomingTransfers[id] else {return}
 		if let error=error{
@@ -443,11 +489,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 			let notificationContent=UNMutableNotificationContent()
 			notificationContent.title="Pyonta"
 			switch transfer.transfer.kind{
-			case .text:
-				notificationContent.body=String(format: NSLocalizedString("ReceivedTextToClipboard", value: "Text from %@ copied to clipboard", comment: ""), arguments: [transfer.device.name])
-			case .url:
-				notificationContent.body=String(format: NSLocalizedString("ReceivedURLOpened", value: "URL from %@ opened in browser", comment: ""), arguments: [transfer.device.name])
-			case .files:
+				case .text:
+					notificationContent.body=String(format: NSLocalizedString("ReceivedTextToClipboard", value: "Text from %@ copied to clipboard", comment: ""), arguments: [transfer.device.name])
+				case .url:
+					let opensURL=AppDelegate.shouldOpenReceivedURLs()
+					let key=opensURL ? "ReceivedURLOpened" : "ReceivedURLToClipboard"
+					let fallback=opensURL ? "URL from %@ opened in browser" : "URL from %@ copied to clipboard"
+					notificationContent.body=String(format: NSLocalizedString(key, value: fallback, comment: ""), arguments: [transfer.device.name])
+				case .files:
 				let fileStr:String
 				if transfer.transfer.files.count==1{
 					fileStr=transfer.transfer.files[0].name
