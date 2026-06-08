@@ -82,22 +82,26 @@ def text_size(draw: ImageDraw.ImageDraw, text: str, fnt: ImageFont.FreeTypeFont)
 
 def wrap(draw: ImageDraw.ImageDraw, text: str, fnt: ImageFont.FreeTypeFont, max_width: int) -> list[str]:
     lines: list[str] = []
+    no_line_start = "、。，．）」』】!?！？:：;；"
     for paragraph in text.split("\n"):
         if not paragraph:
             lines.append("")
             continue
-        has_spaces = " " in paragraph
-        units = paragraph.split(" ") if has_spaces else re.findall(r"[A-Za-z0-9+./-]+|.", paragraph)
+        units = re.findall(r"[A-Za-z0-9+./-]+|[ァ-ヶー]+|[ぁ-ん]+|[一-龯々]+|\s+|.", paragraph)
         current = ""
         for unit in units:
-            candidate = f"{current} {unit}".strip() if has_spaces else current + unit
+            if unit.isspace() and not current:
+                continue
+            candidate = current + unit
             if text_size(draw, candidate, fnt)[0] <= max_width or not current:
                 current = candidate
+            elif unit in no_line_start:
+                current += unit
             else:
-                lines.append(current)
-                current = unit
+                lines.append(current.rstrip())
+                current = "" if unit.isspace() else unit.lstrip()
         if current:
-            lines.append(current)
+            lines.append(current.rstrip())
     return lines
 
 
@@ -123,6 +127,15 @@ def center_text(draw, rect, text, fnt, fill):
     draw.text((x1 + (x2 - x1 - tw) / 2, y1 + (y2 - y1 - th) / 2 - 2), text, font=fnt, fill=fill)
 
 
+def app_icon(size: int) -> Image.Image:
+    icon = Image.open(ICON).convert("RGBA").resize((size, size), Image.Resampling.LANCZOS)
+    mask = Image.new("L", (size, size), 0)
+    d = ImageDraw.Draw(mask)
+    d.rounded_rectangle((0, 0, size, size), radius=max(12, int(size * 0.18)), fill=255)
+    icon.putalpha(mask)
+    return icon
+
+
 def base(locale: str, title: str, body: str, accent: str) -> tuple[Image.Image, ImageDraw.ImageDraw]:
     img = Image.new("RGBA", (W, H), BG)
     d = ImageDraw.Draw(img)
@@ -130,8 +143,7 @@ def base(locale: str, title: str, body: str, accent: str) -> tuple[Image.Image, 
     d.ellipse((-260, -220, 720, 680), fill=rgba(BG2, 255))
     d.ellipse((2150, 1210, 3240, 2220), fill=rgba("#EDF4EA", 255))
 
-    icon = Image.open(ICON).convert("RGBA").resize((170, 170), Image.Resampling.LANCZOS)
-    img.alpha_composite(icon, (190, 170))
+    img.alpha_composite(app_icon(170), (190, 170))
     d.text((385, 196), "Pyonta", font=font(64, "bold"), fill=INK)
     d.text((388, 280), "Quick Share for Mac", font=font(34, "medium"), fill=MUTED)
 
@@ -321,15 +333,15 @@ def draw_plus_alert(img: Image.Image, locale: str, rect) -> None:
     shadow(img, rect, 36, 55)
     rounded(d, rect, 36, PANEL, "#CCD6DE", 2)
     x1, y1, x2, _ = rect
-    icon = Image.open(ICON).convert("RGBA").resize((110, 110), Image.Resampling.LANCZOS)
-    img.alpha_composite(icon, (x1 + 60, y1 + 58))
+    img.alpha_composite(app_icon(110), (x1 + 60, y1 + 58))
     d.text((x1 + 200, y1 + 55), tr("UpgradeToPlus.Title", locale, "Upgrade to Pyonta+"), font=font(46, "bold"), fill=INK)
     msg = tr(
         "PlusRequired.Message",
         locale,
         "Receiving from Android requires Pyonta+. Upgrade, then ask the sender to try again.",
     )
-    draw_text(d, (x1 + 200, y1 + 128), msg, font(30, "regular"), MUTED, x2 - x1 - 285, 10)
+    msg_font = font(26 if locale == "ja" else 30, "regular")
+    draw_text(d, (x1 + 200, y1 + 128), msg, msg_font, MUTED, x2 - x1 - 285, 10)
     cancel = "キャンセル" if locale == "ja" else "Cancel"
     d.rounded_rectangle((x2 - 415, y1 + 310, x2 - 245, y1 + 370), radius=18, fill="#EEF3F7", outline=LINE)
     center_text(d, (x2 - 415, y1 + 310, x2 - 245, y1 + 370), cancel, font(26, "medium"), INK)
@@ -340,7 +352,7 @@ def draw_plus_alert(img: Image.Image, locale: str, rect) -> None:
 def screenshot_plus(locale: str) -> None:
     title = {
         "en": "Unlock receiving with Pyonta+",
-        "ja": "Android からの受信は Pyonta+ で解放",
+        "ja": "Androidからの受信を\nPyonta+ で解放",
     }[locale]
     body = {
         "en": "Sending from Mac stays free. Pyonta+ unlocks the main Android-to-Mac receiving flow that saves time every day.",
@@ -349,7 +361,7 @@ def screenshot_plus(locale: str) -> None:
     img, d = base(locale, title, body, BLUE)
     draw_mac_window(img, (1160, 330, 2500, 1330), "Pyonta")
     d.rectangle((1202, 452, 2458, 1240), fill="#F3F6F8")
-    draw_plus_alert(img, locale, (1370, 610, 2310, 1040))
+    draw_plus_alert(img, locale, (1300, 610, 2400, 1040))
     chips = {
         "en": ["Monthly", "Yearly trial", "Lifetime"],
         "ja": ["月額", "年額トライアル", "買い切り"],
@@ -368,7 +380,7 @@ def review_screenshot(locale: str) -> None:
     d = ImageDraw.Draw(img)
     draw_mac_window(img, (560, 300, 2320, 1500), "Pyonta")
     d.rectangle((602, 422, 2278, 1410), fill="#F6F8FA")
-    draw_plus_alert(img, locale, (900, 650, 1980, 1100))
+    draw_plus_alert(img, locale, (810, 650, 2070, 1100))
     out_dir = OUT / "review"
     out_dir.mkdir(parents=True, exist_ok=True)
     img.convert("RGB").save(out_dir / f"pyonta-plus-required-{locale}-2880x1800.png", optimize=True)
