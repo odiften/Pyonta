@@ -104,6 +104,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 	static let openReceivedURLsKey="openReceivedURLs"
 	static let visibilityKey="visibleToEveryone"
 	static let launchAtLoginKey="launchAtLogin"
+	#if DEBUG
+	private static let showPlusRequiredAlertArgument = "--pyonta-show-plus-required-alert"
+	#endif
 	private var statusItem:NSStatusItem?
 	private var activeIncomingTransfers:[String:TransferInfo]=[:]
 	private var sendWindowController:SendWindowController?
@@ -204,6 +207,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 		if visibilityToggleState.isOn {
 			NearbyConnectionManager.shared.becomeVisible()
 		}
+
+		#if DEBUG
+		if ProcessInfo.processInfo.arguments.contains(Self.showPlusRequiredAlertArgument) {
+			DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+				PyontaPurchases.shared.showPlusRequiredAlert()
+			}
+		}
+		#endif
 	}
 
 	func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
