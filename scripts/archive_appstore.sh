@@ -77,4 +77,14 @@ args+=(archive)
 
 "${args[@]}"
 
+info_plist="$archive_path/Products/Applications/Pyonta.app/Contents/Info.plist"
+actual_key="$(/usr/libexec/PlistBuddy -c "Print :RevenueCatAPIKey" "$info_plist" 2>/dev/null || true)"
+if [[ "$actual_key" != "$api_key" ]]; then
+	cat >&2 <<'EOF'
+Archive verification failed: RevenueCatAPIKey was not injected into the app
+Info.plist. Do not upload this archive.
+EOF
+	exit 65
+fi
+
 echo "Archive created: $archive_path"

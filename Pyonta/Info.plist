@@ -6,7 +6,7 @@
 	<array>
 		<string>_FC9F5ED42C8A._tcp</string>
 	</array>
+	<key>RevenueCatAPIKey</key>
+	<string>$(REVENUECAT_API_KEY)</string>
 </dict>
 </plist>
-</content>
-</invoke>

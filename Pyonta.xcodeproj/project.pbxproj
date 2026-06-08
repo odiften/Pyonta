@@ -896,7 +896,6 @@
 				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Pyonta uses your local network to discover nearby Android devices and transfer files via Quick Share.";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
-				INFOPLIST_KEY_RevenueCatAPIKey = "$(REVENUECAT_API_KEY)";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -937,7 +936,6 @@
 				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Pyonta uses your local network to discover nearby Android devices and transfer files via Quick Share.";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
-				INFOPLIST_KEY_RevenueCatAPIKey = "$(REVENUECAT_API_KEY)";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
