@@ -36,6 +36,7 @@ final class PyontaPurchases {
 	private(set) var isConfigured = false
 	private(set) var isPlusActive = false
 	private(set) var lastError: Error?
+	private var purchaseAnchorWindow: NSWindow?
 
 	var canReceiveIncomingTransfers: Bool {
 		if isPlusActive { return true }
@@ -161,9 +162,11 @@ final class PyontaPurchases {
 	}
 
 	private func purchase(package: Package) {
+		showPurchaseAnchorWindow()
 		Purchases.shared.purchase(package: package) { _, customerInfo, error, userCancelled in
 			OperationQueue.main.addOperation {
 				let purchases = PyontaPurchases.shared
+				purchases.closePurchaseAnchorWindow()
 				if userCancelled { return }
 				if let error = error {
 					purchases.lastError = error
@@ -179,6 +182,55 @@ final class PyontaPurchases {
 				}
 			}
 		}
+	}
+
+	private func showPurchaseAnchorWindow() {
+		let window = purchaseAnchorWindow ?? makePurchaseAnchorWindow()
+		purchaseAnchorWindow = window
+		NSApp.activate(ignoringOtherApps: true)
+		window.center()
+		window.makeKeyAndOrderFront(nil)
+		window.orderFrontRegardless()
+	}
+
+	private func closePurchaseAnchorWindow() {
+		purchaseAnchorWindow?.close()
+		purchaseAnchorWindow = nil
+	}
+
+	private func makePurchaseAnchorWindow() -> NSWindow {
+		let window = NSWindow(
+			contentRect: NSRect(x: 0, y: 0, width: 420, height: 148),
+			styleMask: [.titled, .closable],
+			backing: .buffered,
+			defer: false
+		)
+		window.title = NSLocalizedString("UpgradeToPlus.Title", value: "Upgrade to Pyonta+", comment: "")
+		window.isReleasedWhenClosed = false
+		window.level = .floating
+		window.collectionBehavior = [.moveToActiveSpace, .transient]
+
+		let contentView = NSView(frame: NSRect(x: 0, y: 0, width: 420, height: 148))
+
+		let label = NSTextField(labelWithString: NSLocalizedString("PlusRequired.Message", value: "Receiving from Android requires Pyonta+. Upgrade, then ask the sender to try again.", comment: ""))
+		label.frame = NSRect(x: 24, y: 62, width: 372, height: 54)
+		label.maximumNumberOfLines = 3
+		label.lineBreakMode = .byWordWrapping
+		label.font = NSFont.systemFont(ofSize: NSFont.systemFontSize)
+		label.textColor = .labelColor
+		label.autoresizingMask = [.width, .minYMargin]
+		contentView.addSubview(label)
+
+		let progress = NSProgressIndicator(frame: NSRect(x: 24, y: 28, width: 372, height: 16))
+		progress.style = .bar
+		progress.isIndeterminate = true
+		progress.controlSize = .small
+		progress.startAnimation(nil)
+		progress.autoresizingMask = [.width, .minYMargin]
+		contentView.addSubview(progress)
+
+		window.contentView = contentView
+		return window
 	}
 
 	private func update(customerInfo: CustomerInfo) {

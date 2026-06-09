@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import StoreKit
 import SwiftUI
 import UserNotifications
 import NearbyShare
@@ -496,31 +497,54 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 			}
 			notificationContent.categoryIdentifier="ERRORS"
 			UNUserNotificationCenter.current().add(UNNotificationRequest(identifier: "transferError_"+id, content: notificationContent, trigger: nil))
-		}else if transfer.autoAccepted{
-			let notificationContent=UNMutableNotificationContent()
-			notificationContent.title="Pyonta"
-			switch transfer.transfer.kind{
-				case .text:
-					notificationContent.body=String(format: NSLocalizedString("ReceivedTextToClipboard", value: "Text from %@ copied to clipboard", comment: ""), arguments: [transfer.device.name])
-				case .url:
-					let opensURL=AppDelegate.shouldOpenReceivedURLs()
-					let key=opensURL ? "ReceivedURLOpened" : "ReceivedURLToClipboard"
-					let fallback=opensURL ? "URL from %@ opened in browser" : "URL from %@ copied to clipboard"
-					notificationContent.body=String(format: NSLocalizedString(key, value: fallback, comment: ""), arguments: [transfer.device.name])
-				case .files:
-				let fileStr:String
-				if transfer.transfer.files.count==1{
-					fileStr=transfer.transfer.files[0].name
-				}else{
-					fileStr=String.localizedStringWithFormat(NSLocalizedString("NFiles", value: "%d files", comment: ""), transfer.transfer.files.count)
+		}else{
+			PyontaReviewRequester.recordSuccessfulIncomingTransfer()
+			if transfer.autoAccepted{
+				let notificationContent=UNMutableNotificationContent()
+				notificationContent.title="Pyonta"
+				switch transfer.transfer.kind{
+					case .text:
+						notificationContent.body=String(format: NSLocalizedString("ReceivedTextToClipboard", value: "Text from %@ copied to clipboard", comment: ""), arguments: [transfer.device.name])
+					case .url:
+						let opensURL=AppDelegate.shouldOpenReceivedURLs()
+						let key=opensURL ? "ReceivedURLOpened" : "ReceivedURLToClipboard"
+						let fallback=opensURL ? "URL from %@ opened in browser" : "URL from %@ copied to clipboard"
+						notificationContent.body=String(format: NSLocalizedString(key, value: fallback, comment: ""), arguments: [transfer.device.name])
+					case .files:
+					let fileStr:String
+					if transfer.transfer.files.count==1{
+						fileStr=transfer.transfer.files[0].name
+					}else{
+						fileStr=String.localizedStringWithFormat(NSLocalizedString("NFiles", value: "%d files", comment: ""), transfer.transfer.files.count)
+					}
+					notificationContent.body=String(format: NSLocalizedString("ReceivedFiles", value: "Received %1$@ from %2$@", comment: ""), arguments: [fileStr, transfer.device.name])
 				}
-				notificationContent.body=String(format: NSLocalizedString("ReceivedFiles", value: "Received %1$@ from %2$@", comment: ""), arguments: [fileStr, transfer.device.name])
+				notificationContent.sound = .default
+				UNUserNotificationCenter.current().add(UNNotificationRequest(identifier: "received_"+id, content: notificationContent, trigger: nil))
 			}
-			notificationContent.sound = .default
-			UNUserNotificationCenter.current().add(UNNotificationRequest(identifier: "received_"+id, content: notificationContent, trigger: nil))
 		}
 		UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: ["transfer_"+id])
 		self.activeIncomingTransfers.removeValue(forKey: id)
+	}
+}
+
+private enum PyontaReviewRequester {
+	private static let successfulIncomingTransferCountKey = "PyontaSuccessfulIncomingTransferCount"
+	private static let lastRequestedVersionKey = "PyontaLastReviewRequestVersion"
+	private static let minimumSuccessfulIncomingTransfers = 3
+
+	static func recordSuccessfulIncomingTransfer(defaults: UserDefaults = .standard) {
+		let count = defaults.integer(forKey: successfulIncomingTransferCountKey) + 1
+		defaults.set(count, forKey: successfulIncomingTransferCountKey)
+		guard count >= minimumSuccessfulIncomingTransfers else { return }
+
+		let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "unknown"
+		guard defaults.string(forKey: lastRequestedVersionKey) != version else { return }
+		defaults.set(version, forKey: lastRequestedVersionKey)
+
+		DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+			SKStoreReviewController.requestReview()
+		}
 	}
 }
 
