@@ -276,7 +276,7 @@ class SendViewController: NSViewController, ShareExtensionDelegate {
 			progressDeviceSecondaryIcon?.isHidden=false
 			dismissDelayed()
 		}else{
-			let alert=NSAlert(error: error)
+			let alert=sendFailureAlert(for: error)
 			alert.beginSheetModal(for: view.window!) { resp in
 				self.view.window?.close()
 			}
@@ -318,6 +318,25 @@ class SendViewController: NSViewController, ShareExtensionDelegate {
 		DispatchQueue.main.asyncAfter(deadline: .now()+2.0){ [weak self] in
 			self?.view.window?.close()
 		}
+	}
+
+	private func sendFailureAlert(for error:Error) -> NSAlert {
+		let alert=NSAlert()
+		let deviceName=chosenDevice?.name ?? NSLocalizedString("UnknownAndroidDevice", value: "Android device", comment: "")
+		alert.messageText=String(format: NSLocalizedString("SendError.Title", value: "Could not send to %@", comment: ""), arguments: [deviceName])
+		alert.informativeText=userFacingSendFailureMessage(for: error)
+		alert.addButton(withTitle: "OK")
+		return alert
+	}
+
+	private func userFacingSendFailureMessage(for error:Error) -> String {
+		if let nearbyError=error as? NearbyError {
+			if case .canceled = nearbyError {
+				return error.localizedDescription
+			}
+			return NSLocalizedString("SendError.RetryQuickShare", value: "Quick Share could not complete the transfer. Open Quick Share on the Android device and try again.", comment: "")
+		}
+		return error.localizedDescription
 	}
 }
 

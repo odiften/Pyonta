@@ -11,7 +11,6 @@ import MetalKit
 
 class QrCodeBackgroundView:MTKView{
 	private var commandQueue:MTLCommandQueue?
-	private var commandBuffer:MTLCommandBuffer?
 	
 	override func awakeFromNib() {
 		super.awakeFromNib()
@@ -29,12 +28,11 @@ class QrCodeBackgroundView:MTKView{
 		colorPixelFormat = .rgba16Float
 		
 		commandQueue=device!.makeCommandQueue()
-		commandBuffer=commandQueue!.makeCommandBuffer()
 		draw()
 	}
 	
 	override func draw(_ dirtyRect: NSRect) {
-		guard let commandBuffer=commandBuffer else {return}
+		guard let commandBuffer=commandQueue?.makeCommandBuffer() else {return}
 		if let descriptor=currentRenderPassDescriptor, let encoder=commandBuffer.makeRenderCommandEncoder(descriptor: descriptor){
 			encoder.endEncoding()
 			if let currentDrawable=currentDrawable{

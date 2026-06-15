@@ -154,8 +154,9 @@ class NearbyConnection{
 		}
 	}
 	
-	internal func sendFrameAsync(_ frame:Data, completion:(()->Void)?=nil){
+	internal func sendFrameAsync(_ frame:Data, completion:((Error?)->Void)?=nil){
 		if connectionClosed{
+			completion?(NearbyError.protocolError("Connection closed"))
 			return
 		}
 		var lengthPrefixedData=Data(capacity: frame.count+4)
@@ -168,13 +169,16 @@ class NearbyConnection{
 		])
 		lengthPrefixedData.append(frame)
 		connection.send(content: lengthPrefixedData, completion: .contentProcessed({ error in
-			if let completion=completion{
-				completion()
+			if let error=error{
+				self.lastError=error
+				os_log("Socket send failed: id=%{private}@ endpoint=%{private}@ error=%{private}@", log: pyontaConnectionLog, type: .error, self.id, "\(self.connection.endpoint)", "\(error)")
+				self.protocolError()
 			}
+			completion?(error)
 		}))
 	}
 	
-	internal func encryptAndSendOfflineFrame(_ frame:Location_Nearby_Connections_OfflineFrame, completion:(()->Void)?=nil) throws{
+	internal func encryptAndSendOfflineFrame(_ frame:Location_Nearby_Connections_OfflineFrame, completion:((Error?)->Void)?=nil) throws{
 		var d2dMsg=Securegcm_DeviceToDeviceMessage()
 		serverSeq+=1
 		d2dMsg.sequenceNumber=serverSeq
@@ -219,7 +223,7 @@ class NearbyConnection{
 		try sendBytesPayload(data: try frame.serializedData(), id: Int64.random(in: Int64.min...Int64.max))
 	}
 	
-	internal func sendBytesPayload(data:Data, id:Int64) throws{
+	internal func sendBytesPayload(data:Data, id:Int64, completion:((Error?)->Void)?=nil) throws{
 		var transfer=Location_Nearby_Connections_PayloadTransferFrame()
 		transfer.packetType = .data
 		transfer.payloadChunk.offset=0
@@ -235,13 +239,26 @@ class NearbyConnection{
 		wrapper.v1=Location_Nearby_Connections_V1Frame()
 		wrapper.v1.type = .payloadTransfer
 		wrapper.v1.payloadTransfer=transfer
-		try encryptAndSendOfflineFrame(wrapper)
+		let firstChunk=wrapper
 		
 		transfer.payloadChunk.flags=1 // .lastChunk
 		transfer.payloadChunk.offset=Int64(transfer.payloadChunk.body.count)
 		transfer.payloadChunk.clearBody()
 		wrapper.v1.payloadTransfer=transfer
-		try encryptAndSendOfflineFrame(wrapper)
+		let lastChunk=wrapper
+		try encryptAndSendOfflineFrame(firstChunk) { error in
+			guard error == nil else {
+				completion?(error)
+				return
+			}
+			do{
+				try self.encryptAndSendOfflineFrame(lastChunk, completion: completion)
+			}catch{
+				self.lastError=error
+				self.protocolError()
+				completion?(error)
+			}
+		}
 	}
 	
 	internal func decryptAndProcessReceivedSecureMessage(_ smsg:Securemessage_SecureMessage) throws{
@@ -430,11 +447,13 @@ class NearbyConnection{
 		offlineFrame.v1.disconnection=Location_Nearby_Connections_DisconnectionFrame()
 		
 		if encryptionDone{
-			try encryptAndSendOfflineFrame(offlineFrame) {
+			try encryptAndSendOfflineFrame(offlineFrame) { error in
+				guard error == nil else { return }
 				self.disconnect()
 			}
 		}else{
-			sendFrameAsync(try offlineFrame.serializedData()) {
+			sendFrameAsync(try offlineFrame.serializedData()) { error in
+				guard error == nil else { return }
 				self.disconnect()
 			}
 		}

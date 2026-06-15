@@ -471,9 +471,20 @@ class OutboundNearbyConnection:NearbyConnection{
 		case .files:
 			return
 		}
-		try sendBytesPayload(data: bytes, id: textPayloadID)
-		reportFinished()
-		try sendDisconnectionAndDisconnect()
+		try sendBytesPayload(data: bytes, id: textPayloadID) { error in
+			if let error=error{
+				self.lastError=error
+				self.protocolError()
+				return
+			}
+			self.reportFinished()
+			do{
+				try self.sendDisconnectionAndDisconnect()
+			}catch{
+				self.lastError=error
+				self.protocolError()
+			}
+		}
 	}
 
 	private static func textTitleForPlainText(_ text:String) -> String{
@@ -530,7 +541,12 @@ class OutboundNearbyConnection:NearbyConnection{
 		wrapper.v1=Location_Nearby_Connections_V1Frame()
 		wrapper.v1.type = .payloadTransfer
 		wrapper.v1.payloadTransfer=transfer
-		try encryptAndSendOfflineFrame(wrapper, completion: {
+		try encryptAndSendOfflineFrame(wrapper, completion: { error in
+			if let error=error{
+				self.lastError=error
+				self.protocolError()
+				return
+			}
 			do{
 				try self.sendNextFileChunk()
 			}catch{
@@ -560,7 +576,12 @@ class OutboundNearbyConnection:NearbyConnection{
 			wrapper.v1=Location_Nearby_Connections_V1Frame()
 			wrapper.v1.type = .payloadTransfer
 			wrapper.v1.payloadTransfer=transfer
-			try encryptAndSendOfflineFrame(wrapper)
+			try encryptAndSendOfflineFrame(wrapper) { error in
+				if let error=error{
+					self.lastError=error
+					self.protocolError()
+				}
+			}
 			#if DEBUG
 			print("sent EOF, current transfer: \(String(describing: currentTransfer))")
 			#endif
