@@ -105,10 +105,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 	static let openReceivedURLsKey="openReceivedURLs"
 	static let visibilityKey="visibleToEveryone"
 	static let launchAtLoginKey="launchAtLogin"
+	private static let firstLaunchNoticeShownKey="firstLaunchNoticeShown"
 	#if DEBUG
 	private static let showPlusRequiredAlertArgument = "--pyonta-show-plus-required-alert"
 	#endif
 	private var statusItem:NSStatusItem?
+	private var plusMenuItem:NSMenuItem?
+	private var upgradePlusItem:NSMenuItem?
+	private var restorePurchasesItem:NSMenuItem?
 	private var activeIncomingTransfers:[String:TransferInfo]=[:]
 	private var sendWindowController:SendWindowController?
 	private let autoAcceptToggleState = BoolToggleState(key: AppDelegate.autoAcceptKey, defaultValue: false)
@@ -174,18 +178,31 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 		sendClipboardItem.target=self
 		menu.addItem(sendClipboardItem)
 		menu.addItem(NSMenuItem.separator())
+		let plusMenu=NSMenu()
+		plusMenu.delegate=self
+		let plusMenuItem=NSMenuItem(title: NSLocalizedString("PlusMenu", value: "Pyonta+", comment: ""), action: nil, keyEquivalent: "")
+		plusMenuItem.submenu=plusMenu
+		menu.addItem(plusMenuItem)
+		self.plusMenuItem=plusMenuItem
 		let upgradeItem=NSMenuItem(title: NSLocalizedString("UpgradeToPlus", value: "Upgrade to Pyonta+…", comment: ""), action: #selector(upgradeToPlus(_:)), keyEquivalent: "")
 		upgradeItem.target=self
-		menu.addItem(upgradeItem)
+		plusMenu.addItem(upgradeItem)
+		upgradePlusItem=upgradeItem
 		let restorePurchasesItem=NSMenuItem(title: NSLocalizedString("RestorePurchases", value: "Restore purchases…", comment: ""), action: #selector(restorePurchases(_:)), keyEquivalent: "")
 		restorePurchasesItem.target=self
-		menu.addItem(restorePurchasesItem)
+		plusMenu.addItem(restorePurchasesItem)
+		self.restorePurchasesItem=restorePurchasesItem
+		let copyDiagnosticsItem=NSMenuItem(title: NSLocalizedString("CopyDiagnostics", value: "Copy diagnostics…", comment: ""), action: #selector(copyDiagnostics(_:)), keyEquivalent: "")
+		copyDiagnosticsItem.target=self
+		menu.addItem(copyDiagnosticsItem)
 		menu.addItem(NSMenuItem.separator())
 		menu.addItem(withTitle: NSLocalizedString("Quit", value: "Quit Pyonta", comment: ""), action: #selector(NSApplication.terminate(_:)), keyEquivalent: "")
 		statusItem=NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 		statusItem?.button?.image=NSImage(named: "MenuBarIcon")
 		statusItem?.menu=menu
 		statusItem?.behavior = .removalAllowed
+		updatePlusMenuItems()
+		scheduleFirstLaunchNoticeIfNeeded()
 
 		let nc=UNUserNotificationCenter.current()
 		nc.requestAuthorization(options: [.alert, .sound]) { granted, err in
@@ -220,6 +237,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 
 	func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
 		statusItem?.isVisible=true
+		showStatusItemMenu()
 		return true
 	}
 
@@ -266,6 +284,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 
 	func obtainUserConsent(for transfer: TransferMetadata, from device: RemoteDeviceInfo) {
 		guard PyontaPurchases.shared.canReceiveIncomingTransfers else {
+			PyontaDiagnostics.recordIncomingBlockedByPlus(transfer: transfer)
 			NearbyConnectionManager.shared.submitUserConsent(transferID: transfer.id, accept: false)
 			DispatchQueue.main.async {
 				PyontaPurchases.shared.showPlusRequiredAlert()
@@ -351,6 +370,24 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 				launchAtLoginToggleState.isOn = actual
 			}
 		}
+		updatePlusMenuItems()
+		PyontaPurchases.shared.refreshCustomerInfo { [weak self] _ in
+			self?.updatePlusMenuItems()
+		}
+	}
+
+	private func updatePlusMenuItems() {
+		let purchases=PyontaPurchases.shared
+		if purchases.isPlusActive {
+			plusMenuItem?.title=NSLocalizedString("PlusStatusActive", value: "Pyonta+: Active", comment: "")
+		} else if purchases.isConfigured {
+			plusMenuItem?.title=NSLocalizedString("PlusStatusInactive", value: "Pyonta+: Not active", comment: "")
+		} else {
+			plusMenuItem?.title=NSLocalizedString("PlusStatusUnavailable", value: "Pyonta+: Unavailable", comment: "")
+		}
+		let canManagePlus=purchases.isConfigured && !purchases.isPlusActive
+		upgradePlusItem?.isEnabled=canManagePlus
+		restorePurchasesItem?.isEnabled=canManagePlus
 	}
 
 	private func makeAutoAcceptItemView() -> NSView {
@@ -400,11 +437,26 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 	}
 
 	@objc func upgradeToPlus(_ sender: Any?) {
+		guard !PyontaPurchases.shared.isPlusActive else { return }
 		PyontaPurchases.shared.presentPurchaseOptions()
 	}
 
 	@objc func restorePurchases(_ sender: Any?) {
+		guard !PyontaPurchases.shared.isPlusActive else { return }
 		PyontaPurchases.shared.restorePurchases()
+	}
+
+	@objc func copyDiagnostics(_ sender: Any?) {
+		let report=PyontaDiagnostics.makeReport()
+		let pasteboard=NSPasteboard.general
+		pasteboard.clearContents()
+		pasteboard.setString(report, forType: .string)
+
+		let alert=NSAlert()
+		alert.messageText=NSLocalizedString("DiagnosticsCopied.Title", value: "Diagnostics copied", comment: "")
+		alert.informativeText=NSLocalizedString("DiagnosticsCopied.Message", value: "Diagnostic information was copied to the clipboard. It does not include file contents, file names, shared text, URLs, device names, or IP addresses.", comment: "")
+		NSApp.activate(ignoringOtherApps: true)
+		alert.runModal()
 	}
 
 	@objc func sendFiles(_ sender: Any?) {
@@ -443,6 +495,36 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 		controller.showWindow(nil)
 	}
 
+	private func scheduleFirstLaunchNoticeIfNeeded() {
+		let defaults = UserDefaults.standard
+		guard !defaults.bool(forKey: Self.firstLaunchNoticeShownKey) else { return }
+		defaults.set(true, forKey: Self.firstLaunchNoticeShownKey)
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) { [weak self] in
+			self?.showFirstLaunchNotice()
+		}
+	}
+
+	private func showFirstLaunchNotice() {
+		let alert = NSAlert()
+		alert.messageText = NSLocalizedString("FirstLaunchNotice.Title", value: "Pyonta is running in the menu bar", comment: "")
+		alert.informativeText = NSLocalizedString("FirstLaunchNotice.Message", value: "Click the Pyonta icon in the menu bar to send files, receive from Android, upgrade to Pyonta+, or quit.", comment: "")
+		alert.addButton(withTitle: NSLocalizedString("FirstLaunchNotice.ShowMenu", value: "Show menu", comment: ""))
+		alert.addButton(withTitle: NSLocalizedString("OK", value: "OK", comment: ""))
+		NSApp.activate(ignoringOtherApps: true)
+		if alert.runModal() == .alertFirstButtonReturn {
+			showStatusItemMenu()
+		}
+	}
+
+	private func showStatusItemMenu() {
+		statusItem?.isVisible=true
+		guard let button = statusItem?.button else { return }
+		DispatchQueue.main.async {
+			NSApp.activate(ignoringOtherApps: true)
+			button.performClick(nil)
+		}
+	}
+
 	private func showClipboardEmptyAlert(){
 		let alert=NSAlert()
 		alert.messageText=NSLocalizedString("ClipboardEmpty.Title", value: "Clipboard is empty", comment: "")
@@ -465,6 +547,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 
 	func incomingTransfer(id: String, didFinishWith error: Error?) {
 		guard let transfer=self.activeIncomingTransfers[id] else {return}
+		PyontaDiagnostics.recordIncoming(transfer: transfer.transfer, autoAccepted: transfer.autoAccepted, error: error)
 		if let error=error{
 			let notificationContent=UNMutableNotificationContent()
 			notificationContent.title=String(format: NSLocalizedString("TransferError", value: "Failed to receive files from %@", comment: ""), arguments: [transfer.device.name])

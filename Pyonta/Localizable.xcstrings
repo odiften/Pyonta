@@ -1695,8 +1695,232 @@
         }
       }
     },
-    "SendError.Title": {"extractionState":"manual","localizations":{"ar":{"stringUnit":{"state":"translated","value":"تعذر الإرسال إلى %@"}},"de":{"stringUnit":{"state":"translated","value":"Senden an %@ fehlgeschlagen"}},"en":{"stringUnit":{"state":"translated","value":"Could not send to %@"}},"es":{"stringUnit":{"state":"translated","value":"No se pudo enviar a %@"}},"fr":{"stringUnit":{"state":"translated","value":"Impossible d’envoyer à %@"}},"hu":{"stringUnit":{"state":"translated","value":"Nem sikerült elküldeni ide: %@"}},"it":{"stringUnit":{"state":"translated","value":"Impossibile inviare a %@"}},"ja":{"stringUnit":{"state":"translated","value":"%@に送信できませんでした"}},"ko":{"stringUnit":{"state":"translated","value":"%@에 보낼 수 없음"}},"nl":{"stringUnit":{"state":"translated","value":"Kan niet verzenden naar %@"}},"pt-BR":{"stringUnit":{"state":"translated","value":"Não foi possível enviar para %@"}},"pt-PT":{"stringUnit":{"state":"translated","value":"Não foi possível enviar para %@"}},"ro":{"stringUnit":{"state":"translated","value":"Nu s-a putut trimite către %@"}},"ru":{"stringUnit":{"state":"translated","value":"Не удалось отправить на %@"}},"th":{"stringUnit":{"state":"translated","value":"ส่งไปยัง %@ ไม่ได้"}},"uk":{"stringUnit":{"state":"translated","value":"Не вдалося надіслати на %@"}},"zh-Hans":{"stringUnit":{"state":"translated","value":"无法发送到 %@"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"無法傳送到 %@"}}}},
-    "SendError.RetryQuickShare": {"extractionState":"manual","localizations":{"ar":{"stringUnit":{"state":"translated","value":"تعذر على Quick Share إكمال النقل. افتح Quick Share على جهاز Android وحاول مرة أخرى."}},"de":{"stringUnit":{"state":"translated","value":"Quick Share konnte die Übertragung nicht abschließen. Öffne Quick Share auf dem Android-Gerät und versuche es erneut."}},"en":{"stringUnit":{"state":"translated","value":"Quick Share could not complete the transfer. Open Quick Share on the Android device and try again."}},"es":{"stringUnit":{"state":"translated","value":"Quick Share no pudo completar la transferencia. Abre Quick Share en el dispositivo Android e inténtalo de nuevo."}},"fr":{"stringUnit":{"state":"translated","value":"Quick Share n’a pas pu terminer le transfert. Ouvrez Quick Share sur l’appareil Android et réessayez."}},"hu":{"stringUnit":{"state":"translated","value":"A Quick Share nem tudta befejezni az átvitelt. Nyisd meg a Quick Share-t az Android-eszközön, majd próbáld újra."}},"it":{"stringUnit":{"state":"translated","value":"Quick Share non ha potuto completare il trasferimento. Apri Quick Share sul dispositivo Android e riprova."}},"ja":{"stringUnit":{"state":"translated","value":"クイック共有で送信を完了できませんでした。Android端末側でクイック共有を開き直して、もう一度お試しください。"}},"ko":{"stringUnit":{"state":"translated","value":"Quick Share가 전송을 완료하지 못했습니다. Android 기기에서 Quick Share를 다시 열고 다시 시도하세요."}},"nl":{"stringUnit":{"state":"translated","value":"Quick Share kon de overdracht niet voltooien. Open Quick Share op het Android-apparaat en probeer het opnieuw."}},"pt-BR":{"stringUnit":{"state":"translated","value":"O Quick Share não conseguiu concluir a transferência. Abra o Quick Share no dispositivo Android e tente novamente."}},"pt-PT":{"stringUnit":{"state":"translated","value":"O Quick Share não conseguiu concluir a transferência. Abra o Quick Share no dispositivo Android e tente novamente."}},"ro":{"stringUnit":{"state":"translated","value":"Quick Share nu a putut finaliza transferul. Deschide Quick Share pe dispozitivul Android și încearcă din nou."}},"ru":{"stringUnit":{"state":"translated","value":"Quick Share не удалось завершить передачу. Откройте Quick Share на устройстве Android и повторите попытку."}},"th":{"stringUnit":{"state":"translated","value":"Quick Share ไม่สามารถส่งให้เสร็จได้ เปิด Quick Share บนอุปกรณ์ Android แล้วลองอีกครั้ง"}},"uk":{"stringUnit":{"state":"translated","value":"Quick Share не вдалося завершити передавання. Відкрийте Quick Share на пристрої Android і повторіть спробу."}},"zh-Hans":{"stringUnit":{"state":"translated","value":"Quick Share 无法完成传输。请在 Android 设备上重新打开 Quick Share，然后重试。"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"Quick Share 無法完成傳送。請在 Android 裝置上重新開啟 Quick Share，然後再試一次。"}}}},
+    "SendError.Title": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تعذر الإرسال إلى %@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Senden an %@ fehlgeschlagen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not send to %@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No se pudo enviar a %@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Impossible d’envoyer à %@"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nem sikerült elküldeni ide: %@"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Impossibile inviare a %@"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@に送信できませんでした"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@에 보낼 수 없음"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kan niet verzenden naar %@"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Não foi possível enviar para %@"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Não foi possível enviar para %@"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nu s-a putut trimite către %@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не удалось отправить на %@"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ส่งไปยัง %@ ไม่ได้"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не вдалося надіслати на %@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法发送到 %@"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "無法傳送到 %@"
+          }
+        }
+      }
+    },
+    "SendError.RetryQuickShare": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تعذر على Quick Share إكمال النقل. افتح Quick Share على جهاز Android وحاول مرة أخرى."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quick Share konnte die Übertragung nicht abschließen. Öffne Quick Share auf dem Android-Gerät und versuche es erneut."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quick Share could not complete the transfer. Open Quick Share on the Android device and try again."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quick Share no pudo completar la transferencia. Abre Quick Share en el dispositivo Android e inténtalo de nuevo."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quick Share n’a pas pu terminer le transfert. Ouvrez Quick Share sur l’appareil Android et réessayez."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A Quick Share nem tudta befejezni az átvitelt. Nyisd meg a Quick Share-t az Android-eszközön, majd próbáld újra."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quick Share non ha potuto completare il trasferimento. Apri Quick Share sul dispositivo Android e riprova."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "クイック共有で送信を完了できませんでした。Android端末側でクイック共有を開き直して、もう一度お試しください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quick Share가 전송을 완료하지 못했습니다. Android 기기에서 Quick Share를 다시 열고 다시 시도하세요."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quick Share kon de overdracht niet voltooien. Open Quick Share op het Android-apparaat en probeer het opnieuw."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Quick Share não conseguiu concluir a transferência. Abra o Quick Share no dispositivo Android e tente novamente."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Quick Share não conseguiu concluir a transferência. Abra o Quick Share no dispositivo Android e tente novamente."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quick Share nu a putut finaliza transferul. Deschide Quick Share pe dispozitivul Android și încearcă din nou."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quick Share не удалось завершить передачу. Откройте Quick Share на устройстве Android и повторите попытку."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quick Share ไม่สามารถส่งให้เสร็จได้ เปิด Quick Share บนอุปกรณ์ Android แล้วลองอีกครั้ง"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quick Share не вдалося завершити передавання. Відкрийте Quick Share на пристрої Android і повторіть спробу."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quick Share 无法完成传输。请在 Android 设备上重新打开 Quick Share，然后重试。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quick Share 無法完成傳送。請在 Android 裝置上重新開啟 Quick Share，然後再試一次。"
+          }
+        }
+      }
+    },
     "VisibleToEveryone": {
       "extractionState": "extracted_with_value",
       "localizations": {
@@ -1810,8 +2034,232 @@
         }
       }
     },
-    "AutoAcceptFiles": {"extractionState":"manual","localizations":{"ar":{"stringUnit":{"state":"translated","value":"الاستلام دون سؤال"}},"de":{"stringUnit":{"state":"translated","value":"Ohne Nachfrage empfangen"}},"en":{"stringUnit":{"state":"translated","value":"Receive without asking"}},"es":{"stringUnit":{"state":"translated","value":"Recibir sin preguntar"}},"fr":{"stringUnit":{"state":"translated","value":"Recevoir sans demander"}},"hu":{"stringUnit":{"state":"translated","value":"Fogadás kérdés nélkül"}},"it":{"stringUnit":{"state":"translated","value":"Ricevi senza chiedere"}},"ja":{"stringUnit":{"state":"translated","value":"確認なしで受信"}},"ko":{"stringUnit":{"state":"translated","value":"확인 없이 받기"}},"nl":{"stringUnit":{"state":"translated","value":"Ontvangen zonder vragen"}},"pt-BR":{"stringUnit":{"state":"translated","value":"Receber sem perguntar"}},"pt-PT":{"stringUnit":{"state":"translated","value":"Receber sem perguntar"}},"ro":{"stringUnit":{"state":"translated","value":"Primește fără confirmare"}},"ru":{"stringUnit":{"state":"translated","value":"Получать без подтверждения"}},"th":{"stringUnit":{"state":"translated","value":"รับโดยไม่ถาม"}},"uk":{"stringUnit":{"state":"translated","value":"Отримувати без підтвердження"}},"zh-Hans":{"stringUnit":{"state":"translated","value":"无需确认接收"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"無需確認接收"}}}},
-    "AutoAcceptFiles.Tooltip": {"extractionState":"manual","localizations":{"ar":{"stringUnit":{"state":"translated","value":"عند التفعيل، تُقبل الملفات والنصوص وعناوين URL من Android دون سؤال. إذا كان فتح عناوين URL مفعّلًا أيضًا، قد تُفتح عناوين URL فورًا."}},"de":{"stringUnit":{"state":"translated","value":"Wenn aktiviert, werden Dateien, Text und URLs von Android ohne Nachfrage angenommen. Ist das Öffnen von URLs ebenfalls aktiviert, können empfangene URLs sofort geöffnet werden."}},"en":{"stringUnit":{"state":"translated","value":"When on, files, text, and URLs from Android are accepted without asking. If URL opening is also on, received URLs can open immediately."}},"es":{"stringUnit":{"state":"translated","value":"Cuando está activado, archivos, texto y URLs de Android se aceptan sin preguntar. Si abrir URLs también está activado, las URLs recibidas pueden abrirse de inmediato."}},"fr":{"stringUnit":{"state":"translated","value":"Si activé, les fichiers, textes et URL venant d’Android sont acceptés sans demande. Si l’ouverture des URL est aussi activée, les URL reçues peuvent s’ouvrir immédiatement."}},"hu":{"stringUnit":{"state":"translated","value":"Bekapcsolva az Androidról érkező fájlok, szövegek és URL-ek kérdés nélkül elfogadásra kerülnek. Ha az URL-ek megnyitása is be van kapcsolva, a fogadott URL-ek azonnal megnyílhatnak."}},"it":{"stringUnit":{"state":"translated","value":"Se attivo, file, testo e URL da Android vengono accettati senza chiedere. Se è attiva anche l’apertura degli URL, gli URL ricevuti possono aprirsi subito."}},"ja":{"stringUnit":{"state":"translated","value":"オンのとき、Android からのファイル・テキスト・URLを確認なしで受信します。「URLを自動で開く」もオンの場合、URLはすぐブラウザで開きます。"}},"ko":{"stringUnit":{"state":"translated","value":"켜져 있으면 Android에서 온 파일, 텍스트, URL을 확인 없이 받습니다. URL 열기도 켜져 있으면 받은 URL이 즉시 열릴 수 있습니다."}},"nl":{"stringUnit":{"state":"translated","value":"Wanneer ingeschakeld, worden bestanden, tekst en URL's vanaf Android zonder vragen geaccepteerd. Als URL's openen ook aan staat, kunnen ontvangen URL's direct openen."}},"pt-BR":{"stringUnit":{"state":"translated","value":"Quando ativado, arquivos, textos e URLs do Android são aceitos sem perguntar. Se abrir URLs também estiver ativado, URLs recebidas podem abrir imediatamente."}},"pt-PT":{"stringUnit":{"state":"translated","value":"Quando ativado, ficheiros, texto e URLs do Android são aceites sem perguntar. Se a abertura de URLs também estiver ativada, os URLs recebidos podem abrir imediatamente."}},"ro":{"stringUnit":{"state":"translated","value":"Când este activat, fișierele, textul și URL-urile de pe Android sunt acceptate fără întrebare. Dacă deschiderea URL-urilor este și ea activată, URL-urile primite se pot deschide imediat."}},"ru":{"stringUnit":{"state":"translated","value":"Когда включено, файлы, текст и URL с Android принимаются без запроса. Если открытие URL тоже включено, полученные URL могут открываться сразу."}},"th":{"stringUnit":{"state":"translated","value":"เมื่อเปิด ไฟล์ ข้อความ และ URL จาก Android จะถูกรับโดยไม่ถาม หากเปิดการเปิด URL ด้วย URL ที่ได้รับอาจเปิดทันที"}},"uk":{"stringUnit":{"state":"translated","value":"Коли ввімкнено, файли, текст і URL з Android приймаються без запиту. Якщо відкривання URL також увімкнено, отримані URL можуть відкриватися одразу."}},"zh-Hans":{"stringUnit":{"state":"translated","value":"开启时，来自 Android 的文件、文本和 URL 会无需确认接收。如果也开启了打开 URL，收到的 URL 可能会立即打开。"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"開啟時，來自 Android 的檔案、文字和 URL 會無需確認接收。如果也開啟了開啟 URL，收到的 URL 可能會立即開啟。"}}}},
+    "AutoAcceptFiles": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الاستلام دون سؤال"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ohne Nachfrage empfangen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Receive without asking"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recibir sin preguntar"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recevoir sans demander"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fogadás kérdés nélkül"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ricevi senza chiedere"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "確認なしで受信"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "확인 없이 받기"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ontvangen zonder vragen"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Receber sem perguntar"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Receber sem perguntar"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Primește fără confirmare"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Получать без подтверждения"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "รับโดยไม่ถาม"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Отримувати без підтвердження"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无需确认接收"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "無需確認接收"
+          }
+        }
+      }
+    },
+    "AutoAcceptFiles.Tooltip": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عند التفعيل، تُقبل الملفات والنصوص وعناوين URL من Android دون سؤال. إذا كان فتح عناوين URL مفعّلًا أيضًا، قد تُفتح عناوين URL فورًا."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn aktiviert, werden Dateien, Text und URLs von Android ohne Nachfrage angenommen. Ist das Öffnen von URLs ebenfalls aktiviert, können empfangene URLs sofort geöffnet werden."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When on, files, text, and URLs from Android are accepted without asking. If URL opening is also on, received URLs can open immediately."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuando está activado, archivos, texto y URLs de Android se aceptan sin preguntar. Si abrir URLs también está activado, las URLs recibidas pueden abrirse de inmediato."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si activé, les fichiers, textes et URL venant d’Android sont acceptés sans demande. Si l’ouverture des URL est aussi activée, les URL reçues peuvent s’ouvrir immédiatement."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bekapcsolva az Androidról érkező fájlok, szövegek és URL-ek kérdés nélkül elfogadásra kerülnek. Ha az URL-ek megnyitása is be van kapcsolva, a fogadott URL-ek azonnal megnyílhatnak."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se attivo, file, testo e URL da Android vengono accettati senza chiedere. Se è attiva anche l’apertura degli URL, gli URL ricevuti possono aprirsi subito."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "オンのとき、Android からのファイル・テキスト・URLを確認なしで受信します。「URLを自動で開く」もオンの場合、URLはすぐブラウザで開きます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "켜져 있으면 Android에서 온 파일, 텍스트, URL을 확인 없이 받습니다. URL 열기도 켜져 있으면 받은 URL이 즉시 열릴 수 있습니다."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wanneer ingeschakeld, worden bestanden, tekst en URL's vanaf Android zonder vragen geaccepteerd. Als URL's openen ook aan staat, kunnen ontvangen URL's direct openen."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quando ativado, arquivos, textos e URLs do Android são aceitos sem perguntar. Se abrir URLs também estiver ativado, URLs recebidas podem abrir imediatamente."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quando ativado, ficheiros, texto e URLs do Android são aceites sem perguntar. Se a abertura de URLs também estiver ativada, os URLs recebidos podem abrir imediatamente."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Când este activat, fișierele, textul și URL-urile de pe Android sunt acceptate fără întrebare. Dacă deschiderea URL-urilor este și ea activată, URL-urile primite se pot deschide imediat."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Когда включено, файлы, текст и URL с Android принимаются без запроса. Если открытие URL тоже включено, полученные URL могут открываться сразу."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เมื่อเปิด ไฟล์ ข้อความ และ URL จาก Android จะถูกรับโดยไม่ถาม หากเปิดการเปิด URL ด้วย URL ที่ได้รับอาจเปิดทันที"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Коли ввімкнено, файли, текст і URL з Android приймаються без запиту. Якщо відкривання URL також увімкнено, отримані URL можуть відкриватися одразу."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "开启时，来自 Android 的文件、文本和 URL 会无需确认接收。如果也开启了打开 URL，收到的 URL 可能会立即打开。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "開啟時，來自 Android 的檔案、文字和 URL 會無需確認接收。如果也開啟了開啟 URL，收到的 URL 可能會立即開啟。"
+          }
+        }
+      }
+    },
     "ReceivedFiles": {
       "extractionState": "manual",
       "localizations": {
@@ -2151,7 +2599,119 @@
         }
       }
     },
-    "ReceivedURLToClipboard": {"extractionState":"manual","localizations":{"ar":{"stringUnit":{"state":"translated","value":"تم نسخ عنوان URL من %@ إلى الحافظة"}},"de":{"stringUnit":{"state":"translated","value":"URL von %@ in die Zwischenablage kopiert"}},"en":{"stringUnit":{"state":"translated","value":"URL from %@ copied to clipboard"}},"es":{"stringUnit":{"state":"translated","value":"URL de %@ copiada al portapapeles"}},"fr":{"stringUnit":{"state":"translated","value":"URL de %@ copiée dans le presse-papiers"}},"hu":{"stringUnit":{"state":"translated","value":"%@ által küldött URL a vágólapra másolva"}},"it":{"stringUnit":{"state":"translated","value":"URL da %@ copiato negli appunti"}},"ja":{"stringUnit":{"state":"translated","value":"%@ からの URL をクリップボードにコピーしました"}},"ko":{"stringUnit":{"state":"translated","value":"%@에서 받은 URL을 클립보드에 복사했습니다"}},"nl":{"stringUnit":{"state":"translated","value":"URL van %@ gekopieerd naar klembord"}},"pt-BR":{"stringUnit":{"state":"translated","value":"URL de %@ copiada para a área de transferência"}},"pt-PT":{"stringUnit":{"state":"translated","value":"URL de %@ copiado para a área de transferência"}},"ro":{"stringUnit":{"state":"translated","value":"URL de la %@ a fost copiat în clipboard"}},"ru":{"stringUnit":{"state":"translated","value":"URL от %@ скопирован в буфер обмена"}},"th":{"stringUnit":{"state":"translated","value":"คัดลอก URL จาก %@ ไปยังคลิปบอร์ดแล้ว"}},"uk":{"stringUnit":{"state":"translated","value":"URL від %@ скопійовано до буфера обміну"}},"zh-Hans":{"stringUnit":{"state":"translated","value":"已将来自 %@ 的 URL 复制到剪贴板"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"已將來自 %@ 的 URL 複製到剪貼簿"}}}},
+    "ReceivedURLToClipboard": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تم نسخ عنوان URL من %@ إلى الحافظة"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "URL von %@ in die Zwischenablage kopiert"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "URL from %@ copied to clipboard"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "URL de %@ copiada al portapapeles"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "URL de %@ copiée dans le presse-papiers"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ által küldött URL a vágólapra másolva"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "URL da %@ copiato negli appunti"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ からの URL をクリップボードにコピーしました"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@에서 받은 URL을 클립보드에 복사했습니다"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "URL van %@ gekopieerd naar klembord"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "URL de %@ copiada para a área de transferência"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "URL de %@ copiado para a área de transferência"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "URL de la %@ a fost copiat în clipboard"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "URL от %@ скопирован в буфер обмена"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "คัดลอก URL จาก %@ ไปยังคลิปบอร์ดแล้ว"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "URL від %@ скопійовано до буфера обміну"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已将来自 %@ 的 URL 复制到剪贴板"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已將來自 %@ 的 URL 複製到剪貼簿"
+          }
+        }
+      }
+    },
     "ReceivedURLOpened": {
       "extractionState": "manual",
       "localizations": {
@@ -4299,19 +4859,2831 @@
         }
       }
     },
-    "OpenReceivedURLs": {"extractionState":"manual","localizations":{"ar":{"stringUnit":{"state":"translated","value":"فتح عناوين URL تلقائيًا"}},"de":{"stringUnit":{"state":"translated","value":"URLs automatisch öffnen"}},"en":{"stringUnit":{"state":"translated","value":"Open URLs automatically"}},"es":{"stringUnit":{"state":"translated","value":"Abrir URLs automáticamente"}},"fr":{"stringUnit":{"state":"translated","value":"Ouvrir les URL automatiquement"}},"hu":{"stringUnit":{"state":"translated","value":"URL-ek automatikus megnyitása"}},"it":{"stringUnit":{"state":"translated","value":"Apri URL automaticamente"}},"ja":{"stringUnit":{"state":"translated","value":"URLを自動で開く"}},"ko":{"stringUnit":{"state":"translated","value":"URL 자동으로 열기"}},"nl":{"stringUnit":{"state":"translated","value":"URL's automatisch openen"}},"pt-BR":{"stringUnit":{"state":"translated","value":"Abrir URLs automaticamente"}},"pt-PT":{"stringUnit":{"state":"translated","value":"Abrir URLs automaticamente"}},"ro":{"stringUnit":{"state":"translated","value":"Deschide automat URL-urile"}},"ru":{"stringUnit":{"state":"translated","value":"Автоматически открывать URL"}},"th":{"stringUnit":{"state":"translated","value":"เปิด URL อัตโนมัติ"}},"uk":{"stringUnit":{"state":"translated","value":"Автоматично відкривати URL"}},"zh-Hans":{"stringUnit":{"state":"translated","value":"自动打开 URL"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"自動開啟 URL"}}}},
-    "OpenReceivedURLs.Tooltip": {"extractionState":"manual","localizations":{"ar":{"stringUnit":{"state":"translated","value":"متاح عند تفعيل الاستلام دون سؤال. عند تشغيله، تُفتح عناوين URL من Android فورًا في متصفحك الافتراضي؛ وعند إيقافه، تُنسخ إلى الحافظة."}},"de":{"stringUnit":{"state":"translated","value":"Verfügbar, wenn Ohne Nachfrage empfangen aktiv ist. Ist dies eingeschaltet, öffnen sich URLs von Android sofort im Standardbrowser; andernfalls werden sie in die Zwischenablage kopiert."}},"en":{"stringUnit":{"state":"translated","value":"Available when Receive without asking is on. When on, URLs from Android open in your default browser immediately; when off, URLs are copied to clipboard."}},"es":{"stringUnit":{"state":"translated","value":"Disponible cuando Recibir sin preguntar está activado. Si está activado, las URLs de Android se abren de inmediato en tu navegador predeterminado; si está desactivado, se copian al portapapeles."}},"fr":{"stringUnit":{"state":"translated","value":"Disponible lorsque Recevoir sans demander est activé. Si activé, les URL d’Android s’ouvrent immédiatement dans le navigateur par défaut; sinon, elles sont copiées dans le presse-papiers."}},"hu":{"stringUnit":{"state":"translated","value":"Akkor érhető el, ha a Fogadás kérdés nélkül be van kapcsolva. Bekapcsolva az Androidról érkező URL-ek azonnal megnyílnak az alapértelmezett böngészőben; kikapcsolva a vágólapra másolódnak."}},"it":{"stringUnit":{"state":"translated","value":"Disponibile quando Ricevi senza chiedere è attivo. Se attivo, gli URL da Android si aprono subito nel browser predefinito; se disattivo, vengono copiati negli appunti."}},"ja":{"stringUnit":{"state":"translated","value":"「確認なしで受信」がオンのときに使えます。オンの場合、Android からのURLをすぐ既定のブラウザで開きます。オフの場合はクリップボードへコピーします。"}},"ko":{"stringUnit":{"state":"translated","value":"확인 없이 받기가 켜져 있을 때 사용할 수 있습니다. 켜면 Android에서 온 URL을 즉시 기본 브라우저로 열고, 끄면 클립보드에 복사합니다."}},"nl":{"stringUnit":{"state":"translated","value":"Beschikbaar wanneer Ontvangen zonder vragen aan staat. Ingeschakeld openen URL's van Android direct in je standaardbrowser; uitgeschakeld worden ze naar het klembord gekopieerd."}},"pt-BR":{"stringUnit":{"state":"translated","value":"Disponível quando Receber sem perguntar está ativado. Ativado, URLs do Android abrem imediatamente no navegador padrão; desativado, são copiadas para a área de transferência."}},"pt-PT":{"stringUnit":{"state":"translated","value":"Disponível quando Receber sem perguntar está ativado. Ativado, os URLs do Android abrem imediatamente no navegador predefinido; desativado, são copiados para a área de transferência."}},"ro":{"stringUnit":{"state":"translated","value":"Disponibil când Primește fără confirmare este activat. Când este activat, URL-urile de pe Android se deschid imediat în browserul implicit; când este dezactivat, sunt copiate în clipboard."}},"ru":{"stringUnit":{"state":"translated","value":"Доступно, когда включено Получать без подтверждения. Если включено, URL с Android сразу открываются в браузере по умолчанию; если выключено, копируются в буфер обмена."}},"th":{"stringUnit":{"state":"translated","value":"ใช้ได้เมื่อเปิดรับโดยไม่ถาม เมื่อเปิด URL จาก Android จะเปิดทันทีในเบราว์เซอร์เริ่มต้น เมื่อปิด URL จะถูกคัดลอกไปยังคลิปบอร์ด"}},"uk":{"stringUnit":{"state":"translated","value":"Доступно, коли ввімкнено Отримувати без підтвердження. Якщо ввімкнено, URL з Android одразу відкриваються у браузері за замовчуванням; якщо вимкнено, копіюються до буфера обміну."}},"zh-Hans":{"stringUnit":{"state":"translated","value":"在开启无需确认接收时可用。开启后，来自 Android 的 URL 会立即用默认浏览器打开；关闭时会复制到剪贴板。"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"在開啟無需確認接收時可用。開啟後，來自 Android 的 URL 會立即用預設瀏覽器開啟；關閉時會複製到剪貼簿。"}}}},
-    "Cancel": {"extractionState":"manual","localizations":{"ar":{"stringUnit":{"state":"translated","value":"إلغاء"}},"de":{"stringUnit":{"state":"translated","value":"Abbrechen"}},"en":{"stringUnit":{"state":"translated","value":"Cancel"}},"es":{"stringUnit":{"state":"translated","value":"Cancelar"}},"fr":{"stringUnit":{"state":"translated","value":"Annuler"}},"hu":{"stringUnit":{"state":"translated","value":"Mégse"}},"it":{"stringUnit":{"state":"translated","value":"Annulla"}},"ja":{"stringUnit":{"state":"translated","value":"キャンセル"}},"ko":{"stringUnit":{"state":"translated","value":"취소"}},"nl":{"stringUnit":{"state":"translated","value":"Annuleren"}},"pt-BR":{"stringUnit":{"state":"translated","value":"Cancelar"}},"pt-PT":{"stringUnit":{"state":"translated","value":"Cancelar"}},"ro":{"stringUnit":{"state":"translated","value":"Anulați"}},"ru":{"stringUnit":{"state":"translated","value":"Отмена"}},"th":{"stringUnit":{"state":"translated","value":"ยกเลิก"}},"uk":{"stringUnit":{"state":"translated","value":"Скасувати"}},"zh-Hans":{"stringUnit":{"state":"translated","value":"取消"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"取消"}}}},
-    "UpgradeToPlus": {"extractionState":"manual","localizations":{"ar":{"stringUnit":{"state":"translated","value":"الترقية إلى Pyonta+…"}},"de":{"stringUnit":{"state":"translated","value":"Auf Pyonta+ upgraden…"}},"en":{"stringUnit":{"state":"translated","value":"Upgrade to Pyonta+…"}},"es":{"stringUnit":{"state":"translated","value":"Actualizar a Pyonta+…"}},"fr":{"stringUnit":{"state":"translated","value":"Passer à Pyonta+…"}},"hu":{"stringUnit":{"state":"translated","value":"Frissítés Pyonta+-ra…"}},"it":{"stringUnit":{"state":"translated","value":"Passa a Pyonta+…"}},"ja":{"stringUnit":{"state":"translated","value":"Pyonta+ にアップグレード…"}},"ko":{"stringUnit":{"state":"translated","value":"Pyonta+로 업그레이드…"}},"nl":{"stringUnit":{"state":"translated","value":"Upgrade naar Pyonta+…"}},"pt-BR":{"stringUnit":{"state":"translated","value":"Fazer upgrade para Pyonta+…"}},"pt-PT":{"stringUnit":{"state":"translated","value":"Atualizar para Pyonta+…"}},"ro":{"stringUnit":{"state":"translated","value":"Upgrade la Pyonta+…"}},"ru":{"stringUnit":{"state":"translated","value":"Перейти на Pyonta+…"}},"th":{"stringUnit":{"state":"translated","value":"อัปเกรดเป็น Pyonta+…"}},"uk":{"stringUnit":{"state":"translated","value":"Оновити до Pyonta+…"}},"zh-Hans":{"stringUnit":{"state":"translated","value":"升级到 Pyonta+…"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"升級到 Pyonta+…"}}}},
-    "UpgradeToPlus.Title": {"extractionState":"manual","localizations":{"ar":{"stringUnit":{"state":"translated","value":"الترقية إلى Pyonta+"}},"de":{"stringUnit":{"state":"translated","value":"Auf Pyonta+ upgraden"}},"en":{"stringUnit":{"state":"translated","value":"Upgrade to Pyonta+"}},"es":{"stringUnit":{"state":"translated","value":"Actualizar a Pyonta+"}},"fr":{"stringUnit":{"state":"translated","value":"Passer à Pyonta+"}},"hu":{"stringUnit":{"state":"translated","value":"Frissítés Pyonta+-ra"}},"it":{"stringUnit":{"state":"translated","value":"Passa a Pyonta+"}},"ja":{"stringUnit":{"state":"translated","value":"Pyonta+ にアップグレード"}},"ko":{"stringUnit":{"state":"translated","value":"Pyonta+로 업그레이드"}},"nl":{"stringUnit":{"state":"translated","value":"Upgrade naar Pyonta+"}},"pt-BR":{"stringUnit":{"state":"translated","value":"Fazer upgrade para Pyonta+"}},"pt-PT":{"stringUnit":{"state":"translated","value":"Atualizar para Pyonta+"}},"ro":{"stringUnit":{"state":"translated","value":"Upgrade la Pyonta+"}},"ru":{"stringUnit":{"state":"translated","value":"Перейти на Pyonta+"}},"th":{"stringUnit":{"state":"translated","value":"อัปเกรดเป็น Pyonta+"}},"uk":{"stringUnit":{"state":"translated","value":"Оновити до Pyonta+"}},"zh-Hans":{"stringUnit":{"state":"translated","value":"升级到 Pyonta+"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"升級到 Pyonta+"}}}},
-    "RestorePurchases": {"extractionState":"manual","localizations":{"ar":{"stringUnit":{"state":"translated","value":"استعادة المشتريات…"}},"de":{"stringUnit":{"state":"translated","value":"Käufe wiederherstellen…"}},"en":{"stringUnit":{"state":"translated","value":"Restore purchases…"}},"es":{"stringUnit":{"state":"translated","value":"Restaurar compras…"}},"fr":{"stringUnit":{"state":"translated","value":"Restaurer les achats…"}},"hu":{"stringUnit":{"state":"translated","value":"Vásárlások visszaállítása…"}},"it":{"stringUnit":{"state":"translated","value":"Ripristina acquisti…"}},"ja":{"stringUnit":{"state":"translated","value":"購入を復元…"}},"ko":{"stringUnit":{"state":"translated","value":"구입 항목 복원…"}},"nl":{"stringUnit":{"state":"translated","value":"Aankopen herstellen…"}},"pt-BR":{"stringUnit":{"state":"translated","value":"Restaurar compras…"}},"pt-PT":{"stringUnit":{"state":"translated","value":"Restaurar compras…"}},"ro":{"stringUnit":{"state":"translated","value":"Restaurați achizițiile…"}},"ru":{"stringUnit":{"state":"translated","value":"Восстановить покупки…"}},"th":{"stringUnit":{"state":"translated","value":"กู้คืนการซื้อ…"}},"uk":{"stringUnit":{"state":"translated","value":"Відновити покупки…"}},"zh-Hans":{"stringUnit":{"state":"translated","value":"恢复购买…"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"恢復購買…"}}}},
-    "PlusRequired.Message": {"extractionState":"manual","localizations":{"ar":{"stringUnit":{"state":"translated","value":"يتطلب الاستلام من Android اشتراك Pyonta+. قم بالترقية، ثم اطلب من المرسل المحاولة مرة أخرى."}},"de":{"stringUnit":{"state":"translated","value":"Für den Empfang von Android ist Pyonta+ erforderlich. Führe ein Upgrade durch und bitte den Absender, es erneut zu versuchen."}},"en":{"stringUnit":{"state":"translated","value":"Receiving from Android requires Pyonta+. Upgrade, then ask the sender to try again."}},"es":{"stringUnit":{"state":"translated","value":"Recibir desde Android requiere Pyonta+. Actualiza y pide al remitente que lo intente de nuevo."}},"fr":{"stringUnit":{"state":"translated","value":"La réception depuis Android nécessite Pyonta+. Passez à la version supérieure, puis demandez à l’expéditeur de réessayer."}},"hu":{"stringUnit":{"state":"translated","value":"Az Androidról való fogadáshoz Pyonta+ szükséges. Frissíts, majd kérd meg a küldőt, hogy próbálja újra."}},"it":{"stringUnit":{"state":"translated","value":"La ricezione da Android richiede Pyonta+. Esegui l’upgrade, poi chiedi al mittente di riprovare."}},"ja":{"stringUnit":{"state":"translated","value":"Android から受信するには Pyonta+ が必要です。アップグレード後、もう一度送信してもらってください。"}},"ko":{"stringUnit":{"state":"translated","value":"Android에서 받으려면 Pyonta+가 필요합니다. 업그레이드한 뒤 보낸 사람에게 다시 시도해 달라고 하세요."}},"nl":{"stringUnit":{"state":"translated","value":"Ontvangen vanaf Android vereist Pyonta+. Upgrade en vraag de afzender het opnieuw te proberen."}},"pt-BR":{"stringUnit":{"state":"translated","value":"Receber do Android requer Pyonta+. Faça upgrade e peça ao remetente para tentar novamente."}},"pt-PT":{"stringUnit":{"state":"translated","value":"Receber do Android requer Pyonta+. Atualize e peça ao remetente para tentar novamente."}},"ro":{"stringUnit":{"state":"translated","value":"Primirea de pe Android necesită Pyonta+. Faceți upgrade, apoi cereți expeditorului să încerce din nou."}},"ru":{"stringUnit":{"state":"translated","value":"Для получения с Android требуется Pyonta+. Перейдите на Pyonta+, затем попросите отправителя повторить попытку."}},"th":{"stringUnit":{"state":"translated","value":"การรับจาก Android ต้องใช้ Pyonta+ โปรดอัปเกรด แล้วขอให้ผู้ส่งลองอีกครั้ง"}},"uk":{"stringUnit":{"state":"translated","value":"Для отримання з Android потрібен Pyonta+. Оновіть, а потім попросіть відправника спробувати ще раз."}},"zh-Hans":{"stringUnit":{"state":"translated","value":"从 Android 接收需要 Pyonta+。升级后,请让发送者再试一次。"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"從 Android 接收需要 Pyonta+。升級後,請讓傳送者再試一次。"}}}},
-    "PlusUnavailable.Message": {"extractionState":"manual","localizations":{"ar":{"stringUnit":{"state":"translated","value":"لم يتم إعداد Pyonta+ بعد. أضف مفتاح RevenueCat العام قبل إصدار هذا البناء."}},"de":{"stringUnit":{"state":"translated","value":"Pyonta+ ist noch nicht konfiguriert. Füge vor der Veröffentlichung dieses Builds den öffentlichen RevenueCat-API-Schlüssel hinzu."}},"en":{"stringUnit":{"state":"translated","value":"Pyonta+ is not configured yet. Add the RevenueCat public API key before releasing this build."}},"es":{"stringUnit":{"state":"translated","value":"Pyonta+ aún no está configurado. Añade la clave API pública de RevenueCat antes de publicar esta compilación."}},"fr":{"stringUnit":{"state":"translated","value":"Pyonta+ n’est pas encore configuré. Ajoutez la clé API publique RevenueCat avant de publier cette build."}},"hu":{"stringUnit":{"state":"translated","value":"A Pyonta+ még nincs beállítva. A build kiadása előtt add hozzá a RevenueCat nyilvános API-kulcsát."}},"it":{"stringUnit":{"state":"translated","value":"Pyonta+ non è ancora configurato. Aggiungi la chiave API pubblica di RevenueCat prima di rilasciare questa build."}},"ja":{"stringUnit":{"state":"translated","value":"Pyonta+ はまだ設定されていません。リリース前に RevenueCat の public API key を設定してください。"}},"ko":{"stringUnit":{"state":"translated","value":"Pyonta+가 아직 설정되지 않았습니다. 이 빌드를 출시하기 전에 RevenueCat 공개 API 키를 추가하세요."}},"nl":{"stringUnit":{"state":"translated","value":"Pyonta+ is nog niet geconfigureerd. Voeg de openbare RevenueCat API-sleutel toe voordat je deze build uitbrengt."}},"pt-BR":{"stringUnit":{"state":"translated","value":"O Pyonta+ ainda não está configurado. Adicione a chave de API pública da RevenueCat antes de lançar esta build."}},"pt-PT":{"stringUnit":{"state":"translated","value":"O Pyonta+ ainda não está configurado. Adicione a chave API pública da RevenueCat antes de lançar esta build."}},"ro":{"stringUnit":{"state":"translated","value":"Pyonta+ nu este configurat încă. Adăugați cheia API publică RevenueCat înainte de lansarea acestui build."}},"ru":{"stringUnit":{"state":"translated","value":"Pyonta+ еще не настроен. Добавьте публичный API-ключ RevenueCat перед выпуском этой сборки."}},"th":{"stringUnit":{"state":"translated","value":"ยังไม่ได้ตั้งค่า Pyonta+ โปรดเพิ่ม public API key ของ RevenueCat ก่อนปล่อยบิลด์นี้"}},"uk":{"stringUnit":{"state":"translated","value":"Pyonta+ ще не налаштовано. Додайте публічний API-ключ RevenueCat перед випуском цієї збірки."}},"zh-Hans":{"stringUnit":{"state":"translated","value":"Pyonta+ 尚未配置。发布此构建前,请添加 RevenueCat public API key。"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"Pyonta+ 尚未設定。發布此建置前,請加入 RevenueCat public API key。"}}}},
-    "PlusNoOfferings.Message": {"extractionState":"manual","localizations":{"ar":{"stringUnit":{"state":"translated","value":"لا تتوفر منتجات Pyonta+ بعد. تحقق من إعدادات RevenueCat offering ومنتجات App Store Connect."}},"de":{"stringUnit":{"state":"translated","value":"Es sind noch keine Pyonta+-Produkte verfügbar. Prüfe das RevenueCat-Offering und die Produkteinstellungen in App Store Connect."}},"en":{"stringUnit":{"state":"translated","value":"No Pyonta+ products are available yet. Check the RevenueCat offering and App Store Connect product setup."}},"es":{"stringUnit":{"state":"translated","value":"Aún no hay productos de Pyonta+ disponibles. Revisa el offering de RevenueCat y la configuración de productos en App Store Connect."}},"fr":{"stringUnit":{"state":"translated","value":"Aucun produit Pyonta+ n’est encore disponible. Vérifiez l’offering RevenueCat et la configuration des produits dans App Store Connect."}},"hu":{"stringUnit":{"state":"translated","value":"Még nem érhetők el Pyonta+ termékek. Ellenőrizd a RevenueCat offeringet és az App Store Connect termékbeállításait."}},"it":{"stringUnit":{"state":"translated","value":"Non sono ancora disponibili prodotti Pyonta+. Controlla l’offering RevenueCat e la configurazione dei prodotti in App Store Connect."}},"ja":{"stringUnit":{"state":"translated","value":"Pyonta+ の商品がまだ取得できません。RevenueCat の offering と App Store Connect の商品設定を確認してください。"}},"ko":{"stringUnit":{"state":"translated","value":"Pyonta+ 상품을 아직 사용할 수 없습니다. RevenueCat offering과 App Store Connect 상품 설정을 확인하세요."}},"nl":{"stringUnit":{"state":"translated","value":"Er zijn nog geen Pyonta+-producten beschikbaar. Controleer de RevenueCat-offering en de productinstellingen in App Store Connect."}},"pt-BR":{"stringUnit":{"state":"translated","value":"Ainda não há produtos Pyonta+ disponíveis. Verifique a offering da RevenueCat e a configuração de produtos no App Store Connect."}},"pt-PT":{"stringUnit":{"state":"translated","value":"Ainda não há produtos Pyonta+ disponíveis. Verifique a offering da RevenueCat e a configuração de produtos no App Store Connect."}},"ro":{"stringUnit":{"state":"translated","value":"Nu există încă produse Pyonta+ disponibile. Verificați offering-ul RevenueCat și configurarea produselor în App Store Connect."}},"ru":{"stringUnit":{"state":"translated","value":"Продукты Pyonta+ пока недоступны. Проверьте offering в RevenueCat и настройки продуктов в App Store Connect."}},"th":{"stringUnit":{"state":"translated","value":"ยังไม่มีสินค้า Pyonta+ ให้ใช้งาน โปรดตรวจสอบ offering ใน RevenueCat และการตั้งค่าสินค้าใน App Store Connect"}},"uk":{"stringUnit":{"state":"translated","value":"Продукти Pyonta+ ще недоступні. Перевірте offering у RevenueCat і налаштування продуктів в App Store Connect."}},"zh-Hans":{"stringUnit":{"state":"translated","value":"尚无可用的 Pyonta+ 商品。请检查 RevenueCat offering 和 App Store Connect 商品设置。"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"尚無可用的 Pyonta+ 商品。請檢查 RevenueCat offering 和 App Store Connect 商品設定。"}}}},
-    "PlusPurchaseSuccess.Message": {"extractionState":"manual","localizations":{"ar":{"stringUnit":{"state":"translated","value":"Pyonta+ نشط. تم فتح الاستلام من Android الآن."}},"de":{"stringUnit":{"state":"translated","value":"Pyonta+ ist aktiv. Der Empfang von Android ist jetzt freigeschaltet."}},"en":{"stringUnit":{"state":"translated","value":"Pyonta+ is active. Receiving from Android is now unlocked."}},"es":{"stringUnit":{"state":"translated","value":"Pyonta+ está activo. La recepción desde Android ya está desbloqueada."}},"fr":{"stringUnit":{"state":"translated","value":"Pyonta+ est actif. La réception depuis Android est maintenant déverrouillée."}},"hu":{"stringUnit":{"state":"translated","value":"A Pyonta+ aktív. Az Androidról való fogadás mostantól fel van oldva."}},"it":{"stringUnit":{"state":"translated","value":"Pyonta+ è attivo. La ricezione da Android è ora sbloccata."}},"ja":{"stringUnit":{"state":"translated","value":"Pyonta+ が有効になりました。Android からの受信が使えるようになりました。"}},"ko":{"stringUnit":{"state":"translated","value":"Pyonta+가 활성화되었습니다. 이제 Android에서 받을 수 있습니다."}},"nl":{"stringUnit":{"state":"translated","value":"Pyonta+ is actief. Ontvangen vanaf Android is nu ontgrendeld."}},"pt-BR":{"stringUnit":{"state":"translated","value":"O Pyonta+ está ativo. Receber do Android agora está desbloqueado."}},"pt-PT":{"stringUnit":{"state":"translated","value":"O Pyonta+ está ativo. Receber do Android está agora desbloqueado."}},"ro":{"stringUnit":{"state":"translated","value":"Pyonta+ este activ. Primirea de pe Android este acum deblocată."}},"ru":{"stringUnit":{"state":"translated","value":"Pyonta+ активен. Получение с Android теперь разблокировано."}},"th":{"stringUnit":{"state":"translated","value":"Pyonta+ เปิดใช้งานแล้ว ตอนนี้รับจาก Android ได้แล้ว"}},"uk":{"stringUnit":{"state":"translated","value":"Pyonta+ активний. Отримання з Android тепер розблоковано."}},"zh-Hans":{"stringUnit":{"state":"translated","value":"Pyonta+ 已激活。现在可以从 Android 接收了。"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"Pyonta+ 已啟用。現在可以從 Android 接收了。"}}}},
-    "PlusRestoreSuccess.Message": {"extractionState":"manual","localizations":{"ar":{"stringUnit":{"state":"translated","value":"تمت استعادة المشتريات. Pyonta+ نشط."}},"de":{"stringUnit":{"state":"translated","value":"Käufe wurden wiederhergestellt. Pyonta+ ist aktiv."}},"en":{"stringUnit":{"state":"translated","value":"Purchases restored. Pyonta+ is active."}},"es":{"stringUnit":{"state":"translated","value":"Compras restauradas. Pyonta+ está activo."}},"fr":{"stringUnit":{"state":"translated","value":"Achats restaurés. Pyonta+ est actif."}},"hu":{"stringUnit":{"state":"translated","value":"A vásárlások visszaállítva. A Pyonta+ aktív."}},"it":{"stringUnit":{"state":"translated","value":"Acquisti ripristinati. Pyonta+ è attivo."}},"ja":{"stringUnit":{"state":"translated","value":"購入を復元しました。Pyonta+ が有効です。"}},"ko":{"stringUnit":{"state":"translated","value":"구입 항목을 복원했습니다. Pyonta+가 활성화되었습니다."}},"nl":{"stringUnit":{"state":"translated","value":"Aankopen hersteld. Pyonta+ is actief."}},"pt-BR":{"stringUnit":{"state":"translated","value":"Compras restauradas. O Pyonta+ está ativo."}},"pt-PT":{"stringUnit":{"state":"translated","value":"Compras restauradas. O Pyonta+ está ativo."}},"ro":{"stringUnit":{"state":"translated","value":"Achizițiile au fost restaurate. Pyonta+ este activ."}},"ru":{"stringUnit":{"state":"translated","value":"Покупки восстановлены. Pyonta+ активен."}},"th":{"stringUnit":{"state":"translated","value":"กู้คืนการซื้อแล้ว Pyonta+ เปิดใช้งานอยู่"}},"uk":{"stringUnit":{"state":"translated","value":"Покупки відновлено. Pyonta+ активний."}},"zh-Hans":{"stringUnit":{"state":"translated","value":"购买已恢复。Pyonta+ 已激活。"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"購買已恢復。Pyonta+ 已啟用。"}}}},
-    "PlusRestoreMissing.Message": {"extractionState":"manual","localizations":{"ar":{"stringUnit":{"state":"translated","value":"لم يتم العثور على عملية شراء Pyonta+ نشطة لهذا Apple ID."}},"de":{"stringUnit":{"state":"translated","value":"Für diese Apple-ID wurde kein aktiver Pyonta+-Kauf gefunden."}},"en":{"stringUnit":{"state":"translated","value":"No active Pyonta+ purchase was found for this Apple ID."}},"es":{"stringUnit":{"state":"translated","value":"No se encontró ninguna compra activa de Pyonta+ para este Apple ID."}},"fr":{"stringUnit":{"state":"translated","value":"Aucun achat Pyonta+ actif n’a été trouvé pour cet identifiant Apple."}},"hu":{"stringUnit":{"state":"translated","value":"Ehhez az Apple ID-hez nem található aktív Pyonta+ vásárlás."}},"it":{"stringUnit":{"state":"translated","value":"Non è stato trovato alcun acquisto Pyonta+ attivo per questo Apple ID."}},"ja":{"stringUnit":{"state":"translated","value":"この Apple ID で有効な Pyonta+ の購入は見つかりませんでした。"}},"ko":{"stringUnit":{"state":"translated","value":"이 Apple ID에서 활성화된 Pyonta+ 구입 항목을 찾을 수 없습니다."}},"nl":{"stringUnit":{"state":"translated","value":"Er is geen actieve Pyonta+-aankoop gevonden voor deze Apple ID."}},"pt-BR":{"stringUnit":{"state":"translated","value":"Nenhuma compra ativa do Pyonta+ foi encontrada para este Apple ID."}},"pt-PT":{"stringUnit":{"state":"translated","value":"Nenhuma compra ativa do Pyonta+ foi encontrada para este Apple ID."}},"ro":{"stringUnit":{"state":"translated","value":"Nu a fost găsită nicio achiziție Pyonta+ activă pentru acest Apple ID."}},"ru":{"stringUnit":{"state":"translated","value":"Для этого Apple ID не найдена активная покупка Pyonta+."}},"th":{"stringUnit":{"state":"translated","value":"ไม่พบการซื้อ Pyonta+ ที่ใช้งานอยู่สำหรับ Apple ID นี้"}},"uk":{"stringUnit":{"state":"translated","value":"Для цього Apple ID не знайдено активної покупки Pyonta+."}},"zh-Hans":{"stringUnit":{"state":"translated","value":"未找到此 Apple ID 的有效 Pyonta+ 购买。"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"未找到此 Apple ID 的有效 Pyonta+ 購買。"}}}},
-    "PlusPurchaseFailed.Message": {"extractionState":"manual","localizations":{"ar":{"stringUnit":{"state":"translated","value":"تعذر إكمال الشراء. يرجى المحاولة مرة أخرى."}},"de":{"stringUnit":{"state":"translated","value":"Der Kauf konnte nicht abgeschlossen werden. Bitte versuche es erneut."}},"en":{"stringUnit":{"state":"translated","value":"Purchase could not be completed. Please try again."}},"es":{"stringUnit":{"state":"translated","value":"No se pudo completar la compra. Inténtalo de nuevo."}},"fr":{"stringUnit":{"state":"translated","value":"L’achat n’a pas pu être finalisé. Veuillez réessayer."}},"hu":{"stringUnit":{"state":"translated","value":"A vásárlást nem sikerült befejezni. Próbáld újra."}},"it":{"stringUnit":{"state":"translated","value":"Impossibile completare l’acquisto. Riprova."}},"ja":{"stringUnit":{"state":"translated","value":"購入を完了できませんでした。もう一度お試しください。"}},"ko":{"stringUnit":{"state":"translated","value":"구입을 완료할 수 없습니다. 다시 시도해 주세요."}},"nl":{"stringUnit":{"state":"translated","value":"De aankoop kon niet worden voltooid. Probeer het opnieuw."}},"pt-BR":{"stringUnit":{"state":"translated","value":"A compra não pôde ser concluída. Tente novamente."}},"pt-PT":{"stringUnit":{"state":"translated","value":"A compra não pôde ser concluída. Tente novamente."}},"ro":{"stringUnit":{"state":"translated","value":"Achiziția nu a putut fi finalizată. Încercați din nou."}},"ru":{"stringUnit":{"state":"translated","value":"Не удалось завершить покупку. Повторите попытку."}},"th":{"stringUnit":{"state":"translated","value":"ไม่สามารถทำการซื้อให้เสร็จสมบูรณ์ได้ โปรดลองอีกครั้ง"}},"uk":{"stringUnit":{"state":"translated","value":"Не вдалося завершити покупку. Спробуйте ще раз."}},"zh-Hans":{"stringUnit":{"state":"translated","value":"无法完成购买。请重试。"}},"zh-Hant":{"stringUnit":{"state":"translated","value":"無法完成購買。請再試一次。"}}}}
+    "OpenReceivedURLs": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "فتح عناوين URL تلقائيًا"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "URLs automatisch öffnen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open URLs automatically"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abrir URLs automáticamente"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ouvrir les URL automatiquement"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "URL-ek automatikus megnyitása"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apri URL automaticamente"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "URLを自動で開く"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "URL 자동으로 열기"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "URL's automatisch openen"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abrir URLs automaticamente"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abrir URLs automaticamente"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deschide automat URL-urile"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Автоматически открывать URL"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เปิด URL อัตโนมัติ"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Автоматично відкривати URL"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自动打开 URL"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自動開啟 URL"
+          }
+        }
+      }
+    },
+    "OpenReceivedURLs.Tooltip": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "متاح عند تفعيل الاستلام دون سؤال. عند تشغيله، تُفتح عناوين URL من Android فورًا في متصفحك الافتراضي؛ وعند إيقافه، تُنسخ إلى الحافظة."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verfügbar, wenn Ohne Nachfrage empfangen aktiv ist. Ist dies eingeschaltet, öffnen sich URLs von Android sofort im Standardbrowser; andernfalls werden sie in die Zwischenablage kopiert."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Available when Receive without asking is on. When on, URLs from Android open in your default browser immediately; when off, URLs are copied to clipboard."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disponible cuando Recibir sin preguntar está activado. Si está activado, las URLs de Android se abren de inmediato en tu navegador predeterminado; si está desactivado, se copian al portapapeles."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disponible lorsque Recevoir sans demander est activé. Si activé, les URL d’Android s’ouvrent immédiatement dans le navigateur par défaut; sinon, elles sont copiées dans le presse-papiers."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Akkor érhető el, ha a Fogadás kérdés nélkül be van kapcsolva. Bekapcsolva az Androidról érkező URL-ek azonnal megnyílnak az alapértelmezett böngészőben; kikapcsolva a vágólapra másolódnak."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disponibile quando Ricevi senza chiedere è attivo. Se attivo, gli URL da Android si aprono subito nel browser predefinito; se disattivo, vengono copiati negli appunti."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "「確認なしで受信」がオンのときに使えます。オンの場合、Android からのURLをすぐ既定のブラウザで開きます。オフの場合はクリップボードへコピーします。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "확인 없이 받기가 켜져 있을 때 사용할 수 있습니다. 켜면 Android에서 온 URL을 즉시 기본 브라우저로 열고, 끄면 클립보드에 복사합니다."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beschikbaar wanneer Ontvangen zonder vragen aan staat. Ingeschakeld openen URL's van Android direct in je standaardbrowser; uitgeschakeld worden ze naar het klembord gekopieerd."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disponível quando Receber sem perguntar está ativado. Ativado, URLs do Android abrem imediatamente no navegador padrão; desativado, são copiadas para a área de transferência."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disponível quando Receber sem perguntar está ativado. Ativado, os URLs do Android abrem imediatamente no navegador predefinido; desativado, são copiados para a área de transferência."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disponibil când Primește fără confirmare este activat. Când este activat, URL-urile de pe Android se deschid imediat în browserul implicit; când este dezactivat, sunt copiate în clipboard."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Доступно, когда включено Получать без подтверждения. Если включено, URL с Android сразу открываются в браузере по умолчанию; если выключено, копируются в буфер обмена."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ใช้ได้เมื่อเปิดรับโดยไม่ถาม เมื่อเปิด URL จาก Android จะเปิดทันทีในเบราว์เซอร์เริ่มต้น เมื่อปิด URL จะถูกคัดลอกไปยังคลิปบอร์ด"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Доступно, коли ввімкнено Отримувати без підтвердження. Якщо ввімкнено, URL з Android одразу відкриваються у браузері за замовчуванням; якщо вимкнено, копіюються до буфера обміну."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在开启无需确认接收时可用。开启后，来自 Android 的 URL 会立即用默认浏览器打开；关闭时会复制到剪贴板。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在開啟無需確認接收時可用。開啟後，來自 Android 的 URL 會立即用預設瀏覽器開啟；關閉時會複製到剪貼簿。"
+          }
+        }
+      }
+    },
+    "Cancel": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إلغاء"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abbrechen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancelar"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Annuler"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mégse"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Annulla"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "キャンセル"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "취소"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Annuleren"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancelar"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancelar"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anulați"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Отмена"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ยกเลิก"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Скасувати"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取消"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取消"
+          }
+        }
+      }
+    },
+    "UpgradeToPlus": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الترقية إلى Pyonta+…"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auf Pyonta+ upgraden…"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Upgrade to Pyonta+…"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Actualizar a Pyonta+…"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Passer à Pyonta+…"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Frissítés Pyonta+-ra…"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Passa a Pyonta+…"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ にアップグレード…"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+로 업그레이드…"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Upgrade naar Pyonta+…"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fazer upgrade para Pyonta+…"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atualizar para Pyonta+…"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Upgrade la Pyonta+…"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Перейти на Pyonta+…"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "อัปเกรดเป็น Pyonta+…"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оновити до Pyonta+…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "升级到 Pyonta+…"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "升級到 Pyonta+…"
+          }
+        }
+      }
+    },
+    "UpgradeToPlus.Title": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الترقية إلى Pyonta+"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auf Pyonta+ upgraden"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Upgrade to Pyonta+"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Actualizar a Pyonta+"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Passer à Pyonta+"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Frissítés Pyonta+-ra"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Passa a Pyonta+"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ にアップグレード"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+로 업그레이드"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Upgrade naar Pyonta+"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fazer upgrade para Pyonta+"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atualizar para Pyonta+"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Upgrade la Pyonta+"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Перейти на Pyonta+"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "อัปเกรดเป็น Pyonta+"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оновити до Pyonta+"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "升级到 Pyonta+"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "升級到 Pyonta+"
+          }
+        }
+      }
+    },
+    "RestorePurchases": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التحقق من Pyonta+ أو استعادته…"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ prüfen oder wiederherstellen…"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check or restore Pyonta+…"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Comprobar o restaurar Pyonta+…"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vérifier ou restaurer Pyonta+…"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ ellenőrzése vagy visszaállítása…"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Controlla o ripristina Pyonta+…"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ の状態を確認・復元…"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ 확인 또는 복원…"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ controleren of herstellen…"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verificar ou restaurar Pyonta+…"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verificar ou restaurar Pyonta+…"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verificați sau restaurați Pyonta+…"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Проверить или восстановить Pyonta+…"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ตรวจสอบหรือกู้คืน Pyonta+…"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Перевірити або відновити Pyonta+…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "检查或恢复 Pyonta+…"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "檢查或恢復 Pyonta+…"
+          }
+        }
+      }
+    },
+    "PlusStatusActive": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: Active"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: 有効"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: نشط"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: Aktiv"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: activo"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ : actif"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: aktív"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: attivo"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: 활성"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: actief"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: ativo"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: ativo"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: activ"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: активен"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: เปิดใช้งาน"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: активний"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+：已启用"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+：已啟用"
+          }
+        }
+      }
+    },
+    "PlusStatusInactive": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: Not active"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: 未有効"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: غير نشط"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: Nicht aktiv"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: no activo"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ : inactif"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: nem aktív"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: non attivo"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: 비활성"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: niet actief"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: inativo"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: inativo"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: inactiv"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: не активен"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: ยังไม่เปิดใช้งาน"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: неактивний"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+：未启用"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+：未啟用"
+          }
+        }
+      }
+    },
+    "PlusStatusUnavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: Unavailable"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: 利用不可"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: غير متاح"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: Nicht verfügbar"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: no disponible"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ : indisponible"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: nem elérhető"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: non disponibile"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: 사용할 수 없음"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: niet beschikbaar"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: indisponível"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: indisponível"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: indisponibil"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: недоступен"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: ไม่พร้อมใช้งาน"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+: недоступний"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+：不可用"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+：無法使用"
+          }
+        }
+      }
+    },
+    "CopyDiagnostics": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نسخ معلومات التشخيص…"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diagnose kopieren…"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy diagnostics…"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copiar diagnóstico…"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copier le diagnostic…"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diagnosztika másolása…"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copia diagnostica…"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "診断情報をコピー…"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "진단 정보 복사…"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diagnose kopiëren…"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copiar diagnóstico…"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copiar diagnóstico…"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copiați diagnosticul…"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Скопировать диагностику…"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "คัดลอกข้อมูลวินิจฉัย…"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Скопіювати діагностику…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "复制诊断信息…"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "複製診斷資訊…"
+          }
+        }
+      }
+    },
+    "DiagnosticsCopied.Title": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تم نسخ معلومات التشخيص"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diagnose kopiert"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diagnostics copied"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diagnóstico copiado"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diagnostic copié"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diagnosztika másolva"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diagnostica copiata"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "診断情報をコピーしました"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "진단 정보가 복사됨"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diagnose gekopieerd"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diagnóstico copiado"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diagnóstico copiado"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diagnosticul a fost copiat"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Диагностика скопирована"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "คัดลอกข้อมูลวินิจฉัยแล้ว"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Діагностику скопійовано"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "诊断信息已复制"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "診斷資訊已複製"
+          }
+        }
+      }
+    },
+    "DiagnosticsCopied.Message": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تم نسخ معلومات التشخيص إلى الحافظة. لا تتضمن محتوى الملفات أو أسماء الملفات أو النصوص أو عناوين URL أو أسماء الأجهزة أو عناوين IP."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diagnoseinformationen wurden in die Zwischenablage kopiert. Sie enthalten keine Dateiinhalte, Dateinamen, geteilten Texte, URLs, Gerätenamen oder IP-Adressen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diagnostic information was copied to the clipboard. It does not include file contents, file names, shared text, URLs, device names, or IP addresses."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La información de diagnóstico se copió al portapapeles. No incluye contenido de archivos, nombres de archivos, texto compartido, URLs, nombres de dispositivos ni direcciones IP."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les informations de diagnostic ont été copiées dans le presse-papiers. Elles n’incluent pas le contenu des fichiers, les noms de fichiers, le texte partagé, les URL, les noms d’appareils ni les adresses IP."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A diagnosztikai adatok a vágólapra kerültek. Nem tartalmaznak fájltartalmat, fájlneveket, megosztott szöveget, URL-eket, eszközneveket vagy IP-címeket."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le informazioni di diagnostica sono state copiate negli appunti. Non includono contenuti dei file, nomi dei file, testo condiviso, URL, nomi dei dispositivi o indirizzi IP."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "診断情報をクリップボードにコピーしました。ファイル本文、ファイル名、共有テキスト、URL、デバイス名、IPアドレスは含めていません。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "진단 정보가 클립보드에 복사되었습니다. 파일 내용, 파일 이름, 공유 텍스트, URL, 기기 이름 또는 IP 주소는 포함되지 않습니다."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diagnosegegevens zijn naar het klembord gekopieerd. Ze bevatten geen bestandsinhoud, bestandsnamen, gedeelde tekst, URL's, apparaatnamen of IP-adressen."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "As informações de diagnóstico foram copiadas para a área de transferência. Elas não incluem conteúdo de arquivos, nomes de arquivos, texto compartilhado, URLs, nomes de dispositivos nem endereços IP."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "As informações de diagnóstico foram copiadas para a área de transferência. Não incluem conteúdo de ficheiros, nomes de ficheiros, texto partilhado, URLs, nomes de dispositivos nem endereços IP."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Informațiile de diagnostic au fost copiate în clipboard. Nu includ conținutul fișierelor, numele fișierelor, textul partajat, URL-uri, nume de dispozitive sau adrese IP."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Диагностическая информация скопирована в буфер обмена. Она не содержит содержимое файлов, имена файлов, общий текст, URL, имена устройств или IP-адреса."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "คัดลอกข้อมูลวินิจฉัยไปยังคลิปบอร์ดแล้ว ข้อมูลนี้ไม่รวมเนื้อหาไฟล์ ชื่อไฟล์ ข้อความที่แชร์ URL ชื่ออุปกรณ์ หรือที่อยู่ IP"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Діагностичну інформацію скопійовано до буфера обміну. Вона не містить вміст файлів, імена файлів, спільний текст, URL, назви пристроїв або IP-адреси."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "诊断信息已复制到剪贴板。其中不包含文件内容、文件名、共享文本、URL、设备名称或 IP 地址。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "診斷資訊已複製到剪貼簿。其中不包含檔案內容、檔案名稱、分享文字、URL、裝置名稱或 IP 位址。"
+          }
+        }
+      }
+    },
+    "PrivacyPolicy": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سياسة الخصوصية"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Datenschutzrichtlinie"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Privacy Policy"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Política de privacidad"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Politique de confidentialité"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adatvédelmi irányelvek"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Informativa sulla privacy"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "プライバシーポリシー"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "개인정보 처리방침"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Privacybeleid"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Política de Privacidade"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Política de Privacidade"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Politica de confidențialitate"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Политика конфиденциальности"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "นโยบายความเป็นส่วนตัว"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Політика конфіденційності"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "隐私政策"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "隱私權政策"
+          }
+        }
+      }
+    },
+    "TermsOfUse": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شروط الاستخدام"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nutzungsbedingungen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Terms of Use"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Términos de uso"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Conditions d’utilisation"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Felhasználási feltételek"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Termini di utilizzo"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "利用規約"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이용 약관"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gebruiksvoorwaarden"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Termos de Uso"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Termos de Utilização"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Condiții de utilizare"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Условия использования"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ข้อกำหนดการใช้งาน"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Умови використання"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用条款"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用條款"
+          }
+        }
+      }
+    },
+    "OK": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حسنًا"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "확인"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ตกลง"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "好"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "好"
+          }
+        }
+      }
+    },
+    "FirstLaunchNotice.Title": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta يعمل في شريط القوائم"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta läuft in der Menüleiste"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta is running in the menu bar"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta se está ejecutando en la barra de menús"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta fonctionne dans la barre des menus"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A Pyonta a menüsorban fut"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta è in esecuzione nella barra dei menu"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta はメニューバーで動作しています"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta가 메뉴 막대에서 실행 중입니다"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta draait in de menubalk"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Pyonta está em execução na barra de menus"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Pyonta está em execução na barra de menus"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta rulează în bara de meniu"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta работает в строке меню"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta กำลังทำงานในแถบเมนู"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta працює в рядку меню"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta 正在菜单栏中运行"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta 正在選單列中執行"
+          }
+        }
+      }
+    },
+    "FirstLaunchNotice.Message": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "انقر على أيقونة Pyonta في شريط القوائم لإرسال الملفات أو الاستلام من Android أو الترقية إلى Pyonta+ أو إنهاء التطبيق."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Klicke auf das Pyonta-Symbol in der Menüleiste, um Dateien zu senden, von Android zu empfangen, auf Pyonta+ upzugraden oder die App zu beenden."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Click the Pyonta icon in the menu bar to send files, receive from Android, upgrade to Pyonta+, or quit."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Haz clic en el icono de Pyonta en la barra de menús para enviar archivos, recibir desde Android, actualizar a Pyonta+ o salir."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cliquez sur l’icône Pyonta dans la barre des menus pour envoyer des fichiers, recevoir depuis Android, passer à Pyonta+ ou quitter."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kattints a Pyonta ikonra a menüsorban fájlok küldéséhez, Androidról való fogadáshoz, Pyonta+-ra frissítéshez vagy kilépéshez."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fai clic sull’icona Pyonta nella barra dei menu per inviare file, ricevere da Android, passare a Pyonta+ o uscire."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ファイル送信、Android からの受信、Pyonta+ へのアップグレード、終了は、メニューバーの Pyonta アイコンから行えます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "파일 보내기, Android에서 받기, Pyonta+ 업그레이드 또는 종료는 메뉴 막대의 Pyonta 아이콘에서 할 수 있습니다."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Klik op het Pyonta-symbool in de menubalk om bestanden te verzenden, vanaf Android te ontvangen, naar Pyonta+ te upgraden of te stoppen."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clique no ícone do Pyonta na barra de menus para enviar arquivos, receber do Android, fazer upgrade para Pyonta+ ou sair."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clique no ícone do Pyonta na barra de menus para enviar ficheiros, receber do Android, atualizar para Pyonta+ ou sair."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Faceți clic pe pictograma Pyonta din bara de meniu pentru a trimite fișiere, a primi de pe Android, a face upgrade la Pyonta+ sau a ieși."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Нажмите значок Pyonta в строке меню, чтобы отправлять файлы, получать с Android, перейти на Pyonta+ или выйти."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "คลิกไอคอน Pyonta ในแถบเมนูเพื่อส่งไฟล์ รับจาก Android อัปเกรดเป็น Pyonta+ หรือออกจากแอป"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Натисніть іконку Pyonta в рядку меню, щоб надсилати файли, отримувати з Android, оновити до Pyonta+ або вийти."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "点按菜单栏中的 Pyonta 图标即可发送文件、从 Android 接收、升级到 Pyonta+ 或退出。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "點按選單列中的 Pyonta 圖示即可傳送檔案、從 Android 接收、升級到 Pyonta+ 或結束。"
+          }
+        }
+      }
+    },
+    "FirstLaunchNotice.ShowMenu": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عرض القائمة"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menü anzeigen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show menu"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostrar menú"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Afficher le menu"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menü megjelenítése"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostra menu"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "メニューを表示"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "메뉴 보기"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menu tonen"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostrar menu"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostrar menu"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Afișați meniul"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Показать меню"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "แสดงเมนู"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Показати меню"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示菜单"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "顯示選單"
+          }
+        }
+      }
+    },
+    "PlusRequired.Message": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يتطلب الاستلام من Android اشتراك Pyonta+. قم بالترقية، ثم اطلب من المرسل المحاولة مرة أخرى."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Für den Empfang von Android ist Pyonta+ erforderlich. Führe ein Upgrade durch und bitte den Absender, es erneut zu versuchen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Receiving from Android requires Pyonta+. Upgrade, then ask the sender to try again."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recibir desde Android requiere Pyonta+. Actualiza y pide al remitente que lo intente de nuevo."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La réception depuis Android nécessite Pyonta+. Passez à la version supérieure, puis demandez à l’expéditeur de réessayer."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Az Androidról való fogadáshoz Pyonta+ szükséges. Frissíts, majd kérd meg a küldőt, hogy próbálja újra."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La ricezione da Android richiede Pyonta+. Esegui l’upgrade, poi chiedi al mittente di riprovare."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Android から受信するには Pyonta+ が必要です。アップグレード後、もう一度送信してもらってください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Android에서 받으려면 Pyonta+가 필요합니다. 업그레이드한 뒤 보낸 사람에게 다시 시도해 달라고 하세요."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ontvangen vanaf Android vereist Pyonta+. Upgrade en vraag de afzender het opnieuw te proberen."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Receber do Android requer Pyonta+. Faça upgrade e peça ao remetente para tentar novamente."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Receber do Android requer Pyonta+. Atualize e peça ao remetente para tentar novamente."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Primirea de pe Android necesită Pyonta+. Faceți upgrade, apoi cereți expeditorului să încerce din nou."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Для получения с Android требуется Pyonta+. Перейдите на Pyonta+, затем попросите отправителя повторить попытку."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "การรับจาก Android ต้องใช้ Pyonta+ โปรดอัปเกรด แล้วขอให้ผู้ส่งลองอีกครั้ง"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Для отримання з Android потрібен Pyonta+. Оновіть, а потім попросіть відправника спробувати ще раз."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "从 Android 接收需要 Pyonta+。升级后,请让发送者再试一次。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "從 Android 接收需要 Pyonta+。升級後,請讓傳送者再試一次。"
+          }
+        }
+      }
+    },
+    "PlusUnavailable.Message": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لم يتم إعداد Pyonta+ بعد. أضف مفتاح RevenueCat العام قبل إصدار هذا البناء."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ ist noch nicht konfiguriert. Füge vor der Veröffentlichung dieses Builds den öffentlichen RevenueCat-API-Schlüssel hinzu."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ is not configured yet. Add the RevenueCat public API key before releasing this build."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ aún no está configurado. Añade la clave API pública de RevenueCat antes de publicar esta compilación."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ n’est pas encore configuré. Ajoutez la clé API publique RevenueCat avant de publier cette build."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A Pyonta+ még nincs beállítva. A build kiadása előtt add hozzá a RevenueCat nyilvános API-kulcsát."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ non è ancora configurato. Aggiungi la chiave API pubblica di RevenueCat prima di rilasciare questa build."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ はまだ設定されていません。リリース前に RevenueCat の public API key を設定してください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+가 아직 설정되지 않았습니다. 이 빌드를 출시하기 전에 RevenueCat 공개 API 키를 추가하세요."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ is nog niet geconfigureerd. Voeg de openbare RevenueCat API-sleutel toe voordat je deze build uitbrengt."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Pyonta+ ainda não está configurado. Adicione a chave de API pública da RevenueCat antes de lançar esta build."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Pyonta+ ainda não está configurado. Adicione a chave API pública da RevenueCat antes de lançar esta build."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ nu este configurat încă. Adăugați cheia API publică RevenueCat înainte de lansarea acestui build."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ еще не настроен. Добавьте публичный API-ключ RevenueCat перед выпуском этой сборки."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ยังไม่ได้ตั้งค่า Pyonta+ โปรดเพิ่ม public API key ของ RevenueCat ก่อนปล่อยบิลด์นี้"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ ще не налаштовано. Додайте публічний API-ключ RevenueCat перед випуском цієї збірки."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ 尚未配置。发布此构建前,请添加 RevenueCat public API key。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ 尚未設定。發布此建置前,請加入 RevenueCat public API key。"
+          }
+        }
+      }
+    },
+    "PlusNoOfferings.Message": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا تتوفر منتجات Pyonta+ بعد. تحقق من إعدادات RevenueCat offering ومنتجات App Store Connect."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Es sind noch keine Pyonta+-Produkte verfügbar. Prüfe das RevenueCat-Offering und die Produkteinstellungen in App Store Connect."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No Pyonta+ products are available yet. Check the RevenueCat offering and App Store Connect product setup."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aún no hay productos de Pyonta+ disponibles. Revisa el offering de RevenueCat y la configuración de productos en App Store Connect."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aucun produit Pyonta+ n’est encore disponible. Vérifiez l’offering RevenueCat et la configuration des produits dans App Store Connect."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Még nem érhetők el Pyonta+ termékek. Ellenőrizd a RevenueCat offeringet és az App Store Connect termékbeállításait."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Non sono ancora disponibili prodotti Pyonta+. Controlla l’offering RevenueCat e la configurazione dei prodotti in App Store Connect."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ の商品がまだ取得できません。RevenueCat の offering と App Store Connect の商品設定を確認してください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ 상품을 아직 사용할 수 없습니다. RevenueCat offering과 App Store Connect 상품 설정을 확인하세요."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Er zijn nog geen Pyonta+-producten beschikbaar. Controleer de RevenueCat-offering en de productinstellingen in App Store Connect."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ainda não há produtos Pyonta+ disponíveis. Verifique a offering da RevenueCat e a configuração de produtos no App Store Connect."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ainda não há produtos Pyonta+ disponíveis. Verifique a offering da RevenueCat e a configuração de produtos no App Store Connect."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nu există încă produse Pyonta+ disponibile. Verificați offering-ul RevenueCat și configurarea produselor în App Store Connect."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Продукты Pyonta+ пока недоступны. Проверьте offering в RevenueCat и настройки продуктов в App Store Connect."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ยังไม่มีสินค้า Pyonta+ ให้ใช้งาน โปรดตรวจสอบ offering ใน RevenueCat และการตั้งค่าสินค้าใน App Store Connect"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Продукти Pyonta+ ще недоступні. Перевірте offering у RevenueCat і налаштування продуктів в App Store Connect."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "尚无可用的 Pyonta+ 商品。请检查 RevenueCat offering 和 App Store Connect 商品设置。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "尚無可用的 Pyonta+ 商品。請檢查 RevenueCat offering 和 App Store Connect 商品設定。"
+          }
+        }
+      }
+    },
+    "PlusPurchaseSuccess.Message": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ نشط. تم فتح الاستلام من Android الآن."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ ist aktiv. Der Empfang von Android ist jetzt freigeschaltet."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ is active. Receiving from Android is now unlocked."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ está activo. La recepción desde Android ya está desbloqueada."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ est actif. La réception depuis Android est maintenant déverrouillée."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A Pyonta+ aktív. Az Androidról való fogadás mostantól fel van oldva."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ è attivo. La ricezione da Android è ora sbloccata."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ が有効になりました。Android からの受信が使えるようになりました。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+가 활성화되었습니다. 이제 Android에서 받을 수 있습니다."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ is actief. Ontvangen vanaf Android is nu ontgrendeld."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Pyonta+ está ativo. Receber do Android agora está desbloqueado."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Pyonta+ está ativo. Receber do Android está agora desbloqueado."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ este activ. Primirea de pe Android este acum deblocată."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ активен. Получение с Android теперь разблокировано."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ เปิดใช้งานแล้ว ตอนนี้รับจาก Android ได้แล้ว"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ активний. Отримання з Android тепер розблоковано."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ 已激活。现在可以从 Android 接收了。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ 已啟用。現在可以從 Android 接收了。"
+          }
+        }
+      }
+    },
+    "PlusRestoreSuccess.Message": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ نشط."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ ist aktiv."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ is active."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ está activo."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ est actif."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A Pyonta+ aktív."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ è attivo."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ は有効です。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+가 활성화되어 있습니다."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ is actief."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Pyonta+ está ativo."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Pyonta+ está ativo."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ este activ."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ активен."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ เปิดใช้งานอยู่"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ активний."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ 已激活。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ 已啟用。"
+          }
+        }
+      }
+    },
+    "PlusRestoreMissing.Message": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ غير نشط لهذا الحساب."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ ist für dieses Konto nicht aktiv."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ is not active for this account."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ no está activo para esta cuenta."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ n’est pas actif pour ce compte."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A Pyonta+ nem aktív ehhez a fiókhoz."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ non è attivo per questo account."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "このアカウントでは Pyonta+ は有効ではありません。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이 계정에서는 Pyonta+가 활성화되어 있지 않습니다."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ is niet actief voor dit account."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Pyonta+ não está ativo para esta conta."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Pyonta+ não está ativo para esta conta."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ nu este activ pentru acest cont."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ не активен для этой учетной записи."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ ไม่ได้เปิดใช้งานสำหรับบัญชีนี้"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta+ не активний для цього облікового запису."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此帐户未激活 Pyonta+。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此帳號未啟用 Pyonta+。"
+          }
+        }
+      }
+    },
+    "PlusPurchaseFailed.Message": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تعذر إكمال الشراء. يرجى المحاولة مرة أخرى."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Kauf konnte nicht abgeschlossen werden. Bitte versuche es erneut."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Purchase could not be completed. Please try again."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No se pudo completar la compra. Inténtalo de nuevo."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L’achat n’a pas pu être finalisé. Veuillez réessayer."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A vásárlást nem sikerült befejezni. Próbáld újra."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Impossibile completare l’acquisto. Riprova."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "購入を完了できませんでした。もう一度お試しください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "구입을 완료할 수 없습니다. 다시 시도해 주세요."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "De aankoop kon niet worden voltooid. Probeer het opnieuw."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A compra não pôde ser concluída. Tente novamente."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A compra não pôde ser concluída. Tente novamente."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Achiziția nu a putut fi finalizată. Încercați din nou."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не удалось завершить покупку. Повторите попытку."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ไม่สามารถทำการซื้อให้เสร็จสมบูรณ์ได้ โปรดลองอีกครั้ง"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не вдалося завершити покупку. Спробуйте ще раз."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法完成购买。请重试。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "無法完成購買。請再試一次。"
+          }
+        }
+      }
+    }
   },
   "version": "1.0"
 }

@@ -32,6 +32,8 @@ enum PyontaPurchaseConfiguration {
 
 final class PyontaPurchases {
 	static let shared = PyontaPurchases()
+	private static let privacyPolicyURL = URL(string: "https://odiften.com/pyonta/privacy")!
+	private static let termsOfUseURL = URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!
 
 	private(set) var isConfigured = false
 	private(set) var isPlusActive = false
@@ -125,9 +127,9 @@ final class PyontaPurchases {
 					purchases.update(customerInfo: customerInfo)
 				}
 				if purchases.isPlusActive {
-					purchases.showAlert(messageKey: "PlusRestoreSuccess.Message", defaultMessage: "Purchases restored. Pyonta+ is active.")
+					purchases.showAlert(messageKey: "PlusRestoreSuccess.Message", defaultMessage: "Pyonta+ is active.")
 				} else {
-					purchases.showAlert(messageKey: "PlusRestoreMissing.Message", defaultMessage: "No active Pyonta+ purchase was found for this Apple ID.")
+					purchases.showAlert(messageKey: "PlusRestoreMissing.Message", defaultMessage: "Pyonta+ is not active for this account.")
 				}
 			}
 		}
@@ -139,6 +141,7 @@ final class PyontaPurchases {
 		alert.informativeText = NSLocalizedString("PlusRequired.Message", value: "Receiving from Android requires Pyonta+. Upgrade, then ask the sender to try again.", comment: "")
 		alert.addButton(withTitle: NSLocalizedString("UpgradeToPlus", value: "Upgrade to Pyonta+…", comment: ""))
 		alert.addButton(withTitle: NSLocalizedString("Cancel", value: "Cancel", comment: ""))
+		alert.accessoryView = makePurchaseLinksView()
 		NSApp.activate(ignoringOtherApps: true)
 		let result = alert.runModal()
 		if result == .alertFirstButtonReturn {
@@ -154,11 +157,58 @@ final class PyontaPurchases {
 			alert.addButton(withTitle: Self.buttonTitle(for: package))
 		}
 		alert.addButton(withTitle: NSLocalizedString("Cancel", value: "Cancel", comment: ""))
+		alert.accessoryView = makePurchaseLinksView()
 		NSApp.activate(ignoringOtherApps: true)
 		let result = alert.runModal()
 		let index = result.rawValue - NSApplication.ModalResponse.alertFirstButtonReturn.rawValue
 		guard packages.indices.contains(index) else { return }
 		purchase(package: packages[index])
+	}
+
+	@objc private func openPrivacyPolicy(_ sender: Any?) {
+		NSWorkspace.shared.open(Self.privacyPolicyURL)
+	}
+
+	@objc private func openTermsOfUse(_ sender: Any?) {
+		NSWorkspace.shared.open(Self.termsOfUseURL)
+	}
+
+	private func makePurchaseLinksView() -> NSView {
+		let privacyButton = makeLinkButton(
+			title: NSLocalizedString("PrivacyPolicy", value: "Privacy Policy", comment: ""),
+			action: #selector(openPrivacyPolicy(_:))
+		)
+		let termsButton = makeLinkButton(
+			title: NSLocalizedString("TermsOfUse", value: "Terms of Use", comment: ""),
+			action: #selector(openTermsOfUse(_:))
+		)
+
+		let stack = NSStackView(views: [privacyButton, termsButton])
+		stack.orientation = .horizontal
+		stack.alignment = .centerY
+		stack.spacing = 14
+		stack.edgeInsets = NSEdgeInsets(top: 8, left: 0, bottom: 0, right: 0)
+		stack.translatesAutoresizingMaskIntoConstraints = false
+
+		let container = NSView(frame: NSRect(x: 0, y: 0, width: 320, height: 32))
+		container.addSubview(stack)
+		NSLayoutConstraint.activate([
+			stack.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+			stack.trailingAnchor.constraint(lessThanOrEqualTo: container.trailingAnchor),
+			stack.topAnchor.constraint(equalTo: container.topAnchor),
+			stack.bottomAnchor.constraint(equalTo: container.bottomAnchor)
+		])
+		return container
+	}
+
+	private func makeLinkButton(title: String, action: Selector) -> NSButton {
+		let button = NSButton(title: title, target: self, action: action)
+		button.bezelStyle = .inline
+		button.isBordered = false
+		button.font = NSFont.systemFont(ofSize: NSFont.smallSystemFontSize)
+		button.contentTintColor = .linkColor
+		button.setButtonType(.momentaryPushIn)
+		return button
 	}
 
 	private func purchase(package: Package) {

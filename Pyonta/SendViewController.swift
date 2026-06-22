@@ -260,6 +260,7 @@ class SendViewController: NSViewController, ShareExtensionDelegate {
 		progressProgressBar?.maxValue=1000
 		progressProgressBar?.doubleValue=0
 		lastError=error
+		PyontaDiagnostics.recordOutgoing(kind: diagnosticContentKind, fileCount: diagnosticFileCount, error: error)
 		if let ne=(error as? NearbyError), case let .canceled(reason)=ne{
 			switch reason{
 			case .userRejected:
@@ -293,6 +294,7 @@ class SendViewController: NSViewController, ShareExtensionDelegate {
 
 	func transferFinished() {
 		progressState?.stringValue=NSLocalizedString("TransferFinished", value: "Transfer finished", comment: "")
+		PyontaDiagnostics.recordOutgoing(kind: diagnosticContentKind, fileCount: diagnosticFileCount, error: nil)
 		dismissDelayed()
 	}
 
@@ -337,6 +339,27 @@ class SendViewController: NSViewController, ShareExtensionDelegate {
 			return NSLocalizedString("SendError.RetryQuickShare", value: "Quick Share could not complete the transfer. Open Quick Share on the Android device and try again.", comment: "")
 		}
 		return error.localizedDescription
+	}
+
+	private var diagnosticContentKind: PyontaDiagnostics.ContentKind {
+		switch mode {
+		case .urls(let urls):
+			if urls.count==1, let scheme=urls[0].scheme?.lowercased(), scheme=="http" || scheme=="https" {
+				return .url
+			}
+			return .files
+		case .text(_, let isURL):
+			return isURL ? .url : .text
+		}
+	}
+
+	private var diagnosticFileCount: Int {
+		switch mode {
+		case .urls(let urls):
+			return diagnosticContentKind == .files ? urls.count : 0
+		case .text:
+			return 0
+		}
 	}
 }
 
