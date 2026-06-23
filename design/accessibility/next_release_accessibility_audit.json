@@ -1,0 +1,140 @@
+{
+  "app": "Pyonta",
+  "platform": "macOS",
+  "scope": "next App Store submission package",
+  "state": "draft-static-audit",
+  "notes": [
+    "Do not submit these declarations until the actual binary is exercised in Light and Dark appearances.",
+    "Apple's Accessibility Nutrition Labels should be based on common tasks, not on competitor labels.",
+    "Larger Text is listed by Apple as not supported for Mac product-page labels."
+  ],
+  "commonTasks": [
+    {
+      "id": "first_launch",
+      "label": "First launch menu bar hint",
+      "surfaces": ["welcome hint", "Open/Reopen status menu"]
+    },
+    {
+      "id": "menu_settings",
+      "label": "Menu bar settings",
+      "surfaces": ["visibility", "auto accept", "open URLs", "launch at login", "Pyonta+ state", "diagnostics copy"]
+    },
+    {
+      "id": "receive_android_to_mac",
+      "label": "Receive from Android",
+      "surfaces": ["notification consent", "plus-required alert", "Downloads save", "completion/error notifications"]
+    },
+    {
+      "id": "send_mac_to_android",
+      "label": "Send from Mac to Android",
+      "surfaces": ["send files window", "send clipboard", "device list", "progress", "errors"]
+    },
+    {
+      "id": "qr_fallback",
+      "label": "QR fallback",
+      "surfaces": ["QR window", "scan instructions"]
+    },
+    {
+      "id": "purchase_restore",
+      "label": "Purchase and restore",
+      "surfaces": ["RevenueCat package picker", "privacy link", "terms link", "restore flow", "entitlement state"]
+    },
+    {
+      "id": "share_extension",
+      "label": "Finder Share extension",
+      "surfaces": ["Share extension device picker", "progress", "errors"]
+    }
+  ],
+  "candidateDeclarations": [
+    {
+      "feature": "Dark Interface",
+      "proposedAnswer": "pending-claim-after-ui-audit",
+      "currentEvidence": [
+        "Core app surfaces are mostly AppKit menus, alerts, and windows.",
+        "No custom dark-mode-only rendering has been verified yet."
+      ],
+      "remainingChecks": [
+        "Launch the next build in Light and Dark appearances.",
+        "Check first launch, menu bar menu, purchase/restore, send window, QR fallback, Share extension, and error alerts."
+      ]
+    },
+    {
+      "feature": "Sufficient Contrast",
+      "proposedAnswer": "pending-claim-after-contrast-review",
+      "currentEvidence": [
+        "Native controls handle most core UI contrast.",
+        "Generated App Store screenshots use dark text on pale backgrounds and should be checked at thumbnail scale."
+      ],
+      "remainingChecks": [
+        "Check custom screenshot assets and generated imagery.",
+        "Check disabled menu items, status text, QR fallback, and purchase dialogs."
+      ]
+    },
+    {
+      "feature": "Differentiate Without Color Alone",
+      "proposedAnswer": "pending-claim-after-ui-audit",
+      "currentEvidence": [
+        "Menu items and transfer states use text labels in addition to colors.",
+        "Generated screenshots still use green arrows and status dots, but core meaning is also conveyed by text and layout."
+      ],
+      "remainingChecks": [
+        "Verify errors, progress, purchase state, and transfer completion are not communicated only by color."
+      ]
+    },
+    {
+      "feature": "VoiceOver",
+      "proposedAnswer": "do-not-claim-yet",
+      "currentEvidence": [
+        "Some custom views set accessibilityDescription to nil for icons.",
+        "Focus order and labels have not been exercised."
+      ],
+      "remainingChecks": [
+        "Run VoiceOver through all common tasks before considering a claim."
+      ]
+    },
+    {
+      "feature": "Voice Control",
+      "proposedAnswer": "do-not-claim-yet",
+      "currentEvidence": [
+        "Voice Control operation has not been exercised."
+      ],
+      "remainingChecks": [
+        "Check menu commands, device selection, purchase flow, and Share extension operation."
+      ]
+    },
+    {
+      "feature": "Larger Text",
+      "proposedAnswer": "not-applicable-for-mac-label",
+      "currentEvidence": [
+        "Apple's Accessibility Nutrition Labels overview says Larger Text is not supported on Mac."
+      ],
+      "remainingChecks": []
+    },
+    {
+      "feature": "Reduced Motion",
+      "proposedAnswer": "do-not-claim-yet",
+      "currentEvidence": [
+        "No motion-heavy UI was identified in static review, but system reduced-motion behavior has not been verified."
+      ],
+      "remainingChecks": [
+        "Verify any progress, QR, notification, or purchase animations respect system settings before claiming."
+      ]
+    },
+    {
+      "feature": "Captions",
+      "proposedAnswer": "not-applicable",
+      "currentEvidence": [
+        "The app has no video or audio-only content as part of common tasks."
+      ],
+      "remainingChecks": []
+    },
+    {
+      "feature": "Audio Descriptions",
+      "proposedAnswer": "not-applicable",
+      "currentEvidence": [
+        "The app has no video content as part of common tasks."
+      ],
+      "remainingChecks": []
+    }
+  ]
+}

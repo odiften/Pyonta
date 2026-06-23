@@ -392,7 +392,7 @@ def draw_phone(d: ImageDraw.ImageDraw, rect, label: str = "Android") -> None:
     d.rounded_rectangle(rect, radius=58, fill="#202832")
     d.rounded_rectangle((x1 + 22, y1 + 28, x2 - 22, y2 - 28), radius=40, fill="#F8FAFC")
     d.rounded_rectangle((x1 + 88, y1 + 18, x2 - 88, y1 + 30), radius=6, fill="#11161C")
-    d.text((x1 + 64, y1 + 90), label, font=font(30, "bold"), fill=INK)
+    d.text((x1 + 58, y1 + 82), label, font=font(52, "bold"), fill=INK)
     colors = (BLUE, GREEN, AMBER)
     for i in range(3):
         y = y1 + 178 + i * 86
@@ -403,12 +403,32 @@ def draw_phone(d: ImageDraw.ImageDraw, rect, label: str = "Android") -> None:
 
 
 def draw_arrow(d: ImageDraw.ImageDraw, start: tuple[int, int], end: tuple[int, int], color: str) -> None:
-    d.line((start, end), fill=color, width=18)
-    angle = math.atan2(end[1] - start[1], end[0] - start[0])
-    size = 42
-    p1 = (end[0] - size * math.cos(angle - 0.55), end[1] - size * math.sin(angle - 0.55))
-    p2 = (end[0] - size * math.cos(angle + 0.55), end[1] - size * math.sin(angle + 0.55))
-    d.polygon((end, p1, p2), fill=color)
+    dx = end[0] - start[0]
+    dy = end[1] - start[1]
+    length = math.hypot(dx, dy)
+    if length == 0:
+        return
+
+    ux, uy = dx / length, dy / length
+    px, py = -uy, ux
+    shaft_width = 32
+    head_length = 118
+    head_width = 118
+    shaft_end = (end[0] - ux * head_length, end[1] - uy * head_length)
+
+    shaft = (
+        (start[0] + px * shaft_width / 2, start[1] + py * shaft_width / 2),
+        (shaft_end[0] + px * shaft_width / 2, shaft_end[1] + py * shaft_width / 2),
+        (shaft_end[0] - px * shaft_width / 2, shaft_end[1] - py * shaft_width / 2),
+        (start[0] - px * shaft_width / 2, start[1] - py * shaft_width / 2),
+    )
+    head = (
+        end,
+        (shaft_end[0] + px * head_width / 2, shaft_end[1] + py * head_width / 2),
+        (shaft_end[0] - px * head_width / 2, shaft_end[1] - py * head_width / 2),
+    )
+    d.polygon(shaft, fill=color)
+    d.polygon(head, fill=color)
 
 
 def qr_pattern(size: int = 360) -> Image.Image:
