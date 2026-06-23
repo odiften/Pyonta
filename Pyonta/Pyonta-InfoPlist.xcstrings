@@ -5,19 +5,37 @@
       "comment": "Bundle name",
       "extractionState": "extracted_with_value",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pyonta"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pyonta"
-          }
-        },
         "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "bg": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "da": {
           "stringUnit": {
             "state": "translated",
             "value": "Pyonta"
@@ -29,7 +47,37 @@
             "value": "Pyonta"
           }
         },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
         "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "fil": {
           "stringUnit": {
             "state": "translated",
             "value": "Pyonta"
@@ -41,7 +89,31 @@
             "value": "Pyonta"
           }
         },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
         "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "id": {
           "stringUnit": {
             "state": "translated",
             "value": "Pyonta"
@@ -65,7 +137,37 @@
             "value": "Pyonta"
           }
         },
+        "lt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "lv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
         "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "pl": {
           "stringUnit": {
             "state": "translated",
             "value": "Pyonta"
@@ -95,13 +197,55 @@
             "value": "Pyonta"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "sr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
         "th": {
           "stringUnit": {
             "state": "translated",
             "value": "Pyonta"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
         "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "zh-Hans": {
           "stringUnit": {
             "state": "translated",
             "value": "Pyonta"
@@ -119,13 +263,37 @@
       "comment": "Copyright (human-readable)",
       "extractionState": "extracted_with_value",
       "localizations": {
-        "en": {
+        "ar": {
           "stringUnit": {
             "state": "translated",
             "value": "Copyright © 2026 odiften"
           }
         },
-        "ar": {
+        "bg": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copyright © 2026 odiften"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copyright © 2026 odiften"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copyright © 2026 odiften"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copyright © 2026 odiften"
+          }
+        },
+        "da": {
           "stringUnit": {
             "state": "translated",
             "value": "Copyright © 2026 odiften"
@@ -137,7 +305,37 @@
             "value": "Copyright © 2026 odiften"
           }
         },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copyright © 2026 odiften"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copyright © 2026 odiften"
+          }
+        },
         "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copyright © 2026 odiften"
+          }
+        },
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copyright © 2026 odiften"
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copyright © 2026 odiften"
+          }
+        },
+        "fil": {
           "stringUnit": {
             "state": "translated",
             "value": "Copyright © 2026 odiften"
@@ -149,7 +347,31 @@
             "value": "Copyright © 2026 odiften"
           }
         },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copyright © 2026 odiften"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copyright © 2026 odiften"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copyright © 2026 odiften"
+          }
+        },
         "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copyright © 2026 odiften"
+          }
+        },
+        "id": {
           "stringUnit": {
             "state": "translated",
             "value": "Copyright © 2026 odiften"
@@ -173,7 +395,37 @@
             "value": "Copyright © 2026 odiften"
           }
         },
+        "lt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copyright © 2026 odiften"
+          }
+        },
+        "lv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copyright © 2026 odiften"
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copyright © 2026 odiften"
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copyright © 2026 odiften"
+          }
+        },
         "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copyright © 2026 odiften"
+          }
+        },
+        "pl": {
           "stringUnit": {
             "state": "translated",
             "value": "Copyright © 2026 odiften"
@@ -203,13 +455,49 @@
             "value": "Copyright © 2026 odiften"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copyright © 2026 odiften"
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copyright © 2026 odiften"
+          }
+        },
+        "sr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copyright © 2026 odiften"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copyright © 2026 odiften"
+          }
+        },
         "th": {
           "stringUnit": {
             "state": "translated",
             "value": "Copyright © 2026 odiften"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copyright © 2026 odiften"
+          }
+        },
         "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copyright © 2026 odiften"
+          }
+        },
+        "vi": {
           "stringUnit": {
             "state": "translated",
             "value": "Copyright © 2026 odiften"
@@ -239,10 +527,46 @@
             "value": "يستخدم Pyonta شبكتك المحلية للعثور على أجهزة Android القريبة ونقل الملفات عبر Quick Share."
           }
         },
+        "bg": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta използва локалната мрежа, за да намира близки Android устройства и да прехвърля файлове чрез Quick Share."
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "কাছাকাছি Android ডিভাইস খুঁজতে এবং Quick Share দিয়ে ফাইল স্থানান্তর করতে Pyonta আপনার লোকাল নেটওয়ার্ক ব্যবহার করে।"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta utilitza la xarxa local per descobrir dispositius Android propers i transferir fitxers amb Quick Share."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta používá místní síť k vyhledání blízkých zařízení Android a přenosu souborů přes Quick Share."
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta bruger dit lokale netværk til at finde Android-enheder i nærheden og overføre filer via Quick Share."
+          }
+        },
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Pyonta verwendet Ihr lokales Netzwerk, um Android-Geräte in der Nähe zu finden und Dateien über Quick Share zu übertragen."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Το Pyonta χρησιμοποιεί το τοπικό σας δίκτυο για να εντοπίζει κοντινές συσκευές Android και να μεταφέρει αρχεία μέσω Quick Share."
           }
         },
         "en": {
@@ -257,16 +581,58 @@
             "value": "Pyonta usa tu red local para descubrir dispositivos Android cercanos y transferir archivos mediante Quick Share."
           }
         },
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta kasutab teie kohalikku võrku lähedal asuvate Android-seadmete leidmiseks ja failide edastamiseks Quick Share'i kaudu."
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta käyttää paikallisverkkoasi löytääkseen lähellä olevia Android-laitteita ja siirtääkseen tiedostoja Quick Sharella."
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ginagamit ng Pyonta ang iyong local network para mahanap ang malapit na Android devices at maglipat ng files gamit ang Quick Share."
+          }
+        },
         "fr": {
           "stringUnit": {
             "state": "translated",
             "value": "Pyonta utilise votre réseau local pour détecter les appareils Android à proximité et transférer des fichiers via Quick Share."
           }
         },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta משתמש ברשת המקומית שלך כדי לגלות מכשירי Android קרובים ולהעביר קבצים באמצעות Quick Share."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta पास के Android डिवाइस खोजने और Quick Share से फ़ाइलें ट्रांसफर करने के लिए आपके स्थानीय नेटवर्क का उपयोग करता है।"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta koristi vašu lokalnu mrežu za pronalaženje obližnjih Android uređaja i prijenos datoteka putem Quick Sharea."
+          }
+        },
         "hu": {
           "stringUnit": {
             "state": "translated",
             "value": "A Pyonta a helyi hálózatot használja a közeli Android eszközök felderítéséhez és a fájlok Quick Share-en keresztüli átviteléhez."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta menggunakan jaringan lokal Anda untuk menemukan perangkat Android di sekitar dan mentransfer file lewat Quick Share."
           }
         },
         "it": {
@@ -287,10 +653,40 @@
             "value": "Pyonta는 주변 Android 기기를 찾고 Quick Share를 통해 파일을 전송하기 위해 로컬 네트워크를 사용합니다."
           }
         },
+        "lt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta naudoja jūsų vietinį tinklą netoliese esantiems Android įrenginiams aptikti ir failams perkelti per Quick Share."
+          }
+        },
+        "lv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta izmanto jūsu lokālo tīklu, lai atrastu tuvumā esošas Android ierīces un pārsūtītu failus ar Quick Share."
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta menggunakan rangkaian setempat anda untuk menemui peranti Android berdekatan dan memindahkan fail melalui Quick Share."
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta bruker lokalnettverket ditt til å finne Android-enheter i nærheten og overføre filer via Quick Share."
+          }
+        },
         "nl": {
           "stringUnit": {
             "state": "translated",
             "value": "Pyonta gebruikt uw lokale netwerk om Android-apparaten in de buurt te vinden en bestanden via Quick Share over te dragen."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta używa sieci lokalnej do wykrywania pobliskich urządzeń Android i przesyłania plików przez Quick Share."
           }
         },
         "pt-BR": {
@@ -317,16 +713,52 @@
             "value": "Pyonta использует вашу локальную сеть для обнаружения находящихся рядом устройств Android и передачи файлов через Quick Share."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta používa vašu lokálnu sieť na vyhľadanie blízkych zariadení Android a prenos súborov cez Quick Share."
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta uporablja vaše lokalno omrežje za odkrivanje bližnjih naprav Android in prenos datotek prek Quick Share."
+          }
+        },
+        "sr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta користи вашу локалну мрежу да пронађе оближње Android уређаје и пренесе датотеке преко Quick Share-а."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta använder ditt lokala nätverk för att hitta Android-enheter i närheten och överföra filer via Quick Share."
+          }
+        },
         "th": {
           "stringUnit": {
             "state": "translated",
             "value": "Pyonta ใช้เครือข่ายภายในของคุณเพื่อค้นหาอุปกรณ์ Android ที่อยู่ใกล้เคียงและถ่ายโอนไฟล์ผ่าน Quick Share"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta, yakındaki Android aygıtlarını bulmak ve Quick Share ile dosya aktarmak için yerel ağınızı kullanır."
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
             "value": "Pyonta використовує вашу локальну мережу для пошуку поблизу пристроїв Android і передавання файлів через Quick Share."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta sử dụng mạng cục bộ của bạn để tìm thiết bị Android gần đó và chuyển tệp qua Quick Share."
           }
         },
         "zh-Hans": {

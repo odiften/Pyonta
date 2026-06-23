@@ -11,9 +11,117 @@
             "value": "Pyonta"
           }
         },
+        "bg": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "new",
+            "value": "Pyonta"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
             "value": "Pyonta"
           }
         },
@@ -29,7 +137,43 @@
             "value": "Pyonta"
           }
         },
+        "lt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "lv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
         "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "pt-BR": {
           "stringUnit": {
             "state": "translated",
             "value": "Pyonta"
@@ -53,55 +197,55 @@
             "value": "Pyonta"
           }
         },
-        "uk": {
+        "sk": {
           "stringUnit": {
             "state": "translated",
             "value": "Pyonta"
           }
         },
-        "zh-Hans": {
+        "sl": {
           "stringUnit": {
             "state": "translated",
             "value": "Pyonta"
           }
         },
-        "de": {
+        "sr": {
           "stringUnit": {
             "state": "translated",
             "value": "Pyonta"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pyonta"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pyonta"
-          }
-        },
-        "hu": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pyonta"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pyonta"
-          }
-        },
-        "pt-BR": {
+        "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "Pyonta"
           }
         },
         "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyonta"
+          }
+        },
+        "zh-Hans": {
           "stringUnit": {
             "state": "translated",
             "value": "Pyonta"
@@ -126,10 +270,118 @@
             "value": "إلغاء"
           }
         },
+        "bg": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Отказ"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "বাতিল"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel·la"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zrušit"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Annuller"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abbrechen"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ακύρωση"
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "new",
             "value": "Cancel"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancelar"
+          }
+        },
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tühista"
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Peru"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kanselahin"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Annuler"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "בטל"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "रद्द करें"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odustani"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mégse"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Batal"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Annulla"
           }
         },
         "ja": {
@@ -144,10 +396,46 @@
             "value": "취소"
           }
         },
+        "lt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atšaukti"
+          }
+        },
+        "lv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atcelt"
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Batal"
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avbryt"
+          }
+        },
         "nl": {
           "stringUnit": {
             "state": "translated",
             "value": "Annuleren"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anuluj"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancelar"
           }
         },
         "pt-PT": {
@@ -168,58 +456,58 @@
             "value": "Отменить"
           }
         },
-        "uk": {
+        "sk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Скасувати"
+            "value": "Zrušiť"
           }
         },
-        "zh-Hans": {
+        "sl": {
           "stringUnit": {
             "state": "translated",
-            "value": "取消"
+            "value": "Prekliči"
           }
         },
-        "de": {
+        "sr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Abbrechen"
+            "value": "Откажи"
           }
         },
-        "es": {
+        "sv": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cancelar"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Annuler"
-          }
-        },
-        "hu": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mégse"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Annulla"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cancelar"
+            "value": "Avbryt"
           }
         },
         "th": {
           "stringUnit": {
             "state": "translated",
             "value": "ยกเลิก"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İptal"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Скасувати"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hủy"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取消"
           }
         },
         "zh-Hant": {
@@ -240,10 +528,118 @@
             "value": "إلغاء"
           }
         },
+        "bg": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Отказ"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "বাতিল"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel·la"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zrušit"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Annuller"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abbrechen"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ακύρωση"
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "new",
             "value": "Cancel"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancelar"
+          }
+        },
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tühista"
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Peru"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kanselahin"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Annuler"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "בטל"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "रद्द करें"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odustani"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mégse"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Batal"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Annulla"
           }
         },
         "ja": {
@@ -258,10 +654,46 @@
             "value": "취소"
           }
         },
+        "lt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atšaukti"
+          }
+        },
+        "lv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atcelt"
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Batal"
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avbryt"
+          }
+        },
         "nl": {
           "stringUnit": {
             "state": "translated",
             "value": "Annuleren"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anuluj"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancelar"
           }
         },
         "pt-PT": {
@@ -282,52 +714,28 @@
             "value": "Отменить"
           }
         },
-        "uk": {
+        "sk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Скасувати"
+            "value": "Zrušiť"
           }
         },
-        "zh-Hans": {
+        "sl": {
           "stringUnit": {
             "state": "translated",
-            "value": "取消"
+            "value": "Prekliči"
           }
         },
-        "de": {
+        "sr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Abbrechen"
+            "value": "Откажи"
           }
         },
-        "es": {
+        "sv": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cancelar"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Annuler"
-          }
-        },
-        "hu": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mégse"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Annulla"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cancelar"
+            "value": "Avbryt"
           }
         },
         "th": {
@@ -336,6 +744,30 @@
             "value": "ยกเลิก"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İptal"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Скасувати"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hủy"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取消"
+          }
+        },
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
@@ -344,140 +776,44 @@
         }
       }
     },
-    "d3J-ot-h5d.title": {
-      "comment": "Class = \"NSTextFieldCell\"; title = \"Scan this QR code with an Android device. The transfer will begin automatically.\"; ObjectID = \"d3J-ot-h5d\";",
-      "extractionState": "extracted_with_value",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "new",
-            "value": "Scan this QR code with an Android device. The transfer will begin automatically."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Отсканируйте этот QR-код на Android-устройстве. Передача начнётся автоматически."
-          }
-        },
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "امسح رمز QR هذا باستخدام جهاز Android. ستبدأ عملية النقل تلقائياً."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Scanne diesen QR-Code mit einem Android-Gerät. Die Übertragung beginnt automatisch."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Escanea este código QR con un dispositivo Android. La transferencia comenzará automáticamente."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Scannez ce QR code avec un appareil Android. Le transfert démarrera automatiquement."
-          }
-        },
-        "hu": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Olvasd be ezt a QR-kódot egy Android-eszközzel. Az átvitel automatikusan elindul."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Scansiona questo codice QR con un dispositivo Android. Il trasferimento inizierà automaticamente."
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "この QR コードを Android 端末で読み取ってください。転送が自動的に始まります。"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Android 기기로 이 QR 코드를 스캔하세요. 전송이 자동으로 시작됩니다."
-          }
-        },
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Scan deze QR-code met een Android-apparaat. De overdracht begint automatisch."
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Escaneie este código QR com um dispositivo Android. A transferência começará automaticamente."
-          }
-        },
-        "pt-PT": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lê este código QR com um dispositivo Android. A transferência começa automaticamente."
-          }
-        },
-        "ro": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Scanează acest cod QR cu un dispozitiv Android. Transferul va începe automat."
-          }
-        },
-        "th": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "สแกน QR โค้ดนี้ด้วยอุปกรณ์ Android การถ่ายโอนจะเริ่มโดยอัตโนมัติ"
-          }
-        },
-        "uk": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Відскануйте цей QR-код пристроєм Android. Передавання розпочнеться автоматично."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "用 Android 设备扫描此二维码，传输将自动开始。"
-          }
-        },
-        "zh-Hant": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "用 Android 裝置掃描此 QR 碼，傳輸將自動開始。"
-          }
-        }
-      }
-    },
     "Ll5-lP-3bU.title": {
       "comment": "Class = \"NSButtonCell\"; title = \"Use QR code...\"; ObjectID = \"Ll5-lP-3bU\";",
       "extractionState": "extracted_with_value",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "new",
-            "value": "Use QR code..."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Использовать QR-код..."
-          }
-        },
         "ar": {
           "stringUnit": {
             "state": "translated",
             "value": "استخدام رمز QR..."
+          }
+        },
+        "bg": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Използване на QR код…"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "QR কোড ব্যবহার করুন…"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Utilitza codi QR…"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Použít QR kód…"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Brug QR-kode…"
           }
         },
         "de": {
@@ -486,10 +822,40 @@
             "value": "QR-Code verwenden …"
           }
         },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Χρήση κωδικού QR…"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Use QR code..."
+          }
+        },
         "es": {
           "stringUnit": {
             "state": "translated",
             "value": "Usar código QR…"
+          }
+        },
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kasuta QR-koodi…"
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Käytä QR-koodia…"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gumamit ng QR code…"
           }
         },
         "fr": {
@@ -498,10 +864,34 @@
             "value": "Utiliser un QR code…"
           }
         },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "השתמש בקוד QR…"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "QR कोड इस्तेमाल करें…"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Koristi QR kod…"
+          }
+        },
         "hu": {
           "stringUnit": {
             "state": "translated",
             "value": "QR-kód használata…"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gunakan kode QR…"
           }
         },
         "it": {
@@ -522,10 +912,40 @@
             "value": "QR 코드 사용..."
           }
         },
+        "lt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Naudoti QR kodą…"
+          }
+        },
+        "lv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Izmantot QR kodu…"
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gunakan kod QR…"
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bruk QR-kode…"
+          }
+        },
         "nl": {
           "stringUnit": {
             "state": "translated",
             "value": "QR-code gebruiken…"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Użyj kodu QR…"
           }
         },
         "pt-BR": {
@@ -546,16 +966,58 @@
             "value": "Folosește cod QR…"
           }
         },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Использовать QR-код..."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Použiť QR kód…"
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uporabi kodo QR…"
+          }
+        },
+        "sr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Користи QR код…"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Använd QR-kod…"
+          }
+        },
         "th": {
           "stringUnit": {
             "state": "translated",
             "value": "ใช้ QR โค้ด…"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "QR kodu kullan…"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
             "value": "Використати QR-код…"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dùng mã QR…"
           }
         },
         "zh-Hans": {
@@ -582,10 +1044,118 @@
             "value": "البحث عن الأجهزة..."
           }
         },
+        "bg": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Търсене на устройства..."
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ডিভাইস খোঁজা হচ্ছে..."
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cercant dispositius..."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hledání zařízení..."
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Leder efter enheder..."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geräte werden gesucht …"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Αναζήτηση συσκευών..."
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "new",
             "value": "Looking for devices..."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buscando dispositivos…"
+          }
+        },
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seadmete otsimine..."
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Etsitään laitteita..."
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Naghahanap ng mga device..."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recherche d’appareils…"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "מחפש מכשירים..."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "डिवाइस खोजे जा रहे हैं..."
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Traženje uređaja..."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eszközök keresése…"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mencari perangkat..."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ricerca dispositivi…"
           }
         },
         "ja": {
@@ -600,10 +1170,46 @@
             "value": "근처 기기 찾는 중..."
           }
         },
+        "lt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ieškoma įrenginių..."
+          }
+        },
+        "lv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meklē ierīces..."
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mencari peranti..."
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ser etter enheter..."
+          }
+        },
         "nl": {
           "stringUnit": {
             "state": "translated",
             "value": "Op zoek naar apparaten..."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Szukanie urządzeń..."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "À procura de dispositivos…"
           }
         },
         "pt-PT": {
@@ -624,58 +1230,58 @@
             "value": "Ищу устройства..."
           }
         },
-        "uk": {
+        "sk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Шукаю пристрої..."
+            "value": "Hľadajú sa zariadenia..."
           }
         },
-        "zh-Hans": {
+        "sl": {
           "stringUnit": {
             "state": "translated",
-            "value": "正在查找附近设备..."
+            "value": "Iskanje naprav..."
           }
         },
-        "de": {
+        "sr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Geräte werden gesucht …"
+            "value": "Тражење уређаја..."
           }
         },
-        "es": {
+        "sv": {
           "stringUnit": {
             "state": "translated",
-            "value": "Buscando dispositivos…"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Recherche d’appareils…"
-          }
-        },
-        "hu": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Eszközök keresése…"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ricerca dispositivi…"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "À procura de dispositivos…"
+            "value": "Letar efter enheter..."
           }
         },
         "th": {
           "stringUnit": {
             "state": "translated",
             "value": "กำลังค้นหาอุปกรณ์…"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aygıtlar aranıyor..."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Шукаю пристрої..."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Đang tìm thiết bị..."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在查找附近设备..."
           }
         },
         "zh-Hant": {
@@ -686,26 +1292,302 @@
         }
       }
     },
-    "uuF-4K-rMR.title": {
-      "comment": "Class = \"NSTextFieldCell\"; title = \"If this doesn't work, make sure that the device and your Mac are on the same network, and that the router isn't blocking LAN communication.\"; ObjectID = \"uuF-4K-rMR\";",
+    "d3J-ot-h5d.title": {
+      "comment": "Class = \"NSTextFieldCell\"; title = \"Scan this QR code with an Android device. The transfer will begin automatically.\"; ObjectID = \"d3J-ot-h5d\";",
       "extractionState": "extracted_with_value",
       "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "امسح رمز QR هذا باستخدام جهاز Android. ستبدأ عملية النقل تلقائياً."
+          }
+        },
+        "bg": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сканирайте този QR код с Android устройство. Трансферът ще започне автоматично."
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Android ডিভাইস দিয়ে এই QR কোড স্ক্যান করুন। ট্রান্সফার স্বয়ংক্রিয়ভাবে শুরু হবে।"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Escaneja aquest codi QR amb un dispositiu Android. La transferència començarà automàticament."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Naskenujte tento QR kód zařízením Android. Přenos začne automaticky."
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scan denne QR-kode med en Android-enhed. Overførslen starter automatisk."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scanne diesen QR-Code mit einem Android-Gerät. Die Übertragung beginnt automatisch."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Σαρώστε αυτόν τον κωδικό QR με συσκευή Android. Η μεταφορά θα ξεκινήσει αυτόματα."
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "new",
-            "value": "If this doesn't work, make sure that the device and your Mac are on the same network, and that the router isn't blocking LAN communication."
+            "value": "Scan this QR code with an Android device. The transfer will begin automatically."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Escanea este código QR con un dispositivo Android. La transferencia comenzará automáticamente."
+          }
+        },
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skanni see QR-kood Android-seadmega. Edastus algab automaatselt."
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skannaa tämä QR-koodi Android-laitteella. Siirto alkaa automaattisesti."
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "I-scan ang QR code na ito gamit ang Android device. Awtomatikong magsisimula ang transfer."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scannez ce QR code avec un appareil Android. Le transfert démarrera automatiquement."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "סרוק קוד QR זה עם מכשיר Android. ההעברה תתחיל אוטומטית."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "इस QR कोड को Android डिवाइस से स्कैन करें। ट्रांसफर अपने आप शुरू होगा।"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skenirajte ovaj QR kod Android uređajem. Prijenos će početi automatski."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Olvasd be ezt a QR-kódot egy Android-eszközzel. Az átvitel automatikusan elindul."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pindai kode QR ini dengan perangkat Android. Transfer akan dimulai otomatis."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scansiona questo codice QR con un dispositivo Android. Il trasferimento inizierà automaticamente."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "この QR コードを Android 端末で読み取ってください。転送が自動的に始まります。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Android 기기로 이 QR 코드를 스캔하세요. 전송이 자동으로 시작됩니다."
+          }
+        },
+        "lt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nuskaitykite šį QR kodą Android įrenginiu. Perkėlimas prasidės automatiškai."
+          }
+        },
+        "lv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skenējiet šo QR kodu ar Android ierīci. Pārsūtīšana sāksies automātiski."
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Imbas kod QR ini dengan peranti Android. Pemindahan akan bermula secara automatik."
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skann denne QR-koden med en Android-enhet. Overføringen starter automatisk."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scan deze QR-code met een Android-apparaat. De overdracht begint automatisch."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zeskanuj ten kod QR urządzeniem Android. Transfer rozpocznie się automatycznie."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Escaneie este código QR com um dispositivo Android. A transferência começará automaticamente."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lê este código QR com um dispositivo Android. A transferência começa automaticamente."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scanează acest cod QR cu un dispozitiv Android. Transferul va începe automat."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Если соединиться не удаётся, убедитесь, что устройство и Mac находятся в одной сети, и что роутер не блокирует передачу данных по локальной сети."
+            "value": "Отсканируйте этот QR-код на Android-устройстве. Передача начнётся автоматически."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Naskenujte tento QR kód zariadením Android. Prenos sa začne automaticky."
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skenirajte to kodo QR z napravo Android. Prenos se bo začel samodejno."
+          }
+        },
+        "sr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Скенирајте овај QR код Android уређајем. Пренос ће почети аутоматски."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skanna den här QR-koden med en Android-enhet. Överföringen startar automatiskt."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "สแกน QR โค้ดนี้ด้วยอุปกรณ์ Android การถ่ายโอนจะเริ่มโดยอัตโนมัติ"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu QR kodunu bir Android aygıtla tarayın. Aktarım otomatik olarak başlayacak."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Відскануйте цей QR-код пристроєм Android. Передавання розпочнеться автоматично."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quét mã QR này bằng thiết bị Android. Quá trình chuyển sẽ tự động bắt đầu."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "用 Android 设备扫描此二维码，传输将自动开始。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "用 Android 裝置掃描此 QR 碼，傳輸將自動開始。"
+          }
+        }
+      }
+    },
+    "uuF-4K-rMR.title": {
+      "comment": "Class = \"NSTextFieldCell\"; title = \"If this doesn't work, make sure that the device and your Mac are on the same network, and that the router isn't blocking LAN communication.\"; ObjectID = \"uuF-4K-rMR\";",
+      "extractionState": "extracted_with_value",
+      "localizations": {
         "ar": {
           "stringUnit": {
             "state": "translated",
             "value": "إذا لم ينجح ذلك، تأكد من أن الجهاز و Mac على نفس الشبكة، وأن جهاز التوجيه لا يحجب الاتصال داخل الشبكة المحلية."
+          }
+        },
+        "bg": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ако това не работи, уверете се, че устройството и Mac са в една и съща мрежа и че рутерът не блокира LAN комуникацията."
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "কাজ না করলে নিশ্চিত করুন ডিভাইস ও Mac একই নেটওয়ার্কে আছে এবং রাউটার LAN যোগাযোগ ব্লক করছে না।"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si això no funciona, assegura't que el dispositiu i el Mac són a la mateixa xarxa i que l'encaminador no bloqueja la comunicació LAN."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pokud to nefunguje, ověřte, že zařízení a Mac jsou ve stejné síti a router neblokuje komunikaci LAN."
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hvis det ikke virker, skal du sikre dig, at enheden og din Mac er på samme netværk, og at routeren ikke blokerer LAN-kommunikation."
           }
         },
         "de": {
@@ -714,10 +1596,40 @@
             "value": "Wenn es nicht funktioniert, stelle sicher, dass das Gerät und dein Mac im selben Netzwerk sind und dein Router die LAN-Kommunikation nicht blockiert."
           }
         },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Αν αυτό δεν λειτουργεί, βεβαιωθείτε ότι η συσκευή και το Mac είναι στο ίδιο δίκτυο και ότι ο δρομολογητής δεν μπλοκάρει την επικοινωνία LAN."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "If this doesn't work, make sure that the device and your Mac are on the same network, and that the router isn't blocking LAN communication."
+          }
+        },
         "es": {
           "stringUnit": {
             "state": "translated",
             "value": "Si no funciona, comprueba que el dispositivo y tu Mac estén en la misma red y que el router no esté bloqueando la comunicación LAN."
+          }
+        },
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kui see ei tööta, veenduge, et seade ja Mac on samas võrgus ning ruuter ei blokeeri LAN-suhtlust."
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jos tämä ei toimi, varmista että laite ja Mac ovat samassa verkossa ja ettei reititin estä LAN-yhteyttä."
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kung hindi ito gumana, tiyaking nasa parehong network ang device at ang Mac, at hindi bina-block ng router ang LAN communication."
           }
         },
         "fr": {
@@ -726,10 +1638,34 @@
             "value": "Si cela ne fonctionne pas, vérifiez que l’appareil et votre Mac sont sur le même réseau et que le routeur ne bloque pas la communication LAN."
           }
         },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "אם זה לא עובד, ודא שהמכשיר וה-Mac נמצאים באותה רשת ושהנתב אינו חוסם תקשורת LAN."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अगर यह काम नहीं करता, तो पक्का करें कि डिवाइस और Mac एक ही नेटवर्क पर हैं और राउटर LAN संचार को ब्लॉक नहीं कर रहा है।"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ako ovo ne radi, provjerite jesu li uređaj i Mac na istoj mreži te da usmjerivač ne blokira LAN komunikaciju."
+          }
+        },
         "hu": {
           "stringUnit": {
             "state": "translated",
             "value": "Ha nem működik, ellenőrizd, hogy az eszköz és a Maced ugyanazon a hálózaton van-e, és hogy a router nem blokkolja-e a LAN-kommunikációt."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jika ini tidak berfungsi, pastikan perangkat dan Mac berada di jaringan yang sama, dan router tidak memblokir komunikasi LAN."
           }
         },
         "it": {
@@ -750,10 +1686,40 @@
             "value": "작동하지 않는 경우, 기기와 Mac이 같은 네트워크에 연결되어 있고 공유기가 LAN 통신을 차단하지 않는지 확인하세요."
           }
         },
+        "lt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jei tai neveikia, įsitikinkite, kad įrenginys ir Mac yra tame pačiame tinkle, o maršrutizatorius neblokuoja LAN ryšio."
+          }
+        },
+        "lv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ja tas nedarbojas, pārliecinieties, ka ierīce un Mac ir vienā tīklā un maršrutētājs nebloķē LAN saziņu."
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jika ini tidak berfungsi, pastikan peranti dan Mac anda berada pada rangkaian yang sama, dan penghala tidak menyekat komunikasi LAN."
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hvis dette ikke fungerer, må du kontrollere at enheten og Macen er på samme nettverk, og at ruteren ikke blokkerer LAN-kommunikasjon."
+          }
+        },
         "nl": {
           "stringUnit": {
             "state": "translated",
             "value": "Werkt het niet? Controleer of het apparaat en je Mac op hetzelfde netwerk zijn, en of de router het LAN-verkeer niet blokkeert."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jeśli to nie działa, upewnij się, że urządzenie i Mac są w tej samej sieci, a router nie blokuje komunikacji LAN."
           }
         },
         "pt-BR": {
@@ -774,16 +1740,58 @@
             "value": "Dacă nu funcționează, asigură-te că dispozitivul și Mac-ul sunt în aceeași rețea și că routerul nu blochează comunicarea în LAN."
           }
         },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Если соединиться не удаётся, убедитесь, что устройство и Mac находятся в одной сети, и что роутер не блокирует передачу данных по локальной сети."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ak to nefunguje, uistite sa, že zariadenie a Mac sú v rovnakej sieti a že router neblokuje komunikáciu LAN."
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Če to ne deluje, preverite, ali sta naprava in Mac v istem omrežju ter ali usmerjevalnik ne blokira komunikacije LAN."
+          }
+        },
+        "sr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ако ово не ради, уверите се да су уређај и Mac на истој мрежи и да рутер не блокира LAN комуникацију."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Om detta inte fungerar, kontrollera att enheten och din Mac är på samma nätverk och att routern inte blockerar LAN-kommunikation."
+          }
+        },
         "th": {
           "stringUnit": {
             "state": "translated",
             "value": "หากไม่ได้ผล โปรดตรวจสอบว่าอุปกรณ์และ Mac อยู่ในเครือข่ายเดียวกัน และเราเตอร์ไม่ได้บล็อกการสื่อสารใน LAN"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu çalışmazsa aygıtın ve Mac'in aynı ağda olduğundan ve yönlendiricinin LAN iletişimini engellemediğinden emin olun."
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
             "value": "Якщо не працює, переконайтесь, що пристрій і Mac у тій самій мережі, а маршрутизатор не блокує обмін у локальній мережі."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nếu không hoạt động, hãy chắc chắn thiết bị và Mac ở cùng mạng, và router không chặn giao tiếp LAN."
           }
         },
         "zh-Hans": {
@@ -810,10 +1818,118 @@
             "value": "إذا لم يظهر جهازك، فعّل الشاشة واضبط مشاركة قريبة على الظهور للجميع."
           }
         },
+        "bg": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ако устройството не се показва, включете екрана му и задайте Quick Share да е видим за всички."
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ডিভাইস না দেখালে স্ক্রিন চালু করুন এবং Quick Share-কে সবার কাছে দৃশ্যমান করুন।"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si el dispositiu no apareix, encén la pantalla i fes que Quick Share sigui visible per a tothom."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pokud se zařízení nezobrazí, zapněte jeho obrazovku a nastavte Quick Share jako viditelné pro všechny."
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hvis enheden ikke vises, skal du tænde skærmen og gøre Quick Share synlig for alle."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn dein Gerät nicht erscheint, schalte den Bildschirm ein und stelle Nearby Share auf „Für alle sichtbar“."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Αν η συσκευή δεν εμφανίζεται, ανοίξτε την οθόνη της και ρυθμίστε το Quick Share να είναι ορατό σε όλους."
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "new",
             "value": "If your device doesn't appear, turn its screen on and set Quick Share to be visible to Everyone."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si no aparece tu dispositivo, enciende su pantalla y configura Compartir cerca como visible para Todos."
+          }
+        },
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kui seadet ei kuvata, lülitage selle ekraan sisse ja määrake Quick Share kõigile nähtavaks."
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jos laite ei näy, kytke sen näyttö päälle ja aseta Quick Share näkyväksi kaikille."
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kung hindi lumabas ang device, buksan ang screen nito at gawing visible to Everyone ang Quick Share."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si votre appareil n’apparaît pas, allumez son écran et réglez Partage à proximité sur « Visible par tous »."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "אם המכשיר אינו מופיע, הפעל את המסך שלו והגדר את Quick Share כגלוי לכולם."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अगर डिवाइस दिखाई नहीं देता, तो उसकी स्क्रीन चालू करें और Quick Share को सभी के लिए visible करें।"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ako se uređaj ne pojavi, uključite njegov zaslon i postavite Quick Share da bude vidljiv svima."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ha az eszközöd nem jelenik meg, kapcsold be a képernyőjét, és állítsd a Megosztás a közelben láthatóságát „Mindenki” értékre."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jika perangkat tidak muncul, nyalakan layarnya dan atur Quick Share agar terlihat oleh semua orang."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se il dispositivo non compare, accendi lo schermo e imposta Condivisione nelle vicinanze su «Visibile a tutti»."
           }
         },
         "ja": {
@@ -828,10 +1944,46 @@
             "value": "기기가 표시되지 않으면 화면을 켜고 Quick Share의 공개 범위를 ‘모든 사람’으로 설정하세요."
           }
         },
+        "lt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jei įrenginys nepasirodo, įjunkite jo ekraną ir nustatykite Quick Share kaip matomą visiems."
+          }
+        },
+        "lv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ja ierīce neparādās, ieslēdziet tās ekrānu un iestatiet Quick Share kā redzamu visiem."
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jika peranti tidak muncul, hidupkan skrinnya dan tetapkan Quick Share supaya kelihatan kepada semua orang."
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hvis enheten ikke vises, slå på skjermen og sett Quick Share til å være synlig for alle."
+          }
+        },
         "nl": {
           "stringUnit": {
             "state": "translated",
             "value": "Als je apparaat niet verschijnt, zet het scherm aan en stel Delen met apparaten in de buurt in op zichtbaar voor Iedereen."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jeśli urządzenie się nie pojawia, włącz jego ekran i ustaw Quick Share jako widoczne dla wszystkich."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se o seu dispositivo não aparecer, ligue a tela e defina o Compartilhamento Próximo como visível para Todos."
           }
         },
         "pt-PT": {
@@ -852,58 +2004,58 @@
             "value": "Если устройство не появляется, включите его экран и установите видимость Quick Share как «Всем»."
           }
         },
-        "uk": {
+        "sk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Якщо пристрій не зʼявляється, увімкніть його екран і встановіть для функції «Поділитися з пристроями поблизу» видимість «Усім»."
+            "value": "Ak sa zariadenie nezobrazí, zapnite jeho obrazovku a nastavte Quick Share ako viditeľné pre všetkých."
           }
         },
-        "zh-Hans": {
+        "sl": {
           "stringUnit": {
             "state": "translated",
-            "value": "如果设备未显示，请点亮屏幕，并将“附近分享”可见性设置为“所有人”。"
+            "value": "Če se naprava ne prikaže, vklopite njen zaslon in nastavite Quick Share, da je vidno vsem."
           }
         },
-        "de": {
+        "sr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Wenn dein Gerät nicht erscheint, schalte den Bildschirm ein und stelle Nearby Share auf „Für alle sichtbar“."
+            "value": "Ако се уређај не појави, укључите његов екран и подесите Quick Share да буде видљив свима."
           }
         },
-        "es": {
+        "sv": {
           "stringUnit": {
             "state": "translated",
-            "value": "Si no aparece tu dispositivo, enciende su pantalla y configura Compartir cerca como visible para Todos."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Si votre appareil n’apparaît pas, allumez son écran et réglez Partage à proximité sur « Visible par tous »."
-          }
-        },
-        "hu": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ha az eszközöd nem jelenik meg, kapcsold be a képernyőjét, és állítsd a Megosztás a közelben láthatóságát „Mindenki” értékre."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Se il dispositivo non compare, accendi lo schermo e imposta Condivisione nelle vicinanze su «Visibile a tutti»."
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Se o seu dispositivo não aparecer, ligue a tela e defina o Compartilhamento Próximo como visível para Todos."
+            "value": "Om enheten inte visas, slå på skärmen och ställ in Quick Share så att det är synligt för alla."
           }
         },
         "th": {
           "stringUnit": {
             "state": "translated",
             "value": "หากไม่พบอุปกรณ์ ให้เปิดหน้าจอและตั้งค่าการแชร์กับอุปกรณ์ใกล้เคียงให้มองเห็นได้สำหรับทุกคน"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aygıt görünmüyorsa ekranını açın ve Quick Share'i herkese görünür yapın."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Якщо пристрій не зʼявляється, увімкніть його екран і встановіть для функції «Поділитися з пристроями поблизу» видимість «Усім»."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nếu thiết bị không xuất hiện, hãy bật màn hình của thiết bị và đặt Quick Share hiển thị với mọi người."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "如果设备未显示，请点亮屏幕，并将“附近分享”可见性设置为“所有人”。"
           }
         },
         "zh-Hant": {
