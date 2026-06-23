@@ -13,6 +13,8 @@
 		5889CC783321E6CE0C934A55 /* LaunchAtLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE1DEE0802DAFA2BB5A5AF /* LaunchAtLogin.swift */; };
 		A11CE0022F00000100000002 /* PyontaPurchases.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11CE0012F00000100000001 /* PyontaPurchases.swift */; };
 		A11CE0112F00000100000011 /* PyontaDiagnostics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11CE0102F00000100000010 /* PyontaDiagnostics.swift */; };
+		A11CE0212F00000200000021 /* BonjourInterfaceSelectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11CE0202F00000200000020 /* BonjourInterfaceSelectorTests.swift */; };
+		A11CE0312F00000300000031 /* NearbyDeviceNameResolverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11CE0302F00000300000030 /* NearbyDeviceNameResolverTests.swift */; };
 		A11CE0032F00000100000003 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = A11CE0052F00000100000005 /* RevenueCat */; };
 		691F53BB2ABB70840089FD92 /* DeviceListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691F53B92ABB70840089FD92 /* DeviceListCell.swift */; };
 		691F53BC2ABB70840089FD92 /* DeviceListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 691F53BA2ABB70840089FD92 /* DeviceListCell.xib */; };
@@ -187,6 +189,8 @@
 		8F56597437179889D33E07EE /* DeviceListCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DeviceListCell.swift; sourceTree = "<group>"; };
 		A11CE0012F00000100000001 /* PyontaPurchases.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PyontaPurchases.swift; sourceTree = "<group>"; };
 		A11CE0102F00000100000010 /* PyontaDiagnostics.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PyontaDiagnostics.swift; sourceTree = "<group>"; };
+		A11CE0202F00000200000020 /* BonjourInterfaceSelectorTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BonjourInterfaceSelectorTests.swift; sourceTree = "<group>"; };
+		A11CE0302F00000300000030 /* NearbyDeviceNameResolverTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NearbyDeviceNameResolverTests.swift; sourceTree = "<group>"; };
 		AFE1F4656A6771933F0B3868 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		B510646A74530F7259C79902 /* mul */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/SendViewController.xcstrings; sourceTree = "<group>"; };
 		CCF69E29EBBAE75CC9167F39 /* NearbyDeviceNameResolver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NearbyDeviceNameResolver.swift; sourceTree = "<group>"; };
@@ -240,6 +244,8 @@
 				372A55FA979A93E947BDBA41 /* FileNameSanitizerTests.swift */,
 				49C110C7382CC821CC6FFE89 /* EndpointInfoTests.swift */,
 				16D657D981E4AB9A9065599B /* InboundTransferValidationTests.swift */,
+				A11CE0202F00000200000020 /* BonjourInterfaceSelectorTests.swift */,
+				A11CE0302F00000300000030 /* NearbyDeviceNameResolverTests.swift */,
 			);
 			name = PyontaTests;
 			path = PyontaTests;
@@ -489,23 +495,47 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				Base,
-				en,
-				it,
-				ru,
-				de,
-				es,
-				th,
-				"pt-BR",
-				hu,
-				nl,
-				"zh-Hans",
-				ko,
-				ja,
-				uk,
-				"pt-PT",
-				fr,
 				ar,
+				bg,
+				bn,
+				ca,
+				cs,
+				da,
+				en,
+				de,
+				el,
+				es,
+				et,
+				fi,
+				fil,
+				fr,
+				he,
+				hi,
+				hr,
+				hu,
+				id,
+				it,
+				ja,
+				ko,
+				lt,
+				lv,
+				ms,
+				nb,
+				nl,
+				pl,
+				"pt-BR",
+				"pt-PT",
 				ro,
+				ru,
+				sk,
+				sl,
+				sr,
+				sv,
+				th,
+				tr,
+				uk,
+				vi,
+				"zh-Hans",
 				"zh-Hant",
 			);
 			mainGroup = 69DA9A0529E0BF5100A442DA;
@@ -616,6 +646,8 @@
 				D2CDD75882C837E5088D2AFD /* FileNameSanitizerTests.swift in Sources */,
 				8DC9CBCED27B9621CEE95443 /* EndpointInfoTests.swift in Sources */,
 				50072E435B7CE842D2C4F07B /* InboundTransferValidationTests.swift in Sources */,
+				A11CE0212F00000200000021 /* BonjourInterfaceSelectorTests.swift in Sources */,
+				A11CE0312F00000300000031 /* NearbyDeviceNameResolverTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -704,7 +736,7 @@
 				CODE_SIGN_ENTITLEMENTS = ShareExtension/ShareExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = M5BUPQ3687;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -718,7 +750,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.odiften.pyonta.ShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -733,7 +765,7 @@
 				CODE_SIGN_ENTITLEMENTS = ShareExtension/ShareExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = M5BUPQ3687;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -747,7 +779,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.odiften.pyonta.ShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -888,7 +920,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = M5BUPQ3687;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -905,7 +937,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.odiften.pyonta;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -928,7 +960,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = M5BUPQ3687;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -945,7 +977,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.odiften.pyonta;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

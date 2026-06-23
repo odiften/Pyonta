@@ -64,7 +64,7 @@ final class NearbyDeviceNameResolver {
 
     private func resolveAdvertisedHostname(for service: NWBrowser.Result, completion: @escaping (String?) -> Void) {
         let resolverID = UUID()
-        guard let resolver = NearbyNetworkScannerHostnameResolver(result: service, resolveTimeout: 0.5, completion: { [weak self] hostname in
+        guard let resolver = NearbyNetworkScannerHostnameResolver(result: service, resolveTimeout: 1.5, completion: { [weak self] hostname in
             self?.hostnameResolvers.removeValue(forKey: resolverID)
             completion(hostname)
         }) else {
@@ -125,6 +125,11 @@ private final class NearbyNetworkScannerHostnameResolver: NSObject, NetServiceDe
     }
 
     func netServiceDidResolveAddress(_ sender: NetService) {
+        if let hostname = NearbyNetworkScannerHostLookup.displayName(fromHostname: sender.hostName) {
+            finish(hostname: hostname)
+            return
+        }
+
         let numericAddresses = sender.addresses?.compactMap(Self.numericHostString) ?? []
         guard let ipv4Address = numericAddresses.first(where: NearbyNetworkScannerHostLookup.isIPv4Address) else {
             finish(hostname: nil)
@@ -195,9 +200,13 @@ private final class NearbyNetworkScannerHostnameResolver: NSObject, NetServiceDe
 }
 
 
-private enum NearbyNetworkScannerHostLookup {
+enum NearbyNetworkScannerHostLookup {
     static func hostname(forIPv4 address: String) -> String? {
         reverseDNSName(forIPv4: address).flatMap(prettifyDisplayName)
+    }
+
+    static func displayName(fromHostname hostname: String?) -> String? {
+        prettifyDisplayName(hostname)
     }
 
     static func isIPv4Address(_ address: String) -> Bool {
@@ -244,7 +253,18 @@ private enum NearbyNetworkScannerHostLookup {
             .replacingOccurrences(of: "_", with: " ")
             .trimmingCharacters(in: .whitespacesAndNewlines)
 
-        guard !prettified.isEmpty else { return nil }
+        guard !prettified.isEmpty, !isGenericAndroidNetworkName(prettified) else { return nil }
         return prettified.capitalized
+    }
+
+    private static func isGenericAndroidNetworkName(_ value:String) -> Bool {
+        let parts=value
+            .lowercased()
+            .split(whereSeparator: { $0==" " || $0=="-" || $0=="_" })
+            .map(String.init)
+        guard let first=parts.first, first=="android" else { return false }
+        if parts.count==1 { return true }
+        guard parts.count==2 else { return false }
+        return parts[1].range(of: #"^[a-z0-9]{6,}$"#, options: .regularExpression) != nil
     }
 }

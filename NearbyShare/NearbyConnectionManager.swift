@@ -13,6 +13,7 @@ import SwiftECC
 import os.log
 import dnssd
 import SystemConfiguration
+import Darwin
 
 fileprivate let pyontaLog = OSLog(subsystem: "com.odiften.pyonta", category: "discovery")
 
@@ -22,11 +23,11 @@ public struct RemoteDeviceInfo{
 	public let qrCodeData:Data?
 	public var id:String?
 	
-	init(name: String, type: DeviceType, id: String? = nil) {
+	init(name: String, type: DeviceType, id: String? = nil, qrCodeData: Data? = nil) {
 		self.name = name
 		self.type = type
 		self.id = id
-		self.qrCodeData = nil
+		self.qrCodeData = qrCodeData
 	}
 	
 	init(info:EndpointInfo, id: String? = nil){
@@ -34,6 +35,10 @@ public struct RemoteDeviceInfo{
 		self.type=info.deviceType
 		self.qrCodeData=info.qrCodeData
 		self.id=id
+	}
+
+	func renamed(_ name:String) -> RemoteDeviceInfo {
+		RemoteDeviceInfo(name: name, type: type, id: id, qrCodeData: qrCodeData)
 	}
 	
 	public enum DeviceType:Int32{
@@ -109,6 +114,37 @@ struct OutgoingTransferInfo{
 	let delegate:ShareExtensionDelegate
 }
 
+struct RecentDeviceNameCache {
+	private struct Entry {
+		let name:String
+		let type:RemoteDeviceInfo.DeviceType
+		let learnedAt:Date
+	}
+
+	private var entries:[String:Entry]=[:]
+	private let maxAge:TimeInterval
+
+	init(maxAge:TimeInterval = 10*60) {
+		self.maxAge=maxAge
+	}
+
+	mutating func remember(name:String, type:RemoteDeviceInfo.DeviceType, at date:Date = Date()) {
+		let cleaned=name.trimmingCharacters(in: .whitespacesAndNewlines)
+		guard !cleaned.isEmpty else { return }
+		entries[cleaned.lowercased()]=Entry(name: cleaned, type: type, learnedAt: date)
+	}
+
+	mutating func uniqueRecentName(for type:RemoteDeviceInfo.DeviceType, at date:Date = Date()) -> String? {
+		entries=entries.filter { _, entry in
+			date.timeIntervalSince(entry.learnedAt) <= maxAge
+		}
+		let matching=entries.values.filter { $0.type == type }
+		let names=Set(matching.map(\.name))
+		guard names.count==1 else { return nil }
+		return matching.first?.name
+	}
+}
+
 private struct NetworkPathSignature: Equatable {
 	let isSatisfied:Bool
 	let status:String
@@ -125,6 +161,45 @@ private struct NetworkPathSignature: Equatable {
 	}
 }
 
+struct BonjourIPv4Interface: Equatable {
+	let name:String
+	let address:String
+	let flags:UInt32
+
+	var isUsableForLocalBonjour:Bool {
+		guard hasFlag(IFF_UP), hasFlag(IFF_RUNNING), hasFlag(IFF_MULTICAST) else { return false }
+		guard !hasFlag(IFF_LOOPBACK), !hasFlag(IFF_POINTOPOINT) else { return false }
+		guard address != "0.0.0.0", !address.hasPrefix("127."), !address.hasPrefix("169.254.") else { return false }
+		let excludedPrefixes=["awdl", "llw", "utun", "ppp", "bridge", "gif", "stf"]
+		return !excludedPrefixes.contains { name.hasPrefix($0) }
+	}
+
+	var preferenceScore:Int {
+		if name=="en0" { return 1000 }
+		if name.hasPrefix("en") { return 900 }
+		return 100
+	}
+
+	private func hasFlag(_ flag:Int32) -> Bool {
+		(flags & UInt32(flag)) != 0
+	}
+}
+
+enum BonjourInterfaceSelector {
+	static func selectedInterfaceName(primaryName:String?, interfaces:[BonjourIPv4Interface]) -> String? {
+		let usable=interfaces.filter(\.isUsableForLocalBonjour)
+		if let primaryName=primaryName, usable.contains(where: { $0.name==primaryName }) {
+			return primaryName
+		}
+		return usable.sorted {
+			if $0.preferenceScore != $1.preferenceScore {
+				return $0.preferenceScore > $1.preferenceScore
+			}
+			return $0.name < $1.name
+		}.first?.name
+	}
+}
+
 private final class BonjourServicePublisher {
 	private let log:OSLog
 	private var serviceRef:DNSServiceRef?
@@ -137,12 +212,19 @@ private final class BonjourServicePublisher {
 	func publish(type:String, name:String, port:Int32, txtRecord:Data) {
 		stop()
 
-		let interfaceName=Self.primaryIPv4InterfaceName()
+		let primaryName=Self.primaryIPv4InterfaceName()
+		let interfaceName=BonjourInterfaceSelector.selectedInterfaceName(
+			primaryName: primaryName,
+			interfaces: Self.activeIPv4Interfaces()
+		)
 		let interfaceIndex=interfaceName.flatMap { UInt32(if_nametoindex($0)) } ?? 0
 		guard interfaceIndex != 0 else {
 			os_log("Publishing mDNS service on all interfaces (no primary interface found): name=%{private}@ port=%d", log: log, type: .info, name, port)
 			publishWithNetService(type: type, name: name, port: port, txtRecord: txtRecord)
 			return
+		}
+		if let primaryName=primaryName, primaryName != interfaceName {
+			os_log("Primary interface %{private}@ is not suitable for local Bonjour; publishing on %{private}@ instead", log: log, type: .info, primaryName, interfaceName!)
 		}
 
 		var ref:DNSServiceRef?
@@ -190,6 +272,40 @@ private final class BonjourServicePublisher {
 	private static func primaryIPv4InterfaceName() -> String? {
 		guard let state=SCDynamicStoreCopyValue(nil, "State:/Network/Global/IPv4" as CFString) as? [String:Any] else { return nil }
 		return state["PrimaryInterface"] as? String
+	}
+
+	private static func activeIPv4Interfaces() -> [BonjourIPv4Interface] {
+		var addresses:UnsafeMutablePointer<ifaddrs>?
+		guard getifaddrs(&addresses)==0, let first=addresses else { return [] }
+		defer { freeifaddrs(addresses) }
+
+		var interfaces:[BonjourIPv4Interface]=[]
+		var pointer:UnsafeMutablePointer<ifaddrs>?=first
+		while let current=pointer {
+			defer { pointer=current.pointee.ifa_next }
+			guard let addr=current.pointee.ifa_addr else { continue }
+			guard addr.pointee.sa_family == sa_family_t(AF_INET) else { continue }
+			guard let namePointer=current.pointee.ifa_name else { continue }
+
+			var host=[CChar](repeating: 0, count: Int(NI_MAXHOST))
+			let result=getnameinfo(
+				addr,
+				socklen_t(addr.pointee.sa_len),
+				&host,
+				socklen_t(host.count),
+				nil,
+				0,
+				NI_NUMERICHOST
+			)
+			guard result==0 else { continue }
+
+			interfaces.append(BonjourIPv4Interface(
+				name: String(cString: namePointer),
+				address: String(cString: host),
+				flags: current.pointee.ifa_flags
+			))
+		}
+		return interfaces
 	}
 }
 
@@ -319,6 +435,8 @@ public class NearbyConnectionManager : NSObject, NetServiceDelegate, InboundNear
 	private var mdnsService:BonjourServicePublisher?
 	private var activeConnections:[String:InboundNearbyConnection]=[:]
 	private var foundServices:[String:FoundServiceInfo]=[:]
+	private var learnedDeviceNames:[String:String]=[:]
+	private var recentDeviceNameCache=RecentDeviceNameCache()
 	private var shareExtensionDelegates:[ShareExtensionDelegate]=[]
 	private var outgoingTransfers:[String:OutgoingTransferInfo]=[:]
 	public var mainAppDelegate:(any MainAppDelegate)?
@@ -462,6 +580,7 @@ public class NearbyConnectionManager : NSObject, NetServiceDelegate, InboundNear
 	}
 	
 	func obtainUserConsent(for transfer: TransferMetadata, from device: RemoteDeviceInfo, connection: InboundNearbyConnection) {
+		rememberLearnedDeviceName(device.name, endpointID: connection.remoteEndpointID, deviceType: device.type)
 		guard let delegate=mainAppDelegate else {return}
 		delegate.obtainUserConsent(for: transfer, from: device)
 	}
@@ -663,6 +782,16 @@ public class NearbyConnectionManager : NSObject, NetServiceDelegate, InboundNear
 		os_log("  -> EndpointInfo: name=%{private}@ type=%d", log: pyontaLog, type: .info, endpointInfo.name ?? "(nil)", endpointInfo.deviceType.rawValue)
 #endif
 
+		if deviceNameResolver.needsLookup(for: endpointInfo),
+		   let learnedName=learnedDeviceNames[endpointID] {
+			endpointInfo.name=learnedName
+		} else if deviceNameResolver.needsLookup(for: endpointInfo),
+				  let recentName=recentDeviceNameCache.uniqueRecentName(for: endpointInfo.deviceType) {
+			endpointInfo.name=recentName
+		} else if let name=endpointInfo.name, !isFallbackDeviceName(name) {
+			recentDeviceNameCache.remember(name: name, type: endpointInfo.deviceType)
+		}
+
 		// Quick Share v3 (Hidden mode) では Bonjour TXT に name が無い。
 		// その場合は mDNS hostname の reverse DNS lookup で機種名を補完する。
 		let needsDeviceNameLookup=deviceNameResolver.needsLookup(for: endpointInfo)
@@ -678,6 +807,7 @@ public class NearbyConnectionManager : NSObject, NetServiceDelegate, InboundNear
 				guard var stale=self.foundServices[endpointID] else { return }
 				var updatedEndpointInfo=capturedEndpointInfo
 				updatedEndpointInfo.name=resolvedName
+				self.recentDeviceNameCache.remember(name: resolvedName, type: updatedEndpointInfo.deviceType)
 				_=self.addFoundDevice(foundService: &stale, endpointInfo: updatedEndpointInfo, endpointID: endpointID)
 			}
 		} else {
@@ -731,6 +861,28 @@ public class NearbyConnectionManager : NSObject, NetServiceDelegate, InboundNear
 #endif
 		}
 		return FoundServiceInfo(service: newService)
+	}
+
+	private func rememberLearnedDeviceName(_ name:String, endpointID:String?, deviceType:RemoteDeviceInfo.DeviceType){
+		guard let endpointID=endpointID else { return }
+		let cleaned=name.trimmingCharacters(in: .whitespacesAndNewlines)
+		guard !cleaned.isEmpty, !isFallbackDeviceName(cleaned) else { return }
+		learnedDeviceNames[endpointID]=cleaned
+		recentDeviceNameCache.remember(name: cleaned, type: deviceType)
+
+		guard var foundService=foundServices[endpointID], let device=foundService.device else { return }
+		guard device.name != cleaned else { return }
+		let updatedDevice=device.renamed(cleaned)
+		foundService.device=updatedDevice
+		foundServices[endpointID]=foundService
+		for delegate in shareExtensionDelegates {
+			delegate.updateDevice(device: updatedDevice)
+		}
+	}
+
+	private func isFallbackDeviceName(_ name:String) -> Bool {
+		let fallback=NSLocalizedString("UnknownAndroidDevice", value: "Android device", comment: "")
+		return name == fallback || name == "Android device"
 	}
 
 	private func servicePreferenceScore(_ service:NWBrowser.Result) -> Int{
@@ -837,7 +989,7 @@ public class NearbyConnectionManager : NSObject, NetServiceDelegate, InboundNear
 		conn.delegate=self
 		conn.qrCodePrivateKey=qrCodePrivateKey
 		let transfer=OutgoingTransferInfo(service: info.service, device: info.device!, connection: conn, delegate: delegate)
-		outgoingTransfers[deviceID]=transfer
+		storeOutgoingTransfer(transfer, for: deviceID)
 		conn.start()
 	}
 
@@ -851,33 +1003,49 @@ public class NearbyConnectionManager : NSObject, NetServiceDelegate, InboundNear
 		conn.delegate=self
 		conn.qrCodePrivateKey=qrCodePrivateKey
 		let transfer=OutgoingTransferInfo(service: info.service, device: info.device!, connection: conn, delegate: delegate)
-		outgoingTransfers[deviceID]=transfer
+		storeOutgoingTransfer(transfer, for: deviceID)
 		conn.start()
+	}
+
+	private func storeOutgoingTransfer(_ transfer:OutgoingTransferInfo, for deviceID:String){
+		let previous=outgoingTransfers.updateValue(transfer, forKey: deviceID)
+		if let previous=previous, previous.connection !== transfer.connection {
+			previous.connection.cancel()
+		}
+	}
+
+	private func activeOutgoingTransfer(for connection:OutboundNearbyConnection) -> OutgoingTransferInfo? {
+		guard let transfer=outgoingTransfers[connection.id] else { return nil }
+		guard transfer.connection === connection else {
+			os_log("Ignoring stale outgoing transfer callback: id=%{private}@", log: pyontaLog, type: .info, connection.id)
+			return nil
+		}
+		return transfer
 	}
 	
 	func outboundConnectionWasEstablished(connection: OutboundNearbyConnection) {
-		guard let transfer=outgoingTransfers[connection.id] else {return}
+		guard let transfer=activeOutgoingTransfer(for: connection) else {return}
 		DispatchQueue.main.async {
 			transfer.delegate.connectionWasEstablished(pinCode: connection.pinCode!)
 		}
 	}
 	
 	func outboundConnectionTransferAccepted(connection: OutboundNearbyConnection) {
-		guard let transfer=outgoingTransfers[connection.id] else {return}
+		guard let transfer=activeOutgoingTransfer(for: connection) else {return}
 		DispatchQueue.main.async {
 			transfer.delegate.transferAccepted()
 		}
 	}
 	
 	func outboundConnection(connection: OutboundNearbyConnection, transferProgress: Double) {
-		guard let transfer=outgoingTransfers[connection.id] else {return}
+		guard let transfer=activeOutgoingTransfer(for: connection) else {return}
 		DispatchQueue.main.async {
 			transfer.delegate.transferProgress(progress: transferProgress)
 		}
 	}
 	
 	func outboundConnection(connection: OutboundNearbyConnection, failedWithError: Error) {
-		guard let transfer=outgoingTransfers[connection.id] else {return}
+		guard let transfer=activeOutgoingTransfer(for: connection) else {return}
 		DispatchQueue.main.async {
 			transfer.delegate.connectionFailed(with: failedWithError)
 		}
@@ -888,7 +1056,7 @@ public class NearbyConnectionManager : NSObject, NetServiceDelegate, InboundNear
 	}
 	
 	func outboundConnectionTransferFinished(connection: OutboundNearbyConnection) {
-		guard let transfer=outgoingTransfers[connection.id] else {return}
+		guard let transfer=activeOutgoingTransfer(for: connection) else {return}
 		DispatchQueue.main.async {
 			transfer.delegate.transferFinished()
 		}

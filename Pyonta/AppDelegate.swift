@@ -155,6 +155,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 
 		let menu=NSMenu()
 		menu.delegate=self
+		let versionItem=NSMenuItem(title: appVersionMenuTitle(), action: nil, keyEquivalent: "")
+		versionItem.isEnabled=false
+		menu.addItem(versionItem)
+		menu.addItem(NSMenuItem.separator())
 		let visibilityItem=NSMenuItem()
 		visibilityItem.view=makeVisibilityItemView()
 		menu.addItem(visibilityItem)
@@ -192,9 +196,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 		restorePurchasesItem.target=self
 		plusMenu.addItem(restorePurchasesItem)
 		self.restorePurchasesItem=restorePurchasesItem
-		let copyDiagnosticsItem=NSMenuItem(title: NSLocalizedString("CopyDiagnostics", value: "Copy diagnostics…", comment: ""), action: #selector(copyDiagnostics(_:)), keyEquivalent: "")
-		copyDiagnosticsItem.target=self
-		menu.addItem(copyDiagnosticsItem)
 		menu.addItem(NSMenuItem.separator())
 		menu.addItem(withTitle: NSLocalizedString("Quit", value: "Quit Pyonta", comment: ""), action: #selector(NSApplication.terminate(_:)), keyEquivalent: "")
 		statusItem=NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -446,17 +447,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 		PyontaPurchases.shared.restorePurchases()
 	}
 
-	@objc func copyDiagnostics(_ sender: Any?) {
-		let report=PyontaDiagnostics.makeReport()
-		let pasteboard=NSPasteboard.general
-		pasteboard.clearContents()
-		pasteboard.setString(report, forType: .string)
-
-		let alert=NSAlert()
-		alert.messageText=NSLocalizedString("DiagnosticsCopied.Title", value: "Diagnostics copied", comment: "")
-		alert.informativeText=NSLocalizedString("DiagnosticsCopied.Message", value: "Diagnostic information was copied to the clipboard. It does not include file contents, file names, shared text, URLs, device names, or IP addresses.", comment: "")
-		NSApp.activate(ignoringOtherApps: true)
-		alert.runModal()
+	private func appVersionMenuTitle() -> String {
+		let name = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String ?? "Pyonta"
+		guard let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String, !version.isEmpty else {
+			return name
+		}
+		return "\(name) \(version)"
 	}
 
 	@objc func sendFiles(_ sender: Any?) {

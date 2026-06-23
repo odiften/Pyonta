@@ -32,6 +32,7 @@ class InboundNearbyConnection: NearbyConnection{
 
 	private var textPayloadID:Int64=0
 	private var textPayloadIsURL:Bool=false
+	private(set) var remoteEndpointID:String?
 
 	private static func shouldOpenReceivedURLs() -> Bool {
 		let defaults=UserDefaults.standard
@@ -200,6 +201,7 @@ class InboundNearbyConnection: NearbyConnection{
 		guard endpointInfo.count>=deviceNameLength+18 else { throw NearbyError.protocolError("Endpoint info too short to contain the device name") }
 		guard let deviceName=String(data: endpointInfo[18..<(18+deviceNameLength)], encoding: .utf8) else { throw NearbyError.protocolError("Device name is not valid UTF-8") }
 		let rawDeviceType:Int=Int(endpointInfo[0] & 7) >> 1
+		remoteEndpointID=frame.v1.connectionRequest.endpointID
 		remoteDeviceInfo=RemoteDeviceInfo(name: deviceName, type: RemoteDeviceInfo.DeviceType.fromRawValue(value: rawDeviceType))
 		os_log("Inbound connection request: id=%{private}@ device=%{private}@", log: pyontaReceiveLog, type: .info, id, deviceName)
 		currentState = .receivedConnectionRequest
