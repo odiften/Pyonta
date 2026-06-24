@@ -34,6 +34,13 @@ XCSTRINGS_FILES = (
     "ShareExtension/mul.lproj/ShareViewController.xcstrings",
 )
 
+STORE_PACKAGE_DEFAULT = "design/appstore-metadata/next-release/store_package.json"
+STORE_IAP_PRODUCT_IDS = {
+    "monthly": "com.odiften.pyonta.plus.monthly",
+    "yearly": "com.odiften.pyonta.plus.yearly",
+    "lifetime": "com.odiften.pyonta.plus.lifetime",
+}
+
 
 def parse_known_regions(project_file: Path) -> set[str]:
     text = project_file.read_text()
@@ -99,6 +106,103 @@ def audit_screenshots(root: Path, expected: set[str], screenshot_base: Path) -> 
     }
 
 
+def audit_store_package(root: Path, expected: set[str], package_path: Path) -> dict[str, Any]:
+    path = package_path if package_path.is_absolute() else root / package_path
+    if not path.exists():
+        return {
+            "path": str(path),
+            "present": False,
+            "ok": False,
+            "problems": ["Store package JSON is missing."],
+        }
+
+    data = json.loads(path.read_text())
+    localizations = data.get("localizations") or {}
+    present = set(localizations)
+    problems: list[str] = []
+    missing = sorted(expected - present)
+    extra = sorted(present - expected)
+    if missing:
+        problems.append("Missing store package locales: " + ", ".join(missing))
+    if extra:
+        problems.append("Unexpected store package locales: " + ", ".join(extra))
+
+    english = localizations.get("en", {})
+    english_version = english.get("versionMetadata", {})
+    for locale in sorted(expected & present):
+        item = localizations[locale]
+        app_info = item.get("appInfo") or {}
+        version = item.get("versionMetadata") or {}
+        iap = ((item.get("iap") or {}).get("products") or {})
+        screenshots = item.get("screenshots") or {}
+
+        required_fields = {
+            "appInfo.subtitle": app_info.get("subtitle"),
+            "appInfo.privacyPolicyUrl": app_info.get("privacyPolicyUrl"),
+            "versionMetadata.description": version.get("description"),
+            "versionMetadata.keywords": version.get("keywords"),
+            "versionMetadata.promotionalText": version.get("promotionalText"),
+            "versionMetadata.supportUrl": version.get("supportUrl"),
+            "versionMetadata.marketingUrl": version.get("marketingUrl"),
+            "versionMetadata.whatsNew": version.get("whatsNew"),
+        }
+        empty = [name for name, value in required_fields.items() if not value]
+        if empty:
+            problems.append(f"{locale}: empty fields: {', '.join(empty)}")
+
+        if len(app_info.get("subtitle", "")) > 30:
+            problems.append(f"{locale}: subtitle exceeds 30 characters")
+        if len(version.get("keywords", "")) > 100:
+            problems.append(f"{locale}: keywords exceed 100 characters")
+        if len(version.get("promotionalText", "")) > 170:
+            problems.append(f"{locale}: promotionalText exceeds 170 characters")
+        if len(version.get("description", "")) > 4000:
+            problems.append(f"{locale}: description exceeds 4000 characters")
+
+        if locale != "en":
+            for field in ("description", "promotionalText", "whatsNew"):
+                if version.get(field) == english_version.get(field):
+                    problems.append(f"{locale}: {field} is identical to English fallback")
+            if app_info.get("subtitle") == (english.get("appInfo") or {}).get("subtitle"):
+                problems.append(f"{locale}: subtitle is identical to English fallback")
+
+        for key, product_id in STORE_IAP_PRODUCT_IDS.items():
+            product = iap.get(key)
+            if not product:
+                problems.append(f"{locale}: missing IAP product {key}")
+                continue
+            if product.get("productId") != product_id:
+                problems.append(f"{locale}: {key} productId mismatch")
+            if not product.get("displayName") or not product.get("description"):
+                problems.append(f"{locale}: {key} IAP displayName/description missing")
+
+        for file_name in screenshots.get("files") or []:
+            screenshot_path = root / screenshots.get("directory", "") / file_name
+            if not screenshot_path.exists():
+                problems.append(f"{locale}: package screenshot path missing {screenshot_path}")
+        review = screenshots.get("reviewScreenshot")
+        if review and not (root / review).exists():
+            problems.append(f"{locale}: package review screenshot path missing {review}")
+
+    declarations = data.get("accessibilityDeclarations") or {}
+    coverage = set(declarations.get("localeCoverage") or [])
+    if coverage != expected:
+        problems.append("Accessibility declaration localeCoverage does not match target locales")
+    if not declarations.get("proposedAfterFinalBinaryAudit"):
+        problems.append("Accessibility declaration proposal is empty")
+
+    return {
+        "path": str(path),
+        "present": True,
+        "localizationCount": len(present),
+        "missingLocales": missing,
+        "extraLocales": extra,
+        "accessibilityLocaleCoverageCount": len(coverage),
+        "problems": problems,
+        "ok": not problems,
+    }
+
+
 def pillow_text_shaping_state() -> dict[str, Any]:
     try:
         from PIL import features
@@ -120,11 +224,12 @@ def core_text_renderer_state(root: Path) -> dict[str, Any]:
     }
 
 
-def build_report(root: Path, screenshot_base: Path) -> dict[str, Any]:
+def build_report(root: Path, screenshot_base: Path, store_package: Path) -> dict[str, Any]:
     expected = set(locale_codes())
     known_regions = parse_known_regions(root / "Pyonta.xcodeproj" / "project.pbxproj")
     screenshot_report = audit_screenshots(root, expected, screenshot_base)
     xcstrings_reports = [audit_xcstrings(root / path, expected) for path in XCSTRINGS_FILES]
+    store_package_report = audit_store_package(root, expected, store_package)
     text_shaping = pillow_text_shaping_state()
     core_text = core_text_renderer_state(root)
     warnings: list[str] = []
@@ -139,6 +244,8 @@ def build_report(root: Path, screenshot_base: Path) -> dict[str, Any]:
     missing_known_regions = sorted(expected - known_regions)
     if missing_known_regions:
         warnings.append("Xcode knownRegions is missing target locales.")
+    if not store_package_report["ok"]:
+        warnings.append("Store metadata/IAP/accessibility package audit has problems.")
 
     return {
         "target": {
@@ -156,6 +263,7 @@ def build_report(root: Path, screenshot_base: Path) -> dict[str, Any]:
         },
         "xcstrings": xcstrings_reports,
         "screenshots": screenshot_report,
+        "storePackage": store_package_report,
         "textShaping": text_shaping,
         "coreTextRenderer": core_text,
         "warnings": warnings,
@@ -193,6 +301,17 @@ def print_human(report: dict[str, Any]) -> None:
     if screenshots["reviewScreenshotMissingLocales"]:
         print("  " + ", ".join(screenshots["reviewScreenshotMissingLocales"]))
     print()
+    store = report["storePackage"]
+    print(f"Store package present: {store['present']}")
+    if store["present"]:
+        print(f"Store package locales: {store['localizationCount']}")
+        print(f"Accessibility coverage locales: {store['accessibilityLocaleCoverageCount']}")
+    print(f"Store package problems: {len(store['problems'])}")
+    for problem in store["problems"][:20]:
+        print(f"  - {problem}")
+    if len(store["problems"]) > 20:
+        print(f"  ... {len(store['problems']) - 20} more")
+    print()
     print(f"Pillow text shaping: {report['textShaping']}")
     print(f"CoreText renderer: {report['coreTextRenderer']}")
     if report["warnings"]:
@@ -210,9 +329,14 @@ def main() -> int:
         default="design/appstore-screenshots",
         help="Directory containing per-locale screenshot folders",
     )
+    parser.add_argument(
+        "--store-package",
+        default=STORE_PACKAGE_DEFAULT,
+        help="Local next-release App Store metadata/IAP/accessibility package JSON",
+    )
     parser.add_argument("--json", action="store_true")
     args = parser.parse_args()
-    report = build_report(Path(args.root).resolve(), Path(args.screenshot_base))
+    report = build_report(Path(args.root).resolve(), Path(args.screenshot_base), Path(args.store_package))
     if args.json:
         print(json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True))
     else:
