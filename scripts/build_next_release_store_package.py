@@ -107,6 +107,32 @@ IAP_SHORT_DESCRIPTIONS = {
     "zh-Hant": "用 Pyonta+ 在 Mac 接收 Android 檔案",
 }
 
+DESCRIPTION_OVERRIDES = {
+    "en": [
+        "Pyonta is a Mac menu bar app for passing files and text between Android Quick Share and Mac.",
+        "Mac to Android: send photos, videos, PDFs, files, clipboard text, and URLs from Finder's Share menu or the Pyonta menu bar.",
+        "Android to Mac: open Quick Share from Android's share menu and choose Pyonta as the destination. Files are saved on your Mac, while text and URLs can be copied to the clipboard.",
+        "If the nearby device does not appear, you can keep sending with a QR code.",
+        "Main features: Mac to Android sending; Android to Mac receiving; support for photos, videos, PDFs, text, and URLs; QR code fallback; simple menu bar controls; native macOS notifications.",
+        "Pyonta+: sending from Mac to Android is free. Receiving from Android to Mac requires Pyonta+.",
+        "Pyonta is independent and is not affiliated with Google or Apple. Quick Share is used only to describe compatibility.",
+    ],
+    "ja": [
+        "Pyontaは、AndroidのQuick ShareとMacの間でファイルやテキストを受け渡しできるMac用メニューバーアプリです。",
+        "MacからAndroidへ送るときは、Finderの共有メニューやPyontaのメニューバーから送信できます。写真・動画・PDFなどのファイルに加えて、クリップボードのテキストやURLも送れます。",
+        "AndroidからMacへ送るときは、Androidの共有メニューからQuick Shareを開き、送信先としてPyontaを選びます。写真・動画・PDFなどのファイルに加えて、テキストやURLもMacで受け取れます。",
+        "近くの端末が表示されない場合でも、QRコードを使って送信を続けられます。",
+        "主な機能: MacからAndroidへの送信、AndroidからMacへの受信、写真・動画・PDF・テキスト・URLなどへの対応、QRコード送信、メニューバーからの操作、macOS標準通知。",
+        "Pyonta+: MacからAndroidへの送信は無料です。AndroidからMacへの受信にはPyonta+が必要です。",
+        "PyontaはGoogleまたはAppleの公式アプリではありません。Quick Shareは互換性を説明するために使用しています。",
+    ],
+}
+
+PROMOTIONAL_TEXT_OVERRIDES = {
+    "en": "Pass photos, videos, PDFs, text, and URLs between Android and Mac with a Mac menu bar app compatible with Quick Share.",
+    "ja": "AndroidとMacの間で、写真・動画・PDF・テキスト・URLをすばやく受け渡し。Quick Share互換のMac用メニューバーアプリです。",
+}
+
 TERMS = {
     "ar": {
         "monthly": "شهري",
@@ -458,25 +484,38 @@ def make_description(
     strings: dict[str, dict[str, str]],
     terms: dict[str, str],
 ) -> str:
-    first_message = localized_value(
-        strings,
-        "FirstLaunchNotice.Message",
-        locale,
-        "Click the Pyonta icon in the menu bar to send files, receive from Android, upgrade to Pyonta+, or quit.",
-    )
     privacy_label = localized_value(strings, "PrivacyPolicy", locale, "Privacy Policy")
     terms_label = localized_value(strings, "TermsOfUse", locale, "Terms of Use")
+    if locale in DESCRIPTION_OVERRIDES:
+        paragraphs = [
+            *DESCRIPTION_OVERRIDES[locale],
+            f"{privacy_label}: {PRIVACY_URL}",
+            f"{terms_label}: {TERMS_URL}",
+        ]
+        return "\n\n".join(normalized_line(paragraph) for paragraph in paragraphs)
+
+    send_title = normalized_line(copy["sendTitle"])
+    receive_title = normalized_line(copy["receiveTitle"])
     paragraphs = [
-        first_message,
-        copy["receiveBody"],
-        copy["sendBody"],
-        copy["qrBody"],
-        copy["plusBody"],
+        f"Pyonta: {send_title} / {receive_title}.",
+        f"{send_title}: {copy['sendBody']}",
+        f"{receive_title}: {copy['receiveBody']}",
+        f"{copy['qrTitle']}: {copy['qrBody']}",
+        f"{copy['plusTitle']}: {copy['plusBody']}",
         f"{privacy_label}: {PRIVACY_URL}",
         f"{terms_label}: {TERMS_URL}",
         terms["nonAffiliation"],
     ]
     return "\n\n".join(normalized_line(paragraph) for paragraph in paragraphs)
+
+
+def make_promotional_text(locale: str, copy: dict[str, str]) -> str:
+    if locale in PROMOTIONAL_TEXT_OVERRIDES:
+        return PROMOTIONAL_TEXT_OVERRIDES[locale]
+    value = f"{normalized_line(copy['sendTitle'])} / {normalized_line(copy['receiveTitle'])}"
+    if len(value) <= 170:
+        return value
+    return normalized_line(copy["subtitle"])
 
 
 def build_package() -> dict[str, Any]:
@@ -507,7 +546,7 @@ def build_package() -> dict[str, Any]:
             "versionMetadata": {
                 "description": make_description(locale, copy, strings, terms),
                 "keywords": make_keywords(locale, subtitle),
-                "promotionalText": normalized_line(copy["receiveBody"]),
+                "promotionalText": make_promotional_text(locale, copy),
                 "supportUrl": SUPPORT_URL,
                 "marketingUrl": MARKETING_URL,
                 "whatsNew": terms["whatsNew"],
@@ -549,8 +588,8 @@ def build_package() -> dict[str, Any]:
         },
         "releasePackage": {
             "scope": "next App Store submission package",
-            "targetVersion": "1.0.3",
-            "targetBuild": "21",
+            "targetVersion": "1.0.4",
+            "targetBuild": "22",
             "localeIdCount": len(expected),
             "publicDisplayLanguageCount": display_language_count(),
             "sourceLocaleMatrix": "scripts/next_release_locales.py",

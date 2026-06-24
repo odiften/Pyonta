@@ -171,10 +171,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "انقر على أيقونة Pyonta في شريط القوائم لإرسال الملفات أو الاستلام من Android أو الترقية إلى Pyonta+ أو إنهاء التطبيق.\n\nاستقبل الصور والفيديو وملفات PDF والنصوص وغيرها من Android على Mac.\n\nأرسل الصور والفيديو وملفات PDF والنصوص وغيرها من Mac إلى Android.\n\nإذا لم يظهر Android، تابع الإرسال باستخدام QR.\n\nالإرسال من Mac مجاني. الاستقبال من Android يتطلب Pyonta+.\n\nسياسة الخصوصية: https://odiften.com/pyonta/privacy\n\nشروط الاستخدام: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta مستقل وليس تابعا لـ Google أو Apple.",
+        "description": "Pyonta: نقل ملفات من Mac إلى Android / نقل ملفات من Android إلى Mac.\n\nنقل ملفات من Mac إلى Android: أرسل الصور والفيديو وملفات PDF والنصوص وغيرها من Mac إلى Android.\n\nنقل ملفات من Android إلى Mac: استقبل الصور والفيديو وملفات PDF والنصوص وغيرها من Android على Mac.\n\nإرسال عبر QR أيضًا: إذا لم يظهر Android، تابع الإرسال باستخدام QR.\n\nافتح استقبال Android: الإرسال من Mac مجاني. الاستقبال من Android يتطلب Pyonta+.\n\nسياسة الخصوصية: https://odiften.com/pyonta/privacy\n\nشروط الاستخدام: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta مستقل وليس تابعا لـ Google أو Apple.",
         "keywords": "android,quick share,mac,pyonta,نقل,ملفات",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "استقبل الصور والفيديو وملفات PDF والنصوص وغيرها من Android على Mac.",
+        "promotionalText": "نقل ملفات من Mac إلى Android / نقل ملفات من Android إلى Mac",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "يضيف 41 لغة عرض عبر التطبيق وصفحة المتجر واللقطات ونص Pyonta+ ومعلومات إمكانية الوصول."
       },
@@ -223,10 +223,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "Щракнете върху иконата Pyonta в лентата с менюта, за да изпращате файлове, получавате от Android, надграждате до Pyonta+ или излизате.\n\nПолучавайте снимки, видео, PDF файлове, текст и други от Android на Mac.\n\nИзпращайте снимки, видео, PDF файлове, текст и други от Mac към Android.\n\nАко Android не се показва, продължете изпращането с QR.\n\nИзпращането от Mac е безплатно. Получаването от Android изисква Pyonta+.\n\nПолитика за поверителност: https://odiften.com/pyonta/privacy\n\nУсловия за ползване: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta е независим и не е свързан с Google или Apple.",
+        "description": "Pyonta: Прехвърляне на файлове от Mac към Android / Прехвърляне на файлове от Android към Mac.\n\nПрехвърляне на файлове от Mac към Android: Изпращайте снимки, видео, PDF файлове, текст и други от Mac към Android.\n\nПрехвърляне на файлове от Android към Mac: Получавайте снимки, видео, PDF файлове, текст и други от Android на Mac.\n\nИзпращане и с QR: Ако Android не се показва, продължете изпращането с QR.\n\nОтключете получаването от Android: Изпращането от Mac е безплатно. Получаването от Android изисква Pyonta+.\n\nПолитика за поверителност: https://odiften.com/pyonta/privacy\n\nУсловия за ползване: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta е независим и не е свързан с Google или Apple.",
         "keywords": "android,quick share,mac,pyonta,файлове,за",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Получавайте снимки, видео, PDF файлове, текст и други от Android на Mac.",
+        "promotionalText": "Прехвърляне на файлове от Mac към Android / Прехвърляне на файлове от Android към Mac",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "Добавя 41 езика за показване в приложението, Store страницата, снимките, текста на Pyonta+ и информацията за достъпност."
       },
@@ -275,10 +275,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "ফাইল পাঠানো, Android থেকে গ্রহণ, Pyonta+ আপগ্রেড বা বন্ধ করতে মেনু বারের Pyonta আইকনে ক্লিক করুন।\n\nAndroid থেকে Mac-এ ছবি, ভিডিও, PDF, লেখা ইত্যাদি নিন।\n\nMac থেকে Android-এ ছবি, ভিডিও, PDF, লেখা ইত্যাদি পাঠান।\n\nAndroid না দেখালে QR দিয়ে পাঠানো চালিয়ে যান।\n\nMac থেকে পাঠানো বিনামূল্যে। Android থেকে গ্রহণ করতে Pyonta+ দরকার।\n\nগোপনীয়তা নীতি: https://odiften.com/pyonta/privacy\n\nব্যবহারের শর্তাবলি: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta স্বাধীন এবং Google বা Apple-এর সঙ্গে সংশ্লিষ্ট নয়।",
+        "description": "Pyonta: Mac থেকে Android-এ ফাইল স্থানান্তর / Android থেকে Mac-এ ফাইল স্থানান্তর.\n\nMac থেকে Android-এ ফাইল স্থানান্তর: Mac থেকে Android-এ ছবি, ভিডিও, PDF, লেখা ইত্যাদি পাঠান।\n\nAndroid থেকে Mac-এ ফাইল স্থানান্তর: Android থেকে Mac-এ ছবি, ভিডিও, PDF, লেখা ইত্যাদি নিন।\n\nQR দিয়েও পাঠান: Android না দেখালে QR দিয়ে পাঠানো চালিয়ে যান।\n\nAndroid থেকে গ্রহণ চালু করুন: Mac থেকে পাঠানো বিনামূল্যে। Android থেকে গ্রহণ করতে Pyonta+ দরকার।\n\nগোপনীয়তা নীতি: https://odiften.com/pyonta/privacy\n\nব্যবহারের শর্তাবলি: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta স্বাধীন এবং Google বা Apple-এর সঙ্গে সংশ্লিষ্ট নয়।",
         "keywords": "android,quick share,mac,pyonta,ফাইল,স্থানান্তর",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Android থেকে Mac-এ ছবি, ভিডিও, PDF, লেখা ইত্যাদি নিন।",
+        "promotionalText": "Mac থেকে Android-এ ফাইল স্থানান্তর / Android থেকে Mac-এ ফাইল স্থানান্তর",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "অ্যাপ, Store পৃষ্ঠা, স্ক্রিনশট, Pyonta+ লেখা ও অ্যাক্সেসিবিলিটি তথ্যে ৪১টি প্রদর্শন ভাষা যোগ করা হয়েছে।"
       },
@@ -327,10 +327,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "Fes clic a la icona de Pyonta a la barra de menús per enviar fitxers, rebre d'Android, actualitzar a Pyonta+ o sortir.\n\nRep fotos, vídeos, PDF, text i més d'Android al Mac.\n\nEnvia fotos, vídeos, PDF, text i més del Mac a Android.\n\nSi Android no apareix, continua enviant amb QR.\n\nEnviar des del Mac és gratis. Rebre des d'Android requereix Pyonta+.\n\nPolítica de privadesa: https://odiften.com/pyonta/privacy\n\nCondicions d'ús: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta és independent i no està afiliat a Google ni a Apple.",
+        "description": "Pyonta: Transferència de fitxers de Mac a Android / Transferència de fitxers d'Android a Mac.\n\nTransferència de fitxers de Mac a Android: Envia fotos, vídeos, PDF, text i més del Mac a Android.\n\nTransferència de fitxers d'Android a Mac: Rep fotos, vídeos, PDF, text i més d'Android al Mac.\n\nEnvia també amb QR: Si Android no apareix, continua enviant amb QR.\n\nDesbloqueja la recepció d'Android: Enviar des del Mac és gratis. Rebre des d'Android requereix Pyonta+.\n\nPolítica de privadesa: https://odiften.com/pyonta/privacy\n\nCondicions d'ús: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta és independent i no està afiliat a Google ni a Apple.",
         "keywords": "android,quick share,mac,pyonta,Fitxers,a",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Rep fotos, vídeos, PDF, text i més d'Android al Mac.",
+        "promotionalText": "Transferència de fitxers de Mac a Android / Transferència de fitxers d'Android a Mac",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "Afegeix 41 idiomes de visualització a l'app, la pàgina de la Store, les captures, el text de Pyonta+ i la informació d'accessibilitat."
       },
@@ -379,10 +379,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "Kliknutím na ikonu Pyonta v řádku nabídek můžete posílat soubory, přijímat z Androidu, upgradovat na Pyonta+ nebo aplikaci ukončit.\n\nPřijímejte fotky, videa, PDF, text a další z Androidu na Mac.\n\nPosílejte fotky, videa, PDF, text a další z Macu do Androidu.\n\nKdyž se Android nezobrazí, pokračujte v odesílání přes QR.\n\nOdesílání z Macu je zdarma. Příjem z Androidu vyžaduje Pyonta+.\n\nZásady ochrany osobních údajů: https://odiften.com/pyonta/privacy\n\nPodmínky používání: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta je nezávislá aplikace a není spojena se společnostmi Google ani Apple.",
+        "description": "Pyonta: Přenos souborů z Macu do Androidu / Přenos souborů z Androidu do Macu.\n\nPřenos souborů z Macu do Androidu: Posílejte fotky, videa, PDF, text a další z Macu do Androidu.\n\nPřenos souborů z Androidu do Macu: Přijímejte fotky, videa, PDF, text a další z Androidu na Mac.\n\nOdeslat i přes QR: Když se Android nezobrazí, pokračujte v odesílání přes QR.\n\nOdemkněte příjem z Androidu: Odesílání z Macu je zdarma. Příjem z Androidu vyžaduje Pyonta+.\n\nZásady ochrany osobních údajů: https://odiften.com/pyonta/privacy\n\nPodmínky používání: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta je nezávislá aplikace a není spojena se společnostmi Google ani Apple.",
         "keywords": "android,quick share,mac,pyonta,Přenos,souborů,z,Androidu",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Přijímejte fotky, videa, PDF, text a další z Androidu na Mac.",
+        "promotionalText": "Přenos souborů z Macu do Androidu / Přenos souborů z Androidu do Macu",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "Přidává 41 jazyků zobrazení pro aplikaci, stránku Store, snímky, text Pyonta+ a informace o přístupnosti."
       },
@@ -431,10 +431,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "Klik på Pyonta-ikonet i menulinjen for at sende filer, modtage fra Android, opgradere til Pyonta+ eller afslutte.\n\nModtag fotos, videoer, PDF'er, tekst og mere fra Android på din Mac.\n\nSend fotos, videoer, PDF'er, tekst og mere fra Mac til Android.\n\nHvis Android ikke vises, kan du fortsætte afsendelsen med QR.\n\nAfsendelse fra Mac er gratis. Modtagelse fra Android kræver Pyonta+.\n\nAnonymitetspolitik: https://odiften.com/pyonta/privacy\n\nVilkår for brug: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta er uafhængig og ikke tilknyttet Google eller Apple.",
+        "description": "Pyonta: Filoverførsel fra Mac til Android / Filoverførsel fra Android til Mac.\n\nFiloverførsel fra Mac til Android: Send fotos, videoer, PDF'er, tekst og mere fra Mac til Android.\n\nFiloverførsel fra Android til Mac: Modtag fotos, videoer, PDF'er, tekst og mere fra Android på din Mac.\n\nSend også med QR: Hvis Android ikke vises, kan du fortsætte afsendelsen med QR.\n\nLås modtagelse fra Android op: Afsendelse fra Mac er gratis. Modtagelse fra Android kræver Pyonta+.\n\nAnonymitetspolitik: https://odiften.com/pyonta/privacy\n\nVilkår for brug: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta er uafhængig og ikke tilknyttet Google eller Apple.",
         "keywords": "android,quick share,mac,pyonta,Android-filoverførsel",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Modtag fotos, videoer, PDF'er, tekst og mere fra Android på din Mac.",
+        "promotionalText": "Filoverførsel fra Mac til Android / Filoverførsel fra Android til Mac",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "Tilføjer 41 visningssprog på tværs af appen, Store-siden, skærmbilleder, Pyonta+-tekst og tilgængelighedsoplysninger."
       },
@@ -483,10 +483,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "Klicke auf das Pyonta-Symbol in der Menüleiste, um Dateien zu senden, von Android zu empfangen, auf Pyonta+ upzugraden oder die App zu beenden.\n\nEmpfange Fotos, Videos, PDFs, Text und mehr von Android auf deinem Mac.\n\nSende Fotos, Videos, PDFs, Text und mehr von deinem Mac an Android.\n\nWenn Android nicht erscheint, sende mit QR weiter.\n\nSenden vom Mac bleibt kostenlos. Empfang von Android erfordert Pyonta+.\n\nDatenschutzrichtlinie: https://odiften.com/pyonta/privacy\n\nNutzungsbedingungen: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta ist unabhängig und nicht mit Google oder Apple verbunden.",
+        "description": "Pyonta: Dateitransfer von Mac zu Android / Dateitransfer von Android zu Mac.\n\nDateitransfer von Mac zu Android: Sende Fotos, Videos, PDFs, Text und mehr von deinem Mac an Android.\n\nDateitransfer von Android zu Mac: Empfange Fotos, Videos, PDFs, Text und mehr von Android auf deinem Mac.\n\nAuch per QR senden: Wenn Android nicht erscheint, sende mit QR weiter.\n\nEmpfang von Android freischalten: Senden vom Mac bleibt kostenlos. Empfang von Android erfordert Pyonta+.\n\nDatenschutzrichtlinie: https://odiften.com/pyonta/privacy\n\nNutzungsbedingungen: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta ist unabhängig und nicht mit Google oder Apple verbunden.",
         "keywords": "android,quick share,mac,pyonta,Android-Dateitransfer",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Empfange Fotos, Videos, PDFs, Text und mehr von Android auf deinem Mac.",
+        "promotionalText": "Dateitransfer von Mac zu Android / Dateitransfer von Android zu Mac",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "Ergänzt 41 Anzeigesprachen für App, Store-Seite, Screenshots, Pyonta+-Text und Bedienungshilfen."
       },
@@ -535,10 +535,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "Κάντε κλικ στο εικονίδιο Pyonta στη γραμμή μενού για αποστολή αρχείων, λήψη από Android, αναβάθμιση σε Pyonta+ ή έξοδο.\n\nΛάβετε φωτογραφίες, βίντεο, PDF, κείμενο και άλλα από Android στο Mac.\n\nΣτείλτε φωτογραφίες, βίντεο, PDF, κείμενο και άλλα από Mac σε Android.\n\nΑν το Android δεν εμφανίζεται, συνεχίστε την αποστολή με QR.\n\nΗ αποστολή από Mac είναι δωρεάν. Η λήψη από Android απαιτεί Pyonta+.\n\nΠολιτική απορρήτου: https://odiften.com/pyonta/privacy\n\nΌροι χρήσης: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nΤο Pyonta είναι ανεξάρτητο και δεν συνδέεται με την Google ή την Apple.",
+        "description": "Pyonta: Μεταφορά αρχείων Mac προς Android / Μεταφορά αρχείων Android προς Mac.\n\nΜεταφορά αρχείων Mac προς Android: Στείλτε φωτογραφίες, βίντεο, PDF, κείμενο και άλλα από Mac σε Android.\n\nΜεταφορά αρχείων Android προς Mac: Λάβετε φωτογραφίες, βίντεο, PDF, κείμενο και άλλα από Android στο Mac.\n\nΑποστολή και με QR: Αν το Android δεν εμφανίζεται, συνεχίστε την αποστολή με QR.\n\nΞεκλείδωμα λήψης από Android: Η αποστολή από Mac είναι δωρεάν. Η λήψη από Android απαιτεί Pyonta+.\n\nΠολιτική απορρήτου: https://odiften.com/pyonta/privacy\n\nΌροι χρήσης: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nΤο Pyonta είναι ανεξάρτητο και δεν συνδέεται με την Google ή την Apple.",
         "keywords": "android,quick share,mac,pyonta,Μεταφορά,αρχείων",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Λάβετε φωτογραφίες, βίντεο, PDF, κείμενο και άλλα από Android στο Mac.",
+        "promotionalText": "Μεταφορά αρχείων Mac προς Android / Μεταφορά αρχείων Android προς Mac",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "Προσθέτει 41 γλώσσες εμφάνισης στην εφαρμογή, τη σελίδα Store, τα στιγμιότυπα, το κείμενο Pyonta+ και τις πληροφορίες προσβασιμότητας."
       },
@@ -587,10 +587,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "Click the Pyonta icon in the menu bar to send files, receive from Android, upgrade to Pyonta+, or quit.\n\nReceive photos, videos, PDFs, text, and more from Android on your Mac.\n\nSend photos, videos, PDFs, text, and more from your Mac to Android.\n\nIf Android does not appear, keep sending with a QR code.\n\nSending from Mac is free. Receiving from Android requires Pyonta+.\n\nPrivacy Policy: https://odiften.com/pyonta/privacy\n\nTerms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta is independent and is not affiliated with Google or Apple.",
+        "description": "Pyonta is a Mac menu bar app for passing files and text between Android Quick Share and Mac.\n\nMac to Android: send photos, videos, PDFs, files, clipboard text, and URLs from Finder's Share menu or the Pyonta menu bar.\n\nAndroid to Mac: open Quick Share from Android's share menu and choose Pyonta as the destination. Files are saved on your Mac, while text and URLs can be copied to the clipboard.\n\nIf the nearby device does not appear, you can keep sending with a QR code.\n\nMain features: Mac to Android sending; Android to Mac receiving; support for photos, videos, PDFs, text, and URLs; QR code fallback; simple menu bar controls; native macOS notifications.\n\nPyonta+: sending from Mac to Android is free. Receiving from Android to Mac requires Pyonta+.\n\nPyonta is independent and is not affiliated with Google or Apple. Quick Share is used only to describe compatibility.\n\nPrivacy Policy: https://odiften.com/pyonta/privacy\n\nTerms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
         "keywords": "android,quick share,mac,pyonta,file,transfer",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Receive photos, videos, PDFs, text, and more from Android on your Mac.",
+        "promotionalText": "Pass photos, videos, PDFs, text, and URLs between Android and Mac with a Mac menu bar app compatible with Quick Share.",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "Adds 41 display languages across the app, Store page, screenshots, Pyonta+ text, and accessibility information."
       },
@@ -639,10 +639,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "Haz clic en el icono de Pyonta en la barra de menús para enviar archivos, recibir desde Android, actualizar a Pyonta+ o salir.\n\nRecibe fotos, videos, PDF, texto y más de Android en tu Mac.\n\nEnvía fotos, videos, PDF, texto y más de tu Mac a Android.\n\nSi Android no aparece, sigue enviando con un código QR.\n\nEnviar desde Mac es gratis. Recibir desde Android requiere Pyonta+.\n\nPolítica de privacidad: https://odiften.com/pyonta/privacy\n\nTérminos de uso: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta es independiente y no está afiliada a Google ni a Apple.",
+        "description": "Pyonta: Transferencia de archivos de Mac a Android / Transferencia de archivos de Android a Mac.\n\nTransferencia de archivos de Mac a Android: Envía fotos, videos, PDF, texto y más de tu Mac a Android.\n\nTransferencia de archivos de Android a Mac: Recibe fotos, videos, PDF, texto y más de Android en tu Mac.\n\nEnvía también con QR: Si Android no aparece, sigue enviando con un código QR.\n\nDesbloquea la recepción desde Android: Enviar desde Mac es gratis. Recibir desde Android requiere Pyonta+.\n\nPolítica de privacidad: https://odiften.com/pyonta/privacy\n\nTérminos de uso: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta es independiente y no está afiliada a Google ni a Apple.",
         "keywords": "android,quick share,mac,pyonta,Archivos,a",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Recibe fotos, videos, PDF, texto y más de Android en tu Mac.",
+        "promotionalText": "Transferencia de archivos de Mac a Android / Transferencia de archivos de Android a Mac",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "Añade 41 idiomas de visualización en la app, la página de Store, las capturas, el texto de Pyonta+ y la información de accesibilidad."
       },
@@ -691,10 +691,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "Klõpsa menüüribal Pyonta ikooni, et saata faile, võtta vastu Androidist, uuendada Pyonta+ versioonile või väljuda.\n\nVõta Macis vastu fotosid, videoid, PDF-e, teksti ja muud Androidist.\n\nSaada fotosid, videoid, PDF-e, teksti ja muud Macist Androidi.\n\nKui Androidi ei kuvata, jätka saatmist QR-koodiga.\n\nMacist saatmine on tasuta. Androidist vastuvõtt nõuab Pyonta+.\n\nPrivaatsuspoliitika: https://odiften.com/pyonta/privacy\n\nKasutustingimused: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta on sõltumatu ega ole seotud Google'i ega Apple'iga.",
+        "description": "Pyonta: Failiedastus Macist Androidi / Failiedastus Androidist Maci.\n\nFailiedastus Macist Androidi: Saada fotosid, videoid, PDF-e, teksti ja muud Macist Androidi.\n\nFailiedastus Androidist Maci: Võta Macis vastu fotosid, videoid, PDF-e, teksti ja muud Androidist.\n\nSaada ka QR-iga: Kui Androidi ei kuvata, jätka saatmist QR-koodiga.\n\nAva vastuvõtt Androidist: Macist saatmine on tasuta. Androidist vastuvõtt nõuab Pyonta+.\n\nPrivaatsuspoliitika: https://odiften.com/pyonta/privacy\n\nKasutustingimused: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta on sõltumatu ega ole seotud Google'i ega Apple'iga.",
         "keywords": "android,quick share,mac,pyonta,Androidi,failiedastus",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Võta Macis vastu fotosid, videoid, PDF-e, teksti ja muud Androidist.",
+        "promotionalText": "Failiedastus Macist Androidi / Failiedastus Androidist Maci",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "Lisab 41 kuvamiskeelt rakendusse, Store'i lehele, kuvatõmmistele, Pyonta+ tekstile ja ligipääsetavuse teabele."
       },
@@ -743,10 +743,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "Klikkaa Pyonta-kuvaketta valikkorivillä lähettääksesi tiedostoja, vastaanottaaksesi Androidista, päivittääksesi Pyonta+:aan tai lopettaaksesi.\n\nVastaanota kuvia, videoita, PDF:iä, tekstiä ja muuta Androidista Maciin.\n\nLähetä kuvia, videoita, PDF:iä, tekstiä ja muuta Macista Androidiin.\n\nJos Android ei näy, jatka lähettämistä QR-koodilla.\n\nMacista lähettäminen on ilmaista. Androidista vastaanotto vaatii Pyonta+.\n\nTietosuojakäytäntö: https://odiften.com/pyonta/privacy\n\nKäyttöehdot: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta on itsenäinen eikä ole Googlen tai Applen kumppani.",
+        "description": "Pyonta: Tiedostonsiirto Macista Androidiin / Tiedostonsiirto Androidista Maciin.\n\nTiedostonsiirto Macista Androidiin: Lähetä kuvia, videoita, PDF:iä, tekstiä ja muuta Macista Androidiin.\n\nTiedostonsiirto Androidista Maciin: Vastaanota kuvia, videoita, PDF:iä, tekstiä ja muuta Androidista Maciin.\n\nLähetä myös QR:llä: Jos Android ei näy, jatka lähettämistä QR-koodilla.\n\nAvaa vastaanotto Androidista: Macista lähettäminen on ilmaista. Androidista vastaanotto vaatii Pyonta+.\n\nTietosuojakäytäntö: https://odiften.com/pyonta/privacy\n\nKäyttöehdot: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta on itsenäinen eikä ole Googlen tai Applen kumppani.",
         "keywords": "android,quick share,mac,pyonta,Android-tiedostonsiirto",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Vastaanota kuvia, videoita, PDF:iä, tekstiä ja muuta Androidista Maciin.",
+        "promotionalText": "Tiedostonsiirto Macista Androidiin / Tiedostonsiirto Androidista Maciin",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "Lisää 41 näyttökieltä appiin, Store-sivulle, kuvakaappauksiin, Pyonta+-tekstiin ja saavutettavuustietoihin."
       },
@@ -795,10 +795,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "I-click ang icon ng Pyonta sa menu bar para magpadala ng file, tumanggap mula Android, mag-upgrade sa Pyonta+, o mag-quit.\n\nTumanggap ng larawan, video, PDF, text, at iba pa mula Android sa Mac.\n\nMagpadala ng larawan, video, PDF, text, at iba pa mula Mac papuntang Android.\n\nKung hindi lumabas ang Android, magpatuloy sa pagpapadala gamit ang QR.\n\nLibre ang pagpapadala mula Mac. Kailangan ang Pyonta+ para tumanggap mula Android.\n\nPatakaran sa Privacy: https://odiften.com/pyonta/privacy\n\nMga Tuntunin ng Paggamit: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nIndependent ang Pyonta at hindi ito kaakibat ng Google o Apple.",
+        "description": "Pyonta: Paglipat ng file mula Mac papuntang Android / Paglipat ng file mula Android papuntang Mac.\n\nPaglipat ng file mula Mac papuntang Android: Magpadala ng larawan, video, PDF, text, at iba pa mula Mac papuntang Android.\n\nPaglipat ng file mula Android papuntang Mac: Tumanggap ng larawan, video, PDF, text, at iba pa mula Android sa Mac.\n\nMagpadala rin sa QR: Kung hindi lumabas ang Android, magpatuloy sa pagpapadala gamit ang QR.\n\nI-unlock ang pagtanggap mula Android: Libre ang pagpapadala mula Mac. Kailangan ang Pyonta+ para tumanggap mula Android.\n\nPatakaran sa Privacy: https://odiften.com/pyonta/privacy\n\nMga Tuntunin ng Paggamit: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nIndependent ang Pyonta at hindi ito kaakibat ng Google o Apple.",
         "keywords": "android,quick share,mac,pyonta,Paglipat,ng,file,sa",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Tumanggap ng larawan, video, PDF, text, at iba pa mula Android sa Mac.",
+        "promotionalText": "Paglipat ng file mula Mac papuntang Android / Paglipat ng file mula Android papuntang Mac",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "Nagdaragdag ng 41 display language sa app, Store page, screenshots, Pyonta+ text, at accessibility information."
       },
@@ -847,10 +847,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "Cliquez sur l’icône Pyonta dans la barre des menus pour envoyer des fichiers, recevoir depuis Android, passer à Pyonta+ ou quitter.\n\nRecevez photos, vidéos, PDF, texte et plus d'Android sur votre Mac.\n\nEnvoyez photos, vidéos, PDF, texte et plus de votre Mac vers Android.\n\nSi Android n'apparaît pas, continuez l'envoi avec un QR.\n\nL'envoi depuis Mac est gratuit. La réception depuis Android nécessite Pyonta+.\n\nPolitique de confidentialité: https://odiften.com/pyonta/privacy\n\nConditions d’utilisation: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta est indépendant et n'est pas affilié à Google ni à Apple.",
+        "description": "Pyonta: Transfert de fichiers Mac vers Android / Transfert de fichiers Android vers Mac.\n\nTransfert de fichiers Mac vers Android: Envoyez photos, vidéos, PDF, texte et plus de votre Mac vers Android.\n\nTransfert de fichiers Android vers Mac: Recevez photos, vidéos, PDF, texte et plus d'Android sur votre Mac.\n\nEnvoyer aussi par QR: Si Android n'apparaît pas, continuez l'envoi avec un QR.\n\nDébloquer la réception Android: L'envoi depuis Mac est gratuit. La réception depuis Android nécessite Pyonta+.\n\nPolitique de confidentialité: https://odiften.com/pyonta/privacy\n\nConditions d’utilisation: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta est indépendant et n'est pas affilié à Google ni à Apple.",
         "keywords": "android,quick share,mac,pyonta,Transfert,de,fichiers",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Recevez photos, vidéos, PDF, texte et plus d'Android sur votre Mac.",
+        "promotionalText": "Transfert de fichiers Mac vers Android / Transfert de fichiers Android vers Mac",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "Ajoute 41 langues d'affichage dans l'app, la page Store, les captures, le texte Pyonta+ et les informations d'accessibilité."
       },
@@ -899,10 +899,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "לחץ על סמל Pyonta בשורת התפריטים כדי לשלוח קבצים, לקבל מ-Android, לשדרג ל-Pyonta+ או לצאת.\n\nקבל תמונות, סרטונים, PDF, טקסט ועוד מ-Android ב-Mac שלך.\n\nשלח תמונות, סרטונים, PDF, טקסט ועוד מה-Mac ל-Android.\n\nאם Android לא מופיע, המשך לשלוח בעזרת QR.\n\nשליחה מ-Mac היא בחינם. קבלה מ-Android דורשת Pyonta+.\n\nמדיניות פרטיות: https://odiften.com/pyonta/privacy\n\nתנאי שימוש: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta עצמאי ואינו קשור ל-Google או ל-Apple.",
+        "description": "Pyonta: העברת קבצים מ-Mac ל-Android / העברת קבצים מ-Android ל-Mac.\n\nהעברת קבצים מ-Mac ל-Android: שלח תמונות, סרטונים, PDF, טקסט ועוד מה-Mac ל-Android.\n\nהעברת קבצים מ-Android ל-Mac: קבל תמונות, סרטונים, PDF, טקסט ועוד מ-Android ב-Mac שלך.\n\nשלח גם עם QR: אם Android לא מופיע, המשך לשלוח בעזרת QR.\n\nפתח קבלה מ-Android: שליחה מ-Mac היא בחינם. קבלה מ-Android דורשת Pyonta+.\n\nמדיניות פרטיות: https://odiften.com/pyonta/privacy\n\nתנאי שימוש: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta עצמאי ואינו קשור ל-Google או ל-Apple.",
         "keywords": "android,quick share,mac,pyonta,העברת,קבצים,מ-Android",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "קבל תמונות, סרטונים, PDF, טקסט ועוד מ-Android ב-Mac שלך.",
+        "promotionalText": "העברת קבצים מ-Mac ל-Android / העברת קבצים מ-Android ל-Mac",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "מוסיף 41 שפות תצוגה באפליקציה, בעמוד ה-Store, בצילומי המסך, בטקסט Pyonta+ ובמידע הנגישות."
       },
@@ -951,10 +951,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "फ़ाइलें भेजने, Android से प्राप्त करने, Pyonta+ में अपग्रेड करने या बंद करने के लिए मेनू बार में Pyonta आइकन क्लिक करें।\n\nAndroid से Mac पर फ़ोटो, वीडियो, PDF, टेक्स्ट वगैरह प्राप्त करें।\n\nMac से Android पर फ़ोटो, वीडियो, PDF, टेक्स्ट वगैरह भेजें।\n\nAndroid न दिखे तो QR कोड से भेजना जारी रखें।\n\nMac से भेजना मुफ़्त है। Android से प्राप्त करने के लिए Pyonta+ चाहिए।\n\nगोपनीयता नीति: https://odiften.com/pyonta/privacy\n\nउपयोग की शर्तें: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta स्वतंत्र है और Google या Apple से संबद्ध नहीं है।",
+        "description": "Pyonta: Mac से Android में फ़ाइल ट्रांसफर / Android से Mac में फ़ाइल ट्रांसफर.\n\nMac से Android में फ़ाइल ट्रांसफर: Mac से Android पर फ़ोटो, वीडियो, PDF, टेक्स्ट वगैरह भेजें।\n\nAndroid से Mac में फ़ाइल ट्रांसफर: Android से Mac पर फ़ोटो, वीडियो, PDF, टेक्स्ट वगैरह प्राप्त करें।\n\nQR से भी भेजें: Android न दिखे तो QR कोड से भेजना जारी रखें।\n\nAndroid से प्राप्ति अनलॉक करें: Mac से भेजना मुफ़्त है। Android से प्राप्त करने के लिए Pyonta+ चाहिए।\n\nगोपनीयता नीति: https://odiften.com/pyonta/privacy\n\nउपयोग की शर्तें: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta स्वतंत्र है और Google या Apple से संबद्ध नहीं है।",
         "keywords": "android,quick share,mac,pyonta,फ़ाइल,ट्रांसफर",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Android से Mac पर फ़ोटो, वीडियो, PDF, टेक्स्ट वगैरह प्राप्त करें।",
+        "promotionalText": "Mac से Android में फ़ाइल ट्रांसफर / Android से Mac में फ़ाइल ट्रांसफर",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "ऐप, Store पेज, स्क्रीनशॉट, Pyonta+ टेक्स्ट और एक्सेसिबिलिटी जानकारी में 41 डिस्प्ले भाषाएं जोड़ी गईं।"
       },
@@ -1003,10 +1003,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "Kliknite ikonu Pyonta u traci izbornika za slanje datoteka, primanje s Androida, nadogradnju na Pyonta+ ili izlaz.\n\nPrimajte fotografije, videozapise, PDF-ove, tekst i više s Androida na Mac.\n\nŠaljite fotografije, videozapise, PDF-ove, tekst i više s Maca na Android.\n\nAko se Android ne pojavi, nastavite slanje QR kodom.\n\nSlanje s Maca je besplatno. Primanje s Androida zahtijeva Pyonta+.\n\nPravila privatnosti: https://odiften.com/pyonta/privacy\n\nUvjeti korištenja: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta je neovisan i nije povezan s Googleom ili Appleom.",
+        "description": "Pyonta: Prijenos datoteka s Maca na Android / Prijenos datoteka s Androida na Mac.\n\nPrijenos datoteka s Maca na Android: Šaljite fotografije, videozapise, PDF-ove, tekst i više s Maca na Android.\n\nPrijenos datoteka s Androida na Mac: Primajte fotografije, videozapise, PDF-ove, tekst i više s Androida na Mac.\n\nPošalji i QR-om: Ako se Android ne pojavi, nastavite slanje QR kodom.\n\nOtključajte primanje s Androida: Slanje s Maca je besplatno. Primanje s Androida zahtijeva Pyonta+.\n\nPravila privatnosti: https://odiften.com/pyonta/privacy\n\nUvjeti korištenja: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta je neovisan i nije povezan s Googleom ili Appleom.",
         "keywords": "android,quick share,mac,pyonta,prijenos,datoteka",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Primajte fotografije, videozapise, PDF-ove, tekst i više s Androida na Mac.",
+        "promotionalText": "Prijenos datoteka s Maca na Android / Prijenos datoteka s Androida na Mac",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "Dodaje 41 jezika prikaza u aplikaciji, Store stranici, snimkama zaslona, Pyonta+ tekstu i informacijama o pristupačnosti."
       },
@@ -1055,10 +1055,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "Kattints a Pyonta ikonra a menüsorban fájlok küldéséhez, Androidról való fogadáshoz, Pyonta+-ra frissítéshez vagy kilépéshez.\n\nFogadj fotókat, videókat, PDF-eket, szöveget és mást Androidról a Macen.\n\nKüldj fotókat, videókat, PDF-eket, szöveget és mást Macről Androidra.\n\nHa az Android nem jelenik meg, folytasd a küldést QR-kóddal.\n\nMacről küldeni ingyenes. Androidról fogadni Pyonta+ szükséges.\n\nAdatvédelmi irányelvek: https://odiften.com/pyonta/privacy\n\nFelhasználási feltételek: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nA Pyonta független, és nem áll kapcsolatban a Google-lel vagy az Apple-lel.",
+        "description": "Pyonta: Fájlátvitel Macről Androidra / Fájlátvitel Androidról Macre.\n\nFájlátvitel Macről Androidra: Küldj fotókat, videókat, PDF-eket, szöveget és mást Macről Androidra.\n\nFájlátvitel Androidról Macre: Fogadj fotókat, videókat, PDF-eket, szöveget és mást Androidról a Macen.\n\nKüldés QR-rel is: Ha az Android nem jelenik meg, folytasd a küldést QR-kóddal.\n\nAndroid fogadás feloldása: Macről küldeni ingyenes. Androidról fogadni Pyonta+ szükséges.\n\nAdatvédelmi irányelvek: https://odiften.com/pyonta/privacy\n\nFelhasználási feltételek: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nA Pyonta független, és nem áll kapcsolatban a Google-lel vagy az Apple-lel.",
         "keywords": "android,quick share,mac,pyonta,Android-fájlátvitel",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Fogadj fotókat, videókat, PDF-eket, szöveget és mást Androidról a Macen.",
+        "promotionalText": "Fájlátvitel Macről Androidra / Fájlátvitel Androidról Macre",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "41 megjelenítési nyelvet ad az apphoz, a Store-oldalhoz, a képernyőképekhez, a Pyonta+-szöveghez és az akadálymentességi információkhoz."
       },
@@ -1107,10 +1107,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "Klik ikon Pyonta di bilah menu untuk mengirim file, menerima dari Android, upgrade ke Pyonta+, atau keluar.\n\nTerima foto, video, PDF, teks, dan lainnya dari Android di Mac.\n\nKirim foto, video, PDF, teks, dan lainnya dari Mac ke Android.\n\nJika Android tidak muncul, lanjutkan pengiriman dengan QR.\n\nMengirim dari Mac gratis. Menerima dari Android memerlukan Pyonta+.\n\nKebijakan Privasi: https://odiften.com/pyonta/privacy\n\nKetentuan Penggunaan: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta bersifat independen dan tidak berafiliasi dengan Google atau Apple.",
+        "description": "Pyonta: Transfer file Mac ke Android / Transfer file Android ke Mac.\n\nTransfer file Mac ke Android: Kirim foto, video, PDF, teks, dan lainnya dari Mac ke Android.\n\nTransfer file Android ke Mac: Terima foto, video, PDF, teks, dan lainnya dari Android di Mac.\n\nKirim juga dengan QR: Jika Android tidak muncul, lanjutkan pengiriman dengan QR.\n\nBuka penerimaan dari Android: Mengirim dari Mac gratis. Menerima dari Android memerlukan Pyonta+.\n\nKebijakan Privasi: https://odiften.com/pyonta/privacy\n\nKetentuan Penggunaan: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta bersifat independen dan tidak berafiliasi dengan Google atau Apple.",
         "keywords": "android,quick share,mac,pyonta,Transfer,file",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Terima foto, video, PDF, teks, dan lainnya dari Android di Mac.",
+        "promotionalText": "Transfer file Mac ke Android / Transfer file Android ke Mac",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "Menambahkan 41 bahasa tampilan di app, halaman Store, screenshot, teks Pyonta+, dan informasi aksesibilitas."
       },
@@ -1159,10 +1159,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "Fai clic sull’icona Pyonta nella barra dei menu per inviare file, ricevere da Android, passare a Pyonta+ o uscire.\n\nRicevi foto, video, PDF, testo e altro da Android sul tuo Mac.\n\nInvia foto, video, PDF, testo e altro dal Mac ad Android.\n\nSe Android non appare, continua l'invio con QR.\n\nInviare dal Mac è gratis. Ricevere da Android richiede Pyonta+.\n\nInformativa sulla privacy: https://odiften.com/pyonta/privacy\n\nTermini di utilizzo: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta è indipendente e non è affiliata a Google o Apple.",
+        "description": "Pyonta: Trasferimento file da Mac ad Android / Trasferimento file da Android a Mac.\n\nTrasferimento file da Mac ad Android: Invia foto, video, PDF, testo e altro dal Mac ad Android.\n\nTrasferimento file da Android a Mac: Ricevi foto, video, PDF, testo e altro da Android sul tuo Mac.\n\nInvia anche con QR: Se Android non appare, continua l'invio con QR.\n\nSblocca ricezione da Android: Inviare dal Mac è gratis. Ricevere da Android richiede Pyonta+.\n\nInformativa sulla privacy: https://odiften.com/pyonta/privacy\n\nTermini di utilizzo: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta è indipendente e non è affiliata a Google o Apple.",
         "keywords": "android,quick share,mac,pyonta,Trasferimento,file",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Ricevi foto, video, PDF, testo e altro da Android sul tuo Mac.",
+        "promotionalText": "Trasferimento file da Mac ad Android / Trasferimento file da Android a Mac",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "Aggiunge 41 lingue di visualizzazione nell'app, nella pagina Store, negli screenshot, nei testi Pyonta+ e nelle informazioni di accessibilità."
       },
@@ -1211,10 +1211,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "ファイル送信、Android からの受信、Pyonta+ へのアップグレード、終了は、メニューバーの Pyonta アイコンから行えます。\n\n近くのMacを自動で見つけて、写真・動画・PDF・テキストなどを受け取れます。\n\n近くのAndroidを自動で見つけて、写真・動画・PDF・テキストなどを送れます。\n\nAndroidが表示されない時も、QRコードで送信を続けられます。\n\nMacからの送信は無料。Androidからの受信にはPyonta+が必要です。\n\nプライバシーポリシー: https://odiften.com/pyonta/privacy\n\n利用規約: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyontaは独立したアプリであり、GoogleまたはAppleと提携していません。",
+        "description": "Pyontaは、AndroidのQuick ShareとMacの間でファイルやテキストを受け渡しできるMac用メニューバーアプリです。\n\nMacからAndroidへ送るときは、Finderの共有メニューやPyontaのメニューバーから送信できます。写真・動画・PDFなどのファイルに加えて、クリップボードのテキストやURLも送れます。\n\nAndroidからMacへ送るときは、Androidの共有メニューからQuick Shareを開き、送信先としてPyontaを選びます。写真・動画・PDFなどのファイルに加えて、テキストやURLもMacで受け取れます。\n\n近くの端末が表示されない場合でも、QRコードを使って送信を続けられます。\n\n主な機能: MacからAndroidへの送信、AndroidからMacへの受信、写真・動画・PDF・テキスト・URLなどへの対応、QRコード送信、メニューバーからの操作、macOS標準通知。\n\nPyonta+: MacからAndroidへの送信は無料です。AndroidからMacへの受信にはPyonta+が必要です。\n\nPyontaはGoogleまたはAppleの公式アプリではありません。Quick Shareは互換性を説明するために使用しています。\n\nプライバシーポリシー: https://odiften.com/pyonta/privacy\n\n利用規約: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
         "keywords": "android,quick share,mac,pyonta,Androidファイル転送",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "近くのMacを自動で見つけて、写真・動画・PDF・テキストなどを受け取れます。",
+        "promotionalText": "AndroidとMacの間で、写真・動画・PDF・テキスト・URLをすばやく受け渡し。Quick Share互換のMac用メニューバーアプリです。",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "アプリ、Storeページ、スクリーンショット、Pyonta+文言、アクセシビリティ情報の41表示言語対応を追加しました。"
       },
@@ -1263,10 +1263,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "파일 보내기, Android에서 받기, Pyonta+ 업그레이드 또는 종료는 메뉴 막대의 Pyonta 아이콘에서 할 수 있습니다.\n\nAndroid의 사진, 동영상, PDF, 텍스트 등을 Mac에서 받습니다.\n\nMac에서 Android로 사진, 동영상, PDF, 텍스트 등을 보냅니다.\n\nAndroid가 보이지 않으면 QR 코드로 계속 보냅니다.\n\nMac에서 보내기는 무료입니다. Android에서 받으려면 Pyonta+가 필요합니다.\n\n개인정보 처리방침: https://odiften.com/pyonta/privacy\n\n이용 약관: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta는 독립 앱이며 Google 또는 Apple과 제휴하지 않았습니다.",
+        "description": "Pyonta: Mac에서 Android로 파일 전송 / Android에서 Mac으로 파일 전송.\n\nMac에서 Android로 파일 전송: Mac에서 Android로 사진, 동영상, PDF, 텍스트 등을 보냅니다.\n\nAndroid에서 Mac으로 파일 전송: Android의 사진, 동영상, PDF, 텍스트 등을 Mac에서 받습니다.\n\nQR로도 보내기: Android가 보이지 않으면 QR 코드로 계속 보냅니다.\n\nAndroid 수신 잠금 해제: Mac에서 보내기는 무료입니다. Android에서 받으려면 Pyonta+가 필요합니다.\n\n개인정보 처리방침: https://odiften.com/pyonta/privacy\n\n이용 약관: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta는 독립 앱이며 Google 또는 Apple과 제휴하지 않았습니다.",
         "keywords": "android,quick share,mac,pyonta,파일,전송",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Android의 사진, 동영상, PDF, 텍스트 등을 Mac에서 받습니다.",
+        "promotionalText": "Mac에서 Android로 파일 전송 / Android에서 Mac으로 파일 전송",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "앱, Store 페이지, 스크린샷, Pyonta+ 문구, 접근성 정보에 41개 표시 언어를 추가했습니다."
       },
@@ -1315,10 +1315,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "Spustelėkite Pyonta piktogramą meniu juostoje, kad siųstumėte failus, gautumėte iš Android, atnaujintumėte į Pyonta+ arba uždarytumėte.\n\nGaukite nuotraukas, vaizdo įrašus, PDF, tekstą ir daugiau iš Android į Mac.\n\nSiųskite nuotraukas, vaizdo įrašus, PDF, tekstą ir daugiau iš Mac į Android.\n\nJei Android nerodomas, siųskite toliau QR kodu.\n\nSiuntimas iš Mac nemokamas. Gavimui iš Android reikia Pyonta+.\n\nPrivatumo politika: https://odiften.com/pyonta/privacy\n\nNaudojimo sąlygos: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta yra nepriklausoma ir nėra susijusi su Google ar Apple.",
+        "description": "Pyonta: Failų perkėlimas iš Mac į Android / Failų perkėlimas iš Android į Mac.\n\nFailų perkėlimas iš Mac į Android: Siųskite nuotraukas, vaizdo įrašus, PDF, tekstą ir daugiau iš Mac į Android.\n\nFailų perkėlimas iš Android į Mac: Gaukite nuotraukas, vaizdo įrašus, PDF, tekstą ir daugiau iš Android į Mac.\n\nSiųsti ir QR kodu: Jei Android nerodomas, siųskite toliau QR kodu.\n\nAtrakinkite gavimą iš Android: Siuntimas iš Mac nemokamas. Gavimui iš Android reikia Pyonta+.\n\nPrivatumo politika: https://odiften.com/pyonta/privacy\n\nNaudojimo sąlygos: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta yra nepriklausoma ir nėra susijusi su Google ar Apple.",
         "keywords": "android,quick share,mac,pyonta,failų,perkėlimas",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Gaukite nuotraukas, vaizdo įrašus, PDF, tekstą ir daugiau iš Android į Mac.",
+        "promotionalText": "Failų perkėlimas iš Mac į Android / Failų perkėlimas iš Android į Mac",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "Prideda 41 rodymo kalbą programoje, Store puslapyje, ekrano kopijose, Pyonta+ tekste ir prieinamumo informacijoje."
       },
@@ -1367,10 +1367,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "Noklikšķiniet uz Pyonta ikonas izvēļņu joslā, lai sūtītu failus, saņemtu no Android, jauninātu uz Pyonta+ vai izietu.\n\nSaņemiet fotoattēlus, video, PDF, tekstu un citu no Android savā Mac.\n\nSūtiet fotoattēlus, video, PDF, tekstu un citu no Mac uz Android.\n\nJa Android neparādās, turpiniet sūtīšanu ar QR.\n\nSūtīšana no Mac ir bez maksas. Saņemšanai no Android vajag Pyonta+.\n\nPrivātuma politika: https://odiften.com/pyonta/privacy\n\nLietošanas noteikumi: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta ir neatkarīga un nav saistīta ar Google vai Apple.",
+        "description": "Pyonta: Failu pārsūtīšana no Mac uz Android / Failu pārsūtīšana no Android uz Mac.\n\nFailu pārsūtīšana no Mac uz Android: Sūtiet fotoattēlus, video, PDF, tekstu un citu no Mac uz Android.\n\nFailu pārsūtīšana no Android uz Mac: Saņemiet fotoattēlus, video, PDF, tekstu un citu no Android savā Mac.\n\nSūtīt arī ar QR: Ja Android neparādās, turpiniet sūtīšanu ar QR.\n\nAtbloķēt saņemšanu no Android: Sūtīšana no Mac ir bez maksas. Saņemšanai no Android vajag Pyonta+.\n\nPrivātuma politika: https://odiften.com/pyonta/privacy\n\nLietošanas noteikumi: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta ir neatkarīga un nav saistīta ar Google vai Apple.",
         "keywords": "android,quick share,mac,pyonta,failu,pārsūtīšana",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Saņemiet fotoattēlus, video, PDF, tekstu un citu no Android savā Mac.",
+        "promotionalText": "Failu pārsūtīšana no Mac uz Android / Failu pārsūtīšana no Android uz Mac",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "Pievieno 41 attēlojuma valodu lietotnē, Store lapā, ekrānuzņēmumos, Pyonta+ tekstā un piekļūstamības informācijā."
       },
@@ -1419,10 +1419,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "Klik ikon Pyonta dalam bar menu untuk menghantar fail, menerima daripada Android, menaik taraf kepada Pyonta+ atau keluar.\n\nTerima foto, video, PDF, teks dan banyak lagi daripada Android pada Mac.\n\nHantar foto, video, PDF, teks dan banyak lagi daripada Mac ke Android.\n\nJika Android tidak muncul, teruskan penghantaran dengan QR.\n\nMenghantar daripada Mac adalah percuma. Menerima daripada Android memerlukan Pyonta+.\n\nDasar Privasi: https://odiften.com/pyonta/privacy\n\nTerma Penggunaan: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta adalah bebas dan tidak bergabung dengan Google atau Apple.",
+        "description": "Pyonta: Pemindahan fail Mac ke Android / Pemindahan fail Android ke Mac.\n\nPemindahan fail Mac ke Android: Hantar foto, video, PDF, teks dan banyak lagi daripada Mac ke Android.\n\nPemindahan fail Android ke Mac: Terima foto, video, PDF, teks dan banyak lagi daripada Android pada Mac.\n\nHantar juga dengan QR: Jika Android tidak muncul, teruskan penghantaran dengan QR.\n\nBuka penerimaan Android: Menghantar daripada Mac adalah percuma. Menerima daripada Android memerlukan Pyonta+.\n\nDasar Privasi: https://odiften.com/pyonta/privacy\n\nTerma Penggunaan: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta adalah bebas dan tidak bergabung dengan Google atau Apple.",
         "keywords": "android,quick share,mac,pyonta,Pemindahan,fail",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Terima foto, video, PDF, teks dan banyak lagi daripada Android pada Mac.",
+        "promotionalText": "Pemindahan fail Mac ke Android / Pemindahan fail Android ke Mac",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "Menambah 41 bahasa paparan pada app, halaman Store, tangkapan skrin, teks Pyonta+ dan maklumat kebolehcapaian."
       },
@@ -1471,10 +1471,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "Klikk på Pyonta-ikonet i menylinjen for å sende filer, motta fra Android, oppgradere til Pyonta+ eller avslutte.\n\nMotta bilder, videoer, PDF-er, tekst og mer fra Android på Macen.\n\nSend bilder, videoer, PDF-er, tekst og mer fra Mac til Android.\n\nHvis Android ikke vises, fortsett sendingen med QR.\n\nSending fra Mac er gratis. Mottak fra Android krever Pyonta+.\n\nPersonvernerklæring: https://odiften.com/pyonta/privacy\n\nVilkår for bruk: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta er uavhengig og ikke tilknyttet Google eller Apple.",
+        "description": "Pyonta: Filoverføring fra Mac til Android / Filoverføring fra Android til Mac.\n\nFiloverføring fra Mac til Android: Send bilder, videoer, PDF-er, tekst og mer fra Mac til Android.\n\nFiloverføring fra Android til Mac: Motta bilder, videoer, PDF-er, tekst og mer fra Android på Macen.\n\nSend også med QR: Hvis Android ikke vises, fortsett sendingen med QR.\n\nLås opp mottak fra Android: Sending fra Mac er gratis. Mottak fra Android krever Pyonta+.\n\nPersonvernerklæring: https://odiften.com/pyonta/privacy\n\nVilkår for bruk: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta er uavhengig og ikke tilknyttet Google eller Apple.",
         "keywords": "android,quick share,mac,pyonta,Android-filoverføring",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Motta bilder, videoer, PDF-er, tekst og mer fra Android på Macen.",
+        "promotionalText": "Filoverføring fra Mac til Android / Filoverføring fra Android til Mac",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "Legger til 41 visningsspråk i appen, Store-siden, skjermbilder, Pyonta+-tekst og tilgjengelighetsinformasjon."
       },
@@ -1523,10 +1523,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "Klik op het Pyonta-symbool in de menubalk om bestanden te verzenden, vanaf Android te ontvangen, naar Pyonta+ te upgraden of te stoppen.\n\nOntvang foto's, video's, pdf's, tekst en meer van Android op je Mac.\n\nVerstuur foto's, video's, pdf's, tekst en meer van je Mac naar Android.\n\nAls Android niet verschijnt, ga door met sturen via QR.\n\nVersturen vanaf Mac is gratis. Ontvangen vanaf Android vereist Pyonta+.\n\nPrivacybeleid: https://odiften.com/pyonta/privacy\n\nGebruiksvoorwaarden: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta is onafhankelijk en niet gelieerd aan Google of Apple.",
+        "description": "Pyonta: Bestandsoverdracht van Mac naar Android / Bestandsoverdracht van Android naar Mac.\n\nBestandsoverdracht van Mac naar Android: Verstuur foto's, video's, pdf's, tekst en meer van je Mac naar Android.\n\nBestandsoverdracht van Android naar Mac: Ontvang foto's, video's, pdf's, tekst en meer van Android op je Mac.\n\nOok met QR sturen: Als Android niet verschijnt, ga door met sturen via QR.\n\nOntvangen van Android ontgrendelen: Versturen vanaf Mac is gratis. Ontvangen vanaf Android vereist Pyonta+.\n\nPrivacybeleid: https://odiften.com/pyonta/privacy\n\nGebruiksvoorwaarden: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta is onafhankelijk en niet gelieerd aan Google of Apple.",
         "keywords": "android,quick share,mac,pyonta,Android-bestandsoverdracht",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Ontvang foto's, video's, pdf's, tekst en meer van Android op je Mac.",
+        "promotionalText": "Bestandsoverdracht van Mac naar Android / Bestandsoverdracht van Android naar Mac",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "Voegt 41 weergavetalen toe aan de app, Store-pagina, schermafbeeldingen, Pyonta+-tekst en toegankelijkheidsinformatie."
       },
@@ -1575,10 +1575,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "Kliknij ikonę Pyonta na pasku menu, aby wysyłać pliki, odbierać z Androida, uaktualnić do Pyonta+ lub zakończyć.\n\nOdbieraj na Macu zdjęcia, filmy, PDF-y, tekst i więcej z Androida.\n\nWysyłaj zdjęcia, filmy, PDF-y, tekst i więcej z Maca na Androida.\n\nJeśli Android się nie pojawi, wysyłaj dalej kodem QR.\n\nWysyłanie z Maca jest bezpłatne. Odbieranie z Androida wymaga Pyonta+.\n\nPolityka prywatności: https://odiften.com/pyonta/privacy\n\nWarunki korzystania: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta jest niezależna i nie jest powiązana z Google ani Apple.",
+        "description": "Pyonta: Przesyłanie plików z Maca na Androida / Przesyłanie plików z Androida na Maca.\n\nPrzesyłanie plików z Maca na Androida: Wysyłaj zdjęcia, filmy, PDF-y, tekst i więcej z Maca na Androida.\n\nPrzesyłanie plików z Androida na Maca: Odbieraj na Macu zdjęcia, filmy, PDF-y, tekst i więcej z Androida.\n\nWyślij też przez QR: Jeśli Android się nie pojawi, wysyłaj dalej kodem QR.\n\nOdblokuj odbiór z Androida: Wysyłanie z Maca jest bezpłatne. Odbieranie z Androida wymaga Pyonta+.\n\nPolityka prywatności: https://odiften.com/pyonta/privacy\n\nWarunki korzystania: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta jest niezależna i nie jest powiązana z Google ani Apple.",
         "keywords": "android,quick share,mac,pyonta,Transfer,plików",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Odbieraj na Macu zdjęcia, filmy, PDF-y, tekst i więcej z Androida.",
+        "promotionalText": "Przesyłanie plików z Maca na Androida / Przesyłanie plików z Androida na Maca",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "Dodaje 41 języków wyświetlania w aplikacji, stronie Store, zrzutach ekranu, tekście Pyonta+ i informacjach o dostępności."
       },
@@ -1627,10 +1627,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "Clique no ícone do Pyonta na barra de menus para enviar arquivos, receber do Android, fazer upgrade para Pyonta+ ou sair.\n\nReceba fotos, vídeos, PDFs, texto e mais do Android no seu Mac.\n\nEnvie fotos, vídeos, PDFs, texto e mais do Mac para Android.\n\nSe o Android não aparecer, continue enviando com QR.\n\nEnviar do Mac é grátis. Receber do Android requer Pyonta+.\n\nPolítica de Privacidade: https://odiften.com/pyonta/privacy\n\nTermos de Uso: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta é independente e não é afiliado ao Google ou à Apple.",
+        "description": "Pyonta: Transferência de arquivos do Mac para Android / Transferência de arquivos do Android para Mac.\n\nTransferência de arquivos do Mac para Android: Envie fotos, vídeos, PDFs, texto e mais do Mac para Android.\n\nTransferência de arquivos do Android para Mac: Receba fotos, vídeos, PDFs, texto e mais do Android no seu Mac.\n\nEnviar também com QR: Se o Android não aparecer, continue enviando com QR.\n\nDesbloqueie o recebimento do Android: Enviar do Mac é grátis. Receber do Android requer Pyonta+.\n\nPolítica de Privacidade: https://odiften.com/pyonta/privacy\n\nTermos de Uso: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta é independente e não é afiliado ao Google ou à Apple.",
         "keywords": "android,quick share,mac,pyonta,Arquivos,no",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Receba fotos, vídeos, PDFs, texto e mais do Android no seu Mac.",
+        "promotionalText": "Transferência de arquivos do Mac para Android / Transferência de arquivos do Android para Mac",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "Adiciona 41 idiomas de exibição no app, página da Store, capturas, texto Pyonta+ e informações de acessibilidade."
       },
@@ -1679,10 +1679,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "Clique no ícone do Pyonta na barra de menus para enviar ficheiros, receber do Android, atualizar para Pyonta+ ou sair.\n\nReceba fotografias, vídeos, PDF, texto e mais do Android no Mac.\n\nEnvie fotografias, vídeos, PDF, texto e mais do Mac para Android.\n\nSe o Android não aparecer, continue a enviar com QR.\n\nEnviar do Mac é gratuito. Receber do Android requer Pyonta+.\n\nPolítica de Privacidade: https://odiften.com/pyonta/privacy\n\nTermos de Utilização: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta é independente e não está afiliado à Google ou à Apple.",
+        "description": "Pyonta: Transferência de ficheiros do Mac para Android / Transferência de ficheiros do Android para Mac.\n\nTransferência de ficheiros do Mac para Android: Envie fotografias, vídeos, PDF, texto e mais do Mac para Android.\n\nTransferência de ficheiros do Android para Mac: Receba fotografias, vídeos, PDF, texto e mais do Android no Mac.\n\nEnviar também com QR: Se o Android não aparecer, continue a enviar com QR.\n\nDesbloquear receção do Android: Enviar do Mac é gratuito. Receber do Android requer Pyonta+.\n\nPolítica de Privacidade: https://odiften.com/pyonta/privacy\n\nTermos de Utilização: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta é independente e não está afiliado à Google ou à Apple.",
         "keywords": "android,quick share,mac,pyonta,Ficheiros,no",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Receba fotografias, vídeos, PDF, texto e mais do Android no Mac.",
+        "promotionalText": "Transferência de ficheiros do Mac para Android / Transferência de ficheiros do Android para Mac",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "Adiciona 41 idiomas de apresentação na app, página da Store, capturas, texto Pyonta+ e informações de acessibilidade."
       },
@@ -1731,10 +1731,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "Faceți clic pe pictograma Pyonta din bara de meniu pentru a trimite fișiere, a primi de pe Android, a face upgrade la Pyonta+ sau a ieși.\n\nPrimește fotografii, video, PDF-uri, text și altele de pe Android pe Mac.\n\nTrimite fotografii, video, PDF-uri, text și altele de pe Mac pe Android.\n\nDacă Android nu apare, continuă trimiterea cu QR.\n\nTrimiterea de pe Mac este gratuită. Primirea de pe Android necesită Pyonta+.\n\nPolitica de confidențialitate: https://odiften.com/pyonta/privacy\n\nCondiții de utilizare: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta este independent și nu este afiliat cu Google sau Apple.",
+        "description": "Pyonta: Transfer de fișiere Mac către Android / Transfer de fișiere Android către Mac.\n\nTransfer de fișiere Mac către Android: Trimite fotografii, video, PDF-uri, text și altele de pe Mac pe Android.\n\nTransfer de fișiere Android către Mac: Primește fotografii, video, PDF-uri, text și altele de pe Android pe Mac.\n\nTrimite și cu QR: Dacă Android nu apare, continuă trimiterea cu QR.\n\nDeblochează primirea de pe Android: Trimiterea de pe Mac este gratuită. Primirea de pe Android necesită Pyonta+.\n\nPolitica de confidențialitate: https://odiften.com/pyonta/privacy\n\nCondiții de utilizare: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta este independent și nu este afiliat cu Google sau Apple.",
         "keywords": "android,quick share,mac,pyonta,Transfer,de,fișiere",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Primește fotografii, video, PDF-uri, text și altele de pe Android pe Mac.",
+        "promotionalText": "Transfer de fișiere Mac către Android / Transfer de fișiere Android către Mac",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "Adaugă 41 de limbi de afișare în aplicație, pagina Store, capturi, textul Pyonta+ și informațiile de accesibilitate."
       },
@@ -1783,10 +1783,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "Нажмите значок Pyonta в строке меню, чтобы отправлять файлы, получать с Android, перейти на Pyonta+ или выйти.\n\nПолучайте фото, видео, PDF, текст и другое с Android на Mac.\n\nОтправляйте фото, видео, PDF, текст и другое с Mac на Android.\n\nЕсли Android не виден, продолжайте отправку по QR.\n\nОтправка с Mac бесплатна. Прием с Android требует Pyonta+.\n\nПолитика конфиденциальности: https://odiften.com/pyonta/privacy\n\nУсловия использования: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta является независимым приложением и не связана с Google или Apple.",
+        "description": "Pyonta: Передача файлов с Mac на Android / Передача файлов с Android на Mac.\n\nПередача файлов с Mac на Android: Отправляйте фото, видео, PDF, текст и другое с Mac на Android.\n\nПередача файлов с Android на Mac: Получайте фото, видео, PDF, текст и другое с Android на Mac.\n\nОтправка и по QR: Если Android не виден, продолжайте отправку по QR.\n\nОткройте прием с Android: Отправка с Mac бесплатна. Прием с Android требует Pyonta+.\n\nПолитика конфиденциальности: https://odiften.com/pyonta/privacy\n\nУсловия использования: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta является независимым приложением и не связана с Google или Apple.",
         "keywords": "android,quick share,mac,pyonta,Передача,файлов",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Получайте фото, видео, PDF, текст и другое с Android на Mac.",
+        "promotionalText": "Передача файлов с Mac на Android / Передача файлов с Android на Mac",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "Добавляет 41 язык отображения в приложение, страницу Store, скриншоты, текст Pyonta+ и сведения о доступности."
       },
@@ -1835,10 +1835,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "Kliknite na ikonu Pyonta v lište menu, ak chcete odosielať súbory, prijímať z Androidu, upgradovať na Pyonta+ alebo skončiť.\n\nPrijímajte na Mac fotky, videá, PDF, text a ďalšie z Androidu.\n\nPosielajte fotky, videá, PDF, text a ďalšie z Macu do Androidu.\n\nAk sa Android nezobrazí, pokračujte v odosielaní cez QR.\n\nOdosielanie z Macu je bezplatné. Príjem z Androidu vyžaduje Pyonta+.\n\nZásady ochrany osobných údajov: https://odiften.com/pyonta/privacy\n\nPodmienky používania: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta je nezávislá a nie je prepojená so spoločnosťami Google ani Apple.",
+        "description": "Pyonta: Prenos súborov z Macu do Androidu / Prenos súborov z Androidu do Macu.\n\nPrenos súborov z Macu do Androidu: Posielajte fotky, videá, PDF, text a ďalšie z Macu do Androidu.\n\nPrenos súborov z Androidu do Macu: Prijímajte na Mac fotky, videá, PDF, text a ďalšie z Androidu.\n\nOdoslať aj cez QR: Ak sa Android nezobrazí, pokračujte v odosielaní cez QR.\n\nOdomknite príjem z Androidu: Odosielanie z Macu je bezplatné. Príjem z Androidu vyžaduje Pyonta+.\n\nZásady ochrany osobných údajov: https://odiften.com/pyonta/privacy\n\nPodmienky používania: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta je nezávislá a nie je prepojená so spoločnosťami Google ani Apple.",
         "keywords": "android,quick share,mac,pyonta,Prenos,súborov,z,Androidu",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Prijímajte na Mac fotky, videá, PDF, text a ďalšie z Androidu.",
+        "promotionalText": "Prenos súborov z Macu do Androidu / Prenos súborov z Androidu do Macu",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "Pridáva 41 jazyk zobrazenia v aplikácii, stránke Store, snímkach, texte Pyonta+ a informáciách o prístupnosti."
       },
@@ -1887,10 +1887,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "Kliknite ikono Pyonta v menijski vrstici za pošiljanje datotek, prejemanje iz Androida, nadgradnjo na Pyonta+ ali izhod.\n\nNa Mac prejmite fotografije, videe, PDF-je, besedilo in drugo iz Androida.\n\nPošljite fotografije, videe, PDF-je, besedilo in drugo iz Maca v Android.\n\nČe se Android ne prikaže, nadaljujte pošiljanje s QR.\n\nPošiljanje iz Maca je brezplačno. Prejemanje iz Androida zahteva Pyonta+.\n\nPravilnik o zasebnosti: https://odiften.com/pyonta/privacy\n\nPogoji uporabe: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta je neodvisna in ni povezana z Googlom ali Applom.",
+        "description": "Pyonta: Prenos datotek iz Maca v Android / Prenos datotek iz Androida v Mac.\n\nPrenos datotek iz Maca v Android: Pošljite fotografije, videe, PDF-je, besedilo in drugo iz Maca v Android.\n\nPrenos datotek iz Androida v Mac: Na Mac prejmite fotografije, videe, PDF-je, besedilo in drugo iz Androida.\n\nPošlji tudi s QR: Če se Android ne prikaže, nadaljujte pošiljanje s QR.\n\nOdklenite prejemanje iz Androida: Pošiljanje iz Maca je brezplačno. Prejemanje iz Androida zahteva Pyonta+.\n\nPravilnik o zasebnosti: https://odiften.com/pyonta/privacy\n\nPogoji uporabe: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta je neodvisna in ni povezana z Googlom ali Applom.",
         "keywords": "android,quick share,mac,pyonta,Prenos,datotek",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Na Mac prejmite fotografije, videe, PDF-je, besedilo in drugo iz Androida.",
+        "promotionalText": "Prenos datotek iz Maca v Android / Prenos datotek iz Androida v Mac",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "Doda 41 prikaznih jezikov v aplikaciji, strani Store, posnetkih zaslona, besedilu Pyonta+ in informacijah o dostopnosti."
       },
@@ -1939,10 +1939,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "Кликните на Pyonta икону у траци менија да шаљете датотеке, примате са Android-а, надоградите на Pyonta+ или изађете.\n\nПримајте фотографије, видео, PDF, текст и друго са Android-а на Mac.\n\nШаљите фотографије, видео, PDF, текст и друго са Mac-а на Android.\n\nАко се Android не појави, наставите слање QR кодом.\n\nСлање са Mac-а је бесплатно. Пријем са Android-а захтева Pyonta+.\n\nПолитика приватности: https://odiften.com/pyonta/privacy\n\nУслови коришћења: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta је независна и није повезана са Google-ом или Apple-ом.",
+        "description": "Pyonta: Пренос датотека са Mac-а на Android / Пренос датотека са Android-а на Mac.\n\nПренос датотека са Mac-а на Android: Шаљите фотографије, видео, PDF, текст и друго са Mac-а на Android.\n\nПренос датотека са Android-а на Mac: Примајте фотографије, видео, PDF, текст и друго са Android-а на Mac.\n\nПошаљи и QR-ом: Ако се Android не појави, наставите слање QR кодом.\n\nОткључајте пријем са Android-а: Слање са Mac-а је бесплатно. Пријем са Android-а захтева Pyonta+.\n\nПолитика приватности: https://odiften.com/pyonta/privacy\n\nУслови коришћења: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta је независна и није повезана са Google-ом или Apple-ом.",
         "keywords": "android,quick share,mac,pyonta,пренос,датотека",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Примајте фотографије, видео, PDF, текст и друго са Android-а на Mac.",
+        "promotionalText": "Пренос датотека са Mac-а на Android / Пренос датотека са Android-а на Mac",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "Додаје 41 језик приказа у апликацији, Store страници, снимцима екрана, Pyonta+ тексту и информацијама о приступачности."
       },
@@ -1991,10 +1991,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "Klicka på Pyonta-ikonen i menyraden för att skicka filer, ta emot från Android, uppgradera till Pyonta+ eller avsluta.\n\nTa emot bilder, videor, PDF:er, text och mer från Android på din Mac.\n\nSkicka bilder, videor, PDF:er, text och mer från Mac till Android.\n\nOm Android inte visas kan du fortsätta skicka med QR.\n\nAtt skicka från Mac är gratis. Att ta emot från Android kräver Pyonta+.\n\nIntegritetspolicy: https://odiften.com/pyonta/privacy\n\nAnvändarvillkor: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta är oberoende och inte kopplad till Google eller Apple.",
+        "description": "Pyonta: Filöverföring från Mac till Android / Filöverföring från Android till Mac.\n\nFilöverföring från Mac till Android: Skicka bilder, videor, PDF:er, text och mer från Mac till Android.\n\nFilöverföring från Android till Mac: Ta emot bilder, videor, PDF:er, text och mer från Android på din Mac.\n\nSkicka även med QR: Om Android inte visas kan du fortsätta skicka med QR.\n\nLås upp mottagning från Android: Att skicka från Mac är gratis. Att ta emot från Android kräver Pyonta+.\n\nIntegritetspolicy: https://odiften.com/pyonta/privacy\n\nAnvändarvillkor: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta är oberoende och inte kopplad till Google eller Apple.",
         "keywords": "android,quick share,mac,pyonta,Android-filöverföring",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Ta emot bilder, videor, PDF:er, text och mer från Android på din Mac.",
+        "promotionalText": "Filöverföring från Mac till Android / Filöverföring från Android till Mac",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "Lägger till 41 visningsspråk i appen, Store-sidan, skärmbilder, Pyonta+-text och tillgänglighetsinformation."
       },
@@ -2043,10 +2043,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "คลิกไอคอน Pyonta ในแถบเมนูเพื่อส่งไฟล์ รับจาก Android อัปเกรดเป็น Pyonta+ หรือออกจากแอป\n\nรับรูปภาพ วิดีโอ PDF ข้อความ และอื่นๆ จาก Android บน Mac ของคุณ\n\nส่งรูปภาพ วิดีโอ PDF ข้อความ และอื่นๆ จาก Mac ไปยัง Android\n\nหาก Android ไม่แสดง ให้ส่งต่อด้วยรหัส QR\n\nส่งจาก Mac ได้ฟรี การรับจาก Android ต้องใช้ Pyonta+\n\nนโยบายความเป็นส่วนตัว: https://odiften.com/pyonta/privacy\n\nข้อกำหนดการใช้งาน: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta เป็นแอปอิสระและไม่ได้เป็นพันธมิตรกับ Google หรือ Apple",
+        "description": "Pyonta: ถ่ายโอนไฟล์จาก Mac ไปยัง Android / ถ่ายโอนไฟล์จาก Android ไปยัง Mac.\n\nถ่ายโอนไฟล์จาก Mac ไปยัง Android: ส่งรูปภาพ วิดีโอ PDF ข้อความ และอื่นๆ จาก Mac ไปยัง Android\n\nถ่ายโอนไฟล์จาก Android ไปยัง Mac: รับรูปภาพ วิดีโอ PDF ข้อความ และอื่นๆ จาก Android บน Mac ของคุณ\n\nส่งด้วย QR ได้ด้วย: หาก Android ไม่แสดง ให้ส่งต่อด้วยรหัส QR\n\nปลดล็อกการรับจาก Android: ส่งจาก Mac ได้ฟรี การรับจาก Android ต้องใช้ Pyonta+\n\nนโยบายความเป็นส่วนตัว: https://odiften.com/pyonta/privacy\n\nข้อกำหนดการใช้งาน: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta เป็นแอปอิสระและไม่ได้เป็นพันธมิตรกับ Google หรือ Apple",
         "keywords": "android,quick share,mac,pyonta,โอนไฟล์",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "รับรูปภาพ วิดีโอ PDF ข้อความ และอื่นๆ จาก Android บน Mac ของคุณ",
+        "promotionalText": "ถ่ายโอนไฟล์จาก Mac ไปยัง Android / ถ่ายโอนไฟล์จาก Android ไปยัง Mac",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "เพิ่มภาษาที่แสดง 41 ภาษาในแอป หน้า Store ภาพหน้าจอ ข้อความ Pyonta+ และข้อมูลการช่วยการเข้าถึง"
       },
@@ -2095,10 +2095,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "Dosya göndermek, Android'den almak, Pyonta+'a yükseltmek veya çıkmak için menü çubuğundaki Pyonta simgesine tıklayın.\n\nAndroid'den Mac'inize fotoğraf, video, PDF, metin ve daha fazlasını alın.\n\nMac'ten Android'e fotoğraf, video, PDF, metin ve daha fazlasını gönderin.\n\nAndroid görünmezse QR koduyla göndermeye devam edin.\n\nMac'ten göndermek ücretsizdir. Android'den almak için Pyonta+ gerekir.\n\nGizlilik Politikası: https://odiften.com/pyonta/privacy\n\nKullanım Şartları: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta bağımsızdır ve Google ya da Apple ile bağlantılı değildir.",
+        "description": "Pyonta: Mac'ten Android'e dosya aktarımı / Android'den Mac'e dosya aktarımı.\n\nMac'ten Android'e dosya aktarımı: Mac'ten Android'e fotoğraf, video, PDF, metin ve daha fazlasını gönderin.\n\nAndroid'den Mac'e dosya aktarımı: Android'den Mac'inize fotoğraf, video, PDF, metin ve daha fazlasını alın.\n\nQR ile de gönder: Android görünmezse QR koduyla göndermeye devam edin.\n\nAndroid'den almayı aç: Mac'ten göndermek ücretsizdir. Android'den almak için Pyonta+ gerekir.\n\nGizlilik Politikası: https://odiften.com/pyonta/privacy\n\nKullanım Şartları: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta bağımsızdır ve Google ya da Apple ile bağlantılı değildir.",
         "keywords": "android,quick share,mac,pyonta,dosya,aktarımı",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Android'den Mac'inize fotoğraf, video, PDF, metin ve daha fazlasını alın.",
+        "promotionalText": "Mac'ten Android'e dosya aktarımı / Android'den Mac'e dosya aktarımı",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "Uygulama, Store sayfası, ekran görüntüleri, Pyonta+ metni ve erişilebilirlik bilgileri için 41 görüntüleme dili ekler."
       },
@@ -2147,10 +2147,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "Натисніть іконку Pyonta в рядку меню, щоб надсилати файли, отримувати з Android, оновити до Pyonta+ або вийти.\n\nОтримуйте фото, відео, PDF, текст та інше з Android на Mac.\n\nНадсилайте фото, відео, PDF, текст та інше з Mac на Android.\n\nЯкщо Android не з'являється, надсилайте далі через QR.\n\nНадсилання з Mac безкоштовне. Отримання з Android потребує Pyonta+.\n\nПолітика конфіденційності: https://odiften.com/pyonta/privacy\n\nУмови використання: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta є незалежним застосунком і не пов'язана з Google або Apple.",
+        "description": "Pyonta: Передавання файлів з Mac на Android / Передавання файлів з Android на Mac.\n\nПередавання файлів з Mac на Android: Надсилайте фото, відео, PDF, текст та інше з Mac на Android.\n\nПередавання файлів з Android на Mac: Отримуйте фото, відео, PDF, текст та інше з Android на Mac.\n\nНадіслати й через QR: Якщо Android не з'являється, надсилайте далі через QR.\n\nРозблокуйте отримання з Android: Надсилання з Mac безкоштовне. Отримання з Android потребує Pyonta+.\n\nПолітика конфіденційності: https://odiften.com/pyonta/privacy\n\nУмови використання: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta є незалежним застосунком і не пов'язана з Google або Apple.",
         "keywords": "android,quick share,mac,pyonta,Передавання,файлів",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Отримуйте фото, відео, PDF, текст та інше з Android на Mac.",
+        "promotionalText": "Передавання файлів з Mac на Android / Передавання файлів з Android на Mac",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "Додає 41 мову відображення в застосунку, сторінці Store, знімках екрана, тексті Pyonta+ та інформації про доступність."
       },
@@ -2199,10 +2199,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "Nhấp biểu tượng Pyonta trên thanh menu để gửi tệp, nhận từ Android, nâng cấp lên Pyonta+ hoặc thoát.\n\nNhận ảnh, video, PDF, văn bản và nhiều nội dung khác từ Android trên Mac.\n\nGửi ảnh, video, PDF, văn bản và nhiều nội dung khác từ Mac sang Android.\n\nNếu Android không xuất hiện, hãy tiếp tục gửi bằng QR.\n\nGửi từ Mac miễn phí. Nhận từ Android cần Pyonta+.\n\nChính sách quyền riêng tư: https://odiften.com/pyonta/privacy\n\nĐiều khoản sử dụng: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta độc lập và không liên kết với Google hoặc Apple.",
+        "description": "Pyonta: Chuyển tệp từ Mac sang Android / Chuyển tệp từ Android sang Mac.\n\nChuyển tệp từ Mac sang Android: Gửi ảnh, video, PDF, văn bản và nhiều nội dung khác từ Mac sang Android.\n\nChuyển tệp từ Android sang Mac: Nhận ảnh, video, PDF, văn bản và nhiều nội dung khác từ Android trên Mac.\n\nGửi cả bằng QR: Nếu Android không xuất hiện, hãy tiếp tục gửi bằng QR.\n\nMở khóa nhận từ Android: Gửi từ Mac miễn phí. Nhận từ Android cần Pyonta+.\n\nChính sách quyền riêng tư: https://odiften.com/pyonta/privacy\n\nĐiều khoản sử dụng: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta độc lập và không liên kết với Google hoặc Apple.",
         "keywords": "android,quick share,mac,pyonta,Truyền,tệp",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "Nhận ảnh, video, PDF, văn bản và nhiều nội dung khác từ Android trên Mac.",
+        "promotionalText": "Chuyển tệp từ Mac sang Android / Chuyển tệp từ Android sang Mac",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "Thêm 41 ngôn ngữ hiển thị trong ứng dụng, trang Store, ảnh chụp màn hình, văn bản Pyonta+ và thông tin trợ năng."
       },
@@ -2251,10 +2251,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "点按菜单栏中的 Pyonta 图标即可发送文件、从 Android 接收、升级到 Pyonta+ 或退出。\n\n在 Mac 上接收来自 Android 的照片、视频、PDF、文本等。\n\n从 Mac 向 Android 发送照片、视频、PDF、文本等。\n\n如果 Android 未出现，可继续用 QR 发送。\n\n从 Mac 发送免费。从 Android 接收需要 Pyonta+。\n\n隐私政策: https://odiften.com/pyonta/privacy\n\n使用条款: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta 是独立应用，与 Google 或 Apple 没有关联。",
+        "description": "Pyonta: Mac 到 Android 文件传输 / Android 到 Mac 文件传输.\n\nMac 到 Android 文件传输: 从 Mac 向 Android 发送照片、视频、PDF、文本等。\n\nAndroid 到 Mac 文件传输: 在 Mac 上接收来自 Android 的照片、视频、PDF、文本等。\n\n也可用 QR 发送: 如果 Android 未出现，可继续用 QR 发送。\n\n解锁来自 Android 的接收: 从 Mac 发送免费。从 Android 接收需要 Pyonta+。\n\n隐私政策: https://odiften.com/pyonta/privacy\n\n使用条款: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta 是独立应用，与 Google 或 Apple 没有关联。",
         "keywords": "android,quick share,mac,pyonta,文件传输",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "在 Mac 上接收来自 Android 的照片、视频、PDF、文本等。",
+        "promotionalText": "Mac 到 Android 文件传输 / Android 到 Mac 文件传输",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "为应用、Store 页面、截图、Pyonta+ 文案和辅助功能信息新增 41 种显示语言。"
       },
@@ -2303,10 +2303,10 @@
       },
       "translationStatus": "llm-draft-needs-native-review",
       "versionMetadata": {
-        "description": "點按選單列中的 Pyonta 圖示即可傳送檔案、從 Android 接收、升級到 Pyonta+ 或結束。\n\n在 Mac 上接收來自 Android 的照片、影片、PDF、文字等。\n\n從 Mac 向 Android 傳送照片、影片、PDF、文字等。\n\n如果 Android 未出現，可繼續用 QR 傳送。\n\n從 Mac 傳送免費。從 Android 接收需要 Pyonta+。\n\n隱私權政策: https://odiften.com/pyonta/privacy\n\n使用條款: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta 是獨立 App，與 Google 或 Apple 沒有關聯。",
+        "description": "Pyonta: Mac 到 Android 檔案傳輸 / Android 到 Mac 檔案傳輸.\n\nMac 到 Android 檔案傳輸: 從 Mac 向 Android 傳送照片、影片、PDF、文字等。\n\nAndroid 到 Mac 檔案傳輸: 在 Mac 上接收來自 Android 的照片、影片、PDF、文字等。\n\n也可用 QR 傳送: 如果 Android 未出現，可繼續用 QR 傳送。\n\n解鎖來自 Android 的接收: 從 Mac 傳送免費。從 Android 接收需要 Pyonta+。\n\n隱私權政策: https://odiften.com/pyonta/privacy\n\n使用條款: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nPyonta 是獨立 App，與 Google 或 Apple 沒有關聯。",
         "keywords": "android,quick share,mac,pyonta,檔案傳輸",
         "marketingUrl": "https://odiften.com",
-        "promotionalText": "在 Mac 上接收來自 Android 的照片、影片、PDF、文字等。",
+        "promotionalText": "Mac 到 Android 檔案傳輸 / Android 到 Mac 檔案傳輸",
         "supportUrl": "https://odiften.com/pyonta/privacy",
         "whatsNew": "為 App、Store 頁面、截圖、Pyonta+ 文案和輔助使用資訊新增 41 種顯示語言。"
       },
@@ -2330,8 +2330,8 @@
     "publicDisplayLanguageCount": 41,
     "scope": "next App Store submission package",
     "sourceLocaleMatrix": "scripts/next_release_locales.py",
-    "targetBuild": "21",
-    "targetVersion": "1.0.3"
+    "targetBuild": "22",
+    "targetVersion": "1.0.4"
   },
   "schemaVersion": 1
 }
