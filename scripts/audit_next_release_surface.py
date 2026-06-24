@@ -126,6 +126,18 @@ def audit_store_package(root: Path, expected: set[str], package_path: Path) -> d
         problems.append("Missing store package locales: " + ", ".join(missing))
     if extra:
         problems.append("Unexpected store package locales: " + ", ".join(extra))
+    supported_asc = {
+        locale
+        for locale, values in localizations.items()
+        if values.get("appStoreConnectMetadataSupported")
+    }
+    unsupported_asc = set(data.get("releasePackage", {}).get("appStoreConnectMetadataUnsupportedLocaleIds") or [])
+    if supported_asc | unsupported_asc != expected:
+        problems.append("ASC metadata supported/unsupported locale sets do not cover target locales")
+    if supported_asc & unsupported_asc:
+        problems.append("ASC metadata supported/unsupported locale sets overlap")
+    if len(supported_asc) != data.get("releasePackage", {}).get("appStoreConnectMetadataLocaleIdCount"):
+        problems.append("ASC metadata supported locale count does not match releasePackage")
 
     english = localizations.get("en", {})
     english_version = english.get("versionMetadata", {})
@@ -175,6 +187,8 @@ def audit_store_package(root: Path, expected: set[str], package_path: Path) -> d
                 problems.append(f"{locale}: {key} productId mismatch")
             if not product.get("displayName") or not product.get("description"):
                 problems.append(f"{locale}: {key} IAP displayName/description missing")
+            if len(product.get("description") or "") > 55:
+                problems.append(f"{locale}: {key} IAP description exceeds 55 characters")
 
         for file_name in screenshots.get("files") or []:
             screenshot_path = root / screenshots.get("directory", "") / file_name
@@ -188,8 +202,32 @@ def audit_store_package(root: Path, expected: set[str], package_path: Path) -> d
     coverage = set(declarations.get("localeCoverage") or [])
     if coverage != expected:
         problems.append("Accessibility declaration localeCoverage does not match target locales")
-    if not declarations.get("proposedAfterFinalBinaryAudit"):
-        problems.append("Accessibility declaration proposal is empty")
+    asc_accessibility = declarations.get("appStoreConnect") or {}
+    expected_true_claims = {
+        "supportsDarkInterface",
+        "supportsSufficientContrast",
+        "supportsDifferentiateWithoutColorAlone",
+    }
+    missing_true_claims = sorted(key for key in expected_true_claims if asc_accessibility.get(key) is not True)
+    if missing_true_claims:
+        problems.append(f"Accessibility declaration true claims missing: {', '.join(missing_true_claims)}")
+    expected_false_claims = {
+        "supportsVoiceover",
+        "supportsVoiceControl",
+        "supportsReducedMotion",
+        "supportsLargerText",
+        "supportsCaptions",
+        "supportsAudioDescriptions",
+    }
+    missing_false_claims = sorted(key for key in expected_false_claims if asc_accessibility.get(key) is not False)
+    if missing_false_claims:
+        problems.append(f"Accessibility declaration false claims missing: {', '.join(missing_false_claims)}")
+    if asc_accessibility.get("deviceFamily") != "MAC":
+        problems.append("Accessibility declaration deviceFamily is not MAC")
+    if asc_accessibility.get("publish") is not True:
+        problems.append("Accessibility declaration publish flag is not true")
+    if not declarations.get("claimedForSubmission"):
+        problems.append("Accessibility declaration claimedForSubmission is empty")
 
     return {
         "path": str(path),

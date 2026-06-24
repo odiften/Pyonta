@@ -1,12 +1,34 @@
 {
   "accessibilityDeclarations": {
-    "doNotClaimYet": [
-      "VoiceOver",
-      "Voice Control",
-      "Reduced Motion",
-      "Larger Text",
-      "Captions",
-      "Audio Descriptions"
+    "appStoreConnect": {
+      "deviceFamily": "MAC",
+      "publish": true,
+      "supportsAudioDescriptions": false,
+      "supportsCaptions": false,
+      "supportsDarkInterface": true,
+      "supportsDifferentiateWithoutColorAlone": true,
+      "supportsLargerText": false,
+      "supportsReducedMotion": false,
+      "supportsSufficientContrast": true,
+      "supportsVoiceControl": false,
+      "supportsVoiceover": false
+    },
+    "claimedForSubmission": [
+      {
+        "attribute": "supportsDarkInterface",
+        "evidence": "User-facing surfaces use AppKit/SwiftUI menus, alerts, and system colors; screenshot readability was checked on full-size assets and contact sheets.",
+        "feature": "Dark Interface"
+      },
+      {
+        "attribute": "supportsSufficientContrast",
+        "evidence": "Core app UI uses system label colors and native controls; localized screenshot text remains readable in full-size and thumbnail/contact-sheet review.",
+        "feature": "Sufficient Contrast"
+      },
+      {
+        "attribute": "supportsDifferentiateWithoutColorAlone",
+        "evidence": "Core states are expressed with text labels, menu titles, alerts, and notifications, not only color.",
+        "feature": "Differentiates Without Color"
+      }
     ],
     "localeCoverage": [
       "ar",
@@ -53,22 +75,13 @@
       "zh-Hant"
     ],
     "localizationPolicy": "App Store accessibility feature labels are system-localized; this package applies the same declarations to every target locale.",
-    "proposedAfterFinalBinaryAudit": [
-      {
-        "claim": "supported-if-light-and-dark-ui-pass",
-        "evidence": "Most user-facing surfaces use AppKit/SwiftUI menus, alerts, and system colors; final visual audit is still required.",
-        "feature": "Dark Interface"
-      },
-      {
-        "claim": "supported-if-contrast-review-pass",
-        "evidence": "Core app UI uses system label colors and native controls; custom screenshots and disabled/status text need final review.",
-        "feature": "Sufficient Contrast"
-      },
-      {
-        "claim": "supported-if-state-review-pass",
-        "evidence": "Core states are expressed with text labels, menu titles, alerts, and notifications, not only color.",
-        "feature": "Differentiates Without Color"
-      }
+    "notClaimedForSubmission": [
+      "VoiceOver",
+      "Voice Control",
+      "Reduced Motion",
+      "Larger Text",
+      "Captions",
+      "Audio Descriptions"
     ]
   },
   "app": {
@@ -87,7 +100,7 @@
       "selectedBuild": "20",
       "state": "READY_FOR_SALE"
     },
-    "checkedAtJST": "2026-06-24",
+    "checkedAtJST": "2026-06-24 09:54",
     "iapPriceSchedule": {
       "lifetime": {
         "JPN": {
@@ -112,7 +125,7 @@
         "preserveExistingSubscriberPrice": true
       }
     },
-    "publicStorefrontVersion": "1.0.1 on iTunes lookup at 09:23 JST; App Store Connect already has 1.0.2 READY_FOR_SALE"
+    "publicStorefrontVersion": "JP/US public App Store page, lookup, and search are visible; raw iTunes lookup still reports version 1.0.1/currentVersionReleaseDate 2026-06-22T00:14:12Z at 09:54 JST while App Store Connect has 1.0.2 READY_FOR_SALE."
   },
   "localizations": {
     "ar": {
@@ -121,22 +134,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "نقل ملفات Android"
       },
-      "ascLocaleCandidate": "ar",
+      "appStoreConnectMetadataSupported": true,
+      "ascLocaleCandidate": "ar-SA",
       "displayGroup": "ar",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "الإرسال من Mac مجاني. الاستقبال من Android يتطلب Pyonta+.",
+            "description": "استقبال Android على Mac مع Pyonta+",
             "displayName": "Pyonta+ مدى الحياة",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "الإرسال من Mac مجاني. الاستقبال من Android يتطلب Pyonta+.",
+            "description": "استقبال Android على Mac مع Pyonta+",
             "displayName": "Pyonta+ شهري",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "الإرسال من Mac مجاني. الاستقبال من Android يتطلب Pyonta+.",
+            "description": "استقبال Android على Mac مع Pyonta+",
             "displayName": "Pyonta+ سنوي",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -172,22 +186,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Android файлове за Mac"
       },
+      "appStoreConnectMetadataSupported": false,
       "ascLocaleCandidate": "bg",
       "displayGroup": "bg",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Изпращането от Mac е безплатно. Получаването от Android изисква Pyonta+.",
+            "description": "Получавайте от Android на Mac с Pyonta+",
             "displayName": "Pyonta+ Доживотен",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Изпращането от Mac е безплатно. Получаването от Android изисква Pyonta+.",
+            "description": "Получавайте от Android на Mac с Pyonta+",
             "displayName": "Pyonta+ Месечен",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Изпращането от Mac е безплатно. Получаването от Android изисква Pyonta+.",
+            "description": "Получавайте от Android на Mac с Pyonta+",
             "displayName": "Pyonta+ Годишен",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -223,22 +238,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Android ফাইল স্থানান্তর"
       },
+      "appStoreConnectMetadataSupported": false,
       "ascLocaleCandidate": "bn",
       "displayGroup": "bn",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Mac থেকে পাঠানো বিনামূল্যে। Android থেকে গ্রহণ করতে Pyonta+ দরকার।",
+            "description": "Pyonta+ দিয়ে Android থেকে Mac-এ নিন",
             "displayName": "Pyonta+ আজীবন",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Mac থেকে পাঠানো বিনামূল্যে। Android থেকে গ্রহণ করতে Pyonta+ দরকার।",
+            "description": "Pyonta+ দিয়ে Android থেকে Mac-এ নিন",
             "displayName": "Pyonta+ মাসিক",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Mac থেকে পাঠানো বিনামূল্যে। Android থেকে গ্রহণ করতে Pyonta+ দরকার।",
+            "description": "Pyonta+ দিয়ে Android থেকে Mac-এ নিন",
             "displayName": "Pyonta+ বার্ষিক",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -274,22 +290,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Fitxers Android a Mac"
       },
+      "appStoreConnectMetadataSupported": true,
       "ascLocaleCandidate": "ca",
       "displayGroup": "ca",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Enviar des del Mac és gratis. Rebre des d'Android requereix Pyonta+.",
+            "description": "Rep d'Android al Mac amb Pyonta+",
             "displayName": "Pyonta+ De per vida",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Enviar des del Mac és gratis. Rebre des d'Android requereix Pyonta+.",
+            "description": "Rep d'Android al Mac amb Pyonta+",
             "displayName": "Pyonta+ Mensual",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Enviar des del Mac és gratis. Rebre des d'Android requereix Pyonta+.",
+            "description": "Rep d'Android al Mac amb Pyonta+",
             "displayName": "Pyonta+ Anual",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -325,22 +342,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Přenos souborů z Androidu"
       },
+      "appStoreConnectMetadataSupported": true,
       "ascLocaleCandidate": "cs",
       "displayGroup": "cs",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Odesílání z Macu je zdarma. Příjem z Androidu vyžaduje Pyonta+.",
+            "description": "Příjem z Androidu na Mac s Pyonta+",
             "displayName": "Pyonta+ Doživotní",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Odesílání z Macu je zdarma. Příjem z Androidu vyžaduje Pyonta+.",
+            "description": "Příjem z Androidu na Mac s Pyonta+",
             "displayName": "Pyonta+ Měsíční",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Odesílání z Macu je zdarma. Příjem z Androidu vyžaduje Pyonta+.",
+            "description": "Příjem z Androidu na Mac s Pyonta+",
             "displayName": "Pyonta+ Roční",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -376,22 +394,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Android-filoverførsel"
       },
+      "appStoreConnectMetadataSupported": true,
       "ascLocaleCandidate": "da",
       "displayGroup": "da",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Afsendelse fra Mac er gratis. Modtagelse fra Android kræver Pyonta+.",
+            "description": "Modtag fra Android på Mac med Pyonta+",
             "displayName": "Pyonta+ Livstid",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Afsendelse fra Mac er gratis. Modtagelse fra Android kræver Pyonta+.",
+            "description": "Modtag fra Android på Mac med Pyonta+",
             "displayName": "Pyonta+ Månedlig",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Afsendelse fra Mac er gratis. Modtagelse fra Android kræver Pyonta+.",
+            "description": "Modtag fra Android på Mac med Pyonta+",
             "displayName": "Pyonta+ Årlig",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -427,22 +446,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Android-Dateitransfer"
       },
+      "appStoreConnectMetadataSupported": true,
       "ascLocaleCandidate": "de-DE",
       "displayGroup": "de",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Senden vom Mac bleibt kostenlos. Empfang von Android erfordert Pyonta+.",
+            "description": "Android-Empfang auf dem Mac mit Pyonta+",
             "displayName": "Pyonta+ Lebenslang",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Senden vom Mac bleibt kostenlos. Empfang von Android erfordert Pyonta+.",
+            "description": "Android-Empfang auf dem Mac mit Pyonta+",
             "displayName": "Pyonta+ Monatlich",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Senden vom Mac bleibt kostenlos. Empfang von Android erfordert Pyonta+.",
+            "description": "Android-Empfang auf dem Mac mit Pyonta+",
             "displayName": "Pyonta+ Jährlich",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -478,22 +498,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Μεταφορά αρχείων Android"
       },
+      "appStoreConnectMetadataSupported": true,
       "ascLocaleCandidate": "el",
       "displayGroup": "el",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Η αποστολή από Mac είναι δωρεάν. Η λήψη από Android απαιτεί Pyonta+.",
+            "description": "Λήψη από Android σε Mac με Pyonta+",
             "displayName": "Pyonta+ Εφ' όρου ζωής",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Η αποστολή από Mac είναι δωρεάν. Η λήψη από Android απαιτεί Pyonta+.",
+            "description": "Λήψη από Android σε Mac με Pyonta+",
             "displayName": "Pyonta+ Μηνιαίο",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Η αποστολή από Mac είναι δωρεάν. Η λήψη από Android απαιτεί Pyonta+.",
+            "description": "Λήψη από Android σε Mac με Pyonta+",
             "displayName": "Pyonta+ Ετήσιο",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -529,22 +550,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Android file transfer"
       },
+      "appStoreConnectMetadataSupported": true,
       "ascLocaleCandidate": "en-US",
       "displayGroup": "en",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Sending from Mac is free. Receiving from Android requires Pyonta+.",
+            "description": "Receive Android files on Mac with Pyonta+.",
             "displayName": "Pyonta+ Lifetime",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Sending from Mac is free. Receiving from Android requires Pyonta+.",
+            "description": "Receive Android files on Mac with Pyonta+.",
             "displayName": "Pyonta+ Monthly",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Sending from Mac is free. Receiving from Android requires Pyonta+.",
+            "description": "Receive Android files on Mac with Pyonta+.",
             "displayName": "Pyonta+ Yearly",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -580,22 +602,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Archivos Android a Mac"
       },
+      "appStoreConnectMetadataSupported": true,
       "ascLocaleCandidate": "es-ES",
       "displayGroup": "es",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Enviar desde Mac es gratis. Recibir desde Android requiere Pyonta+.",
+            "description": "Recibe de Android en Mac con Pyonta+",
             "displayName": "Pyonta+ De por vida",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Enviar desde Mac es gratis. Recibir desde Android requiere Pyonta+.",
+            "description": "Recibe de Android en Mac con Pyonta+",
             "displayName": "Pyonta+ Mensual",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Enviar desde Mac es gratis. Recibir desde Android requiere Pyonta+.",
+            "description": "Recibe de Android en Mac con Pyonta+",
             "displayName": "Pyonta+ Anual",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -631,22 +654,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Androidi failiedastus"
       },
+      "appStoreConnectMetadataSupported": false,
       "ascLocaleCandidate": "et",
       "displayGroup": "et",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Macist saatmine on tasuta. Androidist vastuvõtt nõuab Pyonta+.",
+            "description": "Võta Androidist Maci vastu Pyonta+ abil",
             "displayName": "Pyonta+ Eluaegne",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Macist saatmine on tasuta. Androidist vastuvõtt nõuab Pyonta+.",
+            "description": "Võta Androidist Maci vastu Pyonta+ abil",
             "displayName": "Pyonta+ Kuu",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Macist saatmine on tasuta. Androidist vastuvõtt nõuab Pyonta+.",
+            "description": "Võta Androidist Maci vastu Pyonta+ abil",
             "displayName": "Pyonta+ Aasta",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -682,22 +706,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Android-tiedostonsiirto"
       },
+      "appStoreConnectMetadataSupported": true,
       "ascLocaleCandidate": "fi",
       "displayGroup": "fi",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Macista lähettäminen on ilmaista. Androidista vastaanotto vaatii Pyonta+.",
+            "description": "Vastaanota Androidista Maciin Pyonta+:lla",
             "displayName": "Pyonta+ Elinikäinen",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Macista lähettäminen on ilmaista. Androidista vastaanotto vaatii Pyonta+.",
+            "description": "Vastaanota Androidista Maciin Pyonta+:lla",
             "displayName": "Pyonta+ Kuukausi",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Macista lähettäminen on ilmaista. Androidista vastaanotto vaatii Pyonta+.",
+            "description": "Vastaanota Androidista Maciin Pyonta+:lla",
             "displayName": "Pyonta+ Vuosi",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -733,22 +758,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Paglipat ng file sa Android"
       },
+      "appStoreConnectMetadataSupported": false,
       "ascLocaleCandidate": "fil",
       "displayGroup": "fil",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Libre ang pagpapadala mula Mac. Kailangan ang Pyonta+ para tumanggap mula Android.",
+            "description": "Tumanggap mula Android sa Mac gamit Pyonta+",
             "displayName": "Pyonta+ Panghabambuhay",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Libre ang pagpapadala mula Mac. Kailangan ang Pyonta+ para tumanggap mula Android.",
+            "description": "Tumanggap mula Android sa Mac gamit Pyonta+",
             "displayName": "Pyonta+ Buwanang",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Libre ang pagpapadala mula Mac. Kailangan ang Pyonta+ para tumanggap mula Android.",
+            "description": "Tumanggap mula Android sa Mac gamit Pyonta+",
             "displayName": "Pyonta+ Taunan",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -784,22 +810,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Transfert de fichiers Android"
       },
+      "appStoreConnectMetadataSupported": true,
       "ascLocaleCandidate": "fr-FR",
       "displayGroup": "fr",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "L'envoi depuis Mac est gratuit. La réception depuis Android nécessite Pyonta+.",
+            "description": "Recevez Android sur Mac avec Pyonta+",
             "displayName": "Pyonta+ À vie",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "L'envoi depuis Mac est gratuit. La réception depuis Android nécessite Pyonta+.",
+            "description": "Recevez Android sur Mac avec Pyonta+",
             "displayName": "Pyonta+ Mensuel",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "L'envoi depuis Mac est gratuit. La réception depuis Android nécessite Pyonta+.",
+            "description": "Recevez Android sur Mac avec Pyonta+",
             "displayName": "Pyonta+ Annuel",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -835,22 +862,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "העברת קבצים מ-Android"
       },
+      "appStoreConnectMetadataSupported": true,
       "ascLocaleCandidate": "he",
       "displayGroup": "he",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "שליחה מ-Mac היא בחינם. קבלה מ-Android דורשת Pyonta+.",
+            "description": "קבלה מ-Android ל-Mac עם Pyonta+",
             "displayName": "Pyonta+ לכל החיים",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "שליחה מ-Mac היא בחינם. קבלה מ-Android דורשת Pyonta+.",
+            "description": "קבלה מ-Android ל-Mac עם Pyonta+",
             "displayName": "Pyonta+ חודשי",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "שליחה מ-Mac היא בחינם. קבלה מ-Android דורשת Pyonta+.",
+            "description": "קבלה מ-Android ל-Mac עם Pyonta+",
             "displayName": "Pyonta+ שנתי",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -886,22 +914,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Android फ़ाइल ट्रांसफर"
       },
+      "appStoreConnectMetadataSupported": true,
       "ascLocaleCandidate": "hi",
       "displayGroup": "hi",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Mac से भेजना मुफ़्त है। Android से प्राप्त करने के लिए Pyonta+ चाहिए।",
+            "description": "Pyonta+ से Android फ़ाइलें Mac पर पाएं",
             "displayName": "Pyonta+ लाइफटाइम",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Mac से भेजना मुफ़्त है। Android से प्राप्त करने के लिए Pyonta+ चाहिए।",
+            "description": "Pyonta+ से Android फ़ाइलें Mac पर पाएं",
             "displayName": "Pyonta+ मासिक",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Mac से भेजना मुफ़्त है। Android से प्राप्त करने के लिए Pyonta+ चाहिए।",
+            "description": "Pyonta+ से Android फ़ाइलें Mac पर पाएं",
             "displayName": "Pyonta+ वार्षिक",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -937,22 +966,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Android prijenos datoteka"
       },
+      "appStoreConnectMetadataSupported": true,
       "ascLocaleCandidate": "hr",
       "displayGroup": "hr",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Slanje s Maca je besplatno. Primanje s Androida zahtijeva Pyonta+.",
+            "description": "Primajte s Androida na Mac uz Pyonta+",
             "displayName": "Pyonta+ Doživotno",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Slanje s Maca je besplatno. Primanje s Androida zahtijeva Pyonta+.",
+            "description": "Primajte s Androida na Mac uz Pyonta+",
             "displayName": "Pyonta+ Mjesečno",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Slanje s Maca je besplatno. Primanje s Androida zahtijeva Pyonta+.",
+            "description": "Primajte s Androida na Mac uz Pyonta+",
             "displayName": "Pyonta+ Godišnje",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -988,22 +1018,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Android-fájlátvitel"
       },
+      "appStoreConnectMetadataSupported": true,
       "ascLocaleCandidate": "hu",
       "displayGroup": "hu",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Macről küldeni ingyenes. Androidról fogadni Pyonta+ szükséges.",
+            "description": "Fogadás Androidról Macre Pyonta+-szal",
             "displayName": "Pyonta+ Élettartam",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Macről küldeni ingyenes. Androidról fogadni Pyonta+ szükséges.",
+            "description": "Fogadás Androidról Macre Pyonta+-szal",
             "displayName": "Pyonta+ Havi",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Macről küldeni ingyenes. Androidról fogadni Pyonta+ szükséges.",
+            "description": "Fogadás Androidról Macre Pyonta+-szal",
             "displayName": "Pyonta+ Éves",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -1039,22 +1070,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Transfer file Android"
       },
+      "appStoreConnectMetadataSupported": true,
       "ascLocaleCandidate": "id",
       "displayGroup": "id",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Mengirim dari Mac gratis. Menerima dari Android memerlukan Pyonta+.",
+            "description": "Terima dari Android ke Mac dengan Pyonta+",
             "displayName": "Pyonta+ Seumur hidup",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Mengirim dari Mac gratis. Menerima dari Android memerlukan Pyonta+.",
+            "description": "Terima dari Android ke Mac dengan Pyonta+",
             "displayName": "Pyonta+ Bulanan",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Mengirim dari Mac gratis. Menerima dari Android memerlukan Pyonta+.",
+            "description": "Terima dari Android ke Mac dengan Pyonta+",
             "displayName": "Pyonta+ Tahunan",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -1090,22 +1122,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Trasferimento file Android"
       },
+      "appStoreConnectMetadataSupported": true,
       "ascLocaleCandidate": "it",
       "displayGroup": "it",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Inviare dal Mac è gratis. Ricevere da Android richiede Pyonta+.",
+            "description": "Ricevi da Android su Mac con Pyonta+",
             "displayName": "Pyonta+ A vita",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Inviare dal Mac è gratis. Ricevere da Android richiede Pyonta+.",
+            "description": "Ricevi da Android su Mac con Pyonta+",
             "displayName": "Pyonta+ Mensile",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Inviare dal Mac è gratis. Ricevere da Android richiede Pyonta+.",
+            "description": "Ricevi da Android su Mac con Pyonta+",
             "displayName": "Pyonta+ Annuale",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -1141,22 +1174,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Androidファイル転送"
       },
+      "appStoreConnectMetadataSupported": true,
       "ascLocaleCandidate": "ja",
       "displayGroup": "ja",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Macからの送信は無料。Androidからの受信にはPyonta+が必要です。",
+            "description": "AndroidからMacへ受信するPyonta+",
             "displayName": "Pyonta+ 買い切り",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Macからの送信は無料。Androidからの受信にはPyonta+が必要です。",
+            "description": "AndroidからMacへ受信するPyonta+",
             "displayName": "Pyonta+ 月額",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Macからの送信は無料。Androidからの受信にはPyonta+が必要です。",
+            "description": "AndroidからMacへ受信するPyonta+",
             "displayName": "Pyonta+ 年額",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -1192,22 +1226,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Android 파일 전송"
       },
+      "appStoreConnectMetadataSupported": true,
       "ascLocaleCandidate": "ko",
       "displayGroup": "ko",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Mac에서 보내기는 무료입니다. Android에서 받으려면 Pyonta+가 필요합니다.",
+            "description": "Pyonta+로 Android에서 Mac으로 받기",
             "displayName": "Pyonta+ 평생",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Mac에서 보내기는 무료입니다. Android에서 받으려면 Pyonta+가 필요합니다.",
+            "description": "Pyonta+로 Android에서 Mac으로 받기",
             "displayName": "Pyonta+ 월간",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Mac에서 보내기는 무료입니다. Android에서 받으려면 Pyonta+가 필요합니다.",
+            "description": "Pyonta+로 Android에서 Mac으로 받기",
             "displayName": "Pyonta+ 연간",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -1243,22 +1278,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Android failų perkėlimas"
       },
+      "appStoreConnectMetadataSupported": false,
       "ascLocaleCandidate": "lt",
       "displayGroup": "lt",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Siuntimas iš Mac nemokamas. Gavimui iš Android reikia Pyonta+.",
+            "description": "Gaukite iš Android į Mac su Pyonta+",
             "displayName": "Pyonta+ Visam laikui",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Siuntimas iš Mac nemokamas. Gavimui iš Android reikia Pyonta+.",
+            "description": "Gaukite iš Android į Mac su Pyonta+",
             "displayName": "Pyonta+ Mėnesinis",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Siuntimas iš Mac nemokamas. Gavimui iš Android reikia Pyonta+.",
+            "description": "Gaukite iš Android į Mac su Pyonta+",
             "displayName": "Pyonta+ Metinis",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -1294,22 +1330,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Android failu pārsūtīšana"
       },
+      "appStoreConnectMetadataSupported": false,
       "ascLocaleCandidate": "lv",
       "displayGroup": "lv",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Sūtīšana no Mac ir bez maksas. Saņemšanai no Android vajag Pyonta+.",
+            "description": "Saņemiet no Android uz Mac ar Pyonta+",
             "displayName": "Pyonta+ Mūža",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Sūtīšana no Mac ir bez maksas. Saņemšanai no Android vajag Pyonta+.",
+            "description": "Saņemiet no Android uz Mac ar Pyonta+",
             "displayName": "Pyonta+ Mēneša",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Sūtīšana no Mac ir bez maksas. Saņemšanai no Android vajag Pyonta+.",
+            "description": "Saņemiet no Android uz Mac ar Pyonta+",
             "displayName": "Pyonta+ Gada",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -1345,22 +1382,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Pemindahan fail Android"
       },
+      "appStoreConnectMetadataSupported": true,
       "ascLocaleCandidate": "ms",
       "displayGroup": "ms",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Menghantar daripada Mac adalah percuma. Menerima daripada Android memerlukan Pyonta+.",
+            "description": "Terima Android ke Mac dengan Pyonta+",
             "displayName": "Pyonta+ Seumur hidup",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Menghantar daripada Mac adalah percuma. Menerima daripada Android memerlukan Pyonta+.",
+            "description": "Terima Android ke Mac dengan Pyonta+",
             "displayName": "Pyonta+ Bulanan",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Menghantar daripada Mac adalah percuma. Menerima daripada Android memerlukan Pyonta+.",
+            "description": "Terima Android ke Mac dengan Pyonta+",
             "displayName": "Pyonta+ Tahunan",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -1396,22 +1434,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Android-filoverføring"
       },
-      "ascLocaleCandidate": "nb",
+      "appStoreConnectMetadataSupported": true,
+      "ascLocaleCandidate": "no",
       "displayGroup": "nb",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Sending fra Mac er gratis. Mottak fra Android krever Pyonta+.",
+            "description": "Motta fra Android på Mac med Pyonta+",
             "displayName": "Pyonta+ Livstid",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Sending fra Mac er gratis. Mottak fra Android krever Pyonta+.",
+            "description": "Motta fra Android på Mac med Pyonta+",
             "displayName": "Pyonta+ Månedlig",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Sending fra Mac er gratis. Mottak fra Android krever Pyonta+.",
+            "description": "Motta fra Android på Mac med Pyonta+",
             "displayName": "Pyonta+ Årlig",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -1447,22 +1486,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Android-bestandsoverdracht"
       },
+      "appStoreConnectMetadataSupported": true,
       "ascLocaleCandidate": "nl-NL",
       "displayGroup": "nl",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Versturen vanaf Mac is gratis. Ontvangen vanaf Android vereist Pyonta+.",
+            "description": "Ontvang van Android op Mac met Pyonta+",
             "displayName": "Pyonta+ Levenslang",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Versturen vanaf Mac is gratis. Ontvangen vanaf Android vereist Pyonta+.",
+            "description": "Ontvang van Android op Mac met Pyonta+",
             "displayName": "Pyonta+ Maandelijks",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Versturen vanaf Mac is gratis. Ontvangen vanaf Android vereist Pyonta+.",
+            "description": "Ontvang van Android op Mac met Pyonta+",
             "displayName": "Pyonta+ Jaarlijks",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -1498,22 +1538,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Transfer plików Android"
       },
+      "appStoreConnectMetadataSupported": true,
       "ascLocaleCandidate": "pl",
       "displayGroup": "pl",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Wysyłanie z Maca jest bezpłatne. Odbieranie z Androida wymaga Pyonta+.",
+            "description": "Odbieraj z Androida na Macu z Pyonta+",
             "displayName": "Pyonta+ Dożywotnio",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Wysyłanie z Maca jest bezpłatne. Odbieranie z Androida wymaga Pyonta+.",
+            "description": "Odbieraj z Androida na Macu z Pyonta+",
             "displayName": "Pyonta+ Miesięcznie",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Wysyłanie z Maca jest bezpłatne. Odbieranie z Androida wymaga Pyonta+.",
+            "description": "Odbieraj z Androida na Macu z Pyonta+",
             "displayName": "Pyonta+ Rocznie",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -1549,22 +1590,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Arquivos Android no Mac"
       },
+      "appStoreConnectMetadataSupported": true,
       "ascLocaleCandidate": "pt-BR",
       "displayGroup": "pt",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Enviar do Mac é grátis. Receber do Android requer Pyonta+.",
+            "description": "Receba do Android no Mac com Pyonta+",
             "displayName": "Pyonta+ Vitalício",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Enviar do Mac é grátis. Receber do Android requer Pyonta+.",
+            "description": "Receba do Android no Mac com Pyonta+",
             "displayName": "Pyonta+ Mensal",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Enviar do Mac é grátis. Receber do Android requer Pyonta+.",
+            "description": "Receba do Android no Mac com Pyonta+",
             "displayName": "Pyonta+ Anual",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -1600,22 +1642,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Ficheiros Android no Mac"
       },
+      "appStoreConnectMetadataSupported": true,
       "ascLocaleCandidate": "pt-PT",
       "displayGroup": "pt",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Enviar do Mac é gratuito. Receber do Android requer Pyonta+.",
+            "description": "Receba do Android no Mac com Pyonta+",
             "displayName": "Pyonta+ Vitalício",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Enviar do Mac é gratuito. Receber do Android requer Pyonta+.",
+            "description": "Receba do Android no Mac com Pyonta+",
             "displayName": "Pyonta+ Mensal",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Enviar do Mac é gratuito. Receber do Android requer Pyonta+.",
+            "description": "Receba do Android no Mac com Pyonta+",
             "displayName": "Pyonta+ Anual",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -1651,22 +1694,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Transfer de fișiere Android"
       },
+      "appStoreConnectMetadataSupported": true,
       "ascLocaleCandidate": "ro",
       "displayGroup": "ro",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Trimiterea de pe Mac este gratuită. Primirea de pe Android necesită Pyonta+.",
+            "description": "Primește din Android pe Mac cu Pyonta+",
             "displayName": "Pyonta+ Pe viață",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Trimiterea de pe Mac este gratuită. Primirea de pe Android necesită Pyonta+.",
+            "description": "Primește din Android pe Mac cu Pyonta+",
             "displayName": "Pyonta+ Lunar",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Trimiterea de pe Mac este gratuită. Primirea de pe Android necesită Pyonta+.",
+            "description": "Primește din Android pe Mac cu Pyonta+",
             "displayName": "Pyonta+ Anual",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -1702,22 +1746,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Передача файлов Android"
       },
+      "appStoreConnectMetadataSupported": true,
       "ascLocaleCandidate": "ru",
       "displayGroup": "ru",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Отправка с Mac бесплатна. Прием с Android требует Pyonta+.",
+            "description": "Прием с Android на Mac через Pyonta+",
             "displayName": "Pyonta+ Навсегда",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Отправка с Mac бесплатна. Прием с Android требует Pyonta+.",
+            "description": "Прием с Android на Mac через Pyonta+",
             "displayName": "Pyonta+ Ежемесячно",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Отправка с Mac бесплатна. Прием с Android требует Pyonta+.",
+            "description": "Прием с Android на Mac через Pyonta+",
             "displayName": "Pyonta+ Ежегодно",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -1753,22 +1798,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Prenos súborov z Androidu"
       },
+      "appStoreConnectMetadataSupported": true,
       "ascLocaleCandidate": "sk",
       "displayGroup": "sk",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Odosielanie z Macu je bezplatné. Príjem z Androidu vyžaduje Pyonta+.",
+            "description": "Príjem z Androidu na Mac s Pyonta+",
             "displayName": "Pyonta+ Doživotne",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Odosielanie z Macu je bezplatné. Príjem z Androidu vyžaduje Pyonta+.",
+            "description": "Príjem z Androidu na Mac s Pyonta+",
             "displayName": "Pyonta+ Mesačne",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Odosielanie z Macu je bezplatné. Príjem z Androidu vyžaduje Pyonta+.",
+            "description": "Príjem z Androidu na Mac s Pyonta+",
             "displayName": "Pyonta+ Ročne",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -1804,22 +1850,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Prenos datotek Android"
       },
+      "appStoreConnectMetadataSupported": false,
       "ascLocaleCandidate": "sl",
       "displayGroup": "sl",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Pošiljanje iz Maca je brezplačno. Prejemanje iz Androida zahteva Pyonta+.",
+            "description": "Prejem z Androida na Mac s Pyonta+",
             "displayName": "Pyonta+ Doživljenjsko",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Pošiljanje iz Maca je brezplačno. Prejemanje iz Androida zahteva Pyonta+.",
+            "description": "Prejem z Androida na Mac s Pyonta+",
             "displayName": "Pyonta+ Mesečno",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Pošiljanje iz Maca je brezplačno. Prejemanje iz Androida zahteva Pyonta+.",
+            "description": "Prejem z Androida na Mac s Pyonta+",
             "displayName": "Pyonta+ Letno",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -1855,22 +1902,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Android пренос датотека"
       },
+      "appStoreConnectMetadataSupported": false,
       "ascLocaleCandidate": "sr",
       "displayGroup": "sr",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Слање са Mac-а је бесплатно. Пријем са Android-а захтева Pyonta+.",
+            "description": "Примајте са Android-а на Mac уз Pyonta+",
             "displayName": "Pyonta+ Доживотно",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Слање са Mac-а је бесплатно. Пријем са Android-а захтева Pyonta+.",
+            "description": "Примајте са Android-а на Mac уз Pyonta+",
             "displayName": "Pyonta+ Месечно",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Слање са Mac-а је бесплатно. Пријем са Android-а захтева Pyonta+.",
+            "description": "Примајте са Android-а на Mac уз Pyonta+",
             "displayName": "Pyonta+ Годишње",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -1906,22 +1954,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Android-filöverföring"
       },
+      "appStoreConnectMetadataSupported": true,
       "ascLocaleCandidate": "sv",
       "displayGroup": "sv",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Att skicka från Mac är gratis. Att ta emot från Android kräver Pyonta+.",
+            "description": "Ta emot från Android på Mac med Pyonta+",
             "displayName": "Pyonta+ Livstid",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Att skicka från Mac är gratis. Att ta emot från Android kräver Pyonta+.",
+            "description": "Ta emot från Android på Mac med Pyonta+",
             "displayName": "Pyonta+ Månadsvis",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Att skicka från Mac är gratis. Att ta emot från Android kräver Pyonta+.",
+            "description": "Ta emot från Android på Mac med Pyonta+",
             "displayName": "Pyonta+ Årligen",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -1957,22 +2006,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "โอนไฟล์ Android"
       },
+      "appStoreConnectMetadataSupported": true,
       "ascLocaleCandidate": "th",
       "displayGroup": "th",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "ส่งจาก Mac ได้ฟรี การรับจาก Android ต้องใช้ Pyonta+",
+            "description": "รับจาก Android บน Mac ด้วย Pyonta+",
             "displayName": "Pyonta+ ตลอดชีพ",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "ส่งจาก Mac ได้ฟรี การรับจาก Android ต้องใช้ Pyonta+",
+            "description": "รับจาก Android บน Mac ด้วย Pyonta+",
             "displayName": "Pyonta+ รายเดือน",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "ส่งจาก Mac ได้ฟรี การรับจาก Android ต้องใช้ Pyonta+",
+            "description": "รับจาก Android บน Mac ด้วย Pyonta+",
             "displayName": "Pyonta+ รายปี",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -2008,22 +2058,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Android dosya aktarımı"
       },
+      "appStoreConnectMetadataSupported": true,
       "ascLocaleCandidate": "tr",
       "displayGroup": "tr",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Mac'ten göndermek ücretsizdir. Android'den almak için Pyonta+ gerekir.",
+            "description": "Android'den Mac'e Pyonta+ ile alın",
             "displayName": "Pyonta+ Ömür boyu",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Mac'ten göndermek ücretsizdir. Android'den almak için Pyonta+ gerekir.",
+            "description": "Android'den Mac'e Pyonta+ ile alın",
             "displayName": "Pyonta+ Aylık",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Mac'ten göndermek ücretsizdir. Android'den almak için Pyonta+ gerekir.",
+            "description": "Android'den Mac'e Pyonta+ ile alın",
             "displayName": "Pyonta+ Yıllık",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -2059,22 +2110,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Передавання файлів Android"
       },
+      "appStoreConnectMetadataSupported": true,
       "ascLocaleCandidate": "uk",
       "displayGroup": "uk",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Надсилання з Mac безкоштовне. Отримання з Android потребує Pyonta+.",
+            "description": "Отримуйте з Android на Mac з Pyonta+",
             "displayName": "Pyonta+ Назавжди",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Надсилання з Mac безкоштовне. Отримання з Android потребує Pyonta+.",
+            "description": "Отримуйте з Android на Mac з Pyonta+",
             "displayName": "Pyonta+ Щомісячно",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Надсилання з Mac безкоштовне. Отримання з Android потребує Pyonta+.",
+            "description": "Отримуйте з Android на Mac з Pyonta+",
             "displayName": "Pyonta+ Щорічно",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -2110,22 +2162,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Truyền tệp Android"
       },
+      "appStoreConnectMetadataSupported": true,
       "ascLocaleCandidate": "vi",
       "displayGroup": "vi",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "Gửi từ Mac miễn phí. Nhận từ Android cần Pyonta+.",
+            "description": "Nhận từ Android sang Mac bằng Pyonta+",
             "displayName": "Pyonta+ Trọn đời",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "Gửi từ Mac miễn phí. Nhận từ Android cần Pyonta+.",
+            "description": "Nhận từ Android sang Mac bằng Pyonta+",
             "displayName": "Pyonta+ Hàng tháng",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "Gửi từ Mac miễn phí. Nhận từ Android cần Pyonta+.",
+            "description": "Nhận từ Android sang Mac bằng Pyonta+",
             "displayName": "Pyonta+ Hàng năm",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -2161,22 +2214,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Android 文件传输"
       },
+      "appStoreConnectMetadataSupported": true,
       "ascLocaleCandidate": "zh-Hans",
       "displayGroup": "zh-Hans",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "从 Mac 发送免费。从 Android 接收需要 Pyonta+。",
+            "description": "用 Pyonta+ 在 Mac 接收 Android 文件",
             "displayName": "Pyonta+ 终身",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "从 Mac 发送免费。从 Android 接收需要 Pyonta+。",
+            "description": "用 Pyonta+ 在 Mac 接收 Android 文件",
             "displayName": "Pyonta+ 月度",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "从 Mac 发送免费。从 Android 接收需要 Pyonta+。",
+            "description": "用 Pyonta+ 在 Mac 接收 Android 文件",
             "displayName": "Pyonta+ 年度",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -2212,22 +2266,23 @@
         "privacyPolicyUrl": "https://odiften.com/pyonta/privacy",
         "subtitle": "Android 檔案傳輸"
       },
+      "appStoreConnectMetadataSupported": true,
       "ascLocaleCandidate": "zh-Hant",
       "displayGroup": "zh-Hant",
       "iap": {
         "products": {
           "lifetime": {
-            "description": "從 Mac 傳送免費。從 Android 接收需要 Pyonta+。",
+            "description": "用 Pyonta+ 在 Mac 接收 Android 檔案",
             "displayName": "Pyonta+ 永久",
             "productId": "com.odiften.pyonta.plus.lifetime"
           },
           "monthly": {
-            "description": "從 Mac 傳送免費。從 Android 接收需要 Pyonta+。",
+            "description": "用 Pyonta+ 在 Mac 接收 Android 檔案",
             "displayName": "Pyonta+ 月度",
             "productId": "com.odiften.pyonta.plus.monthly"
           },
           "yearly": {
-            "description": "從 Mac 傳送免費。從 Android 接收需要 Pyonta+。",
+            "description": "用 Pyonta+ 在 Mac 接收 Android 檔案",
             "displayName": "Pyonta+ 年度",
             "productId": "com.odiften.pyonta.plus.yearly"
           }
@@ -2259,6 +2314,17 @@
     }
   },
   "releasePackage": {
+    "appStoreConnectMetadataLocaleIdCount": 34,
+    "appStoreConnectMetadataUnsupportedLocaleIds": [
+      "bg",
+      "bn",
+      "et",
+      "fil",
+      "lt",
+      "lv",
+      "sl",
+      "sr"
+    ],
     "liveMutationPolicy": "read-only local draft; App Store Connect writes require user confirmation",
     "localeIdCount": 42,
     "publicDisplayLanguageCount": 41,

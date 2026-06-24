@@ -34,11 +34,24 @@ MARKETING_URL = "https://odiften.com"
 SUPPORT_URL = PRIVACY_URL
 
 ASC_LOCALE_CANDIDATES = {
+    "ar": "ar-SA",
     "de": "de-DE",
     "en": "en-US",
     "es": "es-ES",
     "fr": "fr-FR",
+    "nb": "no",
     "nl": "nl-NL",
+}
+
+ASC_METADATA_UNSUPPORTED_LOCALES = {
+    "bg",
+    "bn",
+    "et",
+    "fil",
+    "lt",
+    "lv",
+    "sl",
+    "sr",
 }
 
 SUBTITLE_OVERRIDES = {
@@ -47,6 +60,51 @@ SUBTITLE_OVERRIDES = {
     "es": "Archivos Android a Mac",
     "pt-BR": "Arquivos Android no Mac",
     "pt-PT": "Ficheiros Android no Mac",
+}
+
+IAP_SHORT_DESCRIPTIONS = {
+    "ar": "استقبال Android على Mac مع Pyonta+",
+    "bg": "Получавайте от Android на Mac с Pyonta+",
+    "bn": "Pyonta+ দিয়ে Android থেকে Mac-এ নিন",
+    "ca": "Rep d'Android al Mac amb Pyonta+",
+    "cs": "Příjem z Androidu na Mac s Pyonta+",
+    "da": "Modtag fra Android på Mac med Pyonta+",
+    "de": "Android-Empfang auf dem Mac mit Pyonta+",
+    "el": "Λήψη από Android σε Mac με Pyonta+",
+    "en": "Receive Android files on Mac with Pyonta+.",
+    "es": "Recibe de Android en Mac con Pyonta+",
+    "et": "Võta Androidist Maci vastu Pyonta+ abil",
+    "fi": "Vastaanota Androidista Maciin Pyonta+:lla",
+    "fil": "Tumanggap mula Android sa Mac gamit Pyonta+",
+    "fr": "Recevez Android sur Mac avec Pyonta+",
+    "he": "קבלה מ-Android ל-Mac עם Pyonta+",
+    "hi": "Pyonta+ से Android फ़ाइलें Mac पर पाएं",
+    "hr": "Primajte s Androida na Mac uz Pyonta+",
+    "hu": "Fogadás Androidról Macre Pyonta+-szal",
+    "id": "Terima dari Android ke Mac dengan Pyonta+",
+    "it": "Ricevi da Android su Mac con Pyonta+",
+    "ja": "AndroidからMacへ受信するPyonta+",
+    "ko": "Pyonta+로 Android에서 Mac으로 받기",
+    "lt": "Gaukite iš Android į Mac su Pyonta+",
+    "lv": "Saņemiet no Android uz Mac ar Pyonta+",
+    "ms": "Terima Android ke Mac dengan Pyonta+",
+    "nb": "Motta fra Android på Mac med Pyonta+",
+    "nl": "Ontvang van Android op Mac met Pyonta+",
+    "pl": "Odbieraj z Androida na Macu z Pyonta+",
+    "pt-BR": "Receba do Android no Mac com Pyonta+",
+    "pt-PT": "Receba do Android no Mac com Pyonta+",
+    "ro": "Primește din Android pe Mac cu Pyonta+",
+    "ru": "Прием с Android на Mac через Pyonta+",
+    "sk": "Príjem z Androidu na Mac s Pyonta+",
+    "sl": "Prejem z Androida na Mac s Pyonta+",
+    "sr": "Примајте са Android-а на Mac уз Pyonta+",
+    "sv": "Ta emot från Android på Mac med Pyonta+",
+    "th": "รับจาก Android บน Mac ด้วย Pyonta+",
+    "tr": "Android'den Mac'e Pyonta+ ile alın",
+    "uk": "Отримуйте з Android на Mac з Pyonta+",
+    "vi": "Nhận từ Android sang Mac bằng Pyonta+",
+    "zh-Hans": "用 Pyonta+ 在 Mac 接收 Android 文件",
+    "zh-Hant": "用 Pyonta+ 在 Mac 接收 Android 檔案",
 }
 
 TERMS = {
@@ -434,9 +492,11 @@ def build_package() -> dict[str, Any]:
         copy = screenshot_copy[locale]
         terms = TERMS[locale]
         subtitle = SUBTITLE_OVERRIDES.get(locale, copy["subtitle"])
+        iap_description = IAP_SHORT_DESCRIPTIONS.get(locale, normalized_line(copy["plusBody"]))
         localizations[locale] = {
             "xcodeLocale": locale,
             "ascLocaleCandidate": ASC_LOCALE_CANDIDATES.get(locale, locale),
+            "appStoreConnectMetadataSupported": locale not in ASC_METADATA_UNSUPPORTED_LOCALES,
             "displayGroup": next(item.display_group for item in TARGET_LOCALES if item.code == locale),
             "translationStatus": "llm-draft-needs-native-review",
             "appInfo": {
@@ -458,17 +518,17 @@ def build_package() -> dict[str, Any]:
                     "monthly": {
                         "productId": "com.odiften.pyonta.plus.monthly",
                         "displayName": f"Pyonta+ {terms['monthly']}",
-                        "description": normalized_line(copy["plusBody"]),
+                        "description": iap_description,
                     },
                     "yearly": {
                         "productId": "com.odiften.pyonta.plus.yearly",
                         "displayName": f"Pyonta+ {terms['yearly']}",
-                        "description": normalized_line(copy["plusBody"]),
+                        "description": iap_description,
                     },
                     "lifetime": {
                         "productId": "com.odiften.pyonta.plus.lifetime",
                         "displayName": f"Pyonta+ {terms['lifetime']}",
-                        "description": normalized_line(copy["plusBody"]),
+                        "description": iap_description,
                     },
                 },
             },
@@ -494,11 +554,13 @@ def build_package() -> dict[str, Any]:
             "localeIdCount": len(expected),
             "publicDisplayLanguageCount": display_language_count(),
             "sourceLocaleMatrix": "scripts/next_release_locales.py",
+            "appStoreConnectMetadataLocaleIdCount": len(expected) - len(ASC_METADATA_UNSUPPORTED_LOCALES),
+            "appStoreConnectMetadataUnsupportedLocaleIds": sorted(ASC_METADATA_UNSUPPORTED_LOCALES),
             "liveMutationPolicy": "read-only local draft; App Store Connect writes require user confirmation",
         },
         "liveStateReadback": {
-            "checkedAtJST": "2026-06-24",
-            "publicStorefrontVersion": "1.0.1 on iTunes lookup at 09:23 JST; App Store Connect already has 1.0.2 READY_FOR_SALE",
+            "checkedAtJST": "2026-06-24 09:54",
+            "publicStorefrontVersion": "JP/US public App Store page, lookup, and search are visible; raw iTunes lookup still reports version 1.0.1/currentVersionReleaseDate 2026-06-22T00:14:12Z at 09:54 JST while App Store Connect has 1.0.2 READY_FOR_SALE.",
             "appStoreConnectVersion102": {
                 "state": "READY_FOR_SALE",
                 "reviewSubmissionState": "COMPLETE",
@@ -520,24 +582,37 @@ def build_package() -> dict[str, Any]:
         "accessibilityDeclarations": {
             "localizationPolicy": "App Store accessibility feature labels are system-localized; this package applies the same declarations to every target locale.",
             "localeCoverage": expected,
-            "proposedAfterFinalBinaryAudit": [
+            "appStoreConnect": {
+                "deviceFamily": "MAC",
+                "publish": True,
+                "supportsDarkInterface": True,
+                "supportsSufficientContrast": True,
+                "supportsDifferentiateWithoutColorAlone": True,
+                "supportsVoiceover": False,
+                "supportsVoiceControl": False,
+                "supportsReducedMotion": False,
+                "supportsLargerText": False,
+                "supportsCaptions": False,
+                "supportsAudioDescriptions": False,
+            },
+            "claimedForSubmission": [
                 {
                     "feature": "Dark Interface",
-                    "claim": "supported-if-light-and-dark-ui-pass",
-                    "evidence": "Most user-facing surfaces use AppKit/SwiftUI menus, alerts, and system colors; final visual audit is still required.",
+                    "attribute": "supportsDarkInterface",
+                    "evidence": "User-facing surfaces use AppKit/SwiftUI menus, alerts, and system colors; screenshot readability was checked on full-size assets and contact sheets.",
                 },
                 {
                     "feature": "Sufficient Contrast",
-                    "claim": "supported-if-contrast-review-pass",
-                    "evidence": "Core app UI uses system label colors and native controls; custom screenshots and disabled/status text need final review.",
+                    "attribute": "supportsSufficientContrast",
+                    "evidence": "Core app UI uses system label colors and native controls; localized screenshot text remains readable in full-size and thumbnail/contact-sheet review.",
                 },
                 {
                     "feature": "Differentiates Without Color",
-                    "claim": "supported-if-state-review-pass",
+                    "attribute": "supportsDifferentiateWithoutColorAlone",
                     "evidence": "Core states are expressed with text labels, menu titles, alerts, and notifications, not only color.",
                 },
             ],
-            "doNotClaimYet": [
+            "notClaimedForSubmission": [
                 "VoiceOver",
                 "Voice Control",
                 "Reduced Motion",
